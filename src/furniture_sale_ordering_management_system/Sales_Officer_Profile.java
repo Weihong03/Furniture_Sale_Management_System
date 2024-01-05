@@ -355,25 +355,25 @@ try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                 String value = parts[1].trim();
                 switch (key) {
                     case "Username":
-                        lines[1] = "Username: " + jTextField_Username.getText().trim();
+                        lines[1] = "Username: " + jTextField_Username.getText().trim() + ",";
                         break;
                     case "Password":
-                        lines[2] = "Password: " + jTextField_Password.getText().trim();
+                        lines[2] = "Password: " + jTextField_Password.getText().trim()+ ",";
                         break;
                     case "Name":
-                        lines[3] = "Name: " + jTextField_FullName.getText().trim();
+                        lines[3] = "Name: " + jTextField_FullName.getText().trim()+ ",";
                         break;
                     case "Age":
-                        lines[4] = "Age: " + jComboBox_Age.getSelectedItem().toString().trim();
+                        lines[4] = "Age: " + jComboBox_Age.getSelectedItem().toString().trim()+ ",";
                         break;
                     case "Email":
-                        lines[5] = "Email: " + jTextField_Email.getText().trim();
+                        lines[5] = "Email: " + jTextField_Email.getText().trim()+ ",";
                         break;
                     case "PhoneNumber":
-                        lines[6] = "PhoneNumber: " + jTextField_PhoneNumber.getText().trim();
+                        lines[6] = "PhoneNumber: " + jTextField_PhoneNumber.getText().trim()+ ",";
                         break;
                     case "Role":
-                        lines[7] = "Role: " + jComboBox_Role.getSelectedItem().toString().trim();
+                        lines[7] = "Role: " + jComboBox_Role.getSelectedItem().toString().trim()+ ",";
                         
                         // Add a new blank line after the "Role" line
                         content.append("\n");
@@ -407,9 +407,16 @@ content.replace(startIndex, endIndex, String.join("\n", lines));
     }//GEN-LAST:event_jButton_UpdateActionPerformed
 
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-        Sales_Home home = new Sales_Home(userID);
-        home.setVisible(true);
-        dispose();
+        userID = jTextField_ID.getText();
+        if (userID.startsWith("O")) {
+    Officer_Home officerHome = new Officer_Home(userID);
+    officerHome.setVisible(true);
+} 
+        else if (userID.startsWith("S")) {
+    Sales_Home salesPersonHome = new Sales_Home(userID);
+    salesPersonHome.setVisible(true);
+    dispose();
+        }
     }//GEN-LAST:event_jButton_backActionPerformed
 
     /**

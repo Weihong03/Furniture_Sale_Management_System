@@ -1,11 +1,11 @@
 ID: S001, 
-Username: Weihongooi,
-Password: Weihong123, 
-Name: Ooi Wei Hong,
-Age: 20,
-Email: TP065329@mail.apu.edu.my,
-PhoneNumber: 0122723624,
-Role: SalesPerson,
+Username: Weihongooi,,
+Password: Weihong123,,
+Name: Ooi Wei Hong,,
+Age: 24,
+Email: TP065329@mail.apu.edu.my,,
+PhoneNumber: 0122723624,,
+Role: Salesperson,
 
 ID: O003,
 Username: Atticus,
@@ -51,3 +51,6 @@ Age: 59,
 Email: fengkang123@gmail.com,
 PhoneNumber: 0198754498,
 Role: Officer,
+
+
+

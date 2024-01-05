@@ -36,8 +36,8 @@ public class ModifyWorkerProfile extends javax.swing.JFrame {
     public static String Role;
     private String userID;
 
-    private static final String BOOKING_FILE_PATH = "D:\\NetBeansProjects\\Java_Assignment\\src\\main\\java\\furniture_sale_ordering_management_system\\Officer_Salesperson.txt";
-
+    private static final String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
+    
     private ModifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

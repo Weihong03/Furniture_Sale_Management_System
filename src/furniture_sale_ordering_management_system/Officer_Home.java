@@ -4,6 +4,7 @@
  */
 package furniture_sale_ordering_management_system;
 
+import static furniture_sale_ordering_management_system.Sales_Home.userID;
 import furniture_sale_ordering_management_system.Shared_item.glasspanepopup.DefaultLayoutCallBack;
 import furniture_sale_ordering_management_system.Shared_item.glasspanepopup.GlassPanePopup;
 import java.awt.Component;
@@ -26,7 +27,7 @@ import net.miginfocom.layout.LayoutCallback;
  */
 public class Officer_Home extends javax.swing.JFrame {
 
-    private String userID;
+     public static String userID;
 
     public Officer_Home(String userID) {
         this.userID = userID;
@@ -165,6 +166,8 @@ public class Officer_Home extends javax.swing.JFrame {
 
     private void jButton_ManageProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ManageProfileActionPerformed
         Sales_Officer_Profile salesPerson = new Sales_Officer_Profile(userID);
+        salesPerson.setInitialValues(userID);
+        salesPerson.setInitialValuesFromUserID(userID);
         salesPerson.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_ManageProfileActionPerformed

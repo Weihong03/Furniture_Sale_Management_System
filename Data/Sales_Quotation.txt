@@ -9,22 +9,23 @@ Status: In Progress,
 
 ID: Q002,
 Amount: RM4000,
+Date: 20 Jan 2024,
+Salesperson: Horongwei,
+Confirmation: Default,
+Officer: Default,
+Invoice: No,
+Status: In Progress,
+
+
+ID: Q003,
+Amount: RM10000,
 Date: 01 Oct 2023,
 Salesperson: Horongwei,
 Confirmation: Default,
 Officer: Default,
 Invoice: No,
 Status: In Progress,
-
-ID: Q003,
-Amount: RM1000,
-Date: 02 Jul 2023,
-Salesperson: Horongwei,
-Confirmation: Default,
-Officer: Default,
-Invoice: No,
-Status: In Progress,
-
+---------------------------
 ID: Q004,
 Amount: RM9000,
 Date: 14 Dec 2022,

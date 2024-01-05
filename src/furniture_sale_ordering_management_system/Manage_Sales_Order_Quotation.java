@@ -4,6 +4,23 @@
  */
 package furniture_sale_ordering_management_system;
 
+import static furniture_sale_ordering_management_system.CreateSalesOrderQuotation.userID;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author yuw18
@@ -26,22 +43,261 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField_search = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable_manageQuotation = new javax.swing.JTable();
+        jButton_modify = new javax.swing.JButton();
+        jButton_delete = new javax.swing.JButton();
+        jButton_back = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("MANAGE SALES ORDER QUOTATION");
+
+        jLabel2.setText("Search :");
+
+        jTextField_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_searchActionPerformed(evt);
+            }
+        });
+
+        jTable_manageQuotation.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Amount", "Date", "Salesperson", "Confirmation", "Officer", "Invoice", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable_manageQuotation);
+
+        jButton_modify.setText("Modify");
+        jButton_modify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_modifyActionPerformed(evt);
+            }
+        });
+
+        jButton_delete.setText("Delete");
+        jButton_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_deleteActionPerformed(evt);
+            }
+        });
+
+        jButton_back.setText("Back");
+        jButton_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_backActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(280, 280, 280)
+                        .addComponent(jButton_modify)
+                        .addGap(83, 83, 83)
+                        .addComponent(jButton_delete))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_back)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane1)))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_modify)
+                    .addComponent(jButton_delete))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jButton_back)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
+        Sales_Home sales_home = new Sales_Home(userID);
+        sales_home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton_backActionPerformed
+
+    private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
+       String searchText = jTextField_search.getText();
+       searchSales(searchText);
+    }//GEN-LAST:event_jTextField_searchActionPerformed
+
+    private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
+    int selectedRowIndex = jTable_manageQuotation.getSelectedRow();
+    if (selectedRowIndex >= 0) {
+    // Get the values from the selected row
+    String orderID = jTable_manageQuotation.getValueAt(selectedRowIndex, 0).toString();
+    String Amount = jTable_manageQuotation.getValueAt(selectedRowIndex, 1).toString();
+
+   String dateAsString = jTable_manageQuotation.getValueAt(selectedRowIndex, 2).toString();
+
+// Parse the date with the correct format
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+        dateAsString = dateAsString.replace(",", ""); // Remove the comma
+        Date date = null;  // Initialize the date to null
+        try {
+            date = dateFormat.parse(dateAsString);
+        } catch (ParseException e) {
+            e.printStackTrace(); // Handle the exception as needed
+        }
+
+    String Salesperson = jTable_manageQuotation.getValueAt(selectedRowIndex, 3).toString();
+    String Confirmation = jTable_manageQuotation.getValueAt(selectedRowIndex, 4).toString();
+    String Officer = jTable_manageQuotation.getValueAt(selectedRowIndex, 5).toString();
+    String Invoice = jTable_manageQuotation.getValueAt(selectedRowIndex, 6).toString();
+    String Status = jTable_manageQuotation.getValueAt(selectedRowIndex, 7).toString();
+
+    // Create an instance of ModifyWorkerProfile and pass the selected data
+    Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(orderID, Amount, Salesperson, Confirmation, Officer, Invoice, Status, date);
+     modifySalesOrderQuotation.setInitialValues(orderID, Amount, Salesperson, Confirmation, Officer, Invoice, Status, date);
+     modifySalesOrderQuotation.setVisible(true);
+     dispose();
+ } else {
+     // No row selected, display an error message or perform appropriate handling
+     JOptionPane.showMessageDialog(this, "Please select a row to modify.");
+ }
+ dispose();
+    }//GEN-LAST:event_jButton_modifyActionPerformed
+
+    private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
+          int selectedRow = jTable_manageQuotation.getSelectedRow();
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+
+// Read the contents of the file into memory
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return; // Exit the method if an error occurs while reading the file
+        }
+
+// Calculate the line indices of the selected row's data
+        int startIndex = selectedRow * 9; // Each row has 9 lines of data
+        int endIndex = startIndex + 8;
+
+// Check if the calculated indices are within the bounds of the list
+        if (startIndex >= 0 && endIndex < lines.size()) {
+            // Remove the selected row's data from the in-memory list
+            lines.subList(startIndex, endIndex + 1).clear();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a valid row to delete.");
+            return;
+        }
+
+// Write the updated data back to the file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/Sales_Quotation.txt"))) {
+            for (String line : lines) {
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return; // Exit the method if an error occurs while writing to the file
+        }
+
+        JOptionPane.showMessageDialog(this, "Selected row deleted successfully.");
+// Refresh the UI
+        refreshTable();
+    }//GEN-LAST:event_jButton_deleteActionPerformed
+    private void refreshTable() {
+        // Clear the existing data from the table
+        DefaultTableModel model = (DefaultTableModel) jTable_manageQuotation.getModel();
+        model.setRowCount(0);
+
+        displaySales(); // Call the method to display the bookings
+
+        jTable_manageQuotation.revalidate();
+        jTable_manageQuotation.repaint();
+    }
+    
+    public void displaySales() {
+        DefaultTableModel model = (DefaultTableModel) jTable_manageQuotation.getModel();
+        model.setRowCount(0); // Clear existing data
+
+        try (BufferedReader br = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.startsWith("ID:")) {
+                    String[] rowData = new String[8];
+                    rowData[0] = line.substring(4); // Extract ID value
+
+                    for (int i = 1; i < 8; i++) {
+                        line = br.readLine();
+                        if (line != null && line.contains(": ")) {
+                            String[] parts = line.split(": ", 2);
+                            if (parts.length == 2) {
+                                rowData[i] = parts[1];
+                            } else {
+                                // Handle unexpected line format
+                                rowData[i] = " ";
+                            }
+                        } else {
+                            // Handle unexpected line format
+                            rowData[i] = " ";
+                        }
+                    }
+                    model.addRow(rowData);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Print the stack trace to identify the issue
+            JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
+        }
+    }
+
+    public void searchSales(String searchText) {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(jTable_manageQuotation.getModel());
+        jTable_manageQuotation.setRowSorter(rowSorter);
+
+        RowFilter<TableModel, Object> rowFilter = RowFilter.regexFilter("(?i)" + searchText); // Case-insensitive search
+        rowSorter.setRowFilter(rowFilter);
+    }
     /**
      * @param args the command line arguments
      */
@@ -75,11 +331,22 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Manage_Sales_Order_Quotation().setVisible(true);
+                Manage_Sales_Order_Quotation manageSalesOrderQuotation = new Manage_Sales_Order_Quotation();
+                manageSalesOrderQuotation.setVisible(true);
+                manageSalesOrderQuotation.displaySales();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton_back;
+    private javax.swing.JButton jButton_delete;
+    private javax.swing.JButton jButton_modify;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable_manageQuotation;
+    private javax.swing.JTextField jTextField_search;
     // End of variables declaration//GEN-END:variables
 }
