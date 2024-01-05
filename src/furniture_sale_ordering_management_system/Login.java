@@ -32,6 +32,7 @@ public class Login extends javax.swing.JFrame {
         // Calculate the center coordinates
         int centerX = (screenSize.width - getWidth()) / 2;
         int centerY = (screenSize.height - getHeight()) / 2;
+        
 
         // Set the location of the window
         setLocation(centerX, centerY);
