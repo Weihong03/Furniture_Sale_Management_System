@@ -5,7 +5,7 @@
 package furniture_sale_ordering_management_system;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import static furniture_sale_ordering_management_system.CreateSalesOrderQuotation.userID;
+import static furniture_sale_ordering_management_system.Sales_Home.userID;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.table.DefaultTableModel;
@@ -48,13 +48,10 @@ public class ViewProduct extends javax.swing.JFrame {
 
         jTable_productListing.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "furniture_name", "item_id", "price"
+                "furniture_name", "item_id", "price", "short description", "designer", "height", "width"
             }
         ));
         jScrollPane1.setViewportView(jTable_productListing);
@@ -103,7 +100,7 @@ public class ViewProduct extends javax.swing.JFrame {
             String[] nextLine;
             while (true) {
                 try {
-                    if ((nextLine = reader.readNext()) == null) break; // Exit the loop when no more lines
+                    if ((nextLine = reader.readNext()) == null) break; // Exit the loop when sno more lines
                 } catch (CsvValidationException e) {
                     e.printStackTrace(); // Handle CsvValidationException
                     continue; // Continue to the next iteration of the loop

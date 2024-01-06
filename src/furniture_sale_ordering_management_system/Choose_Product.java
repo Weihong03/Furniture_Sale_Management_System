@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -18,10 +20,12 @@ import javax.swing.DefaultComboBoxModel;
  * @author yuw18
  */
 public class Choose_Product extends javax.swing.JFrame {
-    private double totalPrice = 0.0;
+    public double totalPrice = 0.0;
     public static String userID;
-    public static String ItemID;
-    public static String Product;
+    public static String selectedProduct;  // Make static
+    public static String itemID;
+    public List<String> selectedProducts = new ArrayList<>();
+    public List<String> selectedItemIDs = new ArrayList<>();
     public static String Amount;
     /**
      * Creates new form Choose_Product1
@@ -68,11 +72,11 @@ public class Choose_Product extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox_product = new javax.swing.JComboBox<>();
         jButton_add = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea_product = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea_totalamount = new javax.swing.JTextArea();
-        proceed = new javax.swing.JButton();
+        jButton_proceed = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable_product = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,20 +91,26 @@ public class Choose_Product extends javax.swing.JFrame {
             }
         });
 
-        jTextArea_product.setColumns(20);
-        jTextArea_product.setRows(5);
-        jScrollPane1.setViewportView(jTextArea_product);
-
         jTextArea_totalamount.setColumns(20);
         jTextArea_totalamount.setRows(5);
         jScrollPane2.setViewportView(jTextArea_totalamount);
 
-        proceed.setText("Proceed");
-        proceed.addActionListener(new java.awt.event.ActionListener() {
+        jButton_proceed.setText("Proceed");
+        jButton_proceed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                proceedActionPerformed(evt);
+                jButton_proceedActionPerformed(evt);
             }
         });
+
+        jTable_product.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item ID", "Name", "Price", "Category", "Short Description", "Designer", "Height", "Width"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable_product);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,99 +119,85 @@ public class Choose_Product extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jComboBox_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(88, 88, 88)
-                                .addComponent(jButton_add)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(proceed)
-                .addGap(114, 114, 114))
+                            .addComponent(jButton_proceed)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(jLabel1)
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_add))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jComboBox_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(30, 30, 30)
                 .addComponent(jButton_add)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(proceed)
-                .addGap(38, 38, 38))
+                .addComponent(jButton_proceed)
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void proceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proceedActionPerformed
-     // Retrieve data from jTextArea_product
-    String productDetails = jTextArea_product.getText();
+    private void jButton_proceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_proceedActionPerformed
+     int[] selectedRows = jTable_product.getSelectedRows();
 
-    // Extract product and itemID from productDetails
-    List<String> productList = extractValues(productDetails, "Selected Product:");
-    List<String> itemIDList = extractValues(productDetails, "Item ID:");
+        if (selectedRows.length > 0) {
+            for (int selectedRow : selectedRows) {
+                itemID = jTable_product.getValueAt(selectedRow, 0).toString();
+                selectedProduct = jTable_product.getValueAt(selectedRow, 1).toString();
 
-    // Retrieve total amount details from jTextArea_totalamount
-    String totalAmountDetails = jTextArea_totalamount.getText();
+                // Add the selected product and item ID to the lists
+                selectedProducts.add(selectedProduct);
+                selectedItemIDs.add(itemID);
+            }
 
-    // Extract the amount from totalAmountDetails
-    String amount = extractAmount(totalAmountDetails);
+            // Extract total amount details from jTextArea_totalamount
+            String totalAmountDetails = jTextArea_totalamount.getText();
 
-    // Create an instance of CreateSalesOrderQuotation
-    CreateSalesOrderQuotation createSalesOrderQuotation = new CreateSalesOrderQuotation(userID, itemIDList,productList, amount);
+            // Extract the amount from totalAmountDetails
+            String amount = extractAmount(totalAmountDetails);
 
-    // Pass the data to CreateSalesOrderQuotation
-    createSalesOrderQuotation.setInitialValues( itemIDList,productList, amount);
+            // Create an instance of CreateSalesOrderQuotation
+            CreateSalesOrderQuotation create_sales_order_quotation = new CreateSalesOrderQuotation(userID, selectedProducts, selectedItemIDs, amount);
 
-    // Make CreateSalesOrderQuotation visible
-    createSalesOrderQuotation.setVisible(true);
+            // Pass the data to CreateSalesOrderQuotation
+            create_sales_order_quotation.setInitialValues(selectedProducts, selectedItemIDs, amount);
 
-    // Close the current window
-    this.dispose();
-        }//GEN-LAST:event_proceedActionPerformed
-   private List<String> extractValues(String input, String prefix) {
-    List<String> values = new ArrayList<>();
-    int prefixIndex = input.indexOf(prefix);
+            // Make CreateSalesOrderQuotation visible
+            create_sales_order_quotation.setVisible(true);
 
-    while (prefixIndex != -1) {
-        int startIndex = prefixIndex + prefix.length();
-        int endIndex = input.indexOf("\n", startIndex);
-        String value = input.substring(startIndex, endIndex).trim();
-        values.add(value);
-
-        // Continue searching for the next occurrence
-        prefixIndex = input.indexOf(prefix, endIndex);
-    }
-
-    return values;
-}
-
-private String extractAmount(String input) {
+            // Close the current window
+            dispose();
+        } else {
+            // No row selected, display an error message or perform appropriate handling
+            JOptionPane.showMessageDialog(this, "Please add a product before proceeding.");
+        }
+        }//GEN-LAST:event_jButton_proceedActionPerformed
+  private String extractAmount(String input) {
     // Assuming the amount is always after "RM" in the text
     String rmPrefix = "RM";
     int rmIndex = input.indexOf(rmPrefix);
     if (rmIndex != -1) {
+        // Find the next occurrence of "\n" or use the length of the string
         int endIndex = input.indexOf("\n", rmIndex);
         if (endIndex == -1) {
-            // If "\n" is not found, use the length of the string
             endIndex = input.length();
         }
         return input.substring(rmIndex, endIndex).trim();
@@ -223,16 +219,22 @@ private String extractAmount(String input) {
                 // Assuming item ID is in the second column, category in the third, and price in the fourth
                 String itemID = data[1].trim();
                 String priceStr = data[2].trim();
+                String category = data[3].trim();
+                String shortDescription = data[4].trim();
+                String designer = data[5].trim();
+                String height = data[6].trim();
+                String width = data[7].trim();
 
                 // Convert price to double and add it to the total
                 double price = Double.parseDouble(priceStr);
                 totalPrice += price;
 
-                // Append additional data to jTextArea_product
-                jTextArea_product.append("Selected Product: " + selectedProduct + "\n");
-                jTextArea_product.append("Item ID: " + itemID + "\n");
-                jTextArea_product.append("Price: " + "RM" + price + "\n");
-                jTextArea_product.append("\n");
+                // Append additional data to jTable_product
+                DefaultTableModel model = (DefaultTableModel) jTable_product.getModel();
+                model.addRow(new Object[]{itemID, selectedProduct, "RM" + price, category, shortDescription, designer, height, width});
+
+                // Update the total amount in jTextArea_totalamount
+                jTextArea_totalamount.setText("Total Price: RM" + totalPrice + "\n");
 
                 break; // No need to continue reading once the data is found
             }
@@ -244,8 +246,6 @@ private String extractAmount(String input) {
 
     // Optionally, you can clear the selection in the jComboBox_product
     jComboBox_product.setSelectedIndex(-1);
-    
-    jTextArea_totalamount.setText("Total Price: RM" + totalPrice + "\n");
     }//GEN-LAST:event_jButton_addActionPerformed
 
     /**
@@ -287,12 +287,12 @@ private String extractAmount(String input) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_add;
+    private javax.swing.JButton jButton_proceed;
     private javax.swing.JComboBox<String> jComboBox_product;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea_product;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable_product;
     private javax.swing.JTextArea jTextArea_totalamount;
-    private javax.swing.JButton proceed;
     // End of variables declaration//GEN-END:variables
 }

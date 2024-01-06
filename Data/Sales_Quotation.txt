@@ -1,7 +1,8 @@
 ID: Q007,
-Product: FREKVENS,
-Item ID: 90420332,
-Amount: RM200,
+Product: FREKVENS/ABC/ASDS/ASDS
+Item ID: 90420332/89809808/
+Price:RM12030/
+Total Amount: RM200,
 Date: 03 Jan 2024,
 Salesperson: Weihongooi,
 Confirmation: Default,
@@ -20,3 +21,17 @@ Officer: Default,
 Invoice: No,
 Status: In Progress,
 
+ID: Q012,
+Amount: RM334.0,
+Date: 13 Jan 2024,
+Product: [FREKVENS/STIG],
+Item ID: [90420332/80155205],
+Salesperson: Weihongooi,
+Confirmation: Default, 
+Officer: Default,
+Invoice: No,
+Status: In Progress,
+
+ID: Q013, Amount: RM530.0, Date: 13 Jan 2024, Product: [[FREKVENS, FREKVENS]
+], Item ID: [[90420332, 90420332]
+], Salesperson: Weihongooi, Confirmation: Default, Officer: Default, Invoice: No, Status: In Progress

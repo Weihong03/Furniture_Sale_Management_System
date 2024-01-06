@@ -4,6 +4,7 @@
  */
 package furniture_sale_ordering_management_system;
 
+import static furniture_sale_ordering_management_system.Choose_Product.userID;
 import static furniture_sale_ordering_management_system.Modify_Sales_Order_Quotation.Amount;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -13,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
@@ -24,34 +26,24 @@ import javax.swing.JOptionPane;
  */
 public class CreateSalesOrderQuotation extends javax.swing.JFrame {
     public static String userID;
-    public static String orderID;
-    
+    public static List<String> selectedProducts;
+    public static List<String> selectedItemIDs;
     public static String amount;
-    public static List<String> itemIDList;
-    public static List<String> productList;
     
-    public void setInitialValues( List<String> itemIDList, List<String> productList,String amount) {
-    jTextArea_product.setText(String.join("\n", productList));
-    jTextArea_itemid.setText(String.join("\n", itemIDList));
-    jTextField_amount.setText(amount);
+   public void setInitialValues(List<String> selectedProducts, List<String> selectedItemIDs, String amount) {
+           // Assuming you have JTextAreas named jTextArea_product, jTextArea_itemid, and jTextField_amount
+        jTextArea_product.setText(selectedProducts + "\n");
+        jTextArea_itemid.setText(selectedItemIDs + "\n");
+        jTextField_amount.setText(amount);
     }
-    /**
-     * Creates new form ManageSalesOrderQuotation
-     * @param userID
-     * @param productList
-     * @param itemIDList
-     * @param amount
-     */
-    public CreateSalesOrderQuotation(String userID, List<String> itemIDList, List<String> productList, String amount) {
+
+    public CreateSalesOrderQuotation(String userID, List<String> selectedProducts, List<String> selectedItemIDs, String amount) {
         this.userID = userID;
-        CreateSalesOrderQuotation.productList = productList;
-        CreateSalesOrderQuotation.itemIDList = itemIDList;
-        CreateSalesOrderQuotation.amount = amount;
+        this.selectedProducts = selectedProducts;
+        this.selectedItemIDs = selectedItemIDs;
+        this.amount = amount;
+
         initComponents();
-        jTextField_confirmation.setText("Default");
-        jTextField_officer.setText("Default");
-        jTextField_invoice.setText("No");
-        jTextField_status.setText("In Progress");
 
         
         
@@ -144,16 +136,8 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jTextField_amount = new javax.swing.JTextField();
         jTextField_salesPerson = new javax.swing.JTextField();
-        jTextField_officer = new javax.swing.JTextField();
-        jTextField_invoice = new javax.swing.JTextField();
-        jTextField_status = new javax.swing.JTextField();
-        jTextField_confirmation = new javax.swing.JTextField();
         jButton_create = new javax.swing.JButton();
         jButton_back = new javax.swing.JButton();
         jDateChooser = new com.toedter.calendar.JDateChooser();
@@ -174,14 +158,6 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
         jLabel3.setText("Date :");
 
         jLabel4.setText("Sales Person :");
-
-        jLabel5.setText("Confirmation :");
-
-        jLabel6.setText("Officer :");
-
-        jLabel7.setText("Invoice :");
-
-        jLabel8.setText("Status :");
 
         jTextField_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,18 +234,6 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_status, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_invoice, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_officer, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -303,27 +267,11 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField_salesPerson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField_confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField_officer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField_invoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(130, 130, 130)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton_create)
                     .addComponent(jButton_back))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -334,7 +282,7 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
         chooseproduct.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_backActionPerformed
-        private String generateOrderID() {
+    private String generateOrderID() {
     String orderIDPrefix = "Q";
     int latestID = getLatestOrderID(orderIDPrefix);
     latestID++;
@@ -362,18 +310,14 @@ private int getLatestOrderID(String orderIDPrefix) {
     String id = generateOrderID(); // Assuming ID is the order ID
     Date date = jDateChooser.getDate(); // Get the selected date
     String salesPerson = jTextField_salesPerson.getText();
-    String confirmation = jTextField_confirmation.getText();
-    String officer = jTextField_officer.getText();
-    String invoice = jTextField_invoice.getText();
-    String status = jTextField_status.getText();
-    String amount = jTextField_amount.getText();
-    
-    List<String> productList = extractValues(jTextArea_product.getText(), "Product:");
-    List<String> itemIDList = extractValues(jTextArea_itemid.getText(), "Item ID:");
+    String Amount = jTextField_amount.getText();
+    String product = jTextArea_product.getText();
+    String ItemID = jTextArea_itemid.getText();
+
     
 
     // Save the data to the file
-    saveSalesOrderQuotation(id, amount, product,itemid, date, salesPerson, confirmation, officer, invoice, status);
+    saveSalesOrderQuotation(id, Amount, product,ItemID, date, salesPerson);
 
     JOptionPane.showMessageDialog(this, "Sales Order Quotation created successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
     
@@ -384,15 +328,16 @@ private int getLatestOrderID(String orderIDPrefix) {
     this.dispose();
 
     }//GEN-LAST:event_jButton_createActionPerformed
-   private void saveSalesOrderQuotation(String orderID, String amount,String Product,String ItemID, Date date, String salesPerson,
-                                     String confirmation, String officer, String invoice, String status) {
+   private void saveSalesOrderQuotation(String orderID, String amount,String Product,String ItemID, Date date, String salesPerson) {
     String filePath = "Data/Sales_Quotation.txt";
 
     // Format the date (you can customize the format)
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
     String formattedDate = dateFormat.format(date);
-
-
+    
+    Product = Product.replace(", ", "/");
+    ItemID = ItemID.replace(", ", "/");
+    
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
         // Append the sales order quotation data to the file
         writer.write("ID: " + orderID + ",");
@@ -407,13 +352,13 @@ private int getLatestOrderID(String orderIDPrefix) {
         writer.newLine();        
         writer.write("Salesperson: " + salesPerson + ",");
         writer.newLine();
-        writer.write("Confirmation: " + confirmation + ",");
+        writer.write("Confirmation: Default, ");
         writer.newLine();
-        writer.write("Officer: " + officer + ",");
+        writer.write("Officer: Default,");
         writer.newLine();
-        writer.write("Invoice: " + invoice + ",");
+        writer.write("Invoice: No,");
         writer.newLine();
-        writer.write("Status: " + status + ",");
+        writer.write("Status: In Progress,");
         writer.newLine();
         writer.write(System.lineSeparator());  // Add a newline between entries
 
@@ -472,7 +417,7 @@ private int getLatestOrderID(String orderIDPrefix) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CreateSalesOrderQuotation create_sales_order_quotation = new CreateSalesOrderQuotation(userID, productList, itemIDList, Amount);
+                CreateSalesOrderQuotation create_sales_order_quotation = new CreateSalesOrderQuotation(userID, selectedProducts, selectedItemIDs, amount);
                 create_sales_order_quotation.setVisible(true);
             }
         });
@@ -489,20 +434,12 @@ private int getLatestOrderID(String orderIDPrefix) {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea_itemid;
     private javax.swing.JTextArea jTextArea_product;
     private javax.swing.JTextField jTextField_amount;
-    private javax.swing.JTextField jTextField_confirmation;
-    private javax.swing.JTextField jTextField_invoice;
-    private javax.swing.JTextField jTextField_officer;
     private javax.swing.JTextField jTextField_salesPerson;
-    private javax.swing.JTextField jTextField_status;
     // End of variables declaration//GEN-END:variables
 }
