@@ -26,12 +26,14 @@ import javax.swing.table.TableRowSorter;
  * @author yuw18
  */
 public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
-
+    public static String userID;
     /**
      * Creates new form Manage_Sales_Order_Quotation
+     * @param userID
      */
-    public Manage_Sales_Order_Quotation() {
+    public Manage_Sales_Order_Quotation(String userID) {
         initComponents();
+        this.userID = userID;
     }
 
     /**
@@ -70,13 +72,13 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
 
         jTable_manageQuotation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Amount", "Date", "Salesperson", "Confirmation", "Officer", "Invoice", "Status"
+                "Order ID", "Amount", "Date", "Product", "Item ID", "Category", "Price", "Salesperson", "Confirmation", "Officer", "Invoice", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable_manageQuotation);
@@ -117,14 +119,13 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton_back)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1)))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,16 +179,20 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         } catch (ParseException e) {
             e.printStackTrace(); // Handle the exception as needed
         }
-
-    String Salesperson = jTable_manageQuotation.getValueAt(selectedRowIndex, 3).toString();
-    String Confirmation = jTable_manageQuotation.getValueAt(selectedRowIndex, 4).toString();
-    String Officer = jTable_manageQuotation.getValueAt(selectedRowIndex, 5).toString();
-    String Invoice = jTable_manageQuotation.getValueAt(selectedRowIndex, 6).toString();
-    String Status = jTable_manageQuotation.getValueAt(selectedRowIndex, 7).toString();
+        
+    String Product = jTable_manageQuotation.getValueAt(selectedRowIndex, 3).toString();
+    String ItemID = jTable_manageQuotation.getValueAt(selectedRowIndex, 4).toString();
+    String Category = jTable_manageQuotation.getValueAt(selectedRowIndex, 5).toString();
+    String Price = jTable_manageQuotation.getValueAt(selectedRowIndex, 6).toString();
+    String Salesperson = jTable_manageQuotation.getValueAt(selectedRowIndex, 7).toString();
+    String Confirmation = jTable_manageQuotation.getValueAt(selectedRowIndex, 8).toString();
+    String Officer = jTable_manageQuotation.getValueAt(selectedRowIndex, 9).toString();
+    String Invoice = jTable_manageQuotation.getValueAt(selectedRowIndex, 10).toString();
+    String Status = jTable_manageQuotation.getValueAt(selectedRowIndex, 11).toString();
 
     // Create an instance of ModifyWorkerProfile and pass the selected data
-    Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(orderID, Amount, Salesperson, Confirmation, Officer, Invoice, Status, date);
-     modifySalesOrderQuotation.setInitialValues(orderID, Amount, Salesperson, Confirmation, Officer, Invoice, Status, date);
+     Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(userID, orderID, Amount,ItemID, Product, Category, Price, Salesperson, Confirmation, Officer, Invoice, Status, date);
+     modifySalesOrderQuotation.setInitialValues(orderID, Amount,ItemID, Product, Category, Price,Salesperson, Confirmation, Officer, Invoice, Status, date);
      modifySalesOrderQuotation.setVisible(true);
      dispose();
  } else {
@@ -218,8 +223,8 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         }
 
 // Calculate the line indices of the selected row's data
-        int startIndex = selectedRow * 9; // Each row has 9 lines of data
-        int endIndex = startIndex + 8;
+        int startIndex = selectedRow * 13; // Each row has 9 lines of data
+        int endIndex = startIndex + 12;
 
 // Check if the calculated indices are within the bounds of the list
         if (startIndex >= 0 && endIndex < lines.size()) {
@@ -264,10 +269,10 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("ID:")) {
-                    String[] rowData = new String[8];
+                    String[] rowData = new String[12];
                     rowData[0] = line.substring(4); // Extract ID value
 
-                    for (int i = 1; i < 8; i++) {
+                    for (int i = 1; i < 12; i++) {
                         line = br.readLine();
                         if (line != null && line.contains(": ")) {
                             String[] parts = line.split(": ", 2);
@@ -331,7 +336,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Manage_Sales_Order_Quotation manageSalesOrderQuotation = new Manage_Sales_Order_Quotation();
+                Manage_Sales_Order_Quotation manageSalesOrderQuotation = new Manage_Sales_Order_Quotation(userID);
                 manageSalesOrderQuotation.setVisible(true);
                 manageSalesOrderQuotation.displaySales();
             }

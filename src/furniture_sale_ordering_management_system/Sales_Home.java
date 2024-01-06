@@ -63,6 +63,7 @@ public class Sales_Home extends javax.swing.JFrame {
         jTextField_ID = new javax.swing.JTextField();
         jButton_createQuotation = new javax.swing.JButton();
         jButton_manageQuotation = new javax.swing.JButton();
+        jButton_viewProduct = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +97,13 @@ public class Sales_Home extends javax.swing.JFrame {
             }
         });
 
+        jButton_viewProduct.setText("View Product Listing");
+        jButton_viewProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_viewProductActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,16 +118,18 @@ public class Sales_Home extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton_manageQuotation)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton_createQuotation)
+                        .addGap(51, 185, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton_manageQuotation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton_logout)
                         .addGap(51, 51, 51))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton_ManageProfile)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_viewProduct)
+                        .addGap(17, 17, 17))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,13 +139,15 @@ public class Sales_Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jButton_ManageProfile)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_ManageProfile)
+                    .addComponent(jButton_viewProduct))
+                .addGap(18, 18, 18)
+                .addComponent(jButton_createQuotation)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_logout)
-                    .addComponent(jButton_createQuotation))
-                .addGap(18, 18, 18)
-                .addComponent(jButton_manageQuotation)
+                    .addComponent(jButton_manageQuotation)
+                    .addComponent(jButton_logout))
                 .addGap(29, 29, 29))
         );
 
@@ -173,16 +185,23 @@ public class Sales_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_ManageProfileActionPerformed
 
     private void jButton_createQuotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_createQuotationActionPerformed
-        CreateSalesOrderQuotation create_sales_order_quotation = new CreateSalesOrderQuotation(userID);
-        create_sales_order_quotation.setVisible(true);
+        Choose_Product chooseproduct = new Choose_Product(userID);
+        chooseproduct.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_createQuotationActionPerformed
 
     private void jButton_manageQuotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_manageQuotationActionPerformed
-         CreateSalesOrderQuotation create_sales_order_quotation = new CreateSalesOrderQuotation(userID);
-        create_sales_order_quotation.setVisible(true);
+        Manage_Sales_Order_Quotation manage_sales_order_quotation = new Manage_Sales_Order_Quotation(userID);
+        manage_sales_order_quotation.displaySales();
+        manage_sales_order_quotation.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_manageQuotationActionPerformed
+
+    private void jButton_viewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_viewProductActionPerformed
+        ViewProduct viewproduct = new ViewProduct();
+        viewproduct.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton_viewProductActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,7 +240,7 @@ public class Sales_Home extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Sales_Home salesHome = new Sales_Home();
+                Sales_Home salesHome = new Sales_Home(userID);
                 salesHome.setVisible(true);
             }
         });
@@ -232,6 +251,7 @@ public class Sales_Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton_createQuotation;
     private javax.swing.JButton jButton_logout;
     private javax.swing.JButton jButton_manageQuotation;
+    private javax.swing.JButton jButton_viewProduct;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField_ID;
