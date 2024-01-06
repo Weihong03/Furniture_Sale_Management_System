@@ -54,7 +54,7 @@ public class ViewProduct extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "item_id", "furniture_name", "price"
+                "furniture_name", "item_id", "price"
             }
         ));
         jScrollPane1.setViewportView(jTable_productListing);

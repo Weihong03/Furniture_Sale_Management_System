@@ -4,13 +4,6 @@
  */
 package furniture_sale_ordering_management_system;
 
-import static furniture_sale_ordering_management_system.ModifyWorkerProfile.Age;
-import static furniture_sale_ordering_management_system.ModifyWorkerProfile.Email;
-import static furniture_sale_ordering_management_system.ModifyWorkerProfile.Name;
-import static furniture_sale_ordering_management_system.ModifyWorkerProfile.Password;
-import static furniture_sale_ordering_management_system.ModifyWorkerProfile.PhoneNumber;
-import static furniture_sale_ordering_management_system.ModifyWorkerProfile.Role;
-import static furniture_sale_ordering_management_system.ModifyWorkerProfile.Username;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
@@ -25,7 +18,7 @@ public class Sales_Home extends javax.swing.JFrame {
     public static String userID;
     
     public Sales_Home(String userID) {
-        Sales_Home.userID = userID;
+        this.userID = userID;
         initComponents();
         
         jTextField_ID.setText(userID);

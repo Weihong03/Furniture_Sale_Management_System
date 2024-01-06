@@ -72,13 +72,13 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
 
         jTable_manageQuotation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Order ID", "Amount", "Date", "Product", "Item ID", "Category", "Price", "Salesperson", "Confirmation", "Officer", "Invoice", "Status"
+                "Order ID", "Product", "Item ID", "Amount", "Date", "Salesperson", "Confirmation", "Officer", "Invoice", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable_manageQuotation);

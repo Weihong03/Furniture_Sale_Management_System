@@ -25,9 +25,10 @@ public class Choose_Product extends javax.swing.JFrame {
     public static String Amount;
     /**
      * Creates new form Choose_Product1
+     * @param userID
      */
     public Choose_Product(String userID) {
-        Sales_Home.userID = userID;
+        this.userID = userID;
         initComponents();
         List<String> furnitureNames = readFurnitureNamesFromCSV();
         jComboBox_product.setModel(new DefaultComboBoxModel<>(furnitureNames.toArray(new String[0])));
@@ -155,7 +156,7 @@ public class Choose_Product extends javax.swing.JFrame {
     String productDetails = jTextArea_product.getText();
 
     // Extract product and itemID from productDetails
-    List<String> productList = extractValues(productDetails, "Selected Products:");
+    List<String> productList = extractValues(productDetails, "Selected Product:");
     List<String> itemIDList = extractValues(productDetails, "Item ID:");
 
     // Retrieve total amount details from jTextArea_totalamount
@@ -165,10 +166,10 @@ public class Choose_Product extends javax.swing.JFrame {
     String amount = extractAmount(totalAmountDetails);
 
     // Create an instance of CreateSalesOrderQuotation
-    CreateSalesOrderQuotation createSalesOrderQuotation = new CreateSalesOrderQuotation(userID, productList, itemIDList, amount);
+    CreateSalesOrderQuotation createSalesOrderQuotation = new CreateSalesOrderQuotation(userID, itemIDList,productList, amount);
 
     // Pass the data to CreateSalesOrderQuotation
-    createSalesOrderQuotation.setInitialValues(productList, itemIDList, amount);
+    createSalesOrderQuotation.setInitialValues( itemIDList,productList, amount);
 
     // Make CreateSalesOrderQuotation visible
     createSalesOrderQuotation.setVisible(true);
@@ -195,9 +196,15 @@ public class Choose_Product extends javax.swing.JFrame {
 
 private String extractAmount(String input) {
     // Assuming the amount is always after "RM" in the text
-    int rmIndex = input.indexOf("RM");
+    String rmPrefix = "RM";
+    int rmIndex = input.indexOf(rmPrefix);
     if (rmIndex != -1) {
-        return input.substring(rmIndex + 2, input.indexOf("\n", rmIndex)).trim();
+        int endIndex = input.indexOf("\n", rmIndex);
+        if (endIndex == -1) {
+            // If "\n" is not found, use the length of the string
+            endIndex = input.length();
+        }
+        return input.substring(rmIndex, endIndex).trim();
     } else {
         // If "RM" is not found, you may need additional logic based on your actual data format
         return input.trim();
@@ -224,7 +231,7 @@ private String extractAmount(String input) {
                 // Append additional data to jTextArea_product
                 jTextArea_product.append("Selected Product: " + selectedProduct + "\n");
                 jTextArea_product.append("Item ID: " + itemID + "\n");
-                jTextArea_product.append("Price: RM" + price + "\n");
+                jTextArea_product.append("Price: " + "RM" + price + "\n");
                 jTextArea_product.append("\n");
 
                 break; // No need to continue reading once the data is found

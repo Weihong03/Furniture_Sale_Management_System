@@ -30,7 +30,7 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
     public static List<String> itemIDList;
     public static List<String> productList;
     
-    public void setInitialValues(List<String> productList, List<String> itemIDList, String amount) {
+    public void setInitialValues( List<String> itemIDList, List<String> productList,String amount) {
     jTextArea_product.setText(String.join("\n", productList));
     jTextArea_itemid.setText(String.join("\n", itemIDList));
     jTextField_amount.setText(amount);
@@ -42,8 +42,8 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
      * @param itemIDList
      * @param amount
      */
-    public CreateSalesOrderQuotation(String userID, List<String> productList, List<String> itemIDList, String amount) {
-        CreateSalesOrderQuotation.userID = userID;
+    public CreateSalesOrderQuotation(String userID, List<String> itemIDList, List<String> productList, String amount) {
+        this.userID = userID;
         CreateSalesOrderQuotation.productList = productList;
         CreateSalesOrderQuotation.itemIDList = itemIDList;
         CreateSalesOrderQuotation.amount = amount;
@@ -235,6 +235,22 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_salesPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane2)
+                                    .addComponent(jScrollPane3)))))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton_back)
                         .addGap(90, 90, 90)
                         .addComponent(jButton_create))
@@ -255,27 +271,8 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
                             .addComponent(jTextField_officer, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField_confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField_salesPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(25, 25, 25)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,15 +360,17 @@ private int getLatestOrderID(String orderIDPrefix) {
 }
     private void jButton_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_createActionPerformed
     String id = generateOrderID(); // Assuming ID is the order ID
-    String amount = jTextField_amount.getText(); // Assuming this is the amount
-    String product = jTextField_amount.getText(); // Assuming this is the amount
-    String itemid = jTextField_amount.getText(); // Assuming this is the amount
     Date date = jDateChooser.getDate(); // Get the selected date
     String salesPerson = jTextField_salesPerson.getText();
     String confirmation = jTextField_confirmation.getText();
     String officer = jTextField_officer.getText();
     String invoice = jTextField_invoice.getText();
     String status = jTextField_status.getText();
+    String amount = jTextField_amount.getText();
+    
+    List<String> productList = extractValues(jTextArea_product.getText(), "Product:");
+    List<String> itemIDList = extractValues(jTextArea_itemid.getText(), "Item ID:");
+    
 
     // Save the data to the file
     saveSalesOrderQuotation(id, amount, product,itemid, date, salesPerson, confirmation, officer, invoice, status);
