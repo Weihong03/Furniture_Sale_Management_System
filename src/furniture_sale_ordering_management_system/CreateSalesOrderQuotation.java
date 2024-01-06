@@ -31,7 +31,6 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
     public static String amount;
     
    public void setInitialValues(List<String> selectedProducts, List<String> selectedItemIDs, String amount) {
-           // Assuming you have JTextAreas named jTextArea_product, jTextArea_itemid, and jTextField_amount
         jTextArea_product.setText(selectedProducts + "\n");
         jTextArea_itemid.setText(selectedItemIDs + "\n");
         jTextField_amount.setText(amount);
@@ -347,9 +346,7 @@ private int getLatestOrderID(String orderIDPrefix) {
         writer.write("Date: " + formattedDate + ",");
         writer.newLine();
         writer.write("Product: " + Product + ",");
-        writer.newLine();
         writer.write("Item ID: " + ItemID + ",");
-        writer.newLine();        
         writer.write("Salesperson: " + salesPerson + ",");
         writer.newLine();
         writer.write("Confirmation: Default, ");

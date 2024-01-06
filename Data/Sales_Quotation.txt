@@ -32,6 +32,5 @@ Officer: Default,
 Invoice: No,
 Status: In Progress,
 
-ID: Q013, Amount: RM530.0, Date: 13 Jan 2024, Product: [[FREKVENS, FREKVENS]
-], Item ID: [[90420332, 90420332]
-], Salesperson: Weihongooi, Confirmation: Default, Officer: Default, Invoice: No, Status: In Progress
+
+
