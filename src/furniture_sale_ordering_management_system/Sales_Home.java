@@ -57,6 +57,7 @@ public class Sales_Home extends javax.swing.JFrame {
         jButton_createQuotation = new javax.swing.JButton();
         jButton_manageQuotation = new javax.swing.JButton();
         jButton_viewProduct = new javax.swing.JButton();
+        jButton_viewListApproval = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,12 +98,19 @@ public class Sales_Home extends javax.swing.JFrame {
             }
         });
 
+        jButton_viewListApproval.setText("View List Approval");
+        jButton_viewListApproval.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_viewListApprovalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(163, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -111,18 +119,20 @@ public class Sales_Home extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton_createQuotation)
-                        .addGap(51, 185, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton_manageQuotation)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                         .addComponent(jButton_logout)
                         .addGap(51, 51, 51))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton_ManageProfile)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton_viewProduct)
-                        .addGap(17, 17, 17))))
+                        .addGap(17, 17, 17))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton_createQuotation)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_viewListApproval)
+                        .addGap(26, 26, 26))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +146,9 @@ public class Sales_Home extends javax.swing.JFrame {
                     .addComponent(jButton_ManageProfile)
                     .addComponent(jButton_viewProduct))
                 .addGap(18, 18, 18)
-                .addComponent(jButton_createQuotation)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_createQuotation)
+                    .addComponent(jButton_viewListApproval))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_manageQuotation)
@@ -196,6 +208,13 @@ public class Sales_Home extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton_viewProductActionPerformed
 
+    private void jButton_viewListApprovalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_viewListApprovalActionPerformed
+        List_Approval listApproval = new List_Approval(userID);
+        listApproval.setInitialValues(userID);
+        listApproval.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton_viewListApprovalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,6 +263,7 @@ public class Sales_Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton_createQuotation;
     private javax.swing.JButton jButton_logout;
     private javax.swing.JButton jButton_manageQuotation;
+    private javax.swing.JButton jButton_viewListApproval;
     private javax.swing.JButton jButton_viewProduct;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
