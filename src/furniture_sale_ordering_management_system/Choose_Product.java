@@ -24,8 +24,10 @@ public class Choose_Product extends javax.swing.JFrame {
     public static String userID;
     public static String selectedProduct;  // Make static
     public static String itemID;
+    public static String price;
     public List<String> selectedProducts = new ArrayList<>();
     public List<String> selectedItemIDs = new ArrayList<>();
+    public List<String> selectedPrices = new ArrayList<>();   
     public static String Amount;
     /**
      * Creates new form Choose_Product1
@@ -162,10 +164,12 @@ public class Choose_Product extends javax.swing.JFrame {
             for (int selectedRow : selectedRows) {
                 itemID = jTable_product.getValueAt(selectedRow, 0).toString();
                 selectedProduct = jTable_product.getValueAt(selectedRow, 1).toString();
+                price = jTable_product.getValueAt(selectedRow, 2).toString();
 
                 // Add the selected product and item ID to the lists
                 selectedProducts.add(selectedProduct);
                 selectedItemIDs.add(itemID);
+                selectedPrices.add(price);
             }
 
             // Extract total amount details from jTextArea_totalamount
@@ -175,10 +179,10 @@ public class Choose_Product extends javax.swing.JFrame {
             String amount = extractAmount(totalAmountDetails);
 
             // Create an instance of CreateSalesOrderQuotation
-            CreateSalesOrderQuotation create_sales_order_quotation = new CreateSalesOrderQuotation(userID, selectedProducts, selectedItemIDs, amount);
+            CreateSalesOrderQuotation create_sales_order_quotation = new CreateSalesOrderQuotation(userID, selectedProducts, selectedItemIDs, selectedPrices,amount);
 
             // Pass the data to CreateSalesOrderQuotation
-            create_sales_order_quotation.setInitialValues(selectedProducts, selectedItemIDs, amount);
+            create_sales_order_quotation.setInitialValues(selectedProducts, selectedItemIDs,selectedPrices, amount);
 
             // Make CreateSalesOrderQuotation visible
             create_sales_order_quotation.setVisible(true);
