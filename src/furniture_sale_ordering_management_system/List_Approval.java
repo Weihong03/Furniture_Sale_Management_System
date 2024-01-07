@@ -8,7 +8,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -17,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class List_Approval extends javax.swing.JFrame {
     public static String userID;
     private boolean approved;
+    public static String salesPersonData;
     // constructor and other methods
 
     public boolean isApproved() {
@@ -34,17 +38,17 @@ public class List_Approval extends javax.swing.JFrame {
             this.userID = userID;
     initComponents();
     loadSalesPersonData();
+    displaySalesOrdersForSalesperson(salesPersonData);
 
     
 
     }
     
      private void loadSalesPersonData() {
-    String salesPersonData = getUsername(userID);
-
+    salesPersonData = getUsername(userID);
     if (salesPersonData != null) {
         jTextField_salesperson.setText(salesPersonData);
-         displaySalesOrdersForSalesperson(salesPersonData);
+ 
     } else {
         JOptionPane.showMessageDialog(this, "Failed to retrieve Sales Person data.", "Error", JOptionPane.ERROR_MESSAGE);
     }
@@ -96,41 +100,73 @@ public class List_Approval extends javax.swing.JFrame {
         return null;
     }
       
-private void displaySalesOrdersForSalesperson(String salesPersonData) {
-    // Clear existing table data
+      private void displaySalesOrdersForSalesperson(String salesPersonName) {
     DefaultTableModel model = (DefaultTableModel) jTable_listApproval.getModel();
-    model.setRowCount(0);
+    model.setRowCount(0); // Clear existing rows in the table
 
-    // Split salesPersonData into individual records based on new line characters
-    String[] records = salesPersonData.split("\n\n");
+    String filePath = "Data/Sales_Quotation.txt";
+    String salesOrderData;
 
-    // Iterate through records and extract relevant information
-    for (String record : records) {
-        String orderId = getValueFromLine(record, "ID:");
-        String amount = getValueFromLine(record, "Amount:");
-        String date = getValueFromLine(record, "Date:");
-        String product = getValueFromLine(record, "Product:");
-        String itemId = getValueFromLine(record, "Item ID:");
-        String price = getValueFromLine(record, "Price:");
-        String confirmation = getValueFromLine(record, "Confirmation:");
+    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        StringBuilder content = new StringBuilder();
+        String line;
 
-        // Add the extracted information to the table
-        model.addRow(new Object[]{orderId, amount, date, product, itemId, price, confirmation});
-    }
-}
-
-
-    private String getValueFromLine(String record, String key) {
-    String[] lines = record.split("\n");
-    for (String line : lines) {
-        String trimmedLine = line.trim();
-        if (trimmedLine.startsWith(key)) {
-            return trimmedLine.substring(key.length()).trim();
+        while ((line = reader.readLine()) != null) {
+            content.append(line).append("\n");
         }
-    }
-    return ""; // Return an empty string if the key is not found in the record
-}
 
+        // Split the content into individual sales orders based on empty lines
+        String[] salesOrders = content.toString().split("\\n\\n");
+
+        // Iterate through each sales order
+        for (String orderData : salesOrders) {
+            // Check if the salesperson's name is present in the sales order data
+            if (orderData.contains("Salesperson: " + salesPersonName)) {
+                // Split the sales order data into lines
+                String[] lines = orderData.split("\n");
+
+                // Extract relevant information and add it to the table
+                Object[] rowData = new Object[7];
+                for (String lineData : lines) {
+                    String[] parts = lineData.split(": ");
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim();
+
+                        switch (key) {
+                            case "ID":
+                                rowData[0] = value;
+                                break;
+                            case "Amount":
+                                rowData[1] = value;
+                                break;
+                            case "Date":
+                                rowData[2] = value;
+                                break;
+                            case "Product":
+                                rowData[3] = value;
+                                break;
+                            case "Item ID":
+                                rowData[4] = value;
+                                break;
+                            case "Price":
+                                rowData[5] = value;
+                                break;
+                            case "Confirmation":
+                                rowData[6] = value;
+                                break;
+                            // Add more cases if needed for other fields
+                        }
+                    }
+                }
+                model.addRow(rowData); // Add the row to the table
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+        // Handle the exception as needed (e.g., logging, showing an error message)
+    }
+}
 
  
     /**
@@ -148,6 +184,8 @@ private void displaySalesOrdersForSalesperson(String salesPersonData) {
         jTable_listApproval = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jTextField_salesperson = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField_filter = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,28 +206,50 @@ private void displaySalesOrdersForSalesperson(String salesPersonData) {
             }
         ));
         jScrollPane1.setViewportView(jTable_listApproval);
+        if (jTable_listApproval.getColumnModel().getColumnCount() > 0) {
+            jTable_listApproval.getColumnModel().getColumn(0).setResizable(false);
+            jTable_listApproval.getColumnModel().getColumn(0).setPreferredWidth(15);
+            jTable_listApproval.getColumnModel().getColumn(1).setResizable(false);
+            jTable_listApproval.getColumnModel().getColumn(1).setPreferredWidth(30);
+            jTable_listApproval.getColumnModel().getColumn(2).setPreferredWidth(15);
+            jTable_listApproval.getColumnModel().getColumn(3).setResizable(false);
+            jTable_listApproval.getColumnModel().getColumn(5).setResizable(false);
+            jTable_listApproval.getColumnModel().getColumn(6).setResizable(false);
+            jTable_listApproval.getColumnModel().getColumn(6).setPreferredWidth(30);
+        }
 
         jLabel2.setText("Sales Person :");
+
+        jLabel3.setText("Filter :");
+
+        jTextField_filter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_filterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField_userid, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField_salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField_userid, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField_salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField_filter, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(187, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,10 +259,12 @@ private void displaySalesOrdersForSalesperson(String salesPersonData) {
                     .addComponent(jLabel1)
                     .addComponent(jTextField_userid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField_salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField_filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,6 +274,17 @@ private void displaySalesOrdersForSalesperson(String salesPersonData) {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_useridActionPerformed
 
+    private void jTextField_filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_filterActionPerformed
+        String searchText = jTextField_filter.getText();
+       searchSales(searchText);
+    }//GEN-LAST:event_jTextField_filterActionPerformed
+    public void searchSales(String searchText) {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(jTable_listApproval.getModel());
+        jTable_listApproval.setRowSorter(rowSorter);
+
+        RowFilter<TableModel, Object> rowFilter = RowFilter.regexFilter("(?i)" + searchText); // Case-insensitive search
+        rowSorter.setRowFilter(rowFilter);
+    }
     /**
      * @param args the command line arguments
      */
@@ -251,8 +324,10 @@ private void displaySalesOrdersForSalesperson(String salesPersonData) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_listApproval;
+    private javax.swing.JTextField jTextField_filter;
     private javax.swing.JTextField jTextField_salesperson;
     private javax.swing.JTextField jTextField_userid;
     // End of variables declaration//GEN-END:variables
