@@ -17,7 +17,6 @@ import javax.swing.table.DefaultTableModel;
 public class List_Approval extends javax.swing.JFrame {
     public static String userID;
     private boolean approved;
-
     // constructor and other methods
 
     public boolean isApproved() {
@@ -32,10 +31,12 @@ public class List_Approval extends javax.swing.JFrame {
     }
     
     public List_Approval(String userID) {
-        this.userID = userID;
-        initComponents();
-        loadSalesPersonData();
-        loadSalesOrderData();
+            this.userID = userID;
+    initComponents();
+    loadSalesPersonData();
+
+    
+
     }
     
      private void loadSalesPersonData() {
@@ -43,6 +44,7 @@ public class List_Approval extends javax.swing.JFrame {
 
     if (salesPersonData != null) {
         jTextField_salesperson.setText(salesPersonData);
+         displaySalesOrdersForSalesperson(salesPersonData);
     } else {
         JOptionPane.showMessageDialog(this, "Failed to retrieve Sales Person data.", "Error", JOptionPane.ERROR_MESSAGE);
     }
@@ -94,25 +96,43 @@ public class List_Approval extends javax.swing.JFrame {
         return null;
     }
       
-   private void loadSalesOrderData() {
-        String filePath = "Data/Sales_Quotation.txt";  // Change the file path accordingly
+private void displaySalesOrdersForSalesperson(String salesPersonData) {
+    // Clear existing table data
+    DefaultTableModel model = (DefaultTableModel) jTable_listApproval.getModel();
+    model.setRowCount(0);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            DefaultTableModel model = (DefaultTableModel) jTable_listApproval.getModel();
+    // Split salesPersonData into individual records based on new line characters
+    String[] records = salesPersonData.split("\n\n");
 
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Process each line of the file and extract data
-                String[] data = line.split(",");
+    // Iterate through records and extract relevant information
+    for (String record : records) {
+        String orderId = getValueFromLine(record, "ID:");
+        String amount = getValueFromLine(record, "Amount:");
+        String date = getValueFromLine(record, "Date:");
+        String product = getValueFromLine(record, "Product:");
+        String itemId = getValueFromLine(record, "Item ID:");
+        String price = getValueFromLine(record, "Price:");
+        String confirmation = getValueFromLine(record, "Confirmation:");
 
-                // Add the data to the table
-                model.addRow(new Object[]{data[0], data[1], data[2], data[3], data[4], data[5], data[7], data[8], data[9], data[10]});
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle the exception as needed (e.g., logging, showing an error message)
+        // Add the extracted information to the table
+        model.addRow(new Object[]{orderId, amount, date, product, itemId, price, confirmation});
+    }
+}
+
+
+    private String getValueFromLine(String record, String key) {
+    String[] lines = record.split("\n");
+    for (String line : lines) {
+        String trimmedLine = line.trim();
+        if (trimmedLine.startsWith(key)) {
+            return trimmedLine.substring(key.length()).trim();
         }
     }
+    return ""; // Return an empty string if the key is not found in the record
+}
+
+
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -144,7 +164,7 @@ public class List_Approval extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Order ID", "Total Amount", "Date", "Product", "Item ID", "Price", "Confirmation"
             }
         ));
         jScrollPane1.setViewportView(jTable_listApproval);
