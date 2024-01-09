@@ -156,11 +156,13 @@ public class Login extends javax.swing.JFrame {
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
         String username = jTextField_username.getText();
         String password = new String(jPasswordField_password.getPassword());
+        String event = "Login";
 
         String userID = validateCredentials(username, password);
 
         if (userID != null) {
             // Determine the role based on the userID prefix
+            
             char rolePrefix = userID.charAt(0);
 
             // Redirect to the corresponding home page
@@ -170,6 +172,9 @@ public class Login extends javax.swing.JFrame {
                     Admin_Home adminHome = new Admin_Home(userID);
                     adminHome.setVisible(true);
                     this.setVisible(false);
+                    
+                     Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+                     adminLogbook.addLogEntry(userID,event);
                 }
                 case 'S' -> {
                     // SalesPerson Home

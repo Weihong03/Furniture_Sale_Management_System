@@ -1,0 +1,87 @@
+User ID: A001;
+Timestamp: 2024-01-09 13:19:24;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-01-09 13:22:46;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 14:30:39;
+Event: Update Profile, Phone Number: from '01288812345,' to '0128881234,', Update Phone Number;
+
+User ID: A001;
+Timestamp: 2024-01-09 14:36:27;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 14:36:47;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 14:39:30;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 14:39:37;
+Event: Delete Profile, Deleted row for UserID: Aryssa,;
+
+User ID: A001;
+Timestamp: 2024-01-09 14:51:17;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 14:51:57;
+Event: Update Profile, ID: from 'A001' to 'S002,', Update ID, Username: from 'Leeqiwen,' to 'Horongwei,', Update Username, Password: from 'Qiwen1234,' to 'Rongwei1234,', Update Password, Name: from 'Lee Qi Wen,' to 'Ho Rong Wei,', Update Name, Age: from '50' to '35', Update Age, Email: from 'TP065421@mail.apu.edu.my,' to 'rongweilovearyssa@gmail.com,', Update Email, Phone Number: from '0128881234,' to '0303003,', Update Phone Number, Role: from 'Admin,' to 'Salesperson,', Update Role;
+
+User ID: A001;
+Timestamp: 2024-01-09 14:52:37;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 14:52:53;
+Event: Update Profile, ID: from 'S001,' to 'S002,', Update ID, Username: from 'Weihongooi,' to 'Horongwei,', Update Username, Password: from 'Weihong123,' to 'Rongwei1234,', Update Password, Name: from 'Ooi Wei Hong,' to 'Ho Rong Wei,', Update Name, Email: from 'Weihong03@gmail.com,' to 'rongweilovearyssa@gmail.com,', Update Email;
+
+User ID: A001;
+Timestamp: 2024-01-09 15:00:48;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 15:04:34;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 15:21:42;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 15:21:52;
+Event: Update Profile
+Changes made to profile with ID S002,:
+Password: : Rongwei123, -> : Rongwei1234,
+;
+
+User ID: A001;
+Timestamp: 2024-01-09 15:25:47;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 15:25:54;
+Event: Update Profile,Changes made to profile with ID S002,:Password: : Rongwei1234, -> : Rongwei123,;
+
+User ID: A001;
+Timestamp: 2024-01-09 15:35:57;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 15:36:56;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 15:39:19;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-09 15:39:24;
+Event: Logout;
+

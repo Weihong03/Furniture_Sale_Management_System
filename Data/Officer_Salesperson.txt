@@ -1,10 +1,10 @@
-ID: S001, 
+ID: S001,
 Username: Weihongooi,
 Password: Weihong123,
 Name: Ooi Wei Hong,
-Age: 24,
-Email: TP065329@mail.apu.edu.my,
-PhoneNumber: 0122723624,
+Age: 35
+Email: Weihong03@gmail.com,
+Phone Number: 0303003,
 Role: Salesperson,
 
 ID: O003,
@@ -13,25 +13,25 @@ Password: Atticus123,
 Name: Atticus9986,
 Age: 24,
 Email: popo12,
-PhoneNumber: 29348828248,
+Phone Number: 293488282481,
 Role: Officer,
 
 ID: S002,
 Username: Horongwei,
 Password: Rongwei123,
 Name: Ho Rong Wei,
-Age: 35,
+Age: 35
 Email: rongweilovearyssa@gmail.com,
-PhoneNumber: 0303003,
+Phone Number: 0303003,
 Role: Salesperson,
-
+/n
 ID: S003,
 Username: Aryssa,
 Password: aryssa123,
 Name: Iloverongwei,
 Age: 60,
 Email: iloverongwei@gmail.com,
-PhoneNumber: 999,
+Phone Number: 999,
 Role: Salesperson,
 
 ID: O004,
@@ -40,7 +40,7 @@ Password: Boonjie123,
 Name: Lee Boon Jie,
 Age: 25,
 Email: boonjie123@gmail.com,
-PhoneNumber: 0123456789,
+Phone Number: 0123456789,
 Role: Officer,
 
 ID: O005,
@@ -49,8 +49,29 @@ Password: Fengkang123,
 Name: Lim Feng Kang,
 Age: 59,
 Email: fengkang123@gmail.com,
-PhoneNumber: 0198754498,
+Phone Number: 0198754498,
 Role: Officer,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

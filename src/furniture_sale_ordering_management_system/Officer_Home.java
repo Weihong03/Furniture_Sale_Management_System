@@ -75,7 +75,7 @@ public class Officer_Home extends javax.swing.JFrame {
 
         jLabel1.setText("Officer Home");
 
-        jButton_ManageProfile.setText("Mange Profile");
+        jButton_ManageProfile.setText("Manage Profile");
         jButton_ManageProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_ManageProfileActionPerformed(evt);
@@ -127,7 +127,7 @@ public class Officer_Home extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton_ManageProfile)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                         .addComponent(jButton_logout)
                         .addGap(83, 83, 83))))
             .addGroup(layout.createSequentialGroup()

@@ -76,16 +76,24 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                             jTextField_FullName.setText(value);
                             break;
                         case "Age":                         
-                            jComboBox_Age.setSelectedItem(value);
+                             // Check and clean up the age value
+                            value = value.replaceAll(",", "");
+                            try {
+                                int age = Integer.parseInt(value);
+                                jComboBox_Age.setSelectedItem(String.valueOf(age));
+                            } catch (NumberFormatException e) {
+                                // Handle the exception or log an error message
+                                e.printStackTrace();
+                            }
                             break;
                         case "Email":
                             jTextField_Email.setText(value);
                             break;
-                        case "PhoneNumber":
+                        case "Phone Number":
                             jTextField_PhoneNumber.setText(value);
                             break;
                         case "Role":
-    
+                            value = value.replaceAll(",", "");
                         // Assuming age values are stored as strings in the combo box; modify the following line if needed
                             jComboBox_Role.setSelectedItem(value);
                             break;
@@ -214,8 +222,18 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         });
 
         jComboBox_Age.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_Age.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_AgeActionPerformed(evt);
+            }
+        });
 
         jComboBox_Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_Role.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_RoleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -355,22 +373,22 @@ try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                 String value = parts[1].trim();
                 switch (key) {
                     case "Username":
-                        lines[1] = "Username: " + jTextField_Username.getText().trim() + ",";
+                        lines[1] = "Username: " + jTextField_Username.getText().trim();
                         break;
                     case "Password":
-                        lines[2] = "Password: " + jTextField_Password.getText().trim()+ ",";
+                        lines[2] = "Password: " + jTextField_Password.getText().trim();
                         break;
                     case "Name":
-                        lines[3] = "Name: " + jTextField_FullName.getText().trim()+ ",";
+                        lines[3] = "Name: " + jTextField_FullName.getText().trim();
                         break;
                     case "Age":
                         lines[4] = "Age: " + jComboBox_Age.getSelectedItem().toString().trim()+ ",";
                         break;
                     case "Email":
-                        lines[5] = "Email: " + jTextField_Email.getText().trim()+ ",";
+                        lines[5] = "Email: " + jTextField_Email.getText().trim();
                         break;
-                    case "PhoneNumber":
-                        lines[6] = "PhoneNumber: " + jTextField_PhoneNumber.getText().trim()+ ",";
+                    case "Phone Number":
+                        lines[6] = "Phone Number: " + jTextField_PhoneNumber.getText().trim();
                         break;
                     case "Role":
                         lines[7] = "Role: " + jComboBox_Role.getSelectedItem().toString().trim()+ ",";
@@ -389,7 +407,7 @@ try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
     content.insert(endIndex, "\n");
 
 // Update the content with modified user data
-content.replace(startIndex, endIndex, String.join("\n", lines));
+    content.replace(startIndex, endIndex, String.join("\n", lines));
         // Save the updated content to the file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             writer.write(content.toString());
@@ -411,6 +429,7 @@ content.replace(startIndex, endIndex, String.join("\n", lines));
         if (userID.startsWith("O")) {
     Officer_Home officerHome = new Officer_Home(userID);
     officerHome.setVisible(true);
+    dispose();
 } 
         else if (userID.startsWith("S")) {
     Sales_Home salesPersonHome = new Sales_Home(userID);
@@ -418,6 +437,14 @@ content.replace(startIndex, endIndex, String.join("\n", lines));
     dispose();
         }
     }//GEN-LAST:event_jButton_backActionPerformed
+
+    private void jComboBox_AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_AgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_AgeActionPerformed
+
+    private void jComboBox_RoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_RoleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_RoleActionPerformed
 
     /**
      * @param args the command line arguments

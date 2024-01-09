@@ -40,7 +40,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jButton_back" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_update" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -73,9 +73,9 @@
                   <Component id="jTextField_Username" min="-2" pref="71" max="-2" attributes="0"/>
                   <Component id="jTextField_Password" min="-2" pref="71" max="-2" attributes="0"/>
                   <Component id="jTextField_FullName" min="-2" pref="71" max="-2" attributes="0"/>
-                  <Component id="jTextField_Role" min="-2" pref="71" max="-2" attributes="0"/>
-                  <Component id="jTextField_Age" min="-2" pref="71" max="-2" attributes="0"/>
                   <Component id="jTextField_ID" min="-2" pref="71" max="-2" attributes="0"/>
+                  <Component id="jComboBox_Age" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_role" min="-2" pref="71" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -109,7 +109,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField_Age" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox_Age" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -124,11 +124,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField_Role" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField_role" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton_update" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton_back" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -174,17 +174,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField_Email">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField_Role">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_RoleActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButton_update">
       <Properties>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_updateActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
@@ -204,8 +199,6 @@
         <Property name="text" type="java.lang.String" value="Age :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField_Age">
-    </Component>
     <Component class="javax.swing.JTextField" name="jTextField_ID">
     </Component>
     <Component class="javax.swing.JButton" name="jButton_back">
@@ -215,6 +208,27 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_backActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox_Age">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox_AgeItemStateChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox_AgeActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_role">
     </Component>
   </SubComponents>
 </Form>

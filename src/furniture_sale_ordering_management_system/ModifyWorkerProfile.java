@@ -8,7 +8,6 @@ package furniture_sale_ordering_management_system;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -17,8 +16,6 @@ import javax.swing.JOptionPane;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 
 /**
  *
@@ -34,13 +31,11 @@ public class ModifyWorkerProfile extends javax.swing.JFrame {
     public static String Email;
     public static String PhoneNumber;
     public static String Role;
-    private String userID;
+    public static String userID;
 
     private static final String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
     
-    private ModifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+
 
 
     /**
@@ -451,34 +446,20 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     }//GEN-LAST:event_jTextField_IDActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       changeProfilePicture();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel2AncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel2AncestorAdded
-      private void changeProfilePicture() {
-    JFileChooser fileChooser = new JFileChooser();
-    
-    // Set the default directory
-    fileChooser.setCurrentDirectory(new File("C:\\Users\\Acer\\OneDrive\\文档\\Degree Year 2 Sem1\\Java"));
-    
-    int result = fileChooser.showOpenDialog(this);
 
-    if (result == JFileChooser.APPROVE_OPTION) {
-        File selectedFile = fileChooser.getSelectedFile();
-        
-        // Update the profile picture label with the new image
-        ImageIcon newProfilePicture = new ImageIcon(selectedFile.getAbsolutePath());
-        jLabel2.setIcon(newProfilePicture);
-    }
-      }
     /**
      * @param args the command line arguments
      */
  
-    private boolean modifyBooking(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role) {
-      try {
+   private boolean modifyBooking(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role) {
+    StringBuilder eventBuilder = new StringBuilder("Update Profile");
+    try {
         Path inputFile = Path.of(BOOKING_FILE_PATH);
 
         List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
@@ -487,6 +468,16 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         for (int i = 0; i < lines.size() - 8; i += 9) {
             String line = lines.get(i);
             if (line.equals("ID: " + ID)) {
+                // Log the changes
+                eventBuilder.append(",Changes made to profile with ID ").append(ID).append(":");
+                logChange(eventBuilder, "Username", lines.get(i + 1), "Username: " + Username);
+                logChange(eventBuilder, "Password", lines.get(i + 2), "Password: " + Password);
+                logChange(eventBuilder, "Name", lines.get(i + 3), "Name: " + Name);
+                logChange(eventBuilder, "Age", lines.get(i + 4), "Age: " + Age);
+                logChange(eventBuilder, "Email", lines.get(i + 5), "Email: " + Email);
+                logChange(eventBuilder, "Phone Number", lines.get(i + 6), "Phone Number: " + PhoneNumber);
+                logChange(eventBuilder, "Role", lines.get(i + 7), "Role: " + Role);
+
                 // Modify the existing booking
                 lines.set(i, "ID: " + ID);
                 lines.set(i + 1, "Username: " + Username);
@@ -494,9 +485,9 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
                 lines.set(i + 3, "Name: " + Name);
                 lines.set(i + 4, "Age: " + Age);
                 lines.set(i + 5, "Email: " + Email);
-                lines.set(i + 6, "PhoneNumber: " + PhoneNumber);
+                lines.set(i + 6, "Phone Number: " + PhoneNumber);
                 lines.set(i + 7, "Role: " + Role);
-                lines.set(i + 8, "---------------------------");
+                lines.set(i + 8, "/n");
                 found = true;
                 break;
             }
@@ -509,10 +500,20 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
 
         Files.write(inputFile, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
 
+        // Add code here to write eventBuilder to the logbook
+        Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+        adminLogbook.addLogEntry(userID, eventBuilder.toString());
+
         return true;
     } catch (IOException e) {
         e.printStackTrace();
         return false;
+    }
+}
+
+private void logChange(StringBuilder eventBuilder, String fieldName, String oldValue, String newValue) {
+    if (!oldValue.equals(newValue)) {
+        eventBuilder.append(fieldName).append(": ").append(oldValue.substring(fieldName.length())).append(" -> ").append(newValue.substring(fieldName.length()));
     }
 }
 
@@ -555,7 +556,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-        ModifyWorkerProfile modifyProfile = new ModifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role);
+        ModifyWorkerProfile modifyProfile = new ModifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role,userID);
         modifyProfile.setVisible(true);
 
             }

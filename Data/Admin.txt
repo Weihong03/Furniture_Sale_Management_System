@@ -1,8 +1,8 @@
-ID: A001, 
+ID: A001
 Username: Leeqiwen,
-Password: Qiwen123, 
+Password: Qiwen1234,
 Name: Lee Qi Wen,
-Age: 50,
+Age: 50
 Email: TP065421@mail.apu.edu.my,
-PhoneNumber: 0128881234,
+Phone Number: 0128881234,
 Role: Admin,

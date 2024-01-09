@@ -31,8 +31,11 @@
                           <Component id="jButton_ManagePsnProfile" max="32767" attributes="0"/>
                           <Component id="jButton_ManageProfile" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="jButton_logout" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jButton_logout" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton_logbook" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
@@ -42,7 +45,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="83" max="32767" attributes="0"/>
+              <EmptySpace pref="74" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,7 +57,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jTextField_ID" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="75" max="32767" attributes="0"/>
-              <Component id="jButton_ManagePsnProfile" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButton_ManagePsnProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton_logbook" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton_ManageProfile" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -89,7 +95,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton_ManagePsnProfile">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mange Personal Profile"/>
+        <Property name="text" type="java.lang.String" value="Manage Personal Profile"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ManagePsnProfileActionPerformed"/>
@@ -98,6 +104,14 @@
     <Component class="javax.swing.JTextField" name="jTextField_ID">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_IDActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton_logbook">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Logbook"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_logbookActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

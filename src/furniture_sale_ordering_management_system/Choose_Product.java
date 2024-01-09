@@ -79,6 +79,7 @@ public class Choose_Product extends javax.swing.JFrame {
         jButton_proceed = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_product = new javax.swing.JTable();
+        jButton_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +115,13 @@ public class Choose_Product extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable_product);
 
+        jButton_back.setText("Back");
+        jButton_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_backActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,7 +130,9 @@ public class Choose_Product extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_back))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton_proceed)
@@ -150,7 +160,9 @@ public class Choose_Product extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton_proceed)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_proceed)
+                    .addComponent(jButton_back))
                 .addGap(26, 26, 26))
         );
 
@@ -252,6 +264,11 @@ public class Choose_Product extends javax.swing.JFrame {
     jComboBox_product.setSelectedIndex(-1);
     }//GEN-LAST:event_jButton_addActionPerformed
 
+    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
+ Sales_Home salesPersonHome = new Sales_Home(userID);
+                    salesPersonHome.setVisible(true);
+                    this.setVisible(false);    }//GEN-LAST:event_jButton_backActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,6 +308,7 @@ public class Choose_Product extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_add;
+    private javax.swing.JButton jButton_back;
     private javax.swing.JButton jButton_proceed;
     private javax.swing.JComboBox<String> jComboBox_product;
     private javax.swing.JLabel jLabel1;

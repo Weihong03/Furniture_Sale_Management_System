@@ -56,6 +56,7 @@ public class Admin_Home extends javax.swing.JFrame {
         jButton_logout = new javax.swing.JButton();
         jButton_ManagePsnProfile = new javax.swing.JButton();
         jTextField_ID = new javax.swing.JTextField();
+        jButton_logbook = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,7 +76,7 @@ public class Admin_Home extends javax.swing.JFrame {
             }
         });
 
-        jButton_ManagePsnProfile.setText("Mange Personal Profile");
+        jButton_ManagePsnProfile.setText("Manage Personal Profile");
         jButton_ManagePsnProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_ManagePsnProfileActionPerformed(evt);
@@ -85,6 +86,13 @@ public class Admin_Home extends javax.swing.JFrame {
         jTextField_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_IDActionPerformed(evt);
+            }
+        });
+
+        jButton_logbook.setText("Logbook");
+        jButton_logbook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_logbookActionPerformed(evt);
             }
         });
 
@@ -99,14 +107,16 @@ public class Admin_Home extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton_ManagePsnProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton_ManageProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton_logout))
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton_logout)
+                            .addComponent(jButton_logbook)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +126,9 @@ public class Admin_Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(jButton_ManagePsnProfile)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_ManagePsnProfile)
+                    .addComponent(jButton_logbook))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_ManageProfile)
@@ -129,9 +141,12 @@ public class Admin_Home extends javax.swing.JFrame {
 
     private void jButton_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_logoutActionPerformed
         int choice = JOptionPane.showConfirmDialog(this, "Do you want to exit?", "Confirm Logout", JOptionPane.YES_NO_OPTION);
-
+        String userID = jTextField_ID.getText();
+        String event = "Logout";
         if (choice == JOptionPane.YES_OPTION) {
             // Open Login JFrame
+             Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+             adminLogbook.addLogEntry(userID,event);
             Login login = new Login();
             login.setVisible(true);
             this.dispose();
@@ -147,6 +162,8 @@ public class Admin_Home extends javax.swing.JFrame {
 
     private void jButton_ManagePsnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ManagePsnProfileActionPerformed
         Admin_Profile administratorprofile = new Admin_Profile(userID);
+        administratorprofile.setInitialValues(userID);
+        administratorprofile.setInitialValuesFromUserID(userID);
         administratorprofile.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_ManagePsnProfileActionPerformed
@@ -154,6 +171,13 @@ public class Admin_Home extends javax.swing.JFrame {
     private void jTextField_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_IDActionPerformed
+
+    private void jButton_logbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_logbookActionPerformed
+              Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+              adminLogbook.loadLogEntriesFromFile();
+              adminLogbook.setVisible(true);
+              this.dispose();
+    }//GEN-LAST:event_jButton_logbookActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,6 +219,7 @@ public class Admin_Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_ManageProfile;
     private javax.swing.JButton jButton_ManagePsnProfile;
+    private javax.swing.JButton jButton_logbook;
     private javax.swing.JButton jButton_logout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField_ID;

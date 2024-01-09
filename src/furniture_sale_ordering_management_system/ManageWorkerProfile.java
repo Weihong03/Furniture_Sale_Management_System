@@ -279,6 +279,17 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
 
 // Check if the calculated indices are within the bounds of the list
         if (startIndex >= 0 && endIndex < lines.size()) {
+            // Identify the user associated with the deleted row
+        String secondLine = lines.get(startIndex + 1);
+        String[] parts = secondLine.split(": ");
+        if (parts.length == 2) {
+            String deletedUserID = parts[1].trim();
+
+            // Log the deletion event
+            String event = "Delete Profile, Deleted row for UserID: " + deletedUserID;
+            Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+            adminLogbook.addLogEntry(userID, event);
+
             // Remove the selected row's data from the in-memory list
             lines.subList(startIndex, endIndex + 1).clear();
         } else {
@@ -300,6 +311,7 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Selected row deleted successfully.");
 // Refresh the UI
         refreshTable();
+        }
     }//GEN-LAST:event_jButton_deleteActionPerformed
 
     private void refreshTable() {

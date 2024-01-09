@@ -8,6 +8,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -29,7 +30,100 @@ public class Admin_Profile extends javax.swing.JFrame {
     public String Email;
     public String PhoneNumber;
     public String Role;
+    public static String userData;
+    
+     public void setInitialValues(String userID) {
+    jTextField_ID.setText(userID);
+    }
 
+    public void setInitialValuesFromUserID(String userID) {
+    // Read the existing content from the text file
+    String filePath = "Data/Admin.txt";
+    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            content.append(line).append("\n");
+        }
+
+        // Find the starting index of the user's information
+        int startIndex = content.indexOf("ID: " + userID);
+
+        // If the user with the specified ID is found
+        if (startIndex != -1) {
+            // Find the ending index of the user's information
+            int endIndex = content.indexOf("ID:", startIndex + 1);
+            if (endIndex == -1) {
+                endIndex = content.length();
+            }
+
+            // Extract the user's information
+           userData = content.substring(startIndex, endIndex);
+
+            // Split the user's information into lines
+            String[] lines = userData.split("\n");
+
+            // Extract and set the values
+            for (String lineData : lines) {
+                String[] parts = lineData.split(": ");
+                if (parts.length == 2) {
+                    String key = parts[0].trim();
+                    String value = parts[1].trim();
+
+                    switch (key) {
+                        case "Username":
+                            jTextField_Username.setText(value);
+                            break;
+                        case "Password":
+                            jTextField_Password.setText(value);
+                            break;
+                        case "Name":
+                            jTextField_FullName.setText(value);
+                            break;
+                         case "Age":
+                            // Check and clean up the age value
+                            value = value.replaceAll(",", "");
+                            try {
+                                int age = Integer.parseInt(value);
+                                jComboBox_Age.setSelectedItem(String.valueOf(age));
+                            } catch (NumberFormatException e) {
+                                // Handle the exception or log an error message
+                                e.printStackTrace();
+                            }
+                            break;
+                        case "Email":
+                            jTextField_Email.setText(value);
+                            break;
+                        case "Phone Number":
+                            jTextField_PhoneNumber.setText(value);
+                            break;
+                        case "Role":  
+                        // Assuming age values are stored as strings in the combo box; modify the following line if needed
+                            jTextField_role.setText(value);
+                            break;
+                    }
+                }
+            }
+        } else {
+            // User not found
+            JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
+        }
+    } catch (IOException e) {
+        e.printStackTrace(); // Handle the exception according to your application's requirements
+    }
+}
+       private String[] generateAgeOptions() {
+        int startAge = 18;
+        int endAge = 60;
+        int numberOfOptions = endAge - startAge + 1;
+
+        String[] ageOptions = new String[numberOfOptions];
+
+        for (int i = 0; i < numberOfOptions; i++) {
+            ageOptions[i] = String.valueOf(startAge + i);
+        }
+        return ageOptions;
+    }
 
     /**
      * Creates new form Administrator
@@ -39,6 +133,9 @@ public class Admin_Profile extends javax.swing.JFrame {
         this.userID = userID;
         initComponents();
         
+         jComboBox_Age.setModel(new DefaultComboBoxModel<>(generateAgeOptions()));
+        // For Role JComboBox
+        jTextField_role.setEditable(false);
         // Set the title of the window
         setTitle("Manage Worker Profile");
 
@@ -80,15 +177,15 @@ public class Admin_Profile extends javax.swing.JFrame {
         jTextField_Password = new javax.swing.JTextField();
         jTextField_FullName = new javax.swing.JTextField();
         jTextField_Email = new javax.swing.JTextField();
-        jTextField_Role = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButton_update = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField_PhoneNumber = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField_Age = new javax.swing.JTextField();
         jTextField_ID = new javax.swing.JTextField();
         jButton_back = new javax.swing.JButton();
+        jComboBox_Age = new javax.swing.JComboBox<>();
+        jTextField_role = new javax.swing.JTextField();
 
         jLabel4.setText("jLabel4");
 
@@ -106,16 +203,10 @@ public class Admin_Profile extends javax.swing.JFrame {
 
         jLabel7.setText("Role :");
 
-        jTextField_Role.addActionListener(new java.awt.event.ActionListener() {
+        jButton_update.setText("Update");
+        jButton_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_RoleActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Update");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_updateActionPerformed(evt);
             }
         });
 
@@ -132,6 +223,18 @@ public class Admin_Profile extends javax.swing.JFrame {
             }
         });
 
+        jComboBox_Age.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_Age.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox_AgeItemStateChanged(evt);
+            }
+        });
+        jComboBox_Age.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_AgeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,7 +248,7 @@ public class Admin_Profile extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton_back)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(jButton_update)
                         .addGap(148, 148, 148))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
@@ -170,9 +273,9 @@ public class Admin_Profile extends javax.swing.JFrame {
                     .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_FullName, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_Age, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_Age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_role, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -199,7 +302,7 @@ public class Admin_Profile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField_Age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox_Age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -211,34 +314,29 @@ public class Admin_Profile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField_Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButton_update)
                     .addComponent(jButton_back)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField_RoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_RoleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_RoleActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String id = jTextField_ID.getText();
+    private void jButton_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_updateActionPerformed
+   String id = jTextField_ID.getText();
     String username = jTextField_Username.getText();
     String password = jTextField_Password.getText();
     String fullName = jTextField_FullName.getText();
-    String ageString = jTextField_Age.getText();
-    int age = Integer.parseInt(ageString);
+    String ageString = jComboBox_Age.getSelectedItem().toString();
     String email = jTextField_Email.getText();
     String phoneNumber = jTextField_PhoneNumber.getText();
-    String role = jTextField_Role.getText();
+    String role = jTextField_role.getText();
+    StringBuilder eventBuilder = new StringBuilder("Update Profile");
 
     // Read the existing content from the text file
-    String filePath = "D:/MyFirstJavaProject/src/main/java/Administrator.txt";
-    
+    String filePath = "Data/Admin.txt";
 
     try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
         StringBuilder content = new StringBuilder();
@@ -248,19 +346,33 @@ public class Admin_Profile extends javax.swing.JFrame {
         }
 
         // Print the content before modifications
-     JOptionPane.showMessageDialog(null, "Before Modification:\n" + content.toString());
+        JOptionPane.showMessageDialog(null, "Before Modification:\n" + content.toString());
 
-
-        // Update the information in the content
-        updateContent(content, "ID :", id);
-        updateContent(content, "Username :", username);
-        updateContent(content, "Password :", password);
-        updateContent(content, "Full Name :", fullName);
-        updateContent(content, "Age :", String.valueOf(age));
-        updateContent(content, "Email :", email);
-        updateContent(content, "Phone Number :", phoneNumber);
-        updateContent(content, "Role :", role);
-        System.out.println("\n");
+        // Update the information in the content and modify the event accordingly
+        if (updateContent(content, "ID: ", id, eventBuilder)) {
+            eventBuilder.append(", Update ID");
+        }
+        if (updateContent(content, "Username: ", username, eventBuilder)) {
+            eventBuilder.append(", Update Username");
+        }
+        if (updateContent(content, "Password: ", password, eventBuilder)) {
+            eventBuilder.append(", Update Password");
+        }
+        if (updateContent(content, "Name: ", fullName, eventBuilder)) {
+            eventBuilder.append(", Update Name");
+        }
+        if (updateContent(content, "Age: ", String.valueOf(ageString), eventBuilder)) {
+            eventBuilder.append(", Update Age");
+        }
+        if (updateContent(content, "Email: ", email, eventBuilder)) {
+            eventBuilder.append(", Update Email");
+        }
+        if (updateContent(content, "Phone Number: ", phoneNumber, eventBuilder)) {
+            eventBuilder.append(", Update Phone Number");
+        }
+        if (updateContent(content, "Role: ", role, eventBuilder)) {
+            eventBuilder.append(", Update Role");
+        }
 
         // Print the content after modifications
         JOptionPane.showMessageDialog(null, "After Modification:\n" + content.toString());
@@ -269,26 +381,44 @@ public class Admin_Profile extends javax.swing.JFrame {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             writer.write(content.toString());
         }
+
+        // Add the log entry with the specific event
+        Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+        adminLogbook.addLogEntry(userID, eventBuilder.toString());
     } catch (IOException e) {
         e.printStackTrace(); // Handle the exception according to your application's requirements
     }
 }
 
-    private void updateContent(StringBuilder content, String label, String value) {
+private boolean updateContent(StringBuilder content, String label, String value, StringBuilder eventBuilder) {
     int startIndex = content.indexOf(label);
     if (startIndex != -1) {
         int endIndex = content.indexOf(label) + label.length();
-        content.replace(endIndex, content.indexOf("\n", endIndex), value);
+        String oldValue = content.substring(endIndex, content.indexOf("\n", endIndex)).trim();
+        if (!oldValue.equals(value)) {
+            content.replace(endIndex, content.indexOf("\n", endIndex), value);
+            eventBuilder.append(", ").append(label.trim()).append(" from '").append(oldValue).append("' to '").append(value).append("'");
+            return true; // Return true if the update was successful
+        }
     } else {
         System.out.println("Label not found: " + label);
     }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    return false; // Return false if the label was not found or value unchanged
+    }//GEN-LAST:event_jButton_updateActionPerformed
 
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
         Admin_Home home = new Admin_Home(userID);
         home.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton_backActionPerformed
+
+    private void jComboBox_AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_AgeActionPerformed
+    
+    }//GEN-LAST:event_jComboBox_AgeActionPerformed
+
+    private void jComboBox_AgeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_AgeItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_AgeItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -333,8 +463,9 @@ public class Admin_Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_back;
+    private javax.swing.JButton jButton_update;
+    private javax.swing.JComboBox<String> jComboBox_Age;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -345,13 +476,12 @@ public class Admin_Profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField_Age;
     private javax.swing.JTextField jTextField_Email;
     private javax.swing.JTextField jTextField_FullName;
     private javax.swing.JTextField jTextField_ID;
     private javax.swing.JTextField jTextField_Password;
     private javax.swing.JTextField jTextField_PhoneNumber;
-    private javax.swing.JTextField jTextField_Role;
     private javax.swing.JTextField jTextField_Username;
+    private javax.swing.JTextField jTextField_role;
     // End of variables declaration//GEN-END:variables
 }

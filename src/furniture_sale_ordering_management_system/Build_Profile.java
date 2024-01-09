@@ -359,7 +359,7 @@ public class Build_Profile extends javax.swing.JFrame {
     private void saveToFile(String id, String username, String password, String name, String age, String email, String phoneNumber, String role) {
         try (FileWriter writer = new FileWriter("Data/Officer_Salesperson.txt", true)) {
             // Format the details and write to the file
-            String userDetails = String.format("\nID: %s,\nUsername: %s,\nPassword: %s,\nName: %s,\nAge: %s,\nEmail: %s,\nPhoneNumber: %s,\nRole: %s,%n",
+            String userDetails = String.format("\nID: %s,\nUsername: %s,\nPassword: %s,\nName: %s,\nAge: %s,\nEmail: %s,\nPhone Number: %s,\nRole: %s,%n",
                     id, username, password, name, age, email, phoneNumber, role);
 
             writer.write(userDetails);

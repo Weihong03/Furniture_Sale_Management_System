@@ -281,10 +281,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
                                 // Handle unexpected line format
                                 rowData[i] = " ";
                             }
-                        } else {
-                            // Handle unexpected line format
-                            rowData[i] = " ";
-                        }
+                        } 
                     }
                     model.addRow(rowData);
                 }
