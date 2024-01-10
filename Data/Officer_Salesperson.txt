@@ -24,7 +24,7 @@ Age: 35
 Email: rongweilovearyssa@gmail.com,
 Phone Number: 0303003,
 Role: Salesperson,
-/n
+
 ID: S003,
 Username: Aryssa,
 Password: aryssa123,
