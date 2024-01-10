@@ -75,3 +75,12 @@ Role: Officer,
 
 
 
+
+ID: S004,
+Username: Loytehong,
+Password: Tehong123,
+Name: Loy Te Hong,
+Age: 25,
+Email: tehong123@gmail.com,
+Phone Number: 0198765432,
+Role: Salesperson,
