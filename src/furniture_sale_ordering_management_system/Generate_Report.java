@@ -9,9 +9,8 @@ import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JFrame;
 
 /**
@@ -34,7 +33,6 @@ public class Generate_Report extends javax.swing.JFrame {
         // Calculate the center coordinates
         int centerX = (screenSize.width - getWidth()) / 2;
         int centerY = (screenSize.height - getHeight()) / 2;
-        
 
         // Set the location of the window
         setLocation(centerX, centerY);
@@ -42,7 +40,7 @@ public class Generate_Report extends javax.swing.JFrame {
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,65 +149,40 @@ public class Generate_Report extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initializeSalespersonComboBox() {
-        // Read salesperson names from the text file
-        List<String> salespersonNames = readSalespersonNamesFromFile("Data/Sales_Quotation.txt");
-
-        // Create a DefaultComboBoxModel using the salesperson names
-        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>(salespersonNames.toArray(new String[0]));
-
-        // Set the combo box model
-        jComboBox_Salesperson.setModel(comboBoxModel);
-    }
-
-    // Add this method to refresh the salesperson names in the combo box
+    // Method to refresh the Salesperson JComboBox
     private void refreshSalespersonComboBox() {
-        DefaultComboBoxModel<String> comboBoxModel = (DefaultComboBoxModel<String>) jComboBox_Salesperson.getModel();
-        comboBoxModel.removeAllElements();
+        // Assuming jComboBox_Salesperson is the name of your JComboBox
+        jComboBox_Salesperson.removeAllItems(); // Clear existing items
 
-        // Read salesperson names from the text file
-        List<String> salespersonNames = readSalespersonNamesFromFile("Data/Sales_Quotation.txt");
+        // Read Sales_Quotation.txt and extract Salesperson names
+        Set<String> salespersons = readSalespersonsFromFile("Data/Sales_Quotation.txt");
 
-        // Add the salesperson names to the combo box model
-        for (String salespersonName : salespersonNames) {
-            comboBoxModel.addElement(salespersonName);
+        // Update the JComboBox with Salesperson names
+        for (String salesperson : salespersons) {
+            jComboBox_Salesperson.addItem(salesperson);
         }
     }
 
-    private List<String> readSalespersonNamesFromFile(String filePath) {
-        List<String> salespersonNames = new ArrayList<>();
+    // Method to read Salesperson names from Sales_Quotation.txt
+    private Set<String> readSalespersonsFromFile(String filePath) {
+        Set<String> salespersons = new HashSet<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // Extract salesperson name from the line
-                String salespersonName = extractSalespersonName(line);
-
-                // Add salesperson name to the list (skip null or empty names)
-                if (salespersonName != null && !salespersonName.isEmpty()) {
-                    salespersonNames.add(salespersonName);
+                if (line.startsWith("Salesperson:")) {
+                    // Extract Salesperson name from the line and remove trailing comma if it exists
+                    String salesperson = line.substring("Salesperson:".length()).trim().replaceAll(",$", "");
+                    salespersons.add(salesperson);
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
-            // Handle file reading error
+            e.printStackTrace(); // Handle the exception according to your needs
         }
 
-        return salespersonNames;
+        return salespersons;
     }
 
-    private String extractSalespersonName(String line) {
-        // Assuming Salesperson: is followed by the name
-        int startIndex = line.indexOf("Salesperson:");
-        if (startIndex != -1) {
-            return line.substring(startIndex + "Salesperson:".length()).trim();
-        }
-        return null; // Return null if Salesperson: is not found in the line
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -233,11 +206,13 @@ public class Generate_Report extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Generate_Report.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Generate_Report().setVisible(true);
+                Generate_Report generate = new Generate_Report();
+                generate.setVisible(true);
+                generate.refreshSalespersonComboBox();
             }
         });
     }
