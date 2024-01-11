@@ -27,9 +27,9 @@ Role: Salesperson,
 
 ID: S003,
 Username: Aryssa,
-Password: aryssa123,
+Password: aryssa1234,
 Name: Iloverongwei,
-Age: 60,
+Age: 60
 Email: iloverongwei@gmail.com,
 Phone Number: 999,
 Role: Salesperson,
