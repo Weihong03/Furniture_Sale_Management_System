@@ -164,6 +164,8 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea_price = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField_customer = new javax.swing.JTextField();
 
         jLabel10.setText("Category:");
 
@@ -225,6 +227,8 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
         jTextArea_price.setRows(5);
         jScrollPane1.setViewportView(jTextArea_price);
 
+        jLabel6.setText("Customer Name :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,10 +244,6 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField_salesPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,7 +257,16 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
                         .addGap(90, 90, 90)
                         .addComponent(jButton_create))
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField_customer))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextField_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -283,7 +292,11 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField_customer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -300,7 +313,7 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton_create)
                     .addComponent(jButton_back))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -340,6 +353,7 @@ private int getLatestOrderID(String orderIDPrefix) {
     Date date = jDateChooser.getDate(); // Get the selected date
     String salesPerson = jTextField_salesPerson.getText();
     String Amount = jTextField_amount.getText();
+    String customer = jTextField_customer.getText();
     String productsText = jTextArea_product.getText();
     String itemIDsText = jTextArea_itemid.getText();
     String pricesText = jTextArea_price.getText();
@@ -350,7 +364,7 @@ private int getLatestOrderID(String orderIDPrefix) {
     List<String> prices = Arrays.asList(pricesText.split("\n"));
 
     // Save the data to the file
-    saveSalesOrderQuotation(id, Amount, products, itemIDs, prices, date, salesPerson);
+    saveSalesOrderQuotation(id, Amount,customer, products, itemIDs, prices, date, salesPerson);
 
     JOptionPane.showMessageDialog(this, "Sales Order Quotation created successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
     
@@ -361,7 +375,7 @@ private int getLatestOrderID(String orderIDPrefix) {
     this.dispose();
 
     }//GEN-LAST:event_jButton_createActionPerformed
-  private void saveSalesOrderQuotation(String orderID, String amount, List<String> products, List<String> itemIDs, List<String> prices, Date date, String salesPerson) {
+  private void saveSalesOrderQuotation(String orderID, String amount,String customer, List<String> products, List<String> itemIDs, List<String> prices, Date date, String salesPerson) {
     String filePath = "Data/Sales_Quotation.txt";
 
     // Format the date (you can customize the format)
@@ -381,6 +395,8 @@ private int getLatestOrderID(String orderIDPrefix) {
         appendFormattedField(writer, "Item ID", itemIDs);
         appendFormattedField(writer, "Price", prices);
 
+        writer.write("Customer: " + customer + ",");
+        writer.newLine();
         writer.write("Salesperson: " + salesPerson + ",");
         writer.newLine();
         writer.write("Confirmation: Default, ");
@@ -479,6 +495,7 @@ private void appendFormattedField(BufferedWriter writer, String fieldName, List<
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -487,6 +504,7 @@ private void appendFormattedField(BufferedWriter writer, String fieldName, List<
     private javax.swing.JTextArea jTextArea_price;
     private javax.swing.JTextArea jTextArea_product;
     private javax.swing.JTextField jTextField_amount;
+    private javax.swing.JTextField jTextField_customer;
     private javax.swing.JTextField jTextField_salesPerson;
     // End of variables declaration//GEN-END:variables
 }

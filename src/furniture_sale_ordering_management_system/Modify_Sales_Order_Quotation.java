@@ -26,11 +26,8 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
     public static String ItemID;
     public static String Product;
     public static String Price;
+    public static String Customer;
     public static String Salesperson;
-    public static String Confirmation;
-    public static String Officer;
-    public static String Invoice;
-    public static String Status;
     public static Date date;
 
     /**
@@ -40,28 +37,23 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
      * @param ItemID
      * @param Product
      * @param date
+     * @param Customer
      * @param Salesperson
      * @param Price
-     * @param Confirmation
-     * @param Officer
-     * @param Invoice
-     * @param Status
+
      */
-    public void setInitialValues(String orderID, String Amount, String Product,String ItemID, String Price,String Salesperson, String Confirmation, String Officer, String Invoice, String Status, Date date) {
+    public void setInitialValues(String orderID, String Amount, String Product,String ItemID, String Price,String Customer,String Salesperson, Date date) {
     jTextField_id.setText(orderID);
     jTextField_amount.setText(Amount);
     jTextField_product.setText(Product);
     jTextField_itemid.setText(ItemID);
     jTextField_price.setText(Price);
+    jTextField_customer.setText(Customer);
     jTextField_salesperson.setText(Salesperson);
-    jTextField_confirmation.setText(Confirmation);
-    jTextField_officer.setText(Officer);
-    jTextField_invoice.setText(Invoice);
-    jTextField_status.setText(Status);
     jDateChooser.setDate(date); // Set the date in the date chooser
 }
     
-    public Modify_Sales_Order_Quotation(String userID, String orderID, String Product,String Amount,String ItemID, String Price,String Salesperson, String Confirmation, String Officer, String Invoice, String Status, Date date) {
+    public Modify_Sales_Order_Quotation(String userID, String orderID, String Product,String Amount,String ItemID, String Price,String Customer,String Salesperson, Date date) {
         initComponents();
         
         jTextField_id.setEditable(false);
@@ -75,11 +67,8 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
         this.Product = Product;
         this.Price = Price;
         this.ItemID = ItemID;
+        this.Customer = Customer;
         this.Salesperson = Salesperson;
-        this.Confirmation = Confirmation;
-        this.Officer = Officer;
-        this.Invoice = Invoice;
-        this.Status = Status;
         this.date = date;
     }
 
@@ -97,17 +86,9 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jTextField_id = new javax.swing.JTextField();
         jTextField_amount = new javax.swing.JTextField();
         jTextField_salesperson = new javax.swing.JTextField();
-        jTextField_confirmation = new javax.swing.JTextField();
-        jTextField_officer = new javax.swing.JTextField();
-        jTextField_invoice = new javax.swing.JTextField();
-        jTextField_status = new javax.swing.JTextField();
         jDateChooser = new com.toedter.calendar.JDateChooser();
         jButton_modify = new javax.swing.JButton();
         jButton_back = new javax.swing.JButton();
@@ -117,6 +98,8 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
         jTextField_itemid = new javax.swing.JTextField();
         jTextField_price = new javax.swing.JTextField();
         jTextField_product = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField_customer = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,14 +113,6 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
         jLabel4.setText("Date :");
 
         jLabel5.setText("Sales Person :");
-
-        jLabel6.setText("Confirmation :");
-
-        jLabel7.setText("Officer :");
-
-        jLabel8.setText("Invoice :");
-
-        jLabel9.setText("Status :");
 
         jButton_modify.setText("Modify");
         jButton_modify.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +140,8 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setText("Customer :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,42 +151,37 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton_back)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton_modify))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(69, 69, 69)
+                                .addGap(72, 72, 72)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jTextField_id)
                                     .addComponent(jTextField_amount)
-                                    .addComponent(jTextField_salesperson)
-                                    .addComponent(jTextField_confirmation)
-                                    .addComponent(jTextField_officer)
-                                    .addComponent(jTextField_invoice)
-                                    .addComponent(jTextField_status))))
+                                    .addComponent(jTextField_salesperson)))
+                            .addComponent(jButton_back))
                         .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_itemid, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_price, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_product, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(81, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel12))
+                                .addGap(64, 64, 64)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField_customer, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_itemid, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_price, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_product, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton_modify))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,33 +216,19 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField_salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField_confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField_officer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField_invoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(jTextField_salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextField_customer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_modify)
                     .addComponent(jButton_back))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-      private boolean modifySalesQuotation(String orderID, String Amount,String Product,String ItemID, String Price,String Salesperson, String Confirmation, String Officer, String Invoice, String Status, Date date) {
+      private boolean modifySalesQuotation(String orderID, String Amount,String Product,String ItemID, String Price,String Customer,String Salesperson, Date date) {
     try {
         Path inputFile = Path.of("Data/Sales_Quotation.txt");
 
@@ -280,7 +238,7 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
         String formattedDate = dateFormat.format(date); // Format the date
 
-        for (int i = 0; i < lines.size() - 11; i += 12) {
+        for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
             if (line.equals("ID: " + orderID)) {
                 // Modify the existing booking
@@ -290,11 +248,8 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
                 lines.set(i + 3, "Product: " + Product);
                 lines.set(i + 4, "Item ID: " + ItemID);
                 lines.set(i + 5, "Price: " + Price);
-                lines.set(i + 6, "Salesperson: " + Salesperson);
-                lines.set(i + 7, "Confirmation: " + Confirmation);
-                lines.set(i + 8, "Officer: " + Officer);
-                lines.set(i + 9, "Invoice: " + Invoice);
-                lines.set(i + 10, "Status: " + Status);
+                lines.set(i + 6, "Customer: " + Customer);
+                lines.set(i + 7, "Salesperson: " + Salesperson);
                 found = true;
                 break;
             }
@@ -320,20 +275,17 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
     String Product = jTextField_product.getText();
     String ItemID = jTextField_itemid.getText();
     String Price = jTextField_price.getText();
+    String Customer = jTextField_customer.getText();
     String Salesperson = jTextField_salesperson.getText();
-    String Confirmation = jTextField_confirmation.getText();
-    String Officer = jTextField_officer.getText();
-    String Invoice = jTextField_invoice.getText();
-    String Status = jTextField_status.getText();
 
     // Validate input fields
-    if (orderID.isEmpty() || Amount.isEmpty() || Status.isEmpty() || Salesperson.isEmpty() || Confirmation.isEmpty() || Officer.isEmpty() || Invoice.isEmpty()) {
+    if (orderID.isEmpty() || Amount.isEmpty() || Salesperson.isEmpty()){
         JOptionPane.showMessageDialog(this, "Please fill in all the required fields.", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
     // Perform the booking
-    boolean isModified = modifySalesQuotation(orderID, Amount,ItemID, Product, Price, Salesperson, Confirmation, Officer, Invoice, Status, date);
+    boolean isModified = modifySalesQuotation(orderID, Amount,Product, ItemID, Price, Customer,Salesperson, date);
 
     if (isModified) {
         JOptionPane.showMessageDialog(this, "Sales Order Quotation modified successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -383,7 +335,7 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(userID, orderID, Amount,ItemID, Product, Price, Salesperson, Confirmation, Officer, Invoice, Status, date);
+            Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(userID, orderID,Product, Amount,ItemID,  Price,Customer, Salesperson,  date);
             modifySalesOrderQuotation.setVisible(true);
             }
         });
@@ -396,24 +348,18 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField_amount;
-    private javax.swing.JTextField jTextField_confirmation;
+    private javax.swing.JTextField jTextField_customer;
     private javax.swing.JTextField jTextField_id;
-    private javax.swing.JTextField jTextField_invoice;
     private javax.swing.JTextField jTextField_itemid;
-    private javax.swing.JTextField jTextField_officer;
     private javax.swing.JTextField jTextField_price;
     private javax.swing.JTextField jTextField_product;
     private javax.swing.JTextField jTextField_salesperson;
-    private javax.swing.JTextField jTextField_status;
     // End of variables declaration//GEN-END:variables
 }

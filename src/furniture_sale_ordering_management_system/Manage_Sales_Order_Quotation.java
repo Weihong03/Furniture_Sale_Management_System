@@ -72,13 +72,13 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
 
         jTable_manageQuotation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Order ID", "Total Amount", "Date", "Product", "Item ID", "Price", "Salesperson", "Confirmation", "Officer", "Invoice", "Status"
+                "Order ID", "Total Amount", "Date", "Product", "Item ID", "Price", "Customer", "Salesperson", "Confirmation", "Officer", "Invoice", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable_manageQuotation);
@@ -183,15 +183,16 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     String Product = jTable_manageQuotation.getValueAt(selectedRowIndex, 3).toString();
     String ItemID = jTable_manageQuotation.getValueAt(selectedRowIndex, 4).toString();
     String Price = jTable_manageQuotation.getValueAt(selectedRowIndex, 5).toString();
-    String Salesperson = jTable_manageQuotation.getValueAt(selectedRowIndex, 6).toString();
-    String Confirmation = jTable_manageQuotation.getValueAt(selectedRowIndex, 7).toString();
-    String Officer = jTable_manageQuotation.getValueAt(selectedRowIndex, 8).toString();
-    String Invoice = jTable_manageQuotation.getValueAt(selectedRowIndex, 9).toString();
-    String Status = jTable_manageQuotation.getValueAt(selectedRowIndex, 10).toString();
+    String Customer = jTable_manageQuotation.getValueAt(selectedRowIndex, 6).toString();
+    String Salesperson = jTable_manageQuotation.getValueAt(selectedRowIndex, 7).toString();
+    String Confirmation = jTable_manageQuotation.getValueAt(selectedRowIndex, 8).toString();
+    String Officer = jTable_manageQuotation.getValueAt(selectedRowIndex, 9).toString();
+    String Invoice = jTable_manageQuotation.getValueAt(selectedRowIndex, 10).toString();
+    String Status = jTable_manageQuotation.getValueAt(selectedRowIndex, 11).toString();
 
     // Create an instance of ModifyWorkerProfile and pass the selected data
-     Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(userID, orderID, Product,Amount,ItemID, Price, Salesperson, Confirmation, Officer, Invoice, Status, date);
-     modifySalesOrderQuotation.setInitialValues(orderID, Amount,Product,ItemID, Price,Salesperson, Confirmation, Officer, Invoice, Status, date);
+     Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(userID, orderID, Product,Amount,ItemID, Price, Customer,Salesperson, date);
+     modifySalesOrderQuotation.setInitialValues(orderID, Amount,Product,ItemID, Price,Customer,Salesperson, date);
      modifySalesOrderQuotation.setVisible(true);
      dispose();
  } else {
@@ -222,8 +223,8 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         }
 
 // Calculate the line indices of the selected row's data
-        int startIndex = selectedRow * 12; // Each row has 9 lines of data
-        int endIndex = startIndex + 11;
+        int startIndex = selectedRow * 13; // Each row has 9 lines of data
+        int endIndex = startIndex + 12;
 
 // Check if the calculated indices are within the bounds of the list
         if (startIndex >= 0 && endIndex < lines.size()) {
@@ -268,10 +269,10 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("ID:")) {
-                    String[] rowData = new String[11];
+                    String[] rowData = new String[12];
                     rowData[0] = line.substring(4); // Extract ID value
 
-                    for (int i = 1; i < 11; i++) {
+                    for (int i = 1; i < 12; i++) {
                         line = br.readLine();
                         if (line != null && line.contains(": ")) {
                             String[] parts = line.split(": ", 2);
