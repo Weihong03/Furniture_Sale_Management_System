@@ -487,7 +487,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
                 lines.set(i + 5, "Email: " + Email);
                 lines.set(i + 6, "Phone Number: " + PhoneNumber);
                 lines.set(i + 7, "Role: " + Role);
-                lines.set(i + 8, "/n");
+                lines.set(i + 8, "");
                 found = true;
                 break;
             }
