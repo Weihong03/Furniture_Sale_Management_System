@@ -85,3 +85,11 @@ User ID: A001;
 Timestamp: 2024-01-09 15:39:24;
 Event: Logout;
 
+User ID: A002;
+Timestamp: 2024-01-11 09:18:30;
+Event: Login;
+
+User ID: A002;
+Timestamp: 2024-01-11 09:19:29;
+Event: Update Profile, ID: from 'A001,' to 'A002', Update ID, Username: from 'Leeqiwen,' to 'Alisontang', Update Username, Password: from 'Qiwen1234,' to 'Alison123,', Update Password, Name: from 'Lee Qi Wen,' to 'Alison Tang Bee Hoon,', Update Name, Age: from '50,' to '24', Update Age, Email: from 'TP065421@mail.apu.edu.my,' to 'TP065999@mail.apu.edu.my,', Update Email, Phone Number: from '0128881234,' to '0129994321,', Update Phone Number;
+
