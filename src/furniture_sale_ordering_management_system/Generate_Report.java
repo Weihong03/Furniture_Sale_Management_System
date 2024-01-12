@@ -69,10 +69,13 @@ public class Generate_Report extends javax.swing.JFrame {
 
         jTable_Sales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-
+                "ID", "Amount", "Date", "Product", "Price", "Salesperson", "Confirmation", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable_Sales);
@@ -124,14 +127,15 @@ public class Generate_Report extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Confirm)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox_Salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox_Confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton_Confirm)
+                        .addComponent(jComboBox_Salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox_Confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -174,84 +178,63 @@ public class Generate_Report extends javax.swing.JFrame {
         return salespersons;
     }
 
-private void loadDataFromFile() {
-    String filePath = "Data/Sales_Quotation.txt";
+public void displaySales() {
+    DefaultTableModel model = (DefaultTableModel) jTable_Sales.getModel();
+    model.setRowCount(0); // Clear existing data
 
-    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-        DefaultTableModel model = (DefaultTableModel) jTable_Sales.getModel();
-        String[] colHeaders = {"ID", "Amount", "Date", "Product", "Price", "Salesperson", "Confirmation", "Status"};
-        model.setColumnIdentifiers(colHeaders);
-
+    try (BufferedReader br = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
         String line;
-        while ((line = reader.readLine()) != null) {
+
+        while ((line = br.readLine()) != null) {
             if (line.startsWith("ID:")) {
-                // Extracting ID with proper checks
-                String id = extractValue(line, "ID");
+                String[] rowData = new String[8];
+                rowData[0] = line.substring(4).trim(); // Extract ID value
 
-                // Read lines for amount, date, and product directly
-                String amount = extractValue(reader.readLine(), "Amount");
-                String date = extractValue(reader.readLine(), "Date");
-                String product = extractValue(reader.readLine(), "Product");
+                for (int i = 1; i < 8; i++) {
+                    line = br.readLine();
+                    if (line != null && line.contains(": ")) {
+                        String[] parts = line.split(": ", 2);
+                        if (parts.length == 2) {
+                            String fieldName = parts[0].trim();
+                            String value = parts[1].trim();
 
-                // Skip unnecessary lines
-                skipLines(reader, 3);
-
-                // Read lines for price directly
-                String price = extractValue(reader.readLine(), "Price");
-
-                // Skip unnecessary lines
-                skipLines(reader, 3);
-
-                // Read lines for salesperson and confirmation directly
-                String salesperson = extractValue(reader.readLine(), "Salesperson");
-                String confirmation = extractValue(reader.readLine(), "Confirmation");
-
-                // Skip unnecessary lines
-                skipLines(reader, 3);
-
-                // Read the line for status directly
-                String status = extractValue(reader.readLine(), "Status");
-
-                model.addRow(new Object[]{id, amount, date, product, price, salesperson, confirmation, status});
+                            switch (fieldName) {
+                                case "Amount":
+                                case "Date":
+                                case "Product":
+                                case "Price":
+                                case "Salesperson":
+                                case "Confirmation":
+                                case "Status":
+                                    rowData[i] = value;
+                                    break;
+                                case "Item ID":
+                                case "Customer":
+                                case "Officer":
+                                case "Invoice":
+                                    // Skip specified fields
+                                    continue;
+                                default:
+                                    // Skip unexpected field name
+                                    continue;
+                            }
+                        }
+                    }
+                }
+                model.addRow(rowData);
             }
         }
     } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Failed to load sales data from file.", "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace(); // Print the stack trace to identify the issue
+        JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
     }
 }
 
-// Helper method for extracting values with proper checks
-private String extractValue(String line, String field) {
-    if (line == null) {
-        // Handle the case where the line is null
-        // For example, log an error or show a message
-        System.err.println("Line is null while extracting value for field " + field);
-        return "";
-    }
 
-    int colonIndex = line.indexOf(":");
-    if (colonIndex != -1) {
-        return line.substring(colonIndex + 1).trim();
-    } else {
-        // Handle the case where the colon is not found in the line
-        // For example, log an error or show a message
-        System.err.println("Colon not found for field " + field + " in line: " + line);
-        return "";
-    }
-}
 
-// Helper method to skip a specified number of lines
-private void skipLines(BufferedReader reader, int numberOfLines) throws IOException {
-    for (int i = 0; i < numberOfLines; i++) {
-        String line = reader.readLine();
-        if (line == null) {
-            // Handle the case where there are fewer lines than expected
-            // For example, log an error or show a message
-            System.err.println("Unexpected end of file while skipping lines.");
-            break;
-        }
-    }
-}
+
+
+
 
 
     public static void main(String args[]) {
@@ -284,7 +267,7 @@ private void skipLines(BufferedReader reader, int numberOfLines) throws IOExcept
                 Generate_Report generate = new Generate_Report();
                 generate.setVisible(true);
                 generate.refreshSalespersonComboBox();
-                generate.loadDataFromFile();
+                generate.displaySales();
             }
         });
     }
