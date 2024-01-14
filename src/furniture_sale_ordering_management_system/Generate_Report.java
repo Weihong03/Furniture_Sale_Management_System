@@ -61,7 +61,7 @@ public class Generate_Report extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton_Confirm = new javax.swing.JButton();
+        jButton_Generate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,13 +69,13 @@ public class Generate_Report extends javax.swing.JFrame {
 
         jTable_Sales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Amount", "Date", "Product", "Price", "Salesperson", "Confirmation", "Status"
+                "ID", "Amount", "Date", "Product", "Item ID", "Price", "Customer", "Salesperson", "Confirmation", "Officer", "Invoice", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable_Sales);
@@ -84,58 +84,62 @@ public class Generate_Report extends javax.swing.JFrame {
 
         jComboBox_Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "In Progress", "Closed Sale" }));
 
-        jLabel2.setText("Salesperson:");
+        jLabel2.setText("Work Done Report:");
 
-        jLabel3.setText("Confirmation:");
+        jLabel3.setText("Approved Report:");
 
-        jLabel4.setText("Status:");
+        jLabel4.setText("Closed Sale Report:");
 
-        jButton_Confirm.setText("Confirm");
+        jButton_Generate.setText("Generate");
+        jButton_Generate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_GenerateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(388, 388, 388))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox_Salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox_Confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(296, 296, 296)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox_Salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox_Confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_Generate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton_Confirm)
                         .addComponent(jComboBox_Salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBox_Confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_Generate)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -143,6 +147,36 @@ public class Generate_Report extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_GenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GenerateActionPerformed
+        // Determine the selected report type
+    String selectedReportType = "";
+    if (jComboBox_Salesperson.getSelectedItem() != null) {
+        selectedReportType = jComboBox_Salesperson.getSelectedItem().toString();
+    } else if (jComboBox_Confirmation.getSelectedItem() != null) {
+        selectedReportType = jComboBox_Confirmation.getSelectedItem().toString();
+    } else if (jComboBox_Status.getSelectedItem() != null) {
+        selectedReportType = jComboBox_Status.getSelectedItem().toString();
+    }
+
+    // Perform actions based on the selected report type
+    switch (selectedReportType) {
+        case "Work Done":
+            // Call a method to display work done report for the selected salesperson
+            displayWorkDoneReport(jComboBox_Salesperson.getSelectedItem().toString());
+            break;
+        case "Approved":
+            // Call a method to display approved report based on confirmation status
+            displayApprovedReport(jComboBox_Confirmation.getSelectedItem().toString());
+            break;
+        case "Closed Sale":
+            // Call a method to display closed sale report based on status
+            displayClosedSaleReport(jComboBox_Status.getSelectedItem().toString());
+            break;
+        default:
+            JOptionPane.showMessageDialog(this, "Please select a valid report type.");
+    }
+    }//GEN-LAST:event_jButton_GenerateActionPerformed
 
     // Method to refresh the Salesperson JComboBox
     private void refreshSalespersonComboBox() {
@@ -178,64 +212,59 @@ public class Generate_Report extends javax.swing.JFrame {
         return salespersons;
     }
 
-public void displaySales() {
-    DefaultTableModel model = (DefaultTableModel) jTable_Sales.getModel();
-    model.setRowCount(0); // Clear existing data
+    public void displaySales() {
+        DefaultTableModel model = (DefaultTableModel) jTable_Sales.getModel();
+        model.setRowCount(0); // Clear existing data
 
-    try (BufferedReader br = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
-        String line;
+        try (BufferedReader br = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.startsWith("ID:")) {
+                    String[] rowData = new String[12];
+                    rowData[0] = line.substring(4); // Extract ID value
 
-        while ((line = br.readLine()) != null) {
-            if (line.startsWith("ID:")) {
-                String[] rowData = new String[8];
-                rowData[0] = line.substring(4).trim(); // Extract ID value
-
-                for (int i = 1; i < 8; i++) {
-                    line = br.readLine();
-                    if (line != null && line.contains(": ")) {
-                        String[] parts = line.split(": ", 2);
-                        if (parts.length == 2) {
-                            String fieldName = parts[0].trim();
-                            String value = parts[1].trim();
-
-                            switch (fieldName) {
-                                case "Amount":
-                                case "Date":
-                                case "Product":
-                                case "Price":
-                                case "Salesperson":
-                                case "Confirmation":
-                                case "Status":
-                                    rowData[i] = value;
-                                    break;
-                                case "Item ID":
-                                case "Customer":
-                                case "Officer":
-                                case "Invoice":
-                                    // Skip specified fields
-                                    continue;
-                                default:
-                                    // Skip unexpected field name
-                                    continue;
+                    for (int i = 1; i < 12; i++) {
+                        line = br.readLine();
+                        if (line != null && line.contains(": ")) {
+                            String[] parts = line.split(": ", 2);
+                            if (parts.length == 2) {
+                                rowData[i] = parts[1];
+                            } else {
+                                // Handle unexpected line format
+                                rowData[i] = " ";
                             }
-                        }
+                        } 
                     }
+                    model.addRow(rowData);
                 }
-                model.addRow(rowData);
             }
+        } catch (IOException e) {
+            e.printStackTrace(); // Print the stack trace to identify the issue
+            JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
         }
-    } catch (IOException e) {
-        e.printStackTrace(); // Print the stack trace to identify the issue
-        JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
     }
+
+    // Method to display work done report for the selected salesperson
+private void displayWorkDoneReport(String selectedSalesperson) {
+    // Your logic to filter and display work done report for the selected salesperson
+    // You may use the existing displaySales() method as a starting point
+    // and modify it to filter the data based on the selected salesperson
+    // For example, you can create a new method to filter the data by salesperson
 }
 
+// Method to display approved report based on confirmation status
+private void displayApprovedReport(String selectedConfirmation) {
+    // Your logic to filter and display approved report based on confirmation status
+    // You may use the existing displaySales() method as a starting point
+    // and modify it to filter the data based on the selected confirmation status
+}
 
-
-
-
-
-
+// Method to display closed sale report based on status
+private void displayClosedSaleReport(String selectedStatus) {
+    // Your logic to filter and display closed sale report based on status
+    // You may use the existing displaySales() method as a starting point
+    // and modify it to filter the data based on the selected status
+}
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -273,7 +302,7 @@ public void displaySales() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_Confirm;
+    private javax.swing.JButton jButton_Generate;
     private javax.swing.JComboBox<String> jComboBox_Confirmation;
     private javax.swing.JComboBox<String> jComboBox_Salesperson;
     private javax.swing.JComboBox<String> jComboBox_Status;
