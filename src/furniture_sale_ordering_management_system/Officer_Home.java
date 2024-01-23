@@ -70,6 +70,8 @@ public class Officer_Home extends javax.swing.JFrame {
         jButton_saleapproval = new javax.swing.JButton();
         jButton_invoice = new javax.swing.JButton();
         button_notification = new furniture_sale_ordering_management_system.Shared_item.Button();
+        jButton_CheckSaleStatus = new javax.swing.JButton();
+        jButton_GenerateReport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,24 +114,38 @@ public class Officer_Home extends javax.swing.JFrame {
             }
         });
 
+        jButton_CheckSaleStatus.setText("Check Sale Status ");
+        jButton_CheckSaleStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CheckSaleStatusActionPerformed(evt);
+            }
+        });
+
+        jButton_GenerateReport.setText("Generate Report");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton_saleapproval)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton_logout))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton_ManageProfile)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addComponent(jButton_GenerateReport)))
+                        .addGap(83, 83, 83))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton_invoice)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton_saleapproval)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton_ManageProfile)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                        .addComponent(jButton_logout)
-                        .addGap(83, 83, 83))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_CheckSaleStatus)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(166, 166, 166)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,13 +167,17 @@ public class Officer_Home extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jButton_invoice)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_invoice)
+                    .addComponent(jButton_CheckSaleStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_ManageProfile)
-                    .addComponent(jButton_logout))
+                    .addComponent(jButton_GenerateReport))
                 .addGap(18, 18, 18)
-                .addComponent(jButton_saleapproval)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_saleapproval)
+                    .addComponent(jButton_logout))
                 .addGap(38, 38, 38))
         );
 
@@ -227,6 +247,12 @@ public class Officer_Home extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_button_notificationActionPerformed
 
+    private void jButton_CheckSaleStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CheckSaleStatusActionPerformed
+//        Check_Sales_Status check = new Check_Sales_Status(userID);
+//        check.setVisible(true);
+//        this.dispose();
+    }//GEN-LAST:event_jButton_CheckSaleStatusActionPerformed
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -263,6 +289,8 @@ public class Officer_Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private furniture_sale_ordering_management_system.Shared_item.Button button_notification;
+    private javax.swing.JButton jButton_CheckSaleStatus;
+    private javax.swing.JButton jButton_GenerateReport;
     private javax.swing.JButton jButton_ManageProfile;
     private javax.swing.JButton jButton_invoice;
     private javax.swing.JButton jButton_logout;
