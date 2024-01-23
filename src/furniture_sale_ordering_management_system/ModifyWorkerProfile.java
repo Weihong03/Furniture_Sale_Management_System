@@ -21,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -41,6 +42,7 @@ public class ModifyWorkerProfile extends javax.swing.JFrame {
     public static String PhoneNumber;
     public static String Role;
     public static String userID;
+    private String selectedFilePath;
     
     
     private static final String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
@@ -407,31 +409,35 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     }//GEN-LAST:event_jTextField_AgeActionPerformed
 
     private void jButton_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_editActionPerformed
-        String ID = jTextField_ID.getText();
-        String Username = jTextField_Username.getText();
-        String Password = jTextField_Password.getText();
-        String Name = jTextField_Name.getText();
-        int Age = Integer.parseInt(jTextField_Age.getText());
-        String Email = jTextField_Email.getText();
-        String PhoneNumber = jTextField_PhoneNumber.getText();
-        String Role = jTextField_Role.getText();
+    String ID = jTextField_ID.getText();
+    String Username = jTextField_Username.getText();
+    String Password = jTextField_Password.getText();
+    String Name = jTextField_Name.getText();
+    int Age = Integer.parseInt(jTextField_Age.getText());
+    String Email = jTextField_Email.getText();
+    String PhoneNumber = jTextField_PhoneNumber.getText();
+    String Role = jTextField_Role.getText();
 
+    // Validate input fields
+    if (ID.isEmpty() || Username.isEmpty() || Password.isEmpty() || Name.isEmpty() || Email.isEmpty() || PhoneNumber.isEmpty() || Role.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill in all the required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-        // Get the selected room
+    // Check if a file path is selected
+    if (selectedFilePath == null) {
+        JOptionPane.showMessageDialog(this, "Please select an image file.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-        // Validate input fields
-        if (ID.isEmpty() || Username.isEmpty() || Password.isEmpty() || Name.isEmpty() ||Email.isEmpty() ||PhoneNumber.isEmpty() ||Role.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in all the required fields.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        // Perform the booking
-        boolean isModified = modifyBooking(ID,Username,Password,Name,Age,Email,PhoneNumber,Role);
+    // Perform the booking
+    boolean isModified = modifyBooking(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, selectedFilePath);
 
-        if (isModified) {
-            JOptionPane.showMessageDialog(this, "Profile modified successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Failed to modify the profile. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+    if (isModified) {
+        JOptionPane.showMessageDialog(this, "Profile modified successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "Failed to modify the profile. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButton_editActionPerformed
 
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
@@ -508,6 +514,9 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         // Display the selected file path
         System.out.println("Selected file: " + selectedFile.getAbsolutePath());
 
+        // Save the selected file path
+        selectedFilePath = selectedFile.getAbsolutePath();
+
         try {
             // Convert the File to URL
             URL imageUrl = selectedFile.toURI().toURL();
@@ -518,15 +527,17 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
             // Scale the image
             Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
             ImageIcon scaledIcon = new ImageIcon(image);
+
             // Set the JLabel icon using the scaled ImageIcon
             jLabel_icon.setIcon(scaledIcon);
+
         } catch (MalformedURLException ex) {
             // Handle exception (e.g., print error message or show a dialog)
             ex.printStackTrace();
         }
     }
     }//GEN-LAST:event_jButton_changeActionPerformed
-    
+
     private void jLabel_iconAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel_iconAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel_iconAncestorAdded
@@ -535,15 +546,21 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
      * @param args the command line arguments
      */
  
-   private boolean modifyBooking(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role) {
+ private boolean modifyBooking(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String selectedFilePath) {
     StringBuilder eventBuilder = new StringBuilder("Update Profile");
     try {
+        // Find the position of "src" in the selected file path
+        int srcIndex = selectedFilePath.indexOf("src");
+
+        // If "src" is found, extract the substring starting from "src"
+        String relativePath = (srcIndex != -1) ? selectedFilePath.substring(srcIndex) : selectedFilePath;
+
         Path inputFile = Path.of(BOOKING_FILE_PATH);
 
         List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
 
         boolean found = false;
-        for (int i = 0; i < lines.size() - 8; i += 9) {
+        for (int i = 0; i < lines.size() - 9; i += 9) {
             String line = lines.get(i);
             if (line.equals("ID: " + ID)) {
                 // Log the changes
@@ -565,7 +582,8 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
                 lines.set(i + 5, "Email: " + Email);
                 lines.set(i + 6, "Phone Number: " + PhoneNumber);
                 lines.set(i + 7, "Role: " + Role);
-                lines.set(i + 8, "");
+                lines.set(i + 8, "Filepath: " + relativePath);
+
                 found = true;
                 break;
             }
