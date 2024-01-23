@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author yuw18
  */
 public class ViewProduct extends javax.swing.JFrame {
-
+    public static String userID;
     /**
      * Creates new form ViewProduct
      */
@@ -93,7 +93,7 @@ public class ViewProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_viewActionPerformed
-          DefaultTableModel model = (DefaultTableModel) jTable_productListing.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTable_productListing.getModel();
         model.setRowCount(0); // Clear existing data in the table
 
         try (CSVReader reader = new CSVReader(new FileReader("Data/Yoyo-Furniture.csv"))) {

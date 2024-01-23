@@ -19,13 +19,9 @@ import javax.swing.table.TableRowSorter;
  */
 public class List_Approval extends javax.swing.JFrame {
     public static String userID;
-    private boolean approved;
     public static String salesPersonData;
     // constructor and other methods
 
-    public boolean isApproved() {
-        return approved;
-    }
     /**
      * Creates new form List_Approval
      */

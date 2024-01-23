@@ -8,6 +8,9 @@ package furniture_sale_ordering_management_system;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -16,6 +19,10 @@ import javax.swing.JOptionPane;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.Scanner;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -446,7 +453,49 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     }//GEN-LAST:event_jTextField_IDActionPerformed
 
     private void jButton_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_changeActionPerformed
-    
+String filePath = "";
+try {
+    File officerSalespersonFile = new File("Data/Officer_Salesperson.txt");
+    Scanner scanner = new Scanner(officerSalespersonFile);
+    filePath = scanner.nextLine();
+    scanner.close();
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+}
+
+// Set up the file chooser with the retrieved filepath
+JFileChooser fileChooser;
+if (!filePath.isEmpty()) {
+    File initialDirectory = new File(filePath);
+    if (initialDirectory.exists() && initialDirectory.isDirectory()) {
+        fileChooser = new JFileChooser(initialDirectory);
+    } else {
+        fileChooser = new JFileChooser("src/furniture_sale_ordering_management_system/Images");
+    }
+} else {
+    fileChooser = new JFileChooser("src/furniture_sale_ordering_management_system/Images");
+}
+fileChooser.setDialogTitle("Choose Profile Picture");
+fileChooser.setFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png"));
+
+int result = fileChooser.showOpenDialog(this);
+if (result == JFileChooser.APPROVE_OPTION) {
+    File selectedFile = fileChooser.getSelectedFile();
+    String imagePath = selectedFile.getAbsolutePath();
+
+	// Assuming jLabel2 is the JLabel for displaying the profile picture
+	ImageIcon newProfilePicture = new ImageIcon(imagePath);
+	jLabel2.setIcon(newProfilePicture);
+
+	// Save the selected image path back to Officer_Salesperson.txt
+	try {
+	    FileWriter writer = new FileWriter("Data/Officer_Salesperson.txt");
+	    writer.write(imagePath);
+	    writer.close();
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
+}
     }//GEN-LAST:event_jButton_changeActionPerformed
 
     private void jLabel2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel2AncestorAdded
