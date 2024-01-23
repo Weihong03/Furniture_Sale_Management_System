@@ -4,6 +4,7 @@
  */
 package furniture_sale_ordering_management_system;
 
+import furniture_sale_ordering_management_system.Shared_item.glasspanepopup.GlassPanePopup;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -27,6 +28,8 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         this.userID = userID;
         
         initComponents();
+        GlassPanePopup.install(this);
+        
         // Set the title of the window
         setTitle("Check Sale Product Status");
 
@@ -103,28 +106,32 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(374, 374, 374))
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_Back)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton_Refresh)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton_CheckStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_Back)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton_Refresh)
+                                .addGap(39, 39, 39)
+                                .addComponent(jButton_CheckStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(50, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(405, 405, 405)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_CheckStatus)
                     .addComponent(jButton_Refresh))
@@ -136,26 +143,28 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_CheckStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CheckStatusActionPerformed
-    // Get the selected row index
-    int selectedRowIndex = jTable_SalesProduct.getSelectedRow();
-
-    // Check if a row is selected
-    if (selectedRowIndex != -1) {
-        // Get the sale ID from the selected row (assuming it's in the first column)
-        String saleID = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 0);
-
-        // Create a new ProductStatusUpdater and start it in a new thread
-        ProductStatusUpdater statusUpdater = new ProductStatusUpdater(saleID);
-        new Thread(statusUpdater).start();
-
-        // Directly call refreshTable
-        refreshTable();
-    } else {
-        JOptionPane.showMessageDialog(this, "Please select a sale to check status.");
-    }
+        GlassPanePopup.showPopup(new Status());
+//    // Get the selected row index
+//    int selectedRowIndex = jTable_SalesProduct.getSelectedRow();
+//
+//    // Check if a row is selected
+//    if (selectedRowIndex != -1) {
+//        // Get the sale ID from the selected row (assuming it's in the first column)
+//        String saleID = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 0);
+//
+//        // Create a new ProductStatusUpdater and start it in a new thread
+//        ProductStatusUpdater statusUpdater = new ProductStatusUpdater(saleID);
+//        new Thread(statusUpdater).start();
+//
+//        // Directly call refreshTable
+//        refreshTable();
+//    } else {
+//        JOptionPane.showMessageDialog(this, "Please select a sale to check status.");
+//    }
     }//GEN-LAST:event_jButton_CheckStatusActionPerformed
 
     private void jButton_RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RefreshActionPerformed
