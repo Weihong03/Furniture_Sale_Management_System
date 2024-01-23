@@ -19,12 +19,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Check_Sales_Status extends javax.swing.JFrame {
 
-//    private String userID;
+    private static String userID;
     /**
      * Creates new form Check_Sales_Status
      */
-    public Check_Sales_Status() {
-//        this.userID = userID;
+    public Check_Sales_Status(String userID) {
+        this.userID = userID;
         
         initComponents();
         // Set the title of the window
@@ -43,6 +43,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -164,9 +165,9 @@ public class Check_Sales_Status extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_RefreshActionPerformed
 
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-//        Officer_Home home = new Officer_Home(userID);
-//        home.setVisible(true);
-//        dispose();
+        Officer_Home home = new Officer_Home(userID);
+        home.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     public void displaySales() {
@@ -201,7 +202,8 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         }
     }
 
-    private void refreshTable() {
+    // Add this method to refresh the table
+    public void refreshTable() {
         DefaultTableModel model = (DefaultTableModel) jTable_SalesProduct.getModel();
         model.setRowCount(0); // Clear existing data
         displaySales(); // Reload data into the table
@@ -237,7 +239,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Check_Sales_Status check = new Check_Sales_Status();
+                Check_Sales_Status check = new Check_Sales_Status(userID);
                 check.setVisible(true);
                 check.displaySales();
             }

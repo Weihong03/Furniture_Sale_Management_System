@@ -248,9 +248,10 @@ public class Officer_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_button_notificationActionPerformed
 
     private void jButton_CheckSaleStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CheckSaleStatusActionPerformed
-//        Check_Sales_Status check = new Check_Sales_Status(userID);
-//        check.setVisible(true);
-//        this.dispose();
+        Check_Sales_Status check = new Check_Sales_Status(userID);
+        check.setVisible(true);
+        check.displaySales();
+        this.dispose();
     }//GEN-LAST:event_jButton_CheckSaleStatusActionPerformed
 
 
