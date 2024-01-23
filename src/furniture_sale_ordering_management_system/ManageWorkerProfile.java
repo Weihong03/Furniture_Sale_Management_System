@@ -238,10 +238,12 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
             String Email = jTable_profiletable.getValueAt(selectedRowIndex, 5).toString();
             String PhoneNumber = jTable_profiletable.getValueAt(selectedRowIndex, 6).toString();
             String Role = jTable_profiletable.getValueAt(selectedRowIndex, 7).toString();
-
+            String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
+            
             // Create an instance of ModifyWorkerProfile and pass the selected data
             ModifyWorkerProfile modifyProfile = new ModifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, userID);
             modifyProfile.setInitialValues(ID, Username, Password, Name, Age, Email, PhoneNumber, Role);
+            modifyProfile.setIconFromFile(BOOKING_FILE_PATH);
             modifyProfile.setVisible(true);
         } else {
             // No row selected, display an error message or perform appropriate handling

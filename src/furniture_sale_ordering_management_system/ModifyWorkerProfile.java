@@ -7,11 +7,14 @@ package furniture_sale_ordering_management_system;
 
 
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import javax.swing.JFrame;
@@ -19,7 +22,6 @@ import javax.swing.JOptionPane;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.Scanner;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -39,7 +41,8 @@ public class ModifyWorkerProfile extends javax.swing.JFrame {
     public static String PhoneNumber;
     public static String Role;
     public static String userID;
-
+    
+    
     private static final String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
     
 
@@ -128,9 +131,8 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         jTextField_PhoneNumber = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextField_Role = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel_icon = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton_change = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -243,13 +245,13 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
 
         jTextField_Role.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/profile picture1.jpg"))); // NOI18N
-        jLabel2.setToolTipText("");
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel2.addAncestorListener(new javax.swing.event.AncestorListener() {
+        jLabel_icon.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/profile picture1.jpg"))); // NOI18N
+        jLabel_icon.setToolTipText("");
+        jLabel_icon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel_icon.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jLabel2AncestorAdded(evt);
+                jLabel_iconAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -259,8 +261,6 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Profile Picture");
-
-        jButton1.setText("jButton1");
 
         jButton_change.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton_change.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/change profile.png"))); // NOI18N
@@ -310,13 +310,9 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
                         .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(95, 95, 95))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jLabel2)
-                        .addGap(0, 43, Short.MAX_VALUE))
+                        .addComponent(jLabel_icon)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(jButton_change)
@@ -330,9 +326,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel3)
                 .addGap(0, 0, 0)
@@ -357,7 +351,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jTextField_Age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel_icon))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -372,7 +366,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField_Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_back)
                             .addComponent(jButton_edit))
@@ -451,56 +445,91 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jTextField_IDActionPerformed
+   public void setIconFromFile(String BOOKING_FILE_PATH) {
+    String imagePath = readFilePathFromFile(BOOKING_FILE_PATH, ID);
+
+    // Set the icon for jLabel1
+    if (!imagePath.isEmpty()) {
+        try {
+            URL imageUrl = new File(imagePath).toURI().toURL();
+            ImageIcon icon = new ImageIcon(imageUrl);
+            Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
+            ImageIcon scaledIcon = new ImageIcon(image);
+            jLabel_icon.setIcon(scaledIcon);
+            System.out.println("Setting icon for jLabel1 with filepath: " + imagePath); // Debug statement
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    } else {
+        System.out.println("No icon set for jLabel1. Filepath is empty."); // Debug statement
+    }
+}
+
+    private String readFilePathFromFile(String BOOKING_FILE_PATH, String ID) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BOOKING_FILE_PATH))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            // Check if the line starts with the expected field
+            if (line.startsWith("ID: " + ID)) {
+                // Extract filepath information
+                while ((line = reader.readLine()) != null) {
+                    if (line.startsWith("Filepath: ")) {
+                        String imagePath = line.substring("Filepath: ".length()).trim();
+                        System.out.println("Read filepath from file: " + imagePath); // Debug statement
+                        return imagePath;
+                    }
+                }
+            } else {
+                System.out.println("Unexpected line format. Line: " + line); // Debug statement
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    System.out.println("No filepath found in the file."); // Debug statement
+    return "";
+}
 
     private void jButton_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_changeActionPerformed
-String filePath = "";
-try {
-    File officerSalespersonFile = new File("Data/Officer_Salesperson.txt");
-    Scanner scanner = new Scanner(officerSalespersonFile);
-    filePath = scanner.nextLine();
-    scanner.close();
-} catch (FileNotFoundException e) {
-    e.printStackTrace();
-}
+     JFileChooser fileChooser = new JFileChooser("src/furniture_sale_ordering_management_system/Images");
 
-// Set up the file chooser with the retrieved filepath
-JFileChooser fileChooser;
-if (!filePath.isEmpty()) {
-    File initialDirectory = new File(filePath);
-    if (initialDirectory.exists() && initialDirectory.isDirectory()) {
-        fileChooser = new JFileChooser(initialDirectory);
-    } else {
-        fileChooser = new JFileChooser("src/furniture_sale_ordering_management_system/Images");
+    // Set the file filter to only allow image files
+    FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png", "gif");
+    fileChooser.setFileFilter(filter);
+
+    // Show the file chooser dialog
+    int result = fileChooser.showOpenDialog(this);
+
+    // Check if the user selected a file
+    if (result == JFileChooser.APPROVE_OPTION) {
+        // Get the selected file
+        File selectedFile = fileChooser.getSelectedFile();
+
+        // Display the selected file path
+        System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+
+        try {
+            // Convert the File to URL
+            URL imageUrl = selectedFile.toURI().toURL();
+
+            // Create ImageIcon from URL
+            ImageIcon icon = new ImageIcon(imageUrl);
+
+            // Scale the image
+            Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
+            ImageIcon scaledIcon = new ImageIcon(image);
+            // Set the JLabel icon using the scaled ImageIcon
+            jLabel_icon.setIcon(scaledIcon);
+        } catch (MalformedURLException ex) {
+            // Handle exception (e.g., print error message or show a dialog)
+            ex.printStackTrace();
+        }
     }
-} else {
-    fileChooser = new JFileChooser("src/furniture_sale_ordering_management_system/Images");
-}
-fileChooser.setDialogTitle("Choose Profile Picture");
-fileChooser.setFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png"));
-
-int result = fileChooser.showOpenDialog(this);
-if (result == JFileChooser.APPROVE_OPTION) {
-    File selectedFile = fileChooser.getSelectedFile();
-    String imagePath = selectedFile.getAbsolutePath();
-
-	// Assuming jLabel2 is the JLabel for displaying the profile picture
-	ImageIcon newProfilePicture = new ImageIcon(imagePath);
-	jLabel2.setIcon(newProfilePicture);
-
-	// Save the selected image path back to Officer_Salesperson.txt
-	try {
-	    FileWriter writer = new FileWriter("Data/Officer_Salesperson.txt");
-	    writer.write(imagePath);
-	    writer.close();
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
-}
     }//GEN-LAST:event_jButton_changeActionPerformed
-
-    private void jLabel2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel2AncestorAdded
+    
+    private void jLabel_iconAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel_iconAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel2AncestorAdded
+    }//GEN-LAST:event_jLabel_iconAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -566,6 +595,7 @@ private void logChange(StringBuilder eventBuilder, String fieldName, String oldV
     }
 }
 
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -606,21 +636,21 @@ private void logChange(StringBuilder eventBuilder, String fieldName, String oldV
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
         ModifyWorkerProfile modifyProfile = new ModifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role,userID);
+        modifyProfile.setIconFromFile(BOOKING_FILE_PATH);
         modifyProfile.setVisible(true);
-
+ 
+        
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_back;
     private javax.swing.JButton jButton_change;
     private javax.swing.JButton jButton_edit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -628,6 +658,7 @@ private void logChange(StringBuilder eventBuilder, String fieldName, String oldV
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_icon;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField_Age;

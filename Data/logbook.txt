@@ -93,3 +93,35 @@ User ID: A002;
 Timestamp: 2024-01-11 09:19:29;
 Event: Update Profile, ID: from 'A001,' to 'A002', Update ID, Username: from 'Leeqiwen,' to 'Alisontang', Update Username, Password: from 'Qiwen1234,' to 'Alison123,', Update Password, Name: from 'Lee Qi Wen,' to 'Alison Tang Bee Hoon,', Update Name, Age: from '50,' to '24', Update Age, Email: from 'TP065421@mail.apu.edu.my,' to 'TP065999@mail.apu.edu.my,', Update Email, Phone Number: from '0128881234,' to '0129994321,', Update Phone Number;
 
+User ID: A001;
+Timestamp: 2024-01-23 16:32:21;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-23 16:32:45;
+Event: Update Profile,Changes made to profile with ID S001,:;
+
+User ID: A001;
+Timestamp: 2024-01-23 16:34:01;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-23 16:37:16;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-23 16:39:20;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-23 16:41:37;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-23 16:41:48;
+Event: Update Profile,Changes made to profile with ID S001,:;
+
+User ID: A001;
+Timestamp: 2024-01-23 16:43:25;
+Event: Login;
+
