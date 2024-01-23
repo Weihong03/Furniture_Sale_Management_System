@@ -9,7 +9,7 @@ Salesperson: Voon Jin Hui,
 Confirmation: Default,
 Officer: Default,
 Invoice: Default,
-Status: Closed Sale
+Status: In Progress,
 
 ID: Q013,
 Amount: RM355.0,
@@ -22,7 +22,7 @@ Salesperson: Tan Zu Seng,
 Confirmation: Default,
 Officer: Default,
 Invoice: Default,
-Status: Closed Sale
+Status: In Progress,
 
 ID: Q016,
 Amount: RM3304.0,
