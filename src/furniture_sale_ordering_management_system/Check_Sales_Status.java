@@ -169,7 +169,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
 //        dispose();
     }//GEN-LAST:event_jButton_BackActionPerformed
 
-        public void displaySales() {
+    public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_SalesProduct.getModel();
         model.setRowCount(0); // Clear existing data
 
@@ -206,7 +206,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         model.setRowCount(0); // Clear existing data
         displaySales(); // Reload data into the table
     }
-    
+
     /**
      * @param args the command line arguments
      */
