@@ -16,6 +16,7 @@ Age: 24,
 Email: popo12,
 Phone Number: 29348828248,
 Role: Officer,
+Filepath: src\furniture_sale_ordering_management_system\Images\profile picture2.jpg
 
 ID: S002,
 Username: Horongwei,
@@ -25,6 +26,7 @@ Age: 35,
 Email: rongweilovearyssa@gmail.com,
 Phone Number: 0303003,
 Role: Salesperson,
+Filepath: src\furniture_sale_ordering_management_system\Images\profile picture2.jpg
 
 ID: S003,
 Username: Aryssa,
@@ -34,6 +36,7 @@ Age: 60,
 Email: iloverongwei@gmail.com,
 Phone Number: 999,
 Role: Salesperson,
+Filepath: src\furniture_sale_ordering_management_system\Images\profile picture4.jpg
 
 ID: O004,
 Username: Leeboonjie,
@@ -43,6 +46,7 @@ Age: 25,
 Email: boonjie123@gmail.com,
 Phone Number: 0123456789,
 Role: Officer,
+Filepath: src\furniture_sale_ordering_management_system\Images\profile picture1.jpg
 
 ID: O005,
 Username: Fengkanglim,
@@ -52,4 +56,5 @@ Age: 59,
 Email: fengkang123@gmail.com,
 Phone Number: 0198754498,
 Role: Officer,
+Filepath: src\furniture_sale_ordering_management_system\Images\profile picture3.jpg
 
