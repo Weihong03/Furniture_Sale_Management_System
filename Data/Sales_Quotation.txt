@@ -35,7 +35,7 @@ Salesperson: Horongwei,
 Confirmation: Default,
 Officer: Default,
 Invoice: No,
-Status: In Progress,
+Status: Closed Sale,
 
 ID: Q017,
 Amount: RM3344.0,

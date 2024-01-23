@@ -31,10 +31,10 @@ public class ProductStatusUpdater implements Runnable {
 
     private void simulateProductStatusProgression(String saleID) {
         // Simulate each status (Assembly, Testing, Quality Check, Closed Sale) with a delay
-        simulateStatus(saleID, "Assembly", 3000);
-        simulateStatus(saleID, "Testing", 3000);
-        simulateStatus(saleID, "Quality Check", 3000);
-        simulateStatus(saleID, "Closed Sale", 3000);
+        simulateStatus(saleID, "Assembly,", 3000);
+        simulateStatus(saleID, "Testing,", 3000);
+        simulateStatus(saleID, "Quality Check,", 3000);
+        simulateStatus(saleID, "Closed Sale,", 3000);
     }
 
     private void simulateStatus(String saleID, String status, int delay) {
