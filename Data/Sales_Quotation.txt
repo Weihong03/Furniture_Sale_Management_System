@@ -9,7 +9,7 @@ Salesperson: Voon Jin Hui,
 Confirmation: Approved,
 Officer: Default,
 Invoice: Default,
-Status: In progress,
+Status: Closed Sale,
 
 ID: Q013,
 Amount: RM355.0,
