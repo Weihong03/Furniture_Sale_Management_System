@@ -147,10 +147,10 @@ public class Check_Sales_Status extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_CheckStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CheckStatusActionPerformed
-// Get the selected row index
-   int selectedRowIndex = jTable_SalesProduct.getSelectedRow();
-   // Check if a row is selected
-   if (selectedRowIndex != -1) {
+    // Get the selected row index
+    int selectedRowIndex = jTable_SalesProduct.getSelectedRow();
+    // Check if a row is selected
+    if (selectedRowIndex != -1) {
        // Get the confirmation status from the selected row (assuming it's in the 9th column)
        String confirmationStatus = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 8);
        // Check if the confirmation is approved
@@ -167,9 +167,9 @@ public class Check_Sales_Status extends javax.swing.JFrame {
        } else {
            JOptionPane.showMessageDialog(this, "Cannot check status. Sale confirmation is not approved.");
        }
-   } else {
+    } else {
        JOptionPane.showMessageDialog(this, "Please select a sale to check status.");
-   }
+    }
     }//GEN-LAST:event_jButton_CheckStatusActionPerformed
 
     private void jButton_RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RefreshActionPerformed
