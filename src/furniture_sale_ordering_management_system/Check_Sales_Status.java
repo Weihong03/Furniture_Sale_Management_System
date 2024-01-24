@@ -147,24 +147,29 @@ public class Check_Sales_Status extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_CheckStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CheckStatusActionPerformed
-    GlassPanePopup.showPopup(new Status());
-    // Get the selected row index
-    int selectedRowIndex = jTable_SalesProduct.getSelectedRow();
-
-    // Check if a row is selected
-    if (selectedRowIndex != -1) {
-        // Get the sale ID from the selected row (assuming it's in the first column)
-        String saleID = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 0);
-
-        // Create a new ProductStatusUpdater and start it in a new thread
-        ProductStatusUpdater statusUpdater = new ProductStatusUpdater(saleID);
-        new Thread(statusUpdater).start();
-
-        // Directly call refreshTable
-        refreshTable();
-    } else {
-        JOptionPane.showMessageDialog(this, "Please select a sale to check status.");
-    }
+// Get the selected row index
+   int selectedRowIndex = jTable_SalesProduct.getSelectedRow();
+   // Check if a row is selected
+   if (selectedRowIndex != -1) {
+       // Get the confirmation status from the selected row (assuming it's in the 9th column)
+       String confirmationStatus = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 8);
+       // Check if the confirmation is approved
+       if ("approved".equalsIgnoreCase(confirmationStatus)) {
+           // Show the GlassPanePopup only when the conditions are met
+           GlassPanePopup.showPopup(new Status());
+           // Get the sale ID from the selected row (assuming it's in the first column)
+           String saleID = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 0);
+           // Create a new ProductStatusUpdater and start it in a new thread
+           ProductStatusUpdater statusUpdater = new ProductStatusUpdater(saleID);
+           new Thread(statusUpdater).start();
+           // Directly call refreshTable
+           refreshTable();
+       } else {
+           JOptionPane.showMessageDialog(this, "Cannot check status. Sale confirmation is not approved.");
+       }
+   } else {
+       JOptionPane.showMessageDialog(this, "Please select a sale to check status.");
+   }
     }//GEN-LAST:event_jButton_CheckStatusActionPerformed
 
     private void jButton_RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RefreshActionPerformed
