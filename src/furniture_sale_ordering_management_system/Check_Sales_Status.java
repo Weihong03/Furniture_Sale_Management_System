@@ -162,8 +162,6 @@ public class Check_Sales_Status extends javax.swing.JFrame {
            // Create a new ProductStatusUpdater and start it in a new thread
            ProductStatusUpdater statusUpdater = new ProductStatusUpdater(saleID);
            new Thread(statusUpdater).start();
-           // Directly call refreshTable
-           refreshTable();
        } else {
            JOptionPane.showMessageDialog(this, "Cannot check status. Sale confirmation is not approved.");
        }
