@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package furniture_sale_ordering_management_system.progressindicator;
+package furniture_sale_ordering_management_system;
 
 /**
  *
@@ -15,7 +15,7 @@ public class Step extends javax.swing.JPanel {
      */
     public Step(int step) {
         initComponents();
-        jLabel_Step.setText("Step" + step);
+        jLabel_Step.setText("Step " + step);
     }
 
     /**
@@ -30,6 +30,7 @@ public class Step extends javax.swing.JPanel {
         jLabel_Step = new javax.swing.JLabel();
 
         jLabel_Step.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel_Step.setForeground(new java.awt.Color(165, 165, 165));
         jLabel_Step.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_Step.setText("Step 1");
 
@@ -46,7 +47,7 @@ public class Step extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel_Step, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addComponent(jLabel_Step, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
