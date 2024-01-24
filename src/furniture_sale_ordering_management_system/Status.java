@@ -61,6 +61,7 @@ public class Status extends javax.swing.JPanel {
         });
         progressIndicator.setOpaque(false);
         progressIndicator.setProgress(0.0F);
+        progressIndicator.setProgressColor(new java.awt.Color(51, 255, 51));
         progressIndicator.setProgressColorGradient(new java.awt.Color(255, 51, 51));
 
         button_Next.setText("Next");

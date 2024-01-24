@@ -154,7 +154,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
        // Get the confirmation status from the selected row (assuming it's in the 9th column)
        String confirmationStatus = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 8);
        // Check if the confirmation is approved
-       if ("approved".equalsIgnoreCase(confirmationStatus)) {
+       if ("Approved,".equalsIgnoreCase(confirmationStatus)) {
            // Show the GlassPanePopup only when the conditions are met
            GlassPanePopup.showPopup(new Status());
            // Get the sale ID from the selected row (assuming it's in the first column)

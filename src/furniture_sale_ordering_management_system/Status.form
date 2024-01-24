@@ -63,6 +63,9 @@
         </Property>
         <Property name="opaque" type="boolean" value="false"/>
         <Property name="progress" type="float" value="0.0"/>
+        <Property name="progressColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="ff" red="33" type="rgb"/>
+        </Property>
         <Property name="progressColorGradient" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="ff" type="rgb"/>
         </Property>
