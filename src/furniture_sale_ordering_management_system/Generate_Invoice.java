@@ -247,41 +247,9 @@ public class Generate_Invoice extends javax.swing.JFrame {
             String Salesperson = jTable_Salestable.getValueAt(selectedRowIndex, 7).toString();
             String Officer = jTable_Salestable.getValueAt(selectedRowIndex, 9).toString();
 
-            // Create a HashMap to store the parameters
-            Map<String, Object> parameters = new HashMap<>();
-            parameters.put("Quotation_id", ID);
-            parameters.put("Total", Amount);
-            parameters.put("Quotation_date", Date);
-            parameters.put("Product", Product);
-            parameters.put("Item_id", ItemID);
-            parameters.put("Price", Price);
-            parameters.put("Customer", Customer);
-            parameters.put("Salesperson", Salesperson);
-            parameters.put("Officer", Officer);
-
-            // Pass the HashMap to the JasperReport for generation
-            generateInvoice(parameters);
-
         } else {
             // No row selected, display an error message or perform appropriate handling
             JOptionPane.showMessageDialog(this, "Please select a Sales to modify.");
-        }
-    }
-
-    // Method to generate the invoice using JasperReport
-    private void generateInvoice(Map<String, Object> parameters) {
-        try {
-            // Load and compile the JasperReport file
-            JasperReport jasperReport = JasperCompileManager.compileReport("src/furniture_sale_ordering_management_system/Shared_item/MyReports/Invoice.jasper");
-
-            // Create a JasperPrint object by filling the report with data
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
-
-            // View the JasperPrint in the JasperViewer
-            JasperViewer.viewReport(jasperPrint, false);
-
-        } catch (JRException e) {
-            e.printStackTrace();
         }
     }//GEN-LAST:event_jButton_generateActionPerformed
 
