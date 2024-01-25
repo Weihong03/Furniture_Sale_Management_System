@@ -114,20 +114,20 @@ public class Sale_Approval extends javax.swing.JFrame {
         jTable_Salestable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable_Salestable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Amount", "Date", "Salesperson", "Confirmation", "Approved by", "Invoice Generated"
+                "ID", "Amount", "Date", "Product", "Item ID", "Price", "Customer", "Salesperson", "Confirmation", "Approved by", "Invoice Generated"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -268,10 +268,14 @@ public class Sale_Approval extends javax.swing.JFrame {
             // Remove "RM" from the string before parsing
             int Amount = Integer.parseInt(jTable_Salestable.getValueAt(selectedRowIndex, 1).toString().replace("RM", ""));
             String Date = jTable_Salestable.getValueAt(selectedRowIndex, 2).toString();
-            String Salesperson = jTable_Salestable.getValueAt(selectedRowIndex, 3).toString();
+            String Product = jTable_Salestable.getValueAt(selectedRowIndex, 3).toString();
+            String ItemID = jTable_Salestable.getValueAt(selectedRowIndex, 4).toString();
+            int Price = Integer.parseInt(jTable_Salestable.getValueAt(selectedRowIndex, 5).toString());
+            String Customer = jTable_Salestable.getValueAt(selectedRowIndex, 6).toString();
+            String Salesperson = jTable_Salestable.getValueAt(selectedRowIndex, 7).toString();
 
             // Create an instance of ModifyBooking and pass the selected data
-            ModifySales modifySales = new ModifySales(ID, Amount, Date, Salesperson, userID);
+            ModifySales modifySales = new ModifySales(ID, Amount, Date, Product, ItemID, Price, Customer, Salesperson, userID);
             modifySales.setVisible(true);
             this.dispose();
         } else {
@@ -298,8 +302,8 @@ public class Sale_Approval extends javax.swing.JFrame {
         }
 
         // Calculate the line indices of the selected row's data
-        int startIndex = selectedRow * 9; // Each data block has 9 lines
-        int endIndex = Math.min(startIndex + 8, lines.size() - 1);
+        int startIndex = selectedRow * 13; // Each data block has 9 lines
+        int endIndex = Math.min(startIndex + 12, lines.size() - 1);
 
         // Check if the selected row is within the bounds of the file
         if (startIndex >= 0 && endIndex < lines.size()) {
@@ -389,8 +393,8 @@ public class Sale_Approval extends javax.swing.JFrame {
                 String line = lines.get(i);
                 if (line.startsWith("ID: " + ID + ",")) {
                     String username = getUsernameFromID(userID);
-                    lines.set(i + 4, "Confirmation: " + Confirmation + ",");
-                    lines.set(i + 5, "Officer: " + username + ",");
+                    lines.set(i + 8, "Confirmation: " + Confirmation + ",");
+                    lines.set(i + 9, "Officer: " + username + ",");
                     Files.write(inputFile, lines, StandardCharsets.UTF_8);
                     return true;
                 }
@@ -424,10 +428,10 @@ public class Sale_Approval extends javax.swing.JFrame {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("ID: ")) {
-                    String[] rowData = new String[8];
+                    String[] rowData = new String[12];
                     // Remove trailing comma if present in the ID
                     rowData[0] = line.split(": ")[1].replaceAll(",\\s*$", "").trim();
-                    for (int i = 1; i < 8; i++) {
+                    for (int i = 1; i < 12; i++) {
                         line = br.readLine();
                         if (line != null && line.contains(": ")) {
                             String[] parts = line.split(": ", 2);

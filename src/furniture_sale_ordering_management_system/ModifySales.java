@@ -30,20 +30,28 @@ public class ModifySales extends javax.swing.JFrame {
     public static String ID;
     public static int Amount;
     public static String Date;
+    public static String Product;
+    public static String ItemID;
+    public static int Price;
+    public static String Customer;
     public static String Salesperson;
     private String userID;
 
     private static final String BOOKING_FILE_PATH = "Data/Sales_Quotation.txt";
 
-    private ModifySales(String ID, int Amount, String Date, String Salesperson) {
+    private ModifySales(String ID, int Amount, String Date, String Product, String ItemID, int Price, String Customer, String Salesperson) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public ModifySales(String ID, int Amount, String Date, String Salesperson, String userID) {
+    public ModifySales(String ID, int Amount, String Date, String Product, String ItemID, int Price, String Customer, String Salesperson, String userID) {
         this.userID = userID;
         this.ID = ID;
         this.Amount = Amount;
         this.Date = Date;
+        this.Product = Product;
+        this.ItemID = ItemID;
+        this.Price = Price;
+        this.Customer = Customer;
         this.Salesperson = Salesperson;
 
         initComponents();
@@ -68,6 +76,11 @@ public class ModifySales extends javax.swing.JFrame {
         String amount = Integer.toString(Amount);
         jTextField_Amount.setText(amount);
         jTextField_Salesperson.setText(Salesperson);
+        jTextField_product.setText(Product);
+        jTextField_itemid.setText(ItemID);
+        String price = Integer.toString(Price);
+        jTextField_price.setText(price);
+        jTextField_customer.setText(amount);
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
         try {
             Date date = sdf.parse(Date);
@@ -95,6 +108,14 @@ public class ModifySales extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jTextField_ID = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField_product = new javax.swing.JTextField();
+        jTextField_itemid = new javax.swing.JTextField();
+        jTextField_price = new javax.swing.JTextField();
+        jTextField_customer = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,6 +198,31 @@ public class ModifySales extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setText("Price:");
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel3.setText("Product:");
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel8.setText("Customer:");
+
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel9.setText("Item ID:");
+
+        jTextField_product.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        jTextField_itemid.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        jTextField_price.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        jTextField_customer.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jTextField_customer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_customerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -185,24 +231,34 @@ public class ModifySales extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(322, 322, 322)
-                        .addComponent(jButton_back)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_modify))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(172, 172, 172)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9))
                             .addComponent(jLabel5)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField_Amount, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                             .addComponent(jTextField_ID)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField_Salesperson)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jTextField_product)
+                            .addComponent(jTextField_itemid)
+                            .addComponent(jTextField_price)
+                            .addComponent(jTextField_customer)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(322, 322, 322)
+                        .addComponent(jButton_back)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_modify)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -222,13 +278,32 @@ public class ModifySales extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jTextField_itemid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField_customer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField_Salesperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_back)
                     .addComponent(jButton_modify))
@@ -271,17 +346,21 @@ public class ModifySales extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No date is selected.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        String Product = jTextField_product.getText();
+        String ItemID = jTextField_itemid.getText();
+        int Price = Integer.parseInt(jTextField_price.getText());
+        String Customer = jTextField_customer.getText();
         String Salesperson = jTextField_Salesperson.getText();
 
         // Get the selected room
         // Validate input fields
-        if (ID.isEmpty() || Amount <= 0 || Date.isEmpty() || Salesperson.isEmpty()) {
+        if (ID.isEmpty() || Amount <= 0 || Date.isEmpty() || Product.isEmpty() || ItemID.isEmpty() || Price <= 0 || Customer.isEmpty() || Salesperson.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in all the required fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         // Perform the modify
-        boolean isModified = modifySales(ID, Amount, Date, Salesperson);
+        boolean isModified = modifySales(ID, Amount, Date, Product, ItemID, Price, Customer, Salesperson);
 
         if (isModified) {
             JOptionPane.showMessageDialog(this, "Quotation modified successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -305,7 +384,11 @@ public class ModifySales extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_IDActionPerformed
 
-    private boolean modifySales(String ID, int Amount, String Date, String Salesperson) {
+    private void jTextField_customerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_customerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_customerActionPerformed
+
+    private boolean modifySales(String ID, double Amount, String Date, String Product, String ItemID, int Price, String Customer, String Salesperson) {
         try {
             Path inputFile = Path.of(BOOKING_FILE_PATH);
 
@@ -316,7 +399,11 @@ public class ModifySales extends javax.swing.JFrame {
                 if (line.startsWith("ID: " + ID + ",")) {
                     lines.set(i + 1, "Amount: RM" + Amount + ",");
                     lines.set(i + 2, "Date: " + Date + ",");
-                    lines.set(i + 3, "Salesperson: " + Salesperson + ",");
+                    lines.set(i + 3, "Product: " + Product + ",");
+                    lines.set(i + 4, "Item ID: " + ItemID + ",");
+                    lines.set(i + 5, "Price: " + Price + ",");
+                    lines.set(i + 6, "Customer: " + Customer + ",");
+                    lines.set(i + 7, "Salesperson: " + Salesperson + ",");
                     Files.write(inputFile, lines, StandardCharsets.UTF_8);
                     return true;
                 }
@@ -366,7 +453,7 @@ public class ModifySales extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ModifySales modifySales = new ModifySales(ID, Amount, Date, Salesperson);
+                ModifySales modifySales = new ModifySales(ID, Amount, Date, Product, ItemID, Price, Customer, Salesperson);
                 modifySales.setVisible(true);
 
             }
@@ -379,15 +466,23 @@ public class ModifySales extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField_Amount;
     private javax.swing.JTextField jTextField_ID;
     private javax.swing.JTextField jTextField_Salesperson;
+    private javax.swing.JTextField jTextField_customer;
+    private javax.swing.JTextField jTextField_itemid;
+    private javax.swing.JTextField jTextField_price;
+    private javax.swing.JTextField jTextField_product;
     // End of variables declaration//GEN-END:variables
 
 }
