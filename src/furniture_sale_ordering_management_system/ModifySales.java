@@ -334,7 +334,7 @@ public class ModifySales extends javax.swing.JFrame {
 
     private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
         String ID = jTextField_ID.getText();
-        int Amount = Integer.parseInt(jTextField_Amount.getText());
+        double Amount = Double.parseDouble(jTextField_Amount.getText());
         Date selectedDate = jDateChooser1.getDate();
         String Date = "";  // Declare the variable here
 
@@ -388,7 +388,7 @@ public class ModifySales extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_customerActionPerformed
 
-    private boolean modifySales(String ID, int Amount, String Date, String Product, String ItemID, int Price, String Customer, String Salesperson) {
+    private boolean modifySales(String ID, double Amount, String Date, String Product, String ItemID, int Price, String Customer, String Salesperson) {
         try {
             Path inputFile = Path.of(BOOKING_FILE_PATH);
 
