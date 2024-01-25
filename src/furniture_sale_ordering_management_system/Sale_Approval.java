@@ -280,7 +280,7 @@ public class Sale_Approval extends javax.swing.JFrame {
             this.dispose();
         } else {
             // No row selected, display an error message or perform appropriate handling
-            JOptionPane.showMessageDialog(this, "Please select a booking to modify.");
+            JOptionPane.showMessageDialog(this, "Please select a Sales to modify.");
         }
     }//GEN-LAST:event_jButton_modifyActionPerformed
 
