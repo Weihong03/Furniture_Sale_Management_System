@@ -1,39 +1,46 @@
 package furniture_sale_ordering_management_system;
 
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-
-
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
  * @author Wei Hong
  */
 public class Generate_Invoice extends javax.swing.JFrame {
+
     private String userID;
+
     /**
      * Creates new form ManageBooking
      */
     public Generate_Invoice(String userID) {
         this.userID = userID;
-        
+
         initComponents();
         // Set the title of the window
         setTitle("Generate Invoice");
@@ -226,7 +233,56 @@ public class Generate_Invoice extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_searchActionPerformed
 
     private void jButton_generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_generateActionPerformed
+        int selectedRowIndex = jTable_Salestable.getSelectedRow();
+        if (selectedRowIndex >= 0) {
+            // Get the values from the selected row
+            String ID = jTable_Salestable.getValueAt(selectedRowIndex, 0).toString();
+            // Remove "RM" from the string before parsing
+            String Amount = jTable_Salestable.getValueAt(selectedRowIndex, 1).toString().replace("RM", "");
+            String Date = jTable_Salestable.getValueAt(selectedRowIndex, 2).toString();
+            String Product = jTable_Salestable.getValueAt(selectedRowIndex, 3).toString();
+            String ItemID = jTable_Salestable.getValueAt(selectedRowIndex, 4).toString();
+            String Price = jTable_Salestable.getValueAt(selectedRowIndex, 5).toString().replace("RM", "");
+            String Customer = jTable_Salestable.getValueAt(selectedRowIndex, 6).toString();
+            String Salesperson = jTable_Salestable.getValueAt(selectedRowIndex, 7).toString();
+            String Officer = jTable_Salestable.getValueAt(selectedRowIndex, 9).toString();
 
+            // Create a HashMap to store the parameters
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("Quotation_id", ID);
+            parameters.put("Total", Amount);
+            parameters.put("Quotation_date", Date);
+            parameters.put("Product", Product);
+            parameters.put("Item_id", ItemID);
+            parameters.put("Price", Price);
+            parameters.put("Customer", Customer);
+            parameters.put("Salesperson", Salesperson);
+            parameters.put("Officer", Officer);
+
+            // Pass the HashMap to the JasperReport for generation
+            generateInvoice(parameters);
+
+        } else {
+            // No row selected, display an error message or perform appropriate handling
+            JOptionPane.showMessageDialog(this, "Please select a Sales to modify.");
+        }
+    }
+
+    // Method to generate the invoice using JasperReport
+    private void generateInvoice(Map<String, Object> parameters) {
+        try {
+            // Load and compile the JasperReport file
+            JasperReport jasperReport = JasperCompileManager.compileReport("src/furniture_sale_ordering_management_system/Shared_item/MyReports/Invoice.jasper");
+
+            // Create a JasperPrint object by filling the report with data
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+
+            // View the JasperPrint in the JasperViewer
+            JasperViewer.viewReport(jasperPrint, false);
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton_generateActionPerformed
 
     public void searchSales(String searchText) {
@@ -237,7 +293,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
         rowSorter.setRowFilter(rowFilter);
     }
 
-        private void refreshTable() {
+    private void refreshTable() {
         // Clear the existing data from the table
         DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
         model.setRowCount(0);
