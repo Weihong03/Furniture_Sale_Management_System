@@ -9,8 +9,14 @@ package furniture_sale_ordering_management_system;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -107,20 +113,20 @@ public class Generate_Invoice extends javax.swing.JFrame {
         jTable_Salestable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable_Salestable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Amount", "Date", "Salesperson", "Confirmation", "Confirmed by"
+                "ID", "Amount", "Date", "Product", "Item ID", "Price", "Customer", "Salesperson", "Confirmation", "Confirmed by", "Invoice Generated"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -231,6 +237,66 @@ public class Generate_Invoice extends javax.swing.JFrame {
         rowSorter.setRowFilter(rowFilter);
     }
 
+        private void refreshTable() {
+        // Clear the existing data from the table
+        DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
+        model.setRowCount(0);
+
+        dispose();
+        Sale_Approval saleApproval = new Sale_Approval(userID);
+        saleApproval.setVisible(true);
+        saleApproval.displaySales(); // Call the method to display the Sales
+
+        jTable_Salestable.revalidate();
+        jTable_Salestable.repaint();
+    }
+
+    public void displaySales() {
+        DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
+        model.setRowCount(0); // Clear existing data
+
+        try (BufferedReader br = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.startsWith("ID: ")) {
+                    String[] rowData = new String[12];
+                    // Remove trailing comma if present in the ID
+                    rowData[0] = line.split(": ")[1].replaceAll(",\\s*$", "").trim();
+                    for (int i = 1; i < 12; i++) {
+                        line = br.readLine();
+                        if (line != null && line.contains(": ")) {
+                            String[] parts = line.split(": ", 2);
+                            if (parts.length == 2) {
+                                // Remove trailing comma if present
+                                String value = parts[1].replaceAll(",\\s*$", "");
+                                // Check if the data is "Default" and set to empty if true
+                                rowData[i] = "Default".equals(value) ? "-" : value;
+                            } else {
+                                // Handle unexpected line format
+                                rowData[i] = " ";
+                            }
+                        } else {
+                            // Handle unexpected line format
+                            rowData[i] = " ";
+                        }
+                    }
+                    model.addRow(rowData);
+                }
+            }
+            // Set cell alignment to center
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+            for (int i = 0; i < jTable_Salestable.getColumnCount(); i++) {
+                jTable_Salestable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
+            // Set header alignment to center
+            ((DefaultTableCellRenderer) jTable_Salestable.getTableHeader().getDefaultRenderer())
+                    .setHorizontalAlignment(JLabel.CENTER);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -268,10 +334,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
