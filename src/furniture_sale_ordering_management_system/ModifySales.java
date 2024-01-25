@@ -28,22 +28,22 @@ import javax.swing.JFileChooser;
 public class ModifySales extends javax.swing.JFrame {
 
     public static String ID;
-    public static double Amount;
+    public static String Amount;
     public static String Date;
     public static String Product;
     public static String ItemID;
-    public static double Price;
+    public static String Price;
     public static String Customer;
     public static String Salesperson;
     private String userID;
 
     private static final String BOOKING_FILE_PATH = "Data/Sales_Quotation.txt";
 
-    private ModifySales(String ID, double Amount, String Date, String Product, String ItemID, double Price, String Customer, String Salesperson) {
+    private ModifySales(String ID, String Amount, String Date, String Product, String ItemID, String Price, String Customer, String Salesperson) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public ModifySales(String ID, double Amount, String Date, String Product, String ItemID, double Price, String Customer, String Salesperson, String userID) {
+    public ModifySales(String ID, String Amount, String Date, String Product, String ItemID, String Price, String Customer, String Salesperson, String userID) {
         this.userID = userID;
         this.ID = ID;
         this.Amount = Amount;
@@ -73,14 +73,12 @@ public class ModifySales extends javax.swing.JFrame {
 
         // Set the values in the appropriate fields
         jTextField_ID.setText(ID);
-        String amount = Double.toString(Amount);
-        jTextField_Amount.setText(amount);
+        jTextField_Amount.setText(Amount);
         jTextField_Salesperson.setText(Salesperson);
         jTextField_product.setText(Product);
         jTextField_itemid.setText(ItemID);
-        String price = Double.toString(Price);
-        jTextField_price.setText(price);
-        jTextField_customer.setText(amount);
+        jTextField_price.setText(Price);
+        jTextField_customer.setText(Customer);
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
         try {
             Date date = sdf.parse(Date);
@@ -334,7 +332,7 @@ public class ModifySales extends javax.swing.JFrame {
 
     private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
         String ID = jTextField_ID.getText();
-        double Amount = Double.parseDouble(jTextField_Amount.getText());
+        String Amount = jTextField_Amount.getText();
         Date selectedDate = jDateChooser1.getDate();
         String Date = "";  // Declare the variable here
 
@@ -348,13 +346,13 @@ public class ModifySales extends javax.swing.JFrame {
         }
         String Product = jTextField_product.getText();
         String ItemID = jTextField_itemid.getText();
-        double Price = Double.parseDouble(jTextField_price.getText());
+        String Price = jTextField_price.getText();
         String Customer = jTextField_customer.getText();
         String Salesperson = jTextField_Salesperson.getText();
 
         // Get the selected room
         // Validate input fields
-        if (ID.isEmpty() || Amount <= 0 || Date.isEmpty() || Product.isEmpty() || ItemID.isEmpty() || Price <= 0 || Customer.isEmpty() || Salesperson.isEmpty()) {
+        if (ID.isEmpty() || Amount.isEmpty() || Date.isEmpty() || Product.isEmpty() || ItemID.isEmpty() || Price.isEmpty() || Customer.isEmpty() || Salesperson.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in all the required fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -388,7 +386,7 @@ public class ModifySales extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_customerActionPerformed
 
-    private boolean modifySales(String ID, double Amount, String Date, String Product, String ItemID, double Price, String Customer, String Salesperson) {
+    private boolean modifySales(String ID, String Amount, String Date, String Product, String ItemID, String Price, String Customer, String Salesperson) {
         try {
             Path inputFile = Path.of(BOOKING_FILE_PATH);
 
