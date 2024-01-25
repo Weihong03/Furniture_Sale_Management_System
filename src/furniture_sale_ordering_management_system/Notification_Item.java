@@ -10,16 +10,15 @@ package furniture_sale_ordering_management_system;
  */
 public class Notification_Item extends javax.swing.JPanel {
 
-    public Notification_Item(String name, String description, String date, int amount) {
+    public Notification_Item(String name, String description, String date, String amount) {
         initComponents();
-        setData(name, description, date, amount);
+        setData(name, date, amount);
     }
 
-    private void setData(String name, String description, String date, int amount) {
+    private void setData(String name, String date, String amount) {
         jLabel_name.setText(name);
-        jLabel_description.setText(description);
         jLabel_date.setText(date);
-        jLabel_amount.setText(String.valueOf(amount));
+        jLabel_amount.setText(amount);
     }
 
 
@@ -45,7 +44,7 @@ public class Notification_Item extends javax.swing.JPanel {
 
         jLabel_description.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jLabel_description.setForeground(new java.awt.Color(134, 134, 134));
-        jLabel_description.setText("Description");
+        jLabel_description.setText("made a Sales Quotation!");
 
         jLabel_amount.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jLabel_amount.setForeground(new java.awt.Color(134, 134, 134));
@@ -64,7 +63,7 @@ public class Notification_Item extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel_description)
                     .addComponent(jLabel_amount))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

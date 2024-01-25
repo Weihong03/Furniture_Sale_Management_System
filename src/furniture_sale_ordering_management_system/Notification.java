@@ -30,7 +30,7 @@ public class Notification extends javax.swing.JPanel {
         initScrollBar();
         centerWindow();
     }
-
+    
     private void initScrollBar() {
         JScrollBar sb = jScrollPane_scroll.getVerticalScrollBar();
         sb.setOpaque(false);
