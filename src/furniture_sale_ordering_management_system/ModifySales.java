@@ -28,22 +28,22 @@ import javax.swing.JFileChooser;
 public class ModifySales extends javax.swing.JFrame {
 
     public static String ID;
-    public static int Amount;
+    public static double Amount;
     public static String Date;
     public static String Product;
     public static String ItemID;
-    public static int Price;
+    public static double Price;
     public static String Customer;
     public static String Salesperson;
     private String userID;
 
     private static final String BOOKING_FILE_PATH = "Data/Sales_Quotation.txt";
 
-    private ModifySales(String ID, int Amount, String Date, String Product, String ItemID, int Price, String Customer, String Salesperson) {
+    private ModifySales(String ID, double Amount, String Date, String Product, String ItemID, double Price, String Customer, String Salesperson) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public ModifySales(String ID, int Amount, String Date, String Product, String ItemID, int Price, String Customer, String Salesperson, String userID) {
+    public ModifySales(String ID, double Amount, String Date, String Product, String ItemID, double Price, String Customer, String Salesperson, String userID) {
         this.userID = userID;
         this.ID = ID;
         this.Amount = Amount;
@@ -73,12 +73,12 @@ public class ModifySales extends javax.swing.JFrame {
 
         // Set the values in the appropriate fields
         jTextField_ID.setText(ID);
-        String amount = Integer.toString(Amount);
+        String amount = Double.toString(Amount);
         jTextField_Amount.setText(amount);
         jTextField_Salesperson.setText(Salesperson);
         jTextField_product.setText(Product);
         jTextField_itemid.setText(ItemID);
-        String price = Integer.toString(Price);
+        String price = Double.toString(Price);
         jTextField_price.setText(price);
         jTextField_customer.setText(amount);
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
@@ -348,7 +348,7 @@ public class ModifySales extends javax.swing.JFrame {
         }
         String Product = jTextField_product.getText();
         String ItemID = jTextField_itemid.getText();
-        int Price = Integer.parseInt(jTextField_price.getText());
+        double Price = Double.parseDouble(jTextField_price.getText());
         String Customer = jTextField_customer.getText();
         String Salesperson = jTextField_Salesperson.getText();
 
@@ -388,7 +388,7 @@ public class ModifySales extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_customerActionPerformed
 
-    private boolean modifySales(String ID, double Amount, String Date, String Product, String ItemID, int Price, String Customer, String Salesperson) {
+    private boolean modifySales(String ID, double Amount, String Date, String Product, String ItemID, double Price, String Customer, String Salesperson) {
         try {
             Path inputFile = Path.of(BOOKING_FILE_PATH);
 

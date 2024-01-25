@@ -124,7 +124,7 @@ public class Sale_Approval extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false
@@ -266,11 +266,11 @@ public class Sale_Approval extends javax.swing.JFrame {
             // Get the values from the selected row
             String ID = jTable_Salestable.getValueAt(selectedRowIndex, 0).toString();
             // Remove "RM" from the string before parsing
-            int Amount = Integer.parseInt(jTable_Salestable.getValueAt(selectedRowIndex, 1).toString().replace("RM", ""));
+            double Amount = Double.parseDouble(jTable_Salestable.getValueAt(selectedRowIndex, 1).toString().replace("RM", ""));
             String Date = jTable_Salestable.getValueAt(selectedRowIndex, 2).toString();
             String Product = jTable_Salestable.getValueAt(selectedRowIndex, 3).toString();
             String ItemID = jTable_Salestable.getValueAt(selectedRowIndex, 4).toString();
-            int Price = Integer.parseInt(jTable_Salestable.getValueAt(selectedRowIndex, 5).toString());
+            double Price = Double.parseDouble(jTable_Salestable.getValueAt(selectedRowIndex, 5).toString().replace("RM", ""));;
             String Customer = jTable_Salestable.getValueAt(selectedRowIndex, 6).toString();
             String Salesperson = jTable_Salestable.getValueAt(selectedRowIndex, 7).toString();
 
