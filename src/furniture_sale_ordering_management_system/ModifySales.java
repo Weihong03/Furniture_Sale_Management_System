@@ -388,7 +388,7 @@ public class ModifySales extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_customerActionPerformed
 
-    private boolean modifySales(String ID, double Amount, String Date, String Product, String ItemID, int Price, String Customer, String Salesperson) {
+    private boolean modifySales(String ID, int Amount, String Date, String Product, String ItemID, int Price, String Customer, String Salesperson) {
         try {
             Path inputFile = Path.of(BOOKING_FILE_PATH);
 
