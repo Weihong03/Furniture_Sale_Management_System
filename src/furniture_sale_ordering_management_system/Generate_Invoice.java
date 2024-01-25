@@ -4,14 +4,10 @@ package furniture_sale_ordering_management_system;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.pdf.PdfWriter;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFrame;
@@ -22,7 +18,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.text.Document;
 
 
 /**
@@ -235,7 +230,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
         if (selectedRowIndex >= 0) {
             // Get the values from the selected row
             String ID = jTable_Salestable.getValueAt(selectedRowIndex, 0).toString();
-            // Remove "RM" from the string before parsing
             String Amount = jTable_Salestable.getValueAt(selectedRowIndex, 1).toString();
             String Date = jTable_Salestable.getValueAt(selectedRowIndex, 2).toString();
             String Product = jTable_Salestable.getValueAt(selectedRowIndex, 3).toString();
