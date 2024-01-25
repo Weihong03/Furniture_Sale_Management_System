@@ -24,6 +24,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.text.Document;
 
+
 /**
  *
  * @author Wei Hong
@@ -235,14 +236,15 @@ public class Generate_Invoice extends javax.swing.JFrame {
             // Get the values from the selected row
             String ID = jTable_Salestable.getValueAt(selectedRowIndex, 0).toString();
             // Remove "RM" from the string before parsing
-            String Amount = jTable_Salestable.getValueAt(selectedRowIndex, 1).toString().replace("RM", "");
+            String Amount = jTable_Salestable.getValueAt(selectedRowIndex, 1).toString();
             String Date = jTable_Salestable.getValueAt(selectedRowIndex, 2).toString();
             String Product = jTable_Salestable.getValueAt(selectedRowIndex, 3).toString();
             String ItemID = jTable_Salestable.getValueAt(selectedRowIndex, 4).toString();
-            String Price = jTable_Salestable.getValueAt(selectedRowIndex, 5).toString().replace("RM", "");
+            String Price = jTable_Salestable.getValueAt(selectedRowIndex, 5).toString();
             String Customer = jTable_Salestable.getValueAt(selectedRowIndex, 6).toString();
             String Salesperson = jTable_Salestable.getValueAt(selectedRowIndex, 7).toString();
             String Officer = jTable_Salestable.getValueAt(selectedRowIndex, 9).toString();
+
 
         } else {
             // No row selected, display an error message or perform appropriate handling
