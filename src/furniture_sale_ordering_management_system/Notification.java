@@ -28,7 +28,6 @@ public class Notification extends javax.swing.JPanel {
         initComponents();
         setOpaque(false);
         initScrollBar();
-        initDummyData();
         centerWindow();
     }
 
@@ -40,19 +39,6 @@ public class Notification extends javax.swing.JPanel {
         sb.setUI(new ModernScrollBarUI());
         jScrollPane_scroll.getViewport().setOpaque(false);
         jScrollPane_scroll.setViewportBorder(null);
-    }
-
-    private void initDummyData() {
-        addDummyRecord("Weihongooi", "just made a Sales Quotation.", "04 Jun 2023", 100);
-        addDummyRecord("Horongwei", "just made a Sales Quotation.", "23 Dec 2023", 2000);
-        addDummyRecord("Leeqiwen", "just made a Sales Quotation.", "01 Jan 2024", 30);
-    }
-
-    private void addDummyRecord(String name, String description, String date, int amount) {
-        Notification_Item notificationItem = new Notification_Item(name, description, date, amount);
-        jPanel1.add(notificationItem);
-        jPanel1.revalidate();
-        jPanel1.repaint();
     }
 
     private void centerWindow() {
