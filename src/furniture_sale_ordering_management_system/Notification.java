@@ -29,6 +29,10 @@ public class Notification extends javax.swing.JPanel {
         setOpaque(false);
         initScrollBar();
         centerWindow();
+        // Create and add Notification_Item to jPanel_1
+        Notification_Item notificationItem = new Notification_Item("John Doe","made a quotation", "2024-01-25", "$500");
+        jPanel1.add(notificationItem);
+        jPanel1.revalidate(); // Refresh layout
     }
     
     private void initScrollBar() {
