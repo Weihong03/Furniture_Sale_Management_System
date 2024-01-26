@@ -306,6 +306,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 dateCell.addElement(new Paragraph("Invoice: INV0001"));
                 dateCell.setBorder(Rectangle.NO_BORDER);
                 dateCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+
                 headerTable.addCell(companyInfoCell);
                 headerTable.addCell(dateCell);
 
@@ -315,17 +316,18 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 document.add(new Paragraph(" "));
                 document.add(new LineSeparator());
                 document.add(new Paragraph(" "));
-                
+
             } catch (DocumentException e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Error adding header to the invoice.");
                 return;
             }
 
-            // Add details to the PDF
             Paragraph invoiceTitle = new Paragraph("INVOICE", titleFont);
             invoiceTitle.setAlignment(Element.ALIGN_CENTER);
             document.add(invoiceTitle);
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
             
             // Add subheadertable
             try {
@@ -337,7 +339,8 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 subheaderTable.setWidths(columnWidths);
 
                 PdfPCell BilltoCell = new PdfPCell();
-                BilltoCell.addElement(new Paragraph("Bill to: ", subtitleFont));
+                Paragraph BilltoTitle = new Paragraph("Bill to: ", subtitleFont);
+                BilltoCell.addElement(BilltoTitle);
                 BilltoCell.addElement(new Paragraph("""
                                        
                                        Yoyo Furniture
@@ -347,30 +350,59 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 BilltoCell.setBorder(Rectangle.NO_BORDER);
 
                 PdfPCell ShiptoCell = new PdfPCell();
-                BilltoCell.addElement(new Paragraph("Ship to: ", subtitleFont));
-                document.add(new Paragraph("""
+                Paragraph ShiptoTitle = new Paragraph("Ship to: ", subtitleFont);
+                ShiptoCell.addElement(ShiptoTitle);
+                ShiptoCell.addElement(new Paragraph("""
                                        
-                                       Customer: """ + Customer));
-                BilltoCell.setBorder(Rectangle.NO_BORDER);
-                
+                                       Customer:""" + " " + Customer));
+                ShiptoCell.setBorder(Rectangle.NO_BORDER);
+                ShiptoCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+
                 subheaderTable.addCell(BilltoCell);
                 subheaderTable.addCell(ShiptoCell);
 
                 document.add(subheaderTable);
-                
+
             } catch (DocumentException e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Error adding subheader to the invoice.");
+                JOptionPane.showMessageDialog(this, "Error adding header to the invoice.");
+                return;
+            }
+
+            // Add details to the PDF
+            Paragraph QuotationTitle = new Paragraph("Quotation", subtitleFont);
+            document.add(QuotationTitle);
+            document.add(new Paragraph(" "));
+            
+            // Add subheadertable
+            try {
+                PdfPTable quoTitleTable = new PdfPTable(2); // 2 columns for subheader
+                quoTitleTable.setWidthPercentage(100);
+
+                // Set the percentage widths for the columns
+                float[] columnWidths = {65f, 45f};
+                quoTitleTable.setWidths(columnWidths);
+
+                PdfPCell QuoIDCell = new PdfPCell();
+                document.add(new Paragraph("Quotation ID: " + ID));
+                QuoIDCell.setBorder(Rectangle.NO_BORDER);
+
+                PdfPCell QuoDateCell = new PdfPCell();
+                QuoDateCell.addElement(new Paragraph("Quotation Date: " + Date));
+                QuoDateCell.setBorder(Rectangle.NO_BORDER);
+                QuoDateCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+
+                quoTitleTable.addCell(QuoIDCell);
+                quoTitleTable.addCell(QuoDateCell);
+
+                document.add(quoTitleTable);
+
+            } catch (DocumentException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error adding header to the invoice.");
                 return;
             }
             
-            
-            Paragraph QuotationTitle = new Paragraph("Quotation", subtitleFont);
-            document.add(QuotationTitle);
-            document.add(new Paragraph("""
-                                       
-                                       Quotation ID: """ + ID));
-            document.add(new Paragraph("Quotation Date: " + Date));
             document.add(new Paragraph("PRODUCT"));
             document.add(new Paragraph("ITEM ID"));
             document.add(new Paragraph("PRICE"));
