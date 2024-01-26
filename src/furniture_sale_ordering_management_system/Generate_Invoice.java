@@ -268,7 +268,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
             // Add image logo
             try {
                 Image logo = Image.getInstance("src/furniture_sale_ordering_management_system/Images/Companylogo.jpg");
-                logo.scaleAbsolute(100, 100);
+                logo.scaleAbsolute(80, 80);
                 document.add(logo);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -287,7 +287,9 @@ public class Generate_Invoice extends javax.swing.JFrame {
             document.add(new Paragraph("Invoice: INV0001"));
 
             // Add a line separator
+            document.add(new Paragraph(" "));
             document.add(new LineSeparator());
+            document.add(new Paragraph(" "));
 
             document.add(new Paragraph("INVOICE"));
             document.add(new Paragraph("""
@@ -318,7 +320,9 @@ public class Generate_Invoice extends javax.swing.JFrame {
             // Add more details based on your requirements
 
             // Add a line separator
+            document.add(new Paragraph(" "));
             document.add(new LineSeparator());
+            document.add(new Paragraph(" "));
 
             // Add a thank you message
             document.add(new Paragraph("""
