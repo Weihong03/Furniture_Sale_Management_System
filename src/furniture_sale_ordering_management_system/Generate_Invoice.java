@@ -256,14 +256,20 @@ public class Generate_Invoice extends javax.swing.JFrame {
         Document document = new Document();
 
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("invoice.pdf"));
+            String fileName = "PDF/" + ID + "_Invoice.pdf"; // Include quotation ID in the file name
+            PdfWriter.getInstance(document, new FileOutputStream(fileName));
             document.open();
 
             // Add content to the PDF
-            document.add(new Paragraph("Invoice ID: " + ID));
+            document.add(new Paragraph("Quotation ID: " + ID));
+            document.add(new Paragraph("Amount: " + Amount));
             document.add(new Paragraph("Date: " + Date));
+            document.add(new Paragraph("Product: " + Product));
+            document.add(new Paragraph("Item ID: " + ItemID));
+            document.add(new Paragraph("Price: " + Price));
             document.add(new Paragraph("Customer: " + Customer));
             document.add(new Paragraph("Salesperson: " + Salesperson));
+            document.add(new Paragraph("Officer: " + Officer));
 
             // Add more details based on your requirements
             document.close();
