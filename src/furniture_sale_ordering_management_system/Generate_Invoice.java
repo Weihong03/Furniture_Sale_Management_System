@@ -384,7 +384,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 quoTitleTable.setWidths(columnWidths);
 
                 PdfPCell QuoIDCell = new PdfPCell();
-                document.add(new Paragraph("Quotation ID: " + ID));
+                QuoIDCell.addElement(new Paragraph("Quotation ID: " + ID));
                 QuoIDCell.setBorder(Rectangle.NO_BORDER);
 
                 PdfPCell QuoDateCell = new PdfPCell();
