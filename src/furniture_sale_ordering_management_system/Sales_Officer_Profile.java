@@ -67,12 +67,15 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
 
                     switch (key) {
                         case "Username":
+                            value = value.replaceAll(",", "");
                             jTextField_Username.setText(value);
                             break;
                         case "Password":
+                            value = value.replaceAll(",", "");
                             jTextField_Password.setText(value);
                             break;
                         case "Name":
+                            value = value.replaceAll(",", "");
                             jTextField_FullName.setText(value);
                             break;
                         case "Age":                         
@@ -87,9 +90,11 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                             }
                             break;
                         case "Email":
+                            value = value.replaceAll(",", "");
                             jTextField_Email.setText(value);
                             break;
                         case "Phone Number":
+                            value = value.replaceAll(",", "");
                             jTextField_PhoneNumber.setText(value);
                             break;
                         case "Role":
@@ -123,7 +128,8 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         jComboBox_Role.setModel(new DefaultComboBoxModel<>(new String[]{"Officer", "Salesperson"}));
         // Set the title of the window
         setTitle("Sales_Officer_Profile");
-
+        
+        jTextField_ID.setEditable(false);
         // Get the dimension of the screen
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -213,6 +219,8 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         jLabel8.setText("Phone Number :");
 
         jLabel9.setText("Role :");
+
+        jTextField_ID.setEditable(false);
 
         jButton_back.setText("Back");
         jButton_back.addActionListener(new java.awt.event.ActionListener() {

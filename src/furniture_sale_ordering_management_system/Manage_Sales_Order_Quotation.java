@@ -261,37 +261,39 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         jTable_manageQuotation.repaint();
     }
     
-    public void displaySales() {
-        DefaultTableModel model = (DefaultTableModel) jTable_manageQuotation.getModel();
-        model.setRowCount(0); // Clear existing data
+  public void displaySales() {
+    DefaultTableModel model = (DefaultTableModel) jTable_manageQuotation.getModel();
+    model.setRowCount(0); // Clear existing data
 
-        try (BufferedReader br = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (line.startsWith("ID:")) {
-                    String[] rowData = new String[12];
-                    rowData[0] = line.substring(4); // Extract ID value
-
-                    for (int i = 1; i < 12; i++) {
-                        line = br.readLine();
-                        if (line != null && line.contains(": ")) {
-                            String[] parts = line.split(": ", 2);
-                            if (parts.length == 2) {
-                                rowData[i] = parts[1];
-                            } else {
-                                // Handle unexpected line format
-                                rowData[i] = " ";
-                            }
-                        } 
-                    }
-                    model.addRow(rowData);
+    try (BufferedReader br = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            if (line.startsWith("ID:")) {
+                String[] rowData = new String[12];
+                rowData[0] = line.substring(4); // Extract ID value
+                rowData[0] = line.split(": ")[1].replaceAll(",\\s*$", "").trim();
+                for (int i = 1; i < 12; i++) {
+                    line = br.readLine();
+                    if (line != null && line.contains(": ")) {
+                        String[] parts = line.split(": ", 2);
+                        if (parts.length == 2) {
+                            // Clean up values by removing commas
+                            String cleanedValue = parts[1].replaceAll(",", "");
+                            rowData[i] = cleanedValue;
+                        } else {
+                            // Handle unexpected line format
+                            rowData[i] = " ";
+                        }
+                    } 
                 }
+                model.addRow(rowData);
             }
-        } catch (IOException e) {
-            e.printStackTrace(); // Print the stack trace to identify the issue
-            JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
         }
+    } catch (IOException e) {
+        e.printStackTrace(); // Print the stack trace to identify the issue
+        JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
     }
+}
 
     public void searchSales(String searchText) {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(jTable_manageQuotation.getModel());

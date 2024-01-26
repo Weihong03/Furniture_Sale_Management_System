@@ -80,6 +80,7 @@ public class Choose_Product extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_product = new javax.swing.JTable();
         jButton_back = new javax.swing.JButton();
+        jButton_delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +123,13 @@ public class Choose_Product extends javax.swing.JFrame {
             }
         });
 
+        jButton_delete.setText("Delete");
+        jButton_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_deleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,9 +138,12 @@ public class Choose_Product extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_back))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton_back)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton_delete)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton_proceed)
@@ -162,7 +173,8 @@ public class Choose_Product extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_proceed)
-                    .addComponent(jButton_back))
+                    .addComponent(jButton_back)
+                    .addComponent(jButton_delete))
                 .addGap(26, 26, 26))
         );
 
@@ -269,6 +281,30 @@ public class Choose_Product extends javax.swing.JFrame {
                     salesPersonHome.setVisible(true);
                     this.setVisible(false);    }//GEN-LAST:event_jButton_backActionPerformed
 
+    private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
+    deleteSelectedRows();
+    }//GEN-LAST:event_jButton_deleteActionPerformed
+    private void deleteSelectedRows() {
+    DefaultTableModel model = (DefaultTableModel) jTable_product.getModel();
+    int[] selectedRows = jTable_product.getSelectedRows();
+
+    // Delete rows in reverse order to avoid issues with indices
+    for (int i = selectedRows.length - 1; i >= 0; i--) {
+        model.removeRow(selectedRows[i]);
+    }
+
+    // Recalculate the total price based on the remaining rows
+    totalPrice = 0.0;
+    for (int i = 0; i < model.getRowCount(); i++) {
+        String priceStr = model.getValueAt(i, 2).toString().replace("RM", "").trim();
+        double price = Double.parseDouble(priceStr);
+        totalPrice += price;
+    }
+
+    // Update the total amount in jTextArea_totalamount
+    jTextArea_totalamount.setText("Total Price: RM" + totalPrice + "\n");
+}
+
     /**
      * @param args the command line arguments
      */
@@ -309,6 +345,7 @@ public class Choose_Product extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_add;
     private javax.swing.JButton jButton_back;
+    private javax.swing.JButton jButton_delete;
     private javax.swing.JButton jButton_proceed;
     private javax.swing.JComboBox<String> jComboBox_product;
     private javax.swing.JLabel jLabel1;

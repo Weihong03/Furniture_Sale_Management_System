@@ -136,6 +136,7 @@ public class Admin_Profile extends javax.swing.JFrame {
          jComboBox_Age.setModel(new DefaultComboBoxModel<>(generateAgeOptions()));
         // For Role JComboBox
         jTextField_role.setEditable(false);
+        jTextField_ID.setEditable(false);
         // Set the title of the window
         setTitle("Manage Worker Profile");
 

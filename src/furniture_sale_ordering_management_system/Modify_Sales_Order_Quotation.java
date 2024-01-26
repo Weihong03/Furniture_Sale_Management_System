@@ -57,8 +57,6 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
         initComponents();
         
         jTextField_id.setEditable(false);
-        jTextField_itemid.setEditable(false);
-        jTextField_product.setEditable(false);
         
         
         this.userID = userID;

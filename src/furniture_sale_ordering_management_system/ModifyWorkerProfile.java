@@ -85,7 +85,8 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     initComponents();
         // Set the title of the window
         setTitle("Modify Worker Profile");
-
+        
+        jTextField_ID.setEditable(false);
         // Get the dimension of the screen
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 

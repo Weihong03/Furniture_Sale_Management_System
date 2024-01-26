@@ -343,13 +343,14 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
                 if (line.startsWith("ID:")) {
                     String[] rowData = new String[8];
                     rowData[0] = line.substring(4); // Extract ID value
-
+                    rowData[0] = line.split(": ")[1].replaceAll(",\\s*$", "").trim();
                     for (int i = 1; i < 8; i++) {
                         line = br.readLine();
                         if (line != null && line.contains(": ")) {
                             String[] parts = line.split(": ", 2);
                             if (parts.length == 2) {
-                                rowData[i] = parts[1];
+                                String cleanedValue = parts[1].replaceAll(",", "");
+                                rowData[i] = cleanedValue;
                             } else {
                                 // Handle unexpected line format
                                 rowData[i] = " ";
