@@ -14,6 +14,7 @@ import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -258,9 +259,9 @@ public class Generate_Invoice extends javax.swing.JFrame {
     private void generatePDFInvoice(String ID, String Amount, String Date, String Product,
             String ItemID, String Price, String Customer, String Salesperson, String Officer) {
         Document document = new Document();
+        String fileName = "PDF/" + ID + "_Invoice.pdf"; // Include quotation ID in the file name
 
         try {
-            String fileName = "PDF/" + ID + "_Invoice.pdf"; // Include quotation ID in the file name
             PdfWriter.getInstance(document, new FileOutputStream(fileName));
             document.open();
 
@@ -345,18 +346,15 @@ public class Generate_Invoice extends javax.swing.JFrame {
             // Open the generated PDF
             if (Desktop.isDesktopSupported()) {
                 try {
-                    Desktop.getDesktop().open(file);
+                    Desktop.getDesktop().open(new File(fileName));
                 } catch (IOException e) {
                     e.printStackTrace();
                     JOptionPane.showMessageDialog(this, "Error opening the generated PDF.");
                 }
             }
-        } catch (DocumentException e) {
+        } catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error generating invoice.");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error creating file. Please check the file path.");
+            JOptionPane.showMessageDialog(this, "Error generating or creating invoice file. Please check the file path.");
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error writing to the file.");
