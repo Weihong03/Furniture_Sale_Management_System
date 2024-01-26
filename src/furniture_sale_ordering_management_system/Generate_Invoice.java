@@ -4,10 +4,15 @@ package furniture_sale_ordering_management_system;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFrame;
@@ -18,7 +23,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-
 
 /**
  *
@@ -239,12 +243,37 @@ public class Generate_Invoice extends javax.swing.JFrame {
             String Salesperson = jTable_Salestable.getValueAt(selectedRowIndex, 7).toString();
             String Officer = jTable_Salestable.getValueAt(selectedRowIndex, 9).toString();
 
-
+            // Generate PDF invoice
+            generatePDFInvoice(ID, Amount, Date, Product, ItemID, Price, Customer, Salesperson, Officer);
         } else {
             // No row selected, display an error message or perform appropriate handling
             JOptionPane.showMessageDialog(this, "Please select a Sales to modify.");
         }
     }//GEN-LAST:event_jButton_generateActionPerformed
+
+    private void generatePDFInvoice(String ID, String Amount, String Date, String Product,
+            String ItemID, String Price, String Customer, String Salesperson, String Officer) {
+        Document document = new Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("invoice.pdf"));
+            document.open();
+
+            // Add content to the PDF
+            document.add(new Paragraph("Invoice ID: " + ID));
+            document.add(new Paragraph("Date: " + Date));
+            document.add(new Paragraph("Customer: " + Customer));
+            document.add(new Paragraph("Salesperson: " + Salesperson));
+
+            // Add more details based on your requirements
+            document.close();
+
+            JOptionPane.showMessageDialog(this, "Invoice generated successfully.");
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error generating invoice.");
+        }
+    }
 
     public void searchSales(String searchText) {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(jTable_Salestable.getModel());
