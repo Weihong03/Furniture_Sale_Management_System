@@ -6,9 +6,11 @@ package furniture_sale_ordering_management_system;
  */
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -16,6 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -261,6 +264,17 @@ public class Generate_Invoice extends javax.swing.JFrame {
             PdfWriter.getInstance(document, new FileOutputStream(fileName));
             document.open();
 
+            // Add image logo
+            try {
+                Image logo = Image.getInstance("src/furniture_sale_ordering_management_system/Images/Companylogo.jpg");
+                logo.scaleAbsolute(100, 100);
+                document.add(logo);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error loading image.");
+                return; // Return to avoid further processing if image loading fails
+            }
+
             // Add details to the PDF
             document.add(new Paragraph("FurniHub Solutions"));
             document.add(new Paragraph("""
@@ -328,9 +342,24 @@ public class Generate_Invoice extends javax.swing.JFrame {
             document.close();
 
             JOptionPane.showMessageDialog(this, "Invoice generated successfully.");
-        } catch (DocumentException | FileNotFoundException e) {
+            // Open the generated PDF
+            if (Desktop.isDesktopSupported()) {
+                try {
+                    Desktop.getDesktop().open(file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Error opening the generated PDF.");
+                }
+            }
+        } catch (DocumentException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error generating invoice.");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error creating file. Please check the file path.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error writing to the file.");
         }
     }
 
