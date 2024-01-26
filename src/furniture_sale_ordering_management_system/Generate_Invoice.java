@@ -373,20 +373,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
         rowSorter.setRowFilter(rowFilter);
     }
 
-    private void refreshTable() {
-        // Clear the existing data from the table
-        DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
-        model.setRowCount(0);
-
-        dispose();
-        Sale_Approval saleApproval = new Sale_Approval(userID);
-        saleApproval.setVisible(true);
-        saleApproval.displaySales(); // Call the method to display the Sales
-
-        jTable_Salestable.revalidate();
-        jTable_Salestable.repaint();
-    }
-
     public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
         model.setRowCount(0); // Clear existing data
