@@ -262,7 +262,17 @@ public class Generate_Invoice extends javax.swing.JFrame {
             document.open();
 
             // Add details to the PDF
-            document.add(new Paragraph("Invoice ID: " + ID));
+            document.add(new Paragraph("FurniHub Solutions"));
+            document.add(new Paragraph("Endah Valley, Lot F99, Ground Floor, Leng Small, 1, Jalan 2/158e"));
+            document.add(new Paragraph("Bandar Baru Sri Petaling, 57000 Kuala Lumpur"));
+            document.add(new Paragraph("019-547 8899, furnihub123@gmail.com"));
+            document.add(new Paragraph("Date: " + java.util.Calendar.getInstance().getTime()));
+            document.add(new Paragraph("Invoice: INV0001"));
+
+            // Add a line separator
+            document.add(new LineSeparator());
+
+            document.add(new Paragraph("Quotation ID: " + ID));
             document.add(new Paragraph("Amount: " + Amount));
             document.add(new Paragraph("Date: " + Date));
             document.add(new Paragraph("Product: " + Product));
@@ -271,8 +281,14 @@ public class Generate_Invoice extends javax.swing.JFrame {
             document.add(new Paragraph("Customer: " + Customer));
             document.add(new Paragraph("Salesperson: " + Salesperson));
             document.add(new Paragraph("Officer: " + Officer));
-
             // Add more details based on your requirements
+
+            // Add a line separator
+            document.add(new LineSeparator());
+
+            // Add a thank you message
+            document.add(new Paragraph("THANK YOU FOR CHOOSING YOYO FURNITURE"));
+
             document.close();
 
             JOptionPane.showMessageDialog(this, "Invoice generated successfully.");
