@@ -263,9 +263,11 @@ public class Generate_Invoice extends javax.swing.JFrame {
 
             // Add details to the PDF
             document.add(new Paragraph("FurniHub Solutions"));
-            document.add(new Paragraph("Endah Valley, Lot F99, Ground Floor, Leng Small, 1, Jalan 2/158e"));
-            document.add(new Paragraph("Bandar Baru Sri Petaling, 57000 Kuala Lumpur"));
-            document.add(new Paragraph("019-547 8899, furnihub123@gmail.com"));
+            document.add(new Paragraph("""
+                                       
+                                       Endah Valley, Lot F99, Ground Floor, Leng Small, 1, Jalan 2/158e
+                                       Bandar Baru Sri Petaling, 57000 Kuala Lumpur
+                                       019-547 8899, furnihub123@gmail.com"""));
             document.add(new Paragraph("Date: " + java.util.Calendar.getInstance().getTime()));
             document.add(new Paragraph("Invoice: INV0001"));
 
@@ -273,15 +275,21 @@ public class Generate_Invoice extends javax.swing.JFrame {
             document.add(new LineSeparator());
 
             document.add(new Paragraph("INVOICE"));
-            document.add(new Paragraph("Bill to:"));
-            document.add(new Paragraph("Yoyo Furniture"));
-            document.add(new Paragraph("No. 1986, Jalan Sungai Besi Batu 13"));
-            document.add(new Paragraph("Kampung Baru Balakan"));
-            document.add(new Paragraph("57000 Cheras"));
-            document.add(new Paragraph("Ship to:"));
-            document.add(new Paragraph("Customer: " + Customer));
-            document.add(new Paragraph("Quotation"));
-            document.add(new Paragraph("Quotation ID: " + ID));
+            document.add(new Paragraph("""
+                                       Bill to:
+                                       
+                                       Yoyo Furniture
+                                       No. 1986, Jalan Sungai Besi Batu 13
+                                       Kampung Baru Balakan
+                                       57000 Cheras"""));
+            document.add(new Paragraph("""
+                                       Ship to:
+                                       
+                                       Customer: """ + Customer));
+            document.add(new Paragraph("""
+                                       Quotation
+                                       
+                                       Quotation ID: """ + ID));
             document.add(new Paragraph("Quotation Date: " + Date));
             document.add(new Paragraph("PRODUCT"));
             document.add(new Paragraph("ITEM ID"));
@@ -300,11 +308,13 @@ public class Generate_Invoice extends javax.swing.JFrame {
             // Add a thank you message
             document.add(new Paragraph("""
                                        Terms and Conditions:
+                                       
                                        - Payment is due within 7 days from the invoice date.
                                        - Late payment may incur a 10% late fee.
                                        - Please include the invoice number in your payment reference."""));
             document.add(new Paragraph("""
                                        Disclaimer:
+                                       
                                        All services and products provided by Yoyo Furniture are subject to the terms and conditions outlined in our agreements and contracts. 
                                        While we make every effort to ensure the accuracy and completeness of the information presented in this invoice, Yoyo Furniture disclaims any liability for errors or omissions.
         
