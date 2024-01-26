@@ -8,6 +8,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -23,6 +24,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
 
 /**
  *
@@ -260,16 +262,10 @@ public class Generate_Invoice extends javax.swing.JFrame {
             PdfWriter.getInstance(document, new FileOutputStream(fileName));
             document.open();
 
-            // Add content to the PDF
-            document.add(new Paragraph("Quotation ID: " + ID));
-            document.add(new Paragraph("Amount: " + Amount));
-            document.add(new Paragraph("Date: " + Date));
-            document.add(new Paragraph("Product: " + Product));
-            document.add(new Paragraph("Item ID: " + ItemID));
-            document.add(new Paragraph("Price: " + Price));
-            document.add(new Paragraph("Customer: " + Customer));
-            document.add(new Paragraph("Salesperson: " + Salesperson));
-            document.add(new Paragraph("Officer: " + Officer));
+            // Adding content to the PDF document
+            addHeader(document);
+            addDetailSection(document);
+            addFooter(document);
 
             // Add more details based on your requirements
             document.close();
@@ -281,7 +277,41 @@ public class Generate_Invoice extends javax.swing.JFrame {
         }
     }
 
-    public void searchSales(String searchText) {
+    // Method to add the header section
+    private static void addHeader(Document document) {
+        document.add(new Paragraph("FurniHub Solutions").setFontSize(19).setBold());
+        document.add(new Paragraph("Endah Valley, Lot F99, Ground Floor, Leng Small, 1, Jalan 2/158e"));
+        document.add(new Paragraph("Bandar Baru Sri Petaling, 57000 Kuala Lumpur"));
+        document.add(new Paragraph("019-547 8899, furnihub123@gmail.com"));
+        document.add(new Paragraph("Date: " + java.util.Calendar.getInstance().getTime()).setTextAlignment(TextAlignment.RIGHT));
+        document.add(new Paragraph("Invoice: INV0001").setTextAlignment(TextAlignment.RIGHT));
+
+        // Add a line separator
+        document.add(new LineSeparator());
+    }
+
+    // Method to add the detail section
+    private static void addDetailSection(Document document) {
+        // Add your detail section content here
+        document.add(new Paragraph("Quotation ID: ").setBold().setUnderline());
+        document.add(new Paragraph("Quotation Date: ").setBold().setUnderline());
+        // Add more details as needed
+    }
+
+    // Method to add the footer section
+    private static void addFooter(Document document) {
+        document.add(new Paragraph("Quotation created by: ").add(new Text("Your Salesperson")).setUnderline());
+        document.add(new Paragraph("Approved by: ").add(new Text("Your Officer")).setUnderline());
+        document.add(new Paragraph("Total: Your Total Amount"));
+
+        // Add a line separator
+        document.add(new LineSeparator());
+
+        // Add a thank you message
+        document.add(new Paragraph("THANK YOU FOR CHOOSING YOYO FURNITURE").setFontSize(9).setItalic());
+    }
+
+public void searchSales(String searchText) {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(jTable_Salestable.getModel());
         jTable_Salestable.setRowSorter(rowSorter);
 
@@ -364,23 +394,27 @@ public class Generate_Invoice extends javax.swing.JFrame {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-                }
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Generate_Invoice.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Generate_Invoice.class  
 
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Generate_Invoice.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Generate_Invoice.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Generate_Invoice.class  
 
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Generate_Invoice.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Generate_Invoice.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Generate_Invoice.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
