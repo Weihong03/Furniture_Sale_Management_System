@@ -272,22 +272,48 @@ public class Generate_Invoice extends javax.swing.JFrame {
             // Add a line separator
             document.add(new LineSeparator());
 
-            document.add(new Paragraph("Quotation ID: " + ID));
-            document.add(new Paragraph("Amount: " + Amount));
-            document.add(new Paragraph("Date: " + Date));
-            document.add(new Paragraph("Product: " + Product));
-            document.add(new Paragraph("Item ID: " + ItemID));
-            document.add(new Paragraph("Price: " + Price));
+            document.add(new Paragraph("INVOICE"));
+            document.add(new Paragraph("Bill to:"));
+            document.add(new Paragraph("Yoyo Furniture"));
+            document.add(new Paragraph("No. 1986, Jalan Sungai Besi Batu 13"));
+            document.add(new Paragraph("Kampung Baru Balakan"));
+            document.add(new Paragraph("57000 Cheras"));
+            document.add(new Paragraph("Ship to:"));
             document.add(new Paragraph("Customer: " + Customer));
-            document.add(new Paragraph("Salesperson: " + Salesperson));
-            document.add(new Paragraph("Officer: " + Officer));
+            document.add(new Paragraph("Quotation"));
+            document.add(new Paragraph("Quotation ID: " + ID));
+            document.add(new Paragraph("Quotation Date: " + Date));
+            document.add(new Paragraph("PRODUCT"));
+            document.add(new Paragraph("ITEM ID"));
+            document.add(new Paragraph("PRICE"));
+            document.add(new Paragraph(Product));
+            document.add(new Paragraph(ItemID));
+            document.add(new Paragraph(Price));
+            document.add(new Paragraph("Total: " + Amount));
+            document.add(new Paragraph("Quotation created by: " + Salesperson));
+            document.add(new Paragraph("Approved by: " + Officer));
             // Add more details based on your requirements
 
             // Add a line separator
             document.add(new LineSeparator());
 
             // Add a thank you message
-            document.add(new Paragraph("THANK YOU FOR CHOOSING YOYO FURNITURE"));
+            document.add(new Paragraph("""
+                                       Terms and Conditions:
+                                       - Payment is due within 7 days from the invoice date.
+                                       - Late payment may incur a 10% late fee.
+                                       - Please include the invoice number in your payment reference."""));
+            document.add(new Paragraph("""
+                                       Disclaimer:
+                                       All services and products provided by Yoyo Furniture are subject to the terms and conditions outlined in our agreements and contracts. 
+                                       While we make every effort to ensure the accuracy and completeness of the information presented in this invoice, Yoyo Furniture disclaims any liability for errors or omissions.
+        
+                                       Any views or opinions presented in this communication are solely those of Yoyo Furniture and do not necessarily represent those of any third party. Yoyo Furniture is not responsible for any damage or loss arising from reliance on information contained in this invoice.
+                                                                              
+                                       Thank you for your understanding and cooperation."""));
+            document.add(new Paragraph("""
+                                       THANK YOU FOR CHOOSING YOYO FURNITURE
+                                       WE APPRECIATE YOUR BUSINESS"""));
 
             document.close();
 
