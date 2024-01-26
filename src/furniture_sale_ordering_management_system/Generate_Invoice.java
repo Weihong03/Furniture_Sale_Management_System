@@ -7,6 +7,7 @@ package furniture_sale_ordering_management_system;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Rectangle;
@@ -278,18 +279,26 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Error loading image.");
                 return; // Return to avoid further processing if image loading fails
             }
-            
-            document.add(new Paragraph("FurniHub Solutions"));
-            // Add image logo
+
+            Font titleFont = new Font(Font.FontFamily.HELVETICA, 19, Font.BOLD);
+            Font subtitleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD);
+            Paragraph companyNameTitle = new Paragraph(" FurniHub Solutions", titleFont);
+            document.add(companyNameTitle);
+            // Add headertable
             try {
-                PdfPTable headerTable = new PdfPTable(2); // 3 columns for image, company info, and date
+                PdfPTable headerTable = new PdfPTable(2); // 2 columns for image, company info, and date
                 headerTable.setWidthPercentage(100);
+
+                // Set the percentage widths for the columns
+                float[] columnWidths = {65f, 45f};
+                headerTable.setWidths(columnWidths);
 
                 PdfPCell companyInfoCell = new PdfPCell();
                 companyInfoCell.addElement(new Paragraph("""
-                                           Endah Valley, Lot F99, Ground Floor, Leng Small, 1, Jalan 2/158e
+                                           Endah Valley, Lot F99, Ground Floor,
+                                           Leng Small, 1, Jalan 2/158e 
                                            Bandar Baru Sri Petaling, 57000 Kuala Lumpur
-                                           019-547 8899, furnihub123@gmail.com"""));
+                                           019-547 8899 or furnihub123@gmail.com"""));
                 companyInfoCell.setBorder(Rectangle.NO_BORDER);
 
                 PdfPCell dateCell = new PdfPCell();
@@ -297,8 +306,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 dateCell.addElement(new Paragraph("Invoice: INV0001"));
                 dateCell.setBorder(Rectangle.NO_BORDER);
                 dateCell.setHorizontalAlignment(Element.ALIGN_LEFT);
-
-
                 headerTable.addCell(companyInfoCell);
                 headerTable.addCell(dateCell);
 
@@ -308,6 +315,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 document.add(new Paragraph(" "));
                 document.add(new LineSeparator());
                 document.add(new Paragraph(" "));
+                
             } catch (DocumentException e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Error adding header to the invoice.");
@@ -315,20 +323,51 @@ public class Generate_Invoice extends javax.swing.JFrame {
             }
 
             // Add details to the PDF
-            document.add(new Paragraph("INVOICE"));
-            document.add(new Paragraph("""
-                                       Bill to:
+            Paragraph invoiceTitle = new Paragraph("INVOICE", titleFont);
+            invoiceTitle.setAlignment(Element.ALIGN_CENTER);
+            document.add(invoiceTitle);
+            
+            // Add subheadertable
+            try {
+                PdfPTable subheaderTable = new PdfPTable(2); // 2 columns for subheader
+                subheaderTable.setWidthPercentage(100);
+
+                // Set the percentage widths for the columns
+                float[] columnWidths = {65f, 45f};
+                subheaderTable.setWidths(columnWidths);
+
+                PdfPCell BilltoCell = new PdfPCell();
+                BilltoCell.addElement(new Paragraph("Bill to: ", subtitleFont));
+                BilltoCell.addElement(new Paragraph("""
                                        
                                        Yoyo Furniture
                                        No. 1986, Jalan Sungai Besi Batu 13
                                        Kampung Baru Balakan
                                        57000 Cheras"""));
-            document.add(new Paragraph("""
-                                       Ship to:
+                BilltoCell.setBorder(Rectangle.NO_BORDER);
+
+                PdfPCell ShiptoCell = new PdfPCell();
+                BilltoCell.addElement(new Paragraph("Ship to: ", subtitleFont));
+                document.add(new Paragraph("""
                                        
                                        Customer: """ + Customer));
+                BilltoCell.setBorder(Rectangle.NO_BORDER);
+                
+                subheaderTable.addCell(BilltoCell);
+                subheaderTable.addCell(ShiptoCell);
+
+                document.add(subheaderTable);
+                
+            } catch (DocumentException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error adding subheader to the invoice.");
+                return;
+            }
+            
+            
+            Paragraph QuotationTitle = new Paragraph("Quotation", subtitleFont);
+            document.add(QuotationTitle);
             document.add(new Paragraph("""
-                                       Quotation
                                        
                                        Quotation ID: """ + ID));
             document.add(new Paragraph("Quotation Date: " + Date));
