@@ -268,26 +268,24 @@ public class Generate_Invoice extends javax.swing.JFrame {
         try {
             PdfWriter.getInstance(document, new FileOutputStream(fileName));
             document.open();
-
             // Add image logo
             try {
-                PdfPTable headerTable = new PdfPTable(3); // 3 columns for image, company info, and date
+                Image logo = Image.getInstance("src/furniture_sale_ordering_management_system/Images/Companylogo.jpg");
+                logo.scaleAbsolute(80, 80);
+                document.add(logo);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error loading image.");
+                return; // Return to avoid further processing if image loading fails
+            }
+            
+            document.add(new Paragraph("FurniHub Solutions"));
+            // Add image logo
+            try {
+                PdfPTable headerTable = new PdfPTable(2); // 3 columns for image, company info, and date
                 headerTable.setWidthPercentage(100);
 
-                PdfPCell imageCell = new PdfPCell();
-                try {
-                    Image logo = Image.getInstance("src/furniture_sale_ordering_management_system/Images/Companylogo.jpg");
-                    logo.scaleAbsolute(80, 80);
-                    imageCell.addElement(logo);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                    JOptionPane.showMessageDialog(this, "Error loading image.");
-                    return; // Return to avoid further processing if image loading fails
-                }
-                imageCell.setBorder(Rectangle.NO_BORDER);
-
                 PdfPCell companyInfoCell = new PdfPCell();
-                companyInfoCell.addElement(new Paragraph("FurniHub Solutions"));
                 companyInfoCell.addElement(new Paragraph("""
                                            Endah Valley, Lot F99, Ground Floor, Leng Small, 1, Jalan 2/158e
                                            Bandar Baru Sri Petaling, 57000 Kuala Lumpur
@@ -300,7 +298,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 dateCell.setBorder(Rectangle.NO_BORDER);
                 dateCell.setHorizontalAlignment(Element.ALIGN_LEFT);
 
-                headerTable.addCell(imageCell);
+
                 headerTable.addCell(companyInfoCell);
                 headerTable.addCell(dateCell);
 
