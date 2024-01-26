@@ -15,7 +15,9 @@ import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -184,17 +186,56 @@ private double parseAmount(String amountString) {
 }
 
     
-    private JFreeChart createChart(DefaultCategoryDataset dataset, String reportType) {
-    JFreeChart chart = ChartFactory.createBarChart(
-        reportType + " Report",
-        "Product",
-        "Amount Sold",
-        dataset
-    );
+private JFreeChart createChart(DefaultCategoryDataset dataset, String reportType) {
+    JFreeChart chart = null;
+
+    if ("Work Done".equals(reportType)) {
+        // Bar Chart for Work Done
+        chart = ChartFactory.createBarChart(
+            reportType + " Report",
+            "Product",
+            "Amount Sold",
+            dataset
+        );
+    } else if ("Approved".equals(reportType)) {
+        // Line Chart for Approved
+        chart = ChartFactory.createLineChart(
+            reportType + " Report",
+            "Product",
+            "Amount Sold",
+            dataset,
+            PlotOrientation.VERTICAL,
+            true,
+            true,
+            false
+        );
+    } else {
+        // Pie Chart for Closed Sale
+        DefaultPieDataset pieDataset = createPieDataset(dataset);
+        chart = ChartFactory.createPieChart(
+            reportType + " Report",
+            pieDataset,
+            true, // include legend
+            true,
+            false
+        );
+    }
 
     return chart;
+}
+  
+private DefaultPieDataset createPieDataset(DefaultCategoryDataset dataset) {
+    DefaultPieDataset pieDataset = new DefaultPieDataset();
+
+    int rowCount = dataset.getRowCount();
+    for (int i = 0; i < rowCount; i++) {
+        String product = dataset.getRowKey(i).toString();
+        double amount = (double) dataset.getValue(0, i);
+        pieDataset.setValue(product, amount);
     }
-    
+
+    return pieDataset;
+}
     public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_Sales.getModel();
         model.setRowCount(0); // Clear existing data
