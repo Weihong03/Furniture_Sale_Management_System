@@ -6,8 +6,12 @@ package furniture_sale_ordering_management_system;
  */
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.awt.Desktop;
@@ -267,30 +271,52 @@ public class Generate_Invoice extends javax.swing.JFrame {
 
             // Add image logo
             try {
-                Image logo = Image.getInstance("src/furniture_sale_ordering_management_system/Images/Companylogo.jpg");
-                logo.scaleAbsolute(80, 80);
-                document.add(logo);
-            } catch (MalformedURLException e) {
+                PdfPTable headerTable = new PdfPTable(3); // 3 columns for image, company info, and date
+                headerTable.setWidthPercentage(100);
+
+                PdfPCell imageCell = new PdfPCell();
+                try {
+                    Image logo = Image.getInstance("src/furniture_sale_ordering_management_system/Images/Companylogo.jpg");
+                    logo.scaleAbsolute(80, 80);
+                    imageCell.addElement(logo);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Error loading image.");
+                    return; // Return to avoid further processing if image loading fails
+                }
+                imageCell.setBorder(Rectangle.NO_BORDER);
+
+                PdfPCell companyInfoCell = new PdfPCell();
+                companyInfoCell.addElement(new Paragraph("FurniHub Solutions"));
+                companyInfoCell.addElement(new Paragraph("""
+                                           Endah Valley, Lot F99, Ground Floor, Leng Small, 1, Jalan 2/158e
+                                           Bandar Baru Sri Petaling, 57000 Kuala Lumpur
+                                           019-547 8899, furnihub123@gmail.com"""));
+                companyInfoCell.setBorder(Rectangle.NO_BORDER);
+
+                PdfPCell dateCell = new PdfPCell();
+                dateCell.addElement(new Paragraph("Date: " + java.util.Calendar.getInstance().getTime()));
+                dateCell.addElement(new Paragraph("Invoice: INV0001"));
+                dateCell.setBorder(Rectangle.NO_BORDER);
+                dateCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+
+                headerTable.addCell(imageCell);
+                headerTable.addCell(companyInfoCell);
+                headerTable.addCell(dateCell);
+
+                document.add(headerTable);
+
+                // Add a line separator
+                document.add(new Paragraph(" "));
+                document.add(new LineSeparator());
+                document.add(new Paragraph(" "));
+            } catch (DocumentException e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Error loading image.");
-                return; // Return to avoid further processing if image loading fails
+                JOptionPane.showMessageDialog(this, "Error adding header to the invoice.");
+                return;
             }
 
             // Add details to the PDF
-            document.add(new Paragraph("FurniHub Solutions"));
-            document.add(new Paragraph("""
-                                       
-                                       Endah Valley, Lot F99, Ground Floor, Leng Small, 1, Jalan 2/158e
-                                       Bandar Baru Sri Petaling, 57000 Kuala Lumpur
-                                       019-547 8899, furnihub123@gmail.com"""));
-            document.add(new Paragraph("Date: " + java.util.Calendar.getInstance().getTime()));
-            document.add(new Paragraph("Invoice: INV0001"));
-
-            // Add a line separator
-            document.add(new Paragraph(" "));
-            document.add(new LineSeparator());
-            document.add(new Paragraph(" "));
-
             document.add(new Paragraph("INVOICE"));
             document.add(new Paragraph("""
                                        Bill to:
