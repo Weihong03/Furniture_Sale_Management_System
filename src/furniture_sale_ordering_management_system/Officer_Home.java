@@ -122,6 +122,11 @@ public class Officer_Home extends javax.swing.JFrame {
         });
 
         jButton_GenerateReport.setText("Generate Report");
+        jButton_GenerateReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_GenerateReportActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,6 +259,13 @@ public class Officer_Home extends javax.swing.JFrame {
         check.displaySales();
         this.dispose();
     }//GEN-LAST:event_jButton_CheckSaleStatusActionPerformed
+
+    private void jButton_GenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GenerateReportActionPerformed
+        Generate_Report generate = new Generate_Report(userID);
+        generate.setVisible(true);
+        generate.displaySales();
+        this.dispose();
+    }//GEN-LAST:event_jButton_GenerateReportActionPerformed
 
 
     public static void main(String args[]) {
