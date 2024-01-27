@@ -4,6 +4,7 @@
  */
 package furniture_sale_ordering_management_system;
 
+import furniture_sale_ordering_management_system.progressindicator.ProductStatusUpdater;
 import furniture_sale_ordering_management_system.Shared_item.glasspanepopup.GlassPanePopup;
 import java.awt.Dimension;
 import java.awt.Toolkit;
