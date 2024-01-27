@@ -156,7 +156,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
        // Get the confirmation status from the selected row (assuming it's in the 9th column)
        String confirmationStatus = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 8);
        // Check if the confirmation is approved
-       if ("Approved,".equalsIgnoreCase(confirmationStatus)) {
+       if ("Approved".equalsIgnoreCase(confirmationStatus)) {
            // Show the GlassPanePopup only when the conditions are met
            GlassPanePopup.showPopup(new Status());
            // Get the sale ID from the selected row (assuming it's in the first column)
@@ -191,21 +191,27 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         try (BufferedReader br = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                if (line.startsWith("ID:")) {
+                if (line.startsWith("ID: ")) {
                     String[] rowData = new String[12];
-                    rowData[0] = line.substring(4); // Extract ID value
-
+                    // Remove trailing comma if present in the ID
+                    rowData[0] = line.split(": ")[1].replaceAll(",\\s*$", "").trim();
                     for (int i = 1; i < 12; i++) {
                         line = br.readLine();
                         if (line != null && line.contains(": ")) {
                             String[] parts = line.split(": ", 2);
                             if (parts.length == 2) {
-                                rowData[i] = parts[1];
+                                // Remove trailing comma if present
+                                String value = parts[1].replaceAll(",\\s*$", "");
+                                // Check if the data is "Default" and set to empty if true
+                                rowData[i] = "Default".equals(value) ? "-" : value;
                             } else {
                                 // Handle unexpected line format
                                 rowData[i] = " ";
                             }
-                        } 
+                        } else {
+                            // Handle unexpected line format
+                            rowData[i] = " ";
+                        }
                     }
                     model.addRow(rowData);
                 }

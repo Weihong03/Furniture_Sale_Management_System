@@ -4,6 +4,7 @@
  */
 package furniture_sale_ordering_management_system;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -15,9 +16,12 @@ import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.CombinedDomainCategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -137,19 +141,34 @@ public class Generate_Report extends javax.swing.JFrame {
         generateAndDisplayChart(selectedReportType);
     }//GEN-LAST:event_jButton_GenerateActionPerformed
 
-    private void generateAndDisplayChart(String reportType) {
-        DefaultCategoryDataset dataset = createDataset(reportType);
-        JFreeChart chart = createChart(dataset, reportType);
+private void generateAndDisplayChart(String reportType) {
+    DefaultCategoryDataset barChartDataset = createDataset(reportType);
+    DefaultCategoryDataset lineChartDataset = createLineChartDataset(reportType);
 
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(500, 300));
+    JFreeChart barChart = createChart(barChartDataset, reportType);
+    JFreeChart lineChart = createLineChart(lineChartDataset, reportType);
 
-        JFrame chartFrame = new JFrame(reportType + " Report Chart");
-        chartFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        chartFrame.getContentPane().add(chartPanel);
-        chartFrame.pack();
-        chartFrame.setVisible(true);
-    }
+    // Create separate panels for bar chart and line chart
+    ChartPanel barChartPanel = new ChartPanel(barChart);
+    ChartPanel lineChartPanel = new ChartPanel(lineChart);
+
+    // Create a new JFrame to display the charts
+    JFrame chartFrame = new JFrame(reportType + " Report");
+    chartFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+    // Set layout manager to BorderLayout
+    chartFrame.setLayout(new BorderLayout());
+
+    // Add the chart panels to the JPanel
+    chartFrame.add(barChartPanel, BorderLayout.WEST);
+    chartFrame.add(lineChartPanel, BorderLayout.EAST);
+
+    // Pack and center the frame on the screen
+    chartFrame.pack();
+    chartFrame.setLocationRelativeTo(null);
+    chartFrame.setVisible(true);
+}
+
    
 private DefaultCategoryDataset createDataset(String reportType) {
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -180,6 +199,35 @@ private DefaultCategoryDataset createDataset(String reportType) {
     return dataset;
 }
 
+private DefaultCategoryDataset createLineChartDataset(String reportType) {
+    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+    int rowCount = jTable_Sales.getRowCount();
+    for (int i = 0; i < rowCount; i++) {
+        String confirmation = jTable_Sales.getValueAt(i, 8).toString(); // Confirmation column index is 8
+        String status = jTable_Sales.getValueAt(i, 11).toString(); // Status column index is 11
+
+        if ("Work Done".equals(reportType) && "Approved".equals(confirmation) && "Closed Sale".equals(status)) {
+            // For work done report, add data where confirmation is approved and status is closed sale
+            String date = jTable_Sales.getValueAt(i, 2).toString(); // Date column index is 2
+            double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
+            dataset.addValue(amount, "Amount", date);
+        } else if ("Approved".equals(reportType) && "Approved".equals(confirmation) && "In Progress".equals(status)) {
+            // For approved report, add data where confirmation is approved and status is in progress
+            String date = jTable_Sales.getValueAt(i, 2).toString(); // Date column index is 2
+            double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
+            dataset.addValue(amount, "Amount", date);
+        } else if ("Closed Sale".equals(reportType) && "Rejected".equals(confirmation) && "Closed Sale".equals(status)) {
+            // For closed sale report, add data where confirmation is rejected and status is closed sale
+            String date = jTable_Sales.getValueAt(i, 2).toString(); // Date column index is 2
+            double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
+            dataset.addValue(amount, "Amount", date);
+        }
+    }
+
+    return dataset;
+}
+
 private double parseAmount(String amountString) {
     // Remove "RM" prefix and parse the amount
     return Double.parseDouble(amountString.replace("RM", "").trim());
@@ -187,55 +235,37 @@ private double parseAmount(String amountString) {
 
     
 private JFreeChart createChart(DefaultCategoryDataset dataset, String reportType) {
-    JFreeChart chart = null;
+    // Create Bar Chart for all report types
+    JFreeChart chart = ChartFactory.createBarChart(
+        reportType + " Bar Chart",
+        "Product",
+        "Amount Sold",
+        dataset,
+        PlotOrientation.VERTICAL,
+        true,
+        true,
+        false
+    );
 
-    if ("Work Done".equals(reportType)) {
-        // Bar Chart for Work Done
-        chart = ChartFactory.createBarChart(
-            reportType + " Report",
-            "Product",
-            "Amount Sold",
-            dataset
-        );
-    } else if ("Approved".equals(reportType)) {
-        // Line Chart for Approved
-        chart = ChartFactory.createLineChart(
-            reportType + " Report",
-            "Product",
-            "Amount Sold",
+    return chart;
+}
+
+    private JFreeChart createLineChart(DefaultCategoryDataset dataset, String reportType) {
+        // Create Line Chart for all report types
+        JFreeChart chart = ChartFactory.createLineChart(
+            reportType + " Line Chart",
+            "Date",
+            "Sales Amount",
             dataset,
             PlotOrientation.VERTICAL,
             true,
             true,
             false
         );
-    } else {
-        // Pie Chart for Closed Sale
-        DefaultPieDataset pieDataset = createPieDataset(dataset);
-        chart = ChartFactory.createPieChart(
-            reportType + " Report",
-            pieDataset,
-            true, // include legend
-            true,
-            false
-        );
+
+        return chart;
     }
 
-    return chart;
-}
-  
-private DefaultPieDataset createPieDataset(DefaultCategoryDataset dataset) {
-    DefaultPieDataset pieDataset = new DefaultPieDataset();
-
-    int rowCount = dataset.getRowCount();
-    for (int i = 0; i < rowCount; i++) {
-        String product = dataset.getRowKey(i).toString();
-        double amount = (double) dataset.getValue(0, i);
-        pieDataset.setValue(product, amount);
-    }
-
-    return pieDataset;
-}
     public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_Sales.getModel();
         model.setRowCount(0); // Clear existing data
