@@ -72,9 +72,8 @@ public class Notification extends javax.swing.JPanel {
                     String confirmationStatus = line.substring(line.indexOf(":") + 1).trim().replace(",", "");
 
                     if ("Default".equals(confirmationStatus)) {
-
-                    // Create Notification_Item and add it to jPanel1 with the ImageIcon
-                    jPanel1.add(new Notification_Item(new ImageIcon(getClass().getResource("Images/icon.png")), salesperson, "made a Sales Quotation!", date, amount));
+                        // Create Notification_Item and add it to jPanel1 with the ImageIcon
+                        jPanel1.add(new Notification_Item(new ImageIcon(getClass().getResource("Images/no photo.jpg")), salesperson, "made a Sales Quotation!", date, amount));
                     }
                 }
             }
@@ -82,7 +81,7 @@ public class Notification extends javax.swing.JPanel {
             e.printStackTrace(); // Handle the exception according to your needs
         }
     }
-
+ 
     @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs.create();
