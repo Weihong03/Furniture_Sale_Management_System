@@ -4,6 +4,7 @@ package furniture_sale_ordering_management_system;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -403,6 +404,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 return;
             }
 
+            document.add(new Paragraph(" "));
             // Create a table for product details
             PdfPTable productTable = new PdfPTable(3);
             productTable.setWidthPercentage(100);
@@ -412,42 +414,62 @@ public class Generate_Invoice extends javax.swing.JFrame {
             productTable.setWidths(columnWidths);
 
             // Add table header
-            PdfPCell headerCell1 = new PdfPCell(new Phrase("PRODUCT"));
+            Font headerFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.BLACK);
+
+            PdfPCell headerCell1 = new PdfPCell(new Phrase("PRODUCT", headerFont));
             headerCell1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            headerCell1.setBackgroundColor(new BaseColor(0xDD, 0xDD, 0xE5));
+            headerCell1.setBorder(Rectangle.NO_BORDER);
             productTable.addCell(headerCell1);
 
-            PdfPCell headerCell2 = new PdfPCell(new Phrase("ITEM ID"));
+            PdfPCell headerCell2 = new PdfPCell(new Phrase("ITEM ID", headerFont));
             headerCell2.setHorizontalAlignment(Element.ALIGN_CENTER);
-            headerCell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            headerCell2.setBackgroundColor(new BaseColor(0xDD, 0xDD, 0xE5));
+            headerCell2.setBorder(Rectangle.NO_BORDER);
             productTable.addCell(headerCell2);
 
-            PdfPCell headerCell3 = new PdfPCell(new Phrase("PRICE"));
+            PdfPCell headerCell3 = new PdfPCell(new Phrase("PRICE", headerFont));
             headerCell3.setHorizontalAlignment(Element.ALIGN_CENTER);
-            headerCell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            headerCell3.setBackgroundColor(new BaseColor(0xDD, 0xDD, 0xE5));
+            headerCell3.setBorder(Rectangle.NO_BORDER);
             productTable.addCell(headerCell3);
 
             // Add table columns
-            PdfPCell productCell = new PdfPCell(new Phrase(Product));
-            productCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            productCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            productCell.setBorder(Rectangle.NO_BORDER);
-            productTable.addCell(productCell);
+            String[] productParts = Product.split("/");
+            String[] itemIDParts = ItemID.split("/");
+            String[] priceParts = Price.split("/");
 
-            PdfPCell itemIDCell = new PdfPCell(new Phrase(ItemID));
-            itemIDCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            itemIDCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            itemIDCell.setBorder(Rectangle.NO_BORDER);
-            productTable.addCell(itemIDCell);
+            // Find the maximum number of parts among the three
+            int maxParts = Math.max(Math.max(productParts.length, itemIDParts.length), priceParts.length);
 
-            PdfPCell priceCell = new PdfPCell(new Phrase(Price));
-            priceCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            priceCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            priceCell.setBorder(Rectangle.NO_BORDER);
-            productTable.addCell(priceCell);
+            // Add cells for each part in the table
+            for (int i = 0; i < maxParts; i++) {
+                PdfPCell productCell = new PdfPCell(i < productParts.length ? new Phrase(productParts[i]) : new Phrase(" "));
+                productCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                productCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                productCell.setBorder(Rectangle.NO_BORDER);
+                productTable.addCell(productCell);
 
-            // Add the product table to the document
+                PdfPCell itemIDCell = new PdfPCell(i < itemIDParts.length ? new Phrase(itemIDParts[i]) : new Phrase(" "));
+                itemIDCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                itemIDCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                itemIDCell.setBorder(Rectangle.NO_BORDER);
+                productTable.addCell(itemIDCell);
+
+                PdfPCell priceCell = new PdfPCell(i < priceParts.length ? new Phrase(priceParts[i]) : new Phrase(" "));
+                priceCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                priceCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                priceCell.setBorder(Rectangle.NO_BORDER);
+                productTable.addCell(priceCell);
+            }
+
             document.add(productTable);
+
+            // Add a dashed line separator
+            DottedLineSeparator dottedLine = new DottedLineSeparator();
+            dottedLine.setOffset(-2); // Adjust the offset to control the gap between the dots
+            document.add(new Chunk(dottedLine));
+            document.add(new Paragraph(" "));
 
             // Add total amount row
             PdfPTable totalTable = new PdfPTable(3);
@@ -455,13 +477,21 @@ public class Generate_Invoice extends javax.swing.JFrame {
             totalTable.setWidths(columnWidths);
 
             // Add empty cells for PRODUCT and ITEM ID columns
-            totalTable.addCell(new PdfPCell(new Phrase(" ")));
-            totalTable.addCell(new PdfPCell(new Phrase(" ")));
+            PdfPCell emptyCell = new PdfPCell(new Phrase(" "));
+            emptyCell.setBorder(PdfPCell.NO_BORDER);
+            totalTable.addCell(emptyCell);
+
+            PdfPCell emptyCell2 = new PdfPCell(new Phrase(" "));
+            emptyCell2.setBorder(PdfPCell.NO_BORDER);
+            totalTable.addCell(emptyCell2);
 
             // Add the total amount in the PRICE column
-            totalTable.addCell(new PdfPCell(new Phrase("Total: " + Amount)));
+            PdfPCell totalCell = new PdfPCell(new Phrase("Total: " + Amount));
+            totalCell.setBorder(Rectangle.BOTTOM);
+            totalCell.setBorderColorBottom(BaseColor.BLACK);  // Set color to black for visibility
+            totalCell.setBorderWidthBottom(0.5f);
+            totalTable.addCell(totalCell);
 
-            // Add the total table to the document
             document.add(totalTable);
 
             try {
@@ -492,12 +522,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 return;
             }
 
-            // Add a dashed line separator
-            DottedLineSeparator dottedLine = new DottedLineSeparator();
-            dottedLine.setOffset(-2); // Adjust the offset to control the gap between the dots
-            document.add(new Chunk(dottedLine));
-            document.add(new Paragraph(" "));
-
             // Add a thank you message
             document.newPage();
             document.add(new Paragraph("Terms and Conditions:", new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD)));
@@ -509,15 +533,15 @@ public class Generate_Invoice extends javax.swing.JFrame {
             document.add(new Paragraph("Disclaimer:", new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD)));
             document.add(new Paragraph("All services and products provided by Yoyo Furniture are subject to the terms and conditions outlined in our agreements and contracts.", new Font(Font.FontFamily.HELVETICA, 12)));
             document.add(new Paragraph("While we make every effort to ensure the accuracy and completeness of the information presented in this invoice, Yoyo Furniture disclaims any liability for errors or omissions.", new Font(Font.FontFamily.HELVETICA, 12)));
-            document.add(Chunk.NEWLINE); // Add a blank line
+            document.add(Chunk.NEWLINE);
 
             document.add(new Paragraph("Any views or opinions presented in this communication are solely those of Yoyo Furniture and do not necessarily represent those of any third party.", new Font(Font.FontFamily.HELVETICA, 12)));
             document.add(new Paragraph("Yoyo Furniture is not responsible for any damage or loss arising from reliance on information contained in this invoice.", new Font(Font.FontFamily.HELVETICA, 12)));
-            document.add(Chunk.NEWLINE); // Add a blank line
+            document.add(Chunk.NEWLINE);
 
             document.add(new Paragraph("Thank you for your understanding and cooperation.", new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD)));
-            document.add(Chunk.NEWLINE); // Add a blank line
-            document.add(Chunk.NEWLINE); // Add a blank line
+            document.add(Chunk.NEWLINE);
+            document.add(Chunk.NEWLINE);
 
             Paragraph thankYou = new Paragraph("""
                                                 THANK YOU FOR CHOOSING YOYO FURNITURE
