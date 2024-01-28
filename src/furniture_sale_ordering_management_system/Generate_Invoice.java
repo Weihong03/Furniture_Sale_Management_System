@@ -331,7 +331,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
             invoiceTitle.setAlignment(Element.ALIGN_CENTER);
             document.add(invoiceTitle);
             document.add(new Paragraph(" "));
-            document.add(new Paragraph(" "));
 
             // Add subheadertable
             try {
