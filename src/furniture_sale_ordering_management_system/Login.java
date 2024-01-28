@@ -8,8 +8,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFrame;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
@@ -25,17 +23,6 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         // Set the title of the window
         setTitle("Login");
-
-        // Get the dimension of the screen
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        // Calculate the center coordinates
-        int centerX = (screenSize.width - getWidth()) / 2;
-        int centerY = (screenSize.height - getHeight()) / 2;
-        
-
-        // Set the location of the window
-        setLocation(centerX, centerY);
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
