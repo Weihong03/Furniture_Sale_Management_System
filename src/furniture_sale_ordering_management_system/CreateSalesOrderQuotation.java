@@ -4,8 +4,6 @@
  */
 package furniture_sale_ordering_management_system;
 
-import static furniture_sale_ordering_management_system.Choose_Product.userID;
-import static furniture_sale_ordering_management_system.Modify_Sales_Order_Quotation.Amount;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;

@@ -4,7 +4,6 @@
  */
 package furniture_sale_ordering_management_system;
 
-import static furniture_sale_ordering_management_system.Manage_Sales_Order_Quotation.userID;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

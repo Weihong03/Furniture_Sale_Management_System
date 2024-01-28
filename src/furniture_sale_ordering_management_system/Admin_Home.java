@@ -4,7 +4,6 @@
  */
 package furniture_sale_ordering_management_system;
 
-import static furniture_sale_ordering_management_system.Officer_Home.userID;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;

@@ -6,11 +6,9 @@ package furniture_sale_ordering_management_system;
 
 import furniture_sale_ordering_management_system.Shared_item.ModernScrollBarUI;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.Path2D;
@@ -19,7 +17,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JScrollBar;
 import net.miginfocom.swing.MigLayout;
 

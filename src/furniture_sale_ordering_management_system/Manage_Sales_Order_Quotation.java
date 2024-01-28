@@ -4,7 +4,6 @@
  */
 package furniture_sale_ordering_management_system;
 
-import static furniture_sale_ordering_management_system.CreateSalesOrderQuotation.userID;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;

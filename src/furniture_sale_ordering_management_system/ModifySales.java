@@ -6,7 +6,6 @@ package furniture_sale_ordering_management_system;
  */
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -14,12 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 
 /**
  *
