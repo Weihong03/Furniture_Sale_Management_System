@@ -4,18 +4,13 @@
  */
 package furniture_sale_ordering_management_system;
 
-import static furniture_sale_ordering_management_system.Sales_Home.userID;
 import furniture_sale_ordering_management_system.Shared_item.glasspanepopup.DefaultLayoutCallBack;
+import furniture_sale_ordering_management_system.Shared_item.glasspanepopup.DefaultOption;
 import furniture_sale_ordering_management_system.Shared_item.glasspanepopup.GlassPanePopup;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.miginfocom.layout.ComponentWrapper;
@@ -223,8 +218,9 @@ public class Officer_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_invoiceActionPerformed
 
     private void button_notificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_notificationActionPerformed
-        GlassPanePopup.showPopup(new Notification() {
+        GlassPanePopup.showPopup(new Notification(), new DefaultOption() {
 
+            @Override
             public float opacity() {
                 return 0;
             }

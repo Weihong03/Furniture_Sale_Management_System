@@ -15,6 +15,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.Path2D;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.ImageIcon;
 import javax.swing.JScrollBar;
 import net.miginfocom.swing.MigLayout;
 
@@ -28,11 +29,6 @@ public class Notification extends javax.swing.JPanel {
         initComponents();
         setOpaque(false);
         initScrollBar();
-        centerWindow();
-        // Create and add Notification_Item to jPanel_1
-        Notification_Item notificationItem = new Notification_Item("John Doe","made a quotation", "2024-01-25", "$500");
-        jPanel1.add(notificationItem);
-        jPanel1.revalidate(); // Refresh layout
     }
     
     private void initScrollBar() {
@@ -43,18 +39,14 @@ public class Notification extends javax.swing.JPanel {
         sb.setUI(new ModernScrollBarUI());
         jScrollPane_scroll.getViewport().setOpaque(false);
         jScrollPane_scroll.setViewportBorder(null);
+        jPanel1.setLayout(new MigLayout("inset 0, fillx, wrap","[fill]"));
+        loadNoti();
     }
-
-    private void centerWindow() {
-        // Get the dimension of the screen
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-
-        // Calculate the center coordinates
-        int centerX = (screenSize.width - getWidth()) / 2;
-        int centerY = (screenSize.height - getHeight()) / 2;
-
-        // Set the location of the window
-        setLocation(centerX, centerY);
+    
+    private void loadNoti() {
+        jPanel1.add(new Notification_Item(new ImageIcon(getClass().getResource("Images/icon.png")), "Steve", "just made a sales quotation", "25 Jan 2024", "RM500"));
+        jPanel1.add(new Notification_Item(new ImageIcon(getClass().getResource("Images/no photo.jpg")), "Tan", "just made a sales quotation", "26 Jan 2024", "RM400"));
+        jPanel1.add(new Notification_Item(new ImageIcon(getClass().getResource("Images/icon.png")), "Ooi", "just made a sales quotation", "27 Jan 2024", "RM300"));
     }
 
     @Override
@@ -104,7 +96,7 @@ public class Notification extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
 
         jScrollPane_scroll.setViewportView(jPanel1);

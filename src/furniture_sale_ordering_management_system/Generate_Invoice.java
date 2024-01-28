@@ -29,6 +29,11 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -550,6 +555,10 @@ public class Generate_Invoice extends javax.swing.JFrame {
 
             document.close();
 
+            // Update the invoice status to "Yes" in the text file
+            updateInvoiceStatus(ID);
+            refreshTable();
+
             JOptionPane.showMessageDialog(this, "Invoice generated successfully.");
             // Open the generated PDF
             if (Desktop.isDesktopSupported()) {
@@ -569,6 +578,25 @@ public class Generate_Invoice extends javax.swing.JFrame {
         }
     }
 
+    private void updateInvoiceStatus(String invoiceID) throws IOException {
+        // Read the content of the text file
+        Path filePath = Paths.get("Data/Sales_Quotation.txt");
+        List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
+
+        // Iterate through the lines to find and update the status for the given invoice ID
+        for (int i = 0; i < lines.size(); i++) {
+            String line = lines.get(i);
+            if (line.startsWith("ID: " + invoiceID)) {
+                // Replace the existing "Invoice: Default" line with "Invoice: Yes"
+                lines.set(i + 10, "Invoice: Yes,");
+                break;
+            }
+        }
+
+        // Write the updated content back to the text file
+        Files.write(filePath, lines, StandardCharsets.UTF_8);
+    }
+
     public void searchSales(String searchText) {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(jTable_Salestable.getModel());
         jTable_Salestable.setRowSorter(rowSorter);
@@ -577,6 +605,20 @@ public class Generate_Invoice extends javax.swing.JFrame {
         rowSorter.setRowFilter(rowFilter);
     }
 
+        private void refreshTable() {
+        // Clear the existing data from the table
+        DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
+        model.setRowCount(0);
+
+        dispose();
+        Sale_Approval saleApproval = new Sale_Approval(userID);
+        saleApproval.setVisible(true);
+        saleApproval.displaySales(); // Call the method to display the Sales
+
+        jTable_Salestable.revalidate();
+        jTable_Salestable.repaint();
+    }
+        
     public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
         model.setRowCount(0); // Clear existing data

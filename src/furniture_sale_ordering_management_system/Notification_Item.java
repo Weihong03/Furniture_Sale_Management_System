@@ -4,24 +4,22 @@
  */
 package furniture_sale_ordering_management_system;
 
+import javax.swing.Icon;
+
 /**
  *
  * @author Wei Hong
  */
 public class Notification_Item extends javax.swing.JPanel {
 
-    public Notification_Item(String name, String description, String date, String amount) {
+    public Notification_Item(Icon icon, String name, String description, String date, String amount) {
         initComponents();
-        setData(name, date, amount);
-    }
-
-    private void setData(String name, String date, String amount) {
+        imageAvatar1.setIcon(icon);
         jLabel_name.setText(name);
         jLabel_date.setText(date);
+        jLabel_description.setText(description);
         jLabel_amount.setText(amount);
     }
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,6 +29,7 @@ public class Notification_Item extends javax.swing.JPanel {
         jLabel_date = new javax.swing.JLabel();
         jLabel_description = new javax.swing.JLabel();
         jLabel_amount = new javax.swing.JLabel();
+        imageAvatar1 = new furniture_sale_ordering_management_system.Shared_item.ImageAvatar();
 
         setOpaque(false);
 
@@ -50,38 +49,49 @@ public class Notification_Item extends javax.swing.JPanel {
         jLabel_amount.setForeground(new java.awt.Color(134, 134, 134));
         jLabel_amount.setText("Amount");
 
+        imageAvatar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/O006_profile_image.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(16, 16, 16)
+                .addComponent(imageAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel_name)
                     .addComponent(jLabel_date))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel_description)
-                    .addComponent(jLabel_amount))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_amount)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_description)
+                        .addGap(0, 33, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_name)
-                    .addComponent(jLabel_description))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_date)
-                    .addComponent(jLabel_amount))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_name)
+                            .addComponent(jLabel_description))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_amount)
+                            .addComponent(jLabel_date)))
+                    .addComponent(imageAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private furniture_sale_ordering_management_system.Shared_item.ImageAvatar imageAvatar1;
     private javax.swing.JLabel jLabel_amount;
     private javax.swing.JLabel jLabel_date;
     private javax.swing.JLabel jLabel_description;
