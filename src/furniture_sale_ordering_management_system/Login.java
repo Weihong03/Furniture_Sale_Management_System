@@ -134,6 +134,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_usernameActionPerformed
@@ -149,7 +150,7 @@ public class Login extends javax.swing.JFrame {
 
         if (userID != null) {
             // Determine the role based on the userID prefix
-            
+
             char rolePrefix = userID.charAt(0);
 
             // Redirect to the corresponding home page
@@ -159,9 +160,9 @@ public class Login extends javax.swing.JFrame {
                     Admin_Home adminHome = new Admin_Home(userID);
                     adminHome.setVisible(true);
                     this.setVisible(false);
-                    
-                     Admin_Logbook adminLogbook = new Admin_Logbook(userID);
-                     adminLogbook.addLogEntry(userID,event);
+
+                    Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+                    adminLogbook.addLogEntry(userID, event);
                 }
                 case 'S' -> {
                     // SalesPerson Home
@@ -199,7 +200,7 @@ public class Login extends javax.swing.JFrame {
             String line;
             String previousLine = null;
             while ((line = adminReader.readLine()) != null) {
-                if (line.contains("Username: " + username)) {
+                if (!username.isEmpty() && !password.isEmpty() && line.contains("Username: " + username)) {
                     // Read the next line for password validation
                     String passwordLine = adminReader.readLine();
                     if (passwordLine != null && passwordLine.contains("Password: " + password)) {
@@ -211,7 +212,7 @@ public class Login extends javax.swing.JFrame {
             }
 
             while ((line = SalesOfficerReader.readLine()) != null) {
-                if (line.contains("Username: " + username)) {
+                if (!username.isEmpty() && !password.isEmpty() && line.contains("Username: " + username)) {
                     // Read the next line for password validation
                     String passwordLine = SalesOfficerReader.readLine();
                     if (passwordLine != null && passwordLine.contains("Password: " + password)) {
