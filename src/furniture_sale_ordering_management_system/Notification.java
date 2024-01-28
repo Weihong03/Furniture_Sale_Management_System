@@ -15,7 +15,11 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.Path2D;
 import java.awt.geom.RoundRectangle2D;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JScrollBar;
 import net.miginfocom.swing.MigLayout;
 
@@ -30,7 +34,7 @@ public class Notification extends javax.swing.JPanel {
         setOpaque(false);
         initScrollBar();
     }
-    
+
     private void initScrollBar() {
         JScrollBar sb = jScrollPane_scroll.getVerticalScrollBar();
         sb.setOpaque(false);
@@ -39,14 +43,44 @@ public class Notification extends javax.swing.JPanel {
         sb.setUI(new ModernScrollBarUI());
         jScrollPane_scroll.getViewport().setOpaque(false);
         jScrollPane_scroll.setViewportBorder(null);
-        jPanel1.setLayout(new MigLayout("inset 0, fillx, wrap","[fill]"));
-        loadNoti();
+        jPanel1.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
+        loadNoti("Data/Sales_Quotation.txt");
     }
-    
-    private void loadNoti() {
-        jPanel1.add(new Notification_Item(new ImageIcon(getClass().getResource("Images/icon.png")), "Steve", "just made a sales quotation", "25 Jan 2024", "RM500"));
-        jPanel1.add(new Notification_Item(new ImageIcon(getClass().getResource("Images/no photo.jpg")), "Tan", "just made a sales quotation", "26 Jan 2024", "RM400"));
-        jPanel1.add(new Notification_Item(new ImageIcon(getClass().getResource("Images/icon.png")), "Ooi", "just made a sales quotation", "27 Jan 2024", "RM300"));
+
+    private void loadNoti(String filePath) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.startsWith("Amount:")) {
+                    String amount = line.substring(line.indexOf("RM")).replace(",", "");
+
+                    // Move to the next line for Date
+                    line = br.readLine();
+                    String date = line.substring(line.indexOf(":") + 1).trim().replace(",", "");
+
+                    // Skip the next four lines
+                    for (int i = 0; i < 4; i++) {
+                        br.readLine();
+                    }
+
+                    // Read the line for Salesperson
+                    line = br.readLine();
+                    String salesperson = line.substring(line.indexOf(":") + 1).trim().replace(",", "");
+
+                    // Read the line for Confirmation status
+                    line = br.readLine();
+                    String confirmationStatus = line.substring(line.indexOf(":") + 1).trim().replace(",", "");
+
+                    if ("Default".equals(confirmationStatus)) {
+
+                    // Create Notification_Item and add it to jPanel1 with the ImageIcon
+                    jPanel1.add(new Notification_Item(new ImageIcon(getClass().getResource("Images/icon.png")), salesperson, "made a Sales Quotation!", date, amount));
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception according to your needs
+        }
     }
 
     @Override
@@ -92,11 +126,11 @@ public class Notification extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
+            .addGap(0, 360, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 358, Short.MAX_VALUE)
         );
 
         jScrollPane_scroll.setViewportView(jPanel1);
@@ -114,10 +148,12 @@ public class Notification extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(jScrollPane_scroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,10 +161,10 @@ public class Notification extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane_scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

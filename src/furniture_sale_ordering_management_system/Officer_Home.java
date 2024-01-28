@@ -22,7 +22,7 @@ import net.miginfocom.layout.LayoutCallback;
  */
 public class Officer_Home extends javax.swing.JFrame {
 
-     public static String userID;
+    public static String userID;
 
     public Officer_Home(String userID) {
         this.userID = userID;
@@ -218,9 +218,8 @@ public class Officer_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_invoiceActionPerformed
 
     private void button_notificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_notificationActionPerformed
-        GlassPanePopup.showPopup(new Notification(), new DefaultOption() {
+        GlassPanePopup.showPopup(new Notification() {
 
-            @Override
             public float opacity() {
                 return 0;
             }
@@ -262,7 +261,6 @@ public class Officer_Home extends javax.swing.JFrame {
         generate.displaySales();
         this.dispose();
     }//GEN-LAST:event_jButton_GenerateReportActionPerformed
-
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
