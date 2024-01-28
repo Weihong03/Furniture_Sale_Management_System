@@ -10,6 +10,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -328,21 +329,20 @@ public class Generate_Invoice extends javax.swing.JFrame {
             document.add(invoiceTitle);
             document.add(new Paragraph(" "));
             document.add(new Paragraph(" "));
-            
+
             // Add subheadertable
             try {
                 PdfPTable subheaderTable = new PdfPTable(2); // 2 columns for subheader
                 subheaderTable.setWidthPercentage(100);
 
                 // Set the percentage widths for the columns
-                float[] columnWidths = {65f, 45f};
+                float[] columnWidths = {70f, 30f};
                 subheaderTable.setWidths(columnWidths);
 
                 PdfPCell BilltoCell = new PdfPCell();
                 Paragraph BilltoTitle = new Paragraph("Bill to: ", subtitleFont);
                 BilltoCell.addElement(BilltoTitle);
                 BilltoCell.addElement(new Paragraph("""
-                                       
                                        Yoyo Furniture
                                        No. 1986, Jalan Sungai Besi Batu 13
                                        Kampung Baru Balakan
@@ -352,9 +352,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 PdfPCell ShiptoCell = new PdfPCell();
                 Paragraph ShiptoTitle = new Paragraph("Ship to: ", subtitleFont);
                 ShiptoCell.addElement(ShiptoTitle);
-                ShiptoCell.addElement(new Paragraph("""
-                                       
-                                       Customer:""" + " " + Customer));
+                ShiptoCell.addElement(new Paragraph("Customer: " + Customer));
                 ShiptoCell.setBorder(Rectangle.NO_BORDER);
                 ShiptoCell.setHorizontalAlignment(Element.ALIGN_LEFT);
 
@@ -370,17 +368,17 @@ public class Generate_Invoice extends javax.swing.JFrame {
             }
 
             // Add details to the PDF
+            document.add(new Paragraph(" "));
             Paragraph QuotationTitle = new Paragraph("Quotation", subtitleFont);
             document.add(QuotationTitle);
-            document.add(new Paragraph(" "));
-            
-            // Add subheadertable
+
+            // Add quotation table
             try {
                 PdfPTable quoTitleTable = new PdfPTable(2); // 2 columns for subheader
                 quoTitleTable.setWidthPercentage(100);
 
                 // Set the percentage widths for the columns
-                float[] columnWidths = {65f, 45f};
+                float[] columnWidths = {68f, 32f};
                 quoTitleTable.setWidths(columnWidths);
 
                 PdfPCell QuoIDCell = new PdfPCell();
@@ -390,7 +388,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 PdfPCell QuoDateCell = new PdfPCell();
                 QuoDateCell.addElement(new Paragraph("Quotation Date: " + Date));
                 QuoDateCell.setBorder(Rectangle.NO_BORDER);
-                QuoDateCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                QuoDateCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 
                 quoTitleTable.addCell(QuoIDCell);
                 quoTitleTable.addCell(QuoDateCell);
@@ -402,17 +400,92 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Error adding header to the invoice.");
                 return;
             }
+
+            // Create a table for product details
+            PdfPTable productTable = new PdfPTable(3);
+            productTable.setWidthPercentage(100);
+
+            // Set the percentage widths for the columns
+            float[] columnWidths = {40f, 30f, 30f};
+            productTable.setWidths(columnWidths);
+
+            // Add table header
+            PdfPCell headerCell1 = new PdfPCell(new Phrase("PRODUCT"));
+            headerCell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            productTable.addCell(headerCell1);
+
+            PdfPCell headerCell2 = new PdfPCell(new Phrase("ITEM ID"));
+            headerCell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            productTable.addCell(headerCell2);
+
+            PdfPCell headerCell3 = new PdfPCell(new Phrase("PRICE"));
+            headerCell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            productTable.addCell(headerCell3);
+
+            // Add table columns
+            PdfPCell productCell = new PdfPCell(new Phrase(Product));
+            productCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            productTable.addCell(productCell);
+
+            PdfPCell itemIDCell = new PdfPCell(new Phrase(ItemID));
+            itemIDCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            productTable.addCell(itemIDCell);
+
+            PdfPCell priceCell = new PdfPCell(new Phrase(Price));
+            priceCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            productTable.addCell(priceCell);
+
+            // Add the product table to the document
+            document.add(productTable);
+
+            // Add total amount row
+            PdfPTable totalTable = new PdfPTable(3);
+            totalTable.setWidthPercentage(100);
+            totalTable.setWidths(columnWidths);
+
+            // Add empty cells for PRODUCT and ITEM ID columns
+            totalTable.addCell(new PdfPCell(new Phrase(" ")));
+            totalTable.addCell(new PdfPCell(new Phrase(" ")));
+
+            // Add the total amount in the PRICE column
+            totalTable.addCell(new PdfPCell(new Phrase("Total: " + Amount)));
+
+            // Add the total table to the document
+            document.add(totalTable);
             
-            document.add(new Paragraph("PRODUCT"));
-            document.add(new Paragraph("ITEM ID"));
-            document.add(new Paragraph("PRICE"));
-            document.add(new Paragraph(Product));
-            document.add(new Paragraph(ItemID));
-            document.add(new Paragraph(Price));
-            document.add(new Paragraph("Total: " + Amount));
-            document.add(new Paragraph("Quotation created by: " + Salesperson));
-            document.add(new Paragraph("Approved by: " + Officer));
-            // Add more details based on your requirements
+            try {
+                PdfPTable approveTable = new PdfPTable(2); // 2 columns for subheader
+                approveTable.setWidthPercentage(100);
+
+                // Set the percentage widths for the columns
+                float[] columnsWidths = {68f, 32f};
+                approveTable.setWidths(columnsWidths);
+
+                PdfPCell SalesCell = new PdfPCell();
+                SalesCell.addElement(new Paragraph("Quotation created by: " + Salesperson));
+                SalesCell.setBorder(Rectangle.NO_BORDER);
+
+                PdfPCell OfficerCell = new PdfPCell();
+                OfficerCell.addElement(new Paragraph("Approved by: " + Officer));
+                OfficerCell.setBorder(Rectangle.NO_BORDER);
+                OfficerCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+
+                approveTable.addCell(SalesCell);
+                approveTable.addCell(OfficerCell);
+
+                document.add(approveTable);
+
+            } catch (DocumentException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error adding header to the invoice.");
+                return;
+            }
 
             // Add a line separator
             document.add(new Paragraph(" "));
@@ -426,6 +499,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
                                        - Payment is due within 7 days from the invoice date.
                                        - Late payment may incur a 10% late fee.
                                        - Please include the invoice number in your payment reference."""));
+            document.add(new Paragraph(" "));
             document.add(new Paragraph("""
                                        Disclaimer:
                                        
@@ -435,6 +509,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
                                        Any views or opinions presented in this communication are solely those of Yoyo Furniture and do not necessarily represent those of any third party. Yoyo Furniture is not responsible for any damage or loss arising from reliance on information contained in this invoice.
                                                                               
                                        Thank you for your understanding and cooperation."""));
+            document.add(new Paragraph(" "));
             document.add(new Paragraph("""
                                        THANK YOU FOR CHOOSING YOYO FURNITURE
                                        WE APPRECIATE YOUR BUSINESS"""));
