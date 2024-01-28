@@ -4,6 +4,7 @@ package furniture_sale_ordering_management_system;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -15,6 +16,7 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -417,28 +419,31 @@ public class Generate_Invoice extends javax.swing.JFrame {
 
             PdfPCell headerCell2 = new PdfPCell(new Phrase("ITEM ID"));
             headerCell2.setHorizontalAlignment(Element.ALIGN_CENTER);
-            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            headerCell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
             productTable.addCell(headerCell2);
 
             PdfPCell headerCell3 = new PdfPCell(new Phrase("PRICE"));
             headerCell3.setHorizontalAlignment(Element.ALIGN_CENTER);
-            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            headerCell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
             productTable.addCell(headerCell3);
 
             // Add table columns
             PdfPCell productCell = new PdfPCell(new Phrase(Product));
             productCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            productCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            productCell.setBorder(Rectangle.NO_BORDER);
             productTable.addCell(productCell);
 
             PdfPCell itemIDCell = new PdfPCell(new Phrase(ItemID));
             itemIDCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            itemIDCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            itemIDCell.setBorder(Rectangle.NO_BORDER);
             productTable.addCell(itemIDCell);
 
             PdfPCell priceCell = new PdfPCell(new Phrase(Price));
             priceCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            priceCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            priceCell.setBorder(Rectangle.NO_BORDER);
             productTable.addCell(priceCell);
 
             // Add the product table to the document
@@ -458,7 +463,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
 
             // Add the total table to the document
             document.add(totalTable);
-            
+
             try {
                 PdfPTable approveTable = new PdfPTable(2); // 2 columns for subheader
                 approveTable.setWidthPercentage(100);
@@ -487,32 +492,38 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 return;
             }
 
-            // Add a line separator
-            document.add(new Paragraph(" "));
-            document.add(new LineSeparator());
+            // Add a dashed line separator
+            DottedLineSeparator dottedLine = new DottedLineSeparator();
+            dottedLine.setOffset(-2); // Adjust the offset to control the gap between the dots
+            document.add(new Chunk(dottedLine));
             document.add(new Paragraph(" "));
 
             // Add a thank you message
-            document.add(new Paragraph("""
-                                       Terms and Conditions:
-                                       
-                                       - Payment is due within 7 days from the invoice date.
-                                       - Late payment may incur a 10% late fee.
-                                       - Please include the invoice number in your payment reference."""));
-            document.add(new Paragraph(" "));
-            document.add(new Paragraph("""
-                                       Disclaimer:
-                                       
-                                       All services and products provided by Yoyo Furniture are subject to the terms and conditions outlined in our agreements and contracts. 
-                                       While we make every effort to ensure the accuracy and completeness of the information presented in this invoice, Yoyo Furniture disclaims any liability for errors or omissions.
-        
-                                       Any views or opinions presented in this communication are solely those of Yoyo Furniture and do not necessarily represent those of any third party. Yoyo Furniture is not responsible for any damage or loss arising from reliance on information contained in this invoice.
-                                                                              
-                                       Thank you for your understanding and cooperation."""));
-            document.add(new Paragraph(" "));
-            document.add(new Paragraph("""
-                                       THANK YOU FOR CHOOSING YOYO FURNITURE
-                                       WE APPRECIATE YOUR BUSINESS"""));
+            document.newPage();
+            document.add(new Paragraph("Terms and Conditions:", new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD)));
+            document.add(new Paragraph("Payment is due within 7 days from the invoice date.", new Font(Font.FontFamily.HELVETICA, 12)));
+            document.add(new Paragraph("Late payment may incur a 10% late fee.", new Font(Font.FontFamily.HELVETICA, 12)));
+            document.add(new Paragraph("Please include the invoice number in your payment reference.", new Font(Font.FontFamily.HELVETICA, 12)));
+            document.add(Chunk.NEWLINE); // Add a blank line
+
+            document.add(new Paragraph("Disclaimer:", new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD)));
+            document.add(new Paragraph("All services and products provided by Yoyo Furniture are subject to the terms and conditions outlined in our agreements and contracts.", new Font(Font.FontFamily.HELVETICA, 12)));
+            document.add(new Paragraph("While we make every effort to ensure the accuracy and completeness of the information presented in this invoice, Yoyo Furniture disclaims any liability for errors or omissions.", new Font(Font.FontFamily.HELVETICA, 12)));
+            document.add(Chunk.NEWLINE); // Add a blank line
+
+            document.add(new Paragraph("Any views or opinions presented in this communication are solely those of Yoyo Furniture and do not necessarily represent those of any third party.", new Font(Font.FontFamily.HELVETICA, 12)));
+            document.add(new Paragraph("Yoyo Furniture is not responsible for any damage or loss arising from reliance on information contained in this invoice.", new Font(Font.FontFamily.HELVETICA, 12)));
+            document.add(Chunk.NEWLINE); // Add a blank line
+
+            document.add(new Paragraph("Thank you for your understanding and cooperation.", new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD)));
+            document.add(Chunk.NEWLINE); // Add a blank line
+            document.add(Chunk.NEWLINE); // Add a blank line
+
+            Paragraph thankYou = new Paragraph("""
+                                                THANK YOU FOR CHOOSING YOYO FURNITURE
+                                                WE APPRECIATE YOUR BUSINESS""", new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD));
+            thankYou.setAlignment(Element.ALIGN_CENTER);
+            document.add(thankYou);
 
             document.close();
 
