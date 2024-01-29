@@ -58,8 +58,6 @@ public class Sales_Home extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1200, 750));
-        setPreferredSize(new java.awt.Dimension(1200, 750));
         setSize(new java.awt.Dimension(1200, 750));
 
         jPanel1.setBackground(new java.awt.Color(227, 180, 72));
@@ -108,6 +106,8 @@ public class Sales_Home extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTextField_ID.setEditable(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
