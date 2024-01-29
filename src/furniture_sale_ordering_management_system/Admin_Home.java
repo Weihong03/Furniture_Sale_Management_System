@@ -60,7 +60,6 @@ public class Admin_Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1200, 750));
-        setPreferredSize(new java.awt.Dimension(1200, 750));
         setSize(new java.awt.Dimension(1200, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
