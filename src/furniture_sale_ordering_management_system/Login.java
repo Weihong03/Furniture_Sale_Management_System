@@ -4,11 +4,17 @@
  */
 package furniture_sale_ordering_management_system;
 
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.Timer;
 
 /**
  *
@@ -16,9 +22,17 @@ import static javax.swing.JOptionPane.showMessageDialog;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    private final String[] imagePaths = {
+        "Images/Company picture.jpg",
+        "Images/Company picture2.jpg",
+        "Images/Company picture3.jpg",
+        "Images/Company picture4.jpg"
+    };
+
+    private int currentImageIndex = 0;
+    private Timer timer;
+    private float opacity = 1.0f;
+
     public Login() {
         initComponents();
         // Set the title of the window
@@ -26,6 +40,75 @@ public class Login extends javax.swing.JFrame {
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Start the image slideshow
+        startSlideshow();
+    }
+
+    private void startSlideshow() {
+        int transitionDelay = 2000; // Time interval for the fading effect (adjustable)
+
+        timer = new Timer(transitionDelay, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Update the opacity for the smooth transition
+                opacity -= 0.5f;
+
+                // If the image is fully faded out, load the next image
+                if (opacity <= 0) {
+                    loadNextImage();
+                    opacity = 1.0f; // Reset opacity for the next image
+                }
+
+                // Set the image to jPanel1 with the current opacity
+                setImageToPanelWithOpacity();
+
+                // Stop the timer when the frame is closed
+                if (!isVisible()) {
+                    timer.stop();
+                }
+            }
+        });
+
+        // Start the timer
+        timer.start();
+    }
+
+    private void loadNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % imagePaths.length;
+    }
+
+    private void setImageToPanelWithOpacity() {
+        try {
+            // Load the next image from the sequence
+            String imagePath = imagePaths[currentImageIndex];
+            Image image = ImageIO.read(getClass().getResource(imagePath));
+
+            // Resize the image to fit the panel
+            Image scaledImage = image.getScaledInstance(
+                    jPanel1.getWidth(),
+                    jPanel1.getHeight(),
+                    Image.SCALE_SMOOTH);
+
+            // Apply opacity to the image
+            ImageIcon icon = new ImageIcon(scaledImage);
+            icon.setImage(icon.getImage().getScaledInstance(
+                    jPanel1.getWidth(),
+                    jPanel1.getHeight(),
+                    Image.SCALE_SMOOTH));
+
+            // Set the opacity for the fading effect
+            icon.setImage(icon.getImage().getScaledInstance(
+                    jPanel1.getWidth(),
+                    jPanel1.getHeight(),
+                    Image.SCALE_SMOOTH));
+
+            jLabel5.setIcon(icon);
+            jLabel5.setOpaque(true);
+            jLabel5.setBackground(new java.awt.Color(227, 180, 72, (int) (255 * opacity)));
+        } catch (IOException ex) {
+            ex.printStackTrace(); // Handle the exception appropriately
+        }
     }
 
     /**
@@ -38,6 +121,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField_username = new javax.swing.JTextField();
@@ -68,11 +152,11 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel2.setBackground(new java.awt.Color(227, 180, 72));
@@ -229,7 +313,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jLabel13))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -238,7 +322,7 @@ public class Login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -423,6 +507,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
