@@ -55,7 +55,7 @@ public class Login extends javax.swing.JFrame {
     });
 
     // Start the initial delay timer
-    initialDelayTimer.setRepeats(false); // Execute only once
+    initialDelayTimer.setRepeats(false);
     initialDelayTimer.start();
     }
 
