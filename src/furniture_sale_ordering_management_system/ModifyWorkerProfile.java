@@ -6,9 +6,7 @@ package furniture_sale_ordering_management_system;
  */
 
 
-import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -84,17 +82,6 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     initComponents();
         // Set the title of the window
         setTitle("Modify Worker Profile");
-        
-        jTextField_ID.setEditable(false);
-        // Get the dimension of the screen
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        // Calculate the center coordinates
-        int centerX = (screenSize.width - getWidth()) / 2;
-        int centerY = (screenSize.height - getHeight()) / 2;
-
-        // Set the location of the window
-        setLocation(centerX, centerY);
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -228,6 +215,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel10.setText("ID:");
 
+        jTextField_ID.setEditable(false);
         jTextField_ID.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextField_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,6 +233,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         jLabel11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel11.setText("Role :");
 
+        jTextField_Role.setEditable(false);
         jTextField_Role.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         jLabel_icon.setForeground(new java.awt.Color(255, 255, 0));
@@ -390,6 +379,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField_UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UsernameActionPerformed

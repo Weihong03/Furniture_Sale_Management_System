@@ -36,16 +36,6 @@ public class Generate_Report extends javax.swing.JFrame {
         // Set the title of the window
         setTitle("Report Generation");
 
-        // Get the dimension of the screen
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        // Calculate the center coordinates
-        int centerX = (screenSize.width - getWidth()) / 2;
-        int centerY = (screenSize.height - getHeight()) / 2;
-
-        // Set the location of the window
-        setLocation(centerX, centerY);
-
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -142,6 +132,7 @@ public class Generate_Report extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_GenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GenerateActionPerformed

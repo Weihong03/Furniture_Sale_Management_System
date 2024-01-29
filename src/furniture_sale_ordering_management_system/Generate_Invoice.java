@@ -20,8 +20,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -60,16 +58,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
         initComponents();
         // Set the title of the window
         setTitle("Generate Invoice");
-
-        // Get the dimension of the screen
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        // Calculate the center coordinates
-        int centerX = (screenSize.width - getWidth()) / 2;
-        int centerY = (screenSize.height - getHeight()) / 2;
-
-        // Set the location of the window
-        setLocation(centerX, centerY);
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -235,6 +223,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
@@ -605,7 +594,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
         rowSorter.setRowFilter(rowFilter);
     }
 
-        private void refreshTable() {
+    private void refreshTable() {
         // Clear the existing data from the table
         DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
         model.setRowCount(0);
@@ -618,7 +607,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
         jTable_Salestable.revalidate();
         jTable_Salestable.repaint();
     }
-        
+
     public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
         model.setRowCount(0); // Clear existing data

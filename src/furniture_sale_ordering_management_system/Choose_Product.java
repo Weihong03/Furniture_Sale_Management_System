@@ -15,12 +15,12 @@ import javax.swing.table.DefaultTableModel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author yuw18
  */
 public class Choose_Product extends javax.swing.JFrame {
+
     public double totalPrice = 0.0;
     public static String userID;
     public static String selectedProduct;  // Make static
@@ -28,10 +28,12 @@ public class Choose_Product extends javax.swing.JFrame {
     public static String price;
     public List<String> selectedProducts = new ArrayList<>();
     public List<String> selectedItemIDs = new ArrayList<>();
-    public List<String> selectedPrices = new ArrayList<>();   
+    public List<String> selectedPrices = new ArrayList<>();
     public static String Amount;
+
     /**
      * Creates new form Choose_Product1
+     *
      * @param userID
      */
     public Choose_Product(String userID) {
@@ -40,7 +42,7 @@ public class Choose_Product extends javax.swing.JFrame {
         List<String> furnitureNames = readFurnitureNamesFromCSV();
         jComboBox_product.setModel(new DefaultComboBoxModel<>(furnitureNames.toArray(new String[0])));
     }
-    
+
     private List<String> readFurnitureNamesFromCSV() {
         List<String> furnitureNames = new ArrayList<>();
 
@@ -180,10 +182,11 @@ public class Choose_Product extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_proceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_proceedActionPerformed
-     int[] selectedRows = jTable_product.getSelectedRows();
+        int[] selectedRows = jTable_product.getSelectedRows();
 
         if (selectedRows.length > 0) {
             for (int selectedRow : selectedRows) {
@@ -204,10 +207,10 @@ public class Choose_Product extends javax.swing.JFrame {
             String amount = extractAmount(totalAmountDetails);
 
             // Create an instance of CreateSalesOrderQuotation
-            CreateSalesOrderQuotation create_sales_order_quotation = new CreateSalesOrderQuotation(userID, selectedProducts, selectedItemIDs, selectedPrices,amount);
+            CreateSalesOrderQuotation create_sales_order_quotation = new CreateSalesOrderQuotation(userID, selectedProducts, selectedItemIDs, selectedPrices, amount);
 
             // Pass the data to CreateSalesOrderQuotation
-            create_sales_order_quotation.setInitialValues(selectedProducts, selectedItemIDs,selectedPrices, amount);
+            create_sales_order_quotation.setInitialValues(selectedProducts, selectedItemIDs, selectedPrices, amount);
 
             // Make CreateSalesOrderQuotation visible
             create_sales_order_quotation.setVisible(true);
@@ -219,100 +222,100 @@ public class Choose_Product extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please add a product before proceeding.");
         }
         }//GEN-LAST:event_jButton_proceedActionPerformed
-  private String extractAmount(String input) {
-    // Assuming the amount is always after "RM" in the text
-    String rmPrefix = "RM";
-    int rmIndex = input.indexOf(rmPrefix);
-    if (rmIndex != -1) {
-        // Find the next occurrence of "\n" or use the length of the string
-        int endIndex = input.indexOf("\n", rmIndex);
-        if (endIndex == -1) {
-            endIndex = input.length();
+    private String extractAmount(String input) {
+        // Assuming the amount is always after "RM" in the text
+        String rmPrefix = "RM";
+        int rmIndex = input.indexOf(rmPrefix);
+        if (rmIndex != -1) {
+            // Find the next occurrence of "\n" or use the length of the string
+            int endIndex = input.indexOf("\n", rmIndex);
+            if (endIndex == -1) {
+                endIndex = input.length();
+            }
+            return input.substring(rmIndex, endIndex).trim();
+        } else {
+            // If "RM" is not found, you may need additional logic based on your actual data format
+            return input.trim();
         }
-        return input.substring(rmIndex, endIndex).trim();
-    } else {
-        // If "RM" is not found, you may need additional logic based on your actual data format
-        return input.trim();
     }
-}
     private void jButton_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addActionPerformed
-          String selectedProduct = (String) jComboBox_product.getSelectedItem();
+        String selectedProduct = (String) jComboBox_product.getSelectedItem();
 
-    // Read additional data (item ID, category, and price) based on the selected product
-    String csvFile = "Data/Yoyo-Furniture.csv";
-    try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-        String line;
-        while ((line = br.readLine()) != null) {
-            StringTokenizer tokenizer = new StringTokenizer(line, ",");
-            List<String> dataList = new ArrayList<>();
+        // Read additional data (item ID, category, and price) based on the selected product
+        String csvFile = "Data/Yoyo-Furniture.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                StringTokenizer tokenizer = new StringTokenizer(line, ",");
+                List<String> dataList = new ArrayList<>();
 
-            while (tokenizer.hasMoreTokens()) {
-                dataList.add(tokenizer.nextToken());
+                while (tokenizer.hasMoreTokens()) {
+                    dataList.add(tokenizer.nextToken());
+                }
+
+                if (!dataList.isEmpty() && dataList.get(0).trim().equals(selectedProduct)) {
+                    // Assuming item ID is in the second column, category in the third, and price in the fourth
+                    String itemID = getSafeValue(dataList, 1);
+                    String priceStr = getSafeValue(dataList, 2);
+                    String category = getSafeValue(dataList, 3);
+                    String shortDescription = getSafeValue(dataList, 4);
+                    String designer = getSafeValue(dataList, 5);
+                    String height = getSafeValue(dataList, 6);
+                    String width = getSafeValue(dataList, 7);
+
+                    // Convert price to double and add it to the total
+                    double price = Double.parseDouble(priceStr);
+                    totalPrice += price;
+
+                    // Append additional data to jTable_product
+                    DefaultTableModel model = (DefaultTableModel) jTable_product.getModel();
+                    model.addRow(new Object[]{itemID, selectedProduct, "RM" + price, category, shortDescription, designer, height, width});
+
+                    // Update the total amount in jTextArea_totalamount
+                    jTextArea_totalamount.setText("Total Price: RM" + totalPrice + "\n");
+
+                    break; // No need to continue reading once the data is found
+                }
             }
-
-            if (!dataList.isEmpty() && dataList.get(0).trim().equals(selectedProduct)) {
-                // Assuming item ID is in the second column, category in the third, and price in the fourth
-                String itemID = getSafeValue(dataList, 1);
-                String priceStr = getSafeValue(dataList, 2);
-                String category = getSafeValue(dataList, 3);
-                String shortDescription = getSafeValue(dataList, 4);
-                String designer = getSafeValue(dataList, 5);
-                String height = getSafeValue(dataList, 6);
-                String width = getSafeValue(dataList, 7);
-
-                // Convert price to double and add it to the total
-                double price = Double.parseDouble(priceStr);
-                totalPrice += price;
-
-                // Append additional data to jTable_product
-                DefaultTableModel model = (DefaultTableModel) jTable_product.getModel();
-                model.addRow(new Object[]{itemID, selectedProduct, "RM" + price, category, shortDescription, designer, height, width});
-
-                // Update the total amount in jTextArea_totalamount
-                jTextArea_totalamount.setText("Total Price: RM" + totalPrice + "\n");
-
-                break; // No need to continue reading once the data is found
-            }
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+            // Handle the exception as needed (e.g., logging, showing an error message)
         }
-    } catch (IOException | NumberFormatException e) {
-        e.printStackTrace();
-        // Handle the exception as needed (e.g., logging, showing an error message)
-    }
 
-    // Optionally, you can clear the selection in the jComboBox_product
-    jComboBox_product.setSelectedIndex(-1);
+        // Optionally, you can clear the selection in the jComboBox_product
+        jComboBox_product.setSelectedIndex(-1);
     }//GEN-LAST:event_jButton_addActionPerformed
     private String getSafeValue(List<String> dataList, int index) {
-    return (index >= 0 && index < dataList.size()) ? dataList.get(index).trim() : "";
-}
+        return (index >= 0 && index < dataList.size()) ? dataList.get(index).trim() : "";
+    }
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
- Sales_Home salesPersonHome = new Sales_Home(userID);
-                    salesPersonHome.setVisible(true);
+        Sales_Home salesPersonHome = new Sales_Home(userID);
+        salesPersonHome.setVisible(true);
                     this.setVisible(false);    }//GEN-LAST:event_jButton_backActionPerformed
 
     private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
-    deleteSelectedRows();
+        deleteSelectedRows();
     }//GEN-LAST:event_jButton_deleteActionPerformed
     private void deleteSelectedRows() {
-    DefaultTableModel model = (DefaultTableModel) jTable_product.getModel();
-    int[] selectedRows = jTable_product.getSelectedRows();
+        DefaultTableModel model = (DefaultTableModel) jTable_product.getModel();
+        int[] selectedRows = jTable_product.getSelectedRows();
 
-    // Delete rows in reverse order to avoid issues with indices
-    for (int i = selectedRows.length - 1; i >= 0; i--) {
-        model.removeRow(selectedRows[i]);
+        // Delete rows in reverse order to avoid issues with indices
+        for (int i = selectedRows.length - 1; i >= 0; i--) {
+            model.removeRow(selectedRows[i]);
+        }
+
+        // Recalculate the total price based on the remaining rows
+        totalPrice = 0.0;
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String priceStr = model.getValueAt(i, 2).toString().replace("RM", "").trim();
+            double price = Double.parseDouble(priceStr);
+            totalPrice += price;
+        }
+
+        // Update the total amount in jTextArea_totalamount
+        jTextArea_totalamount.setText("Total Price: RM" + totalPrice + "\n");
     }
-
-    // Recalculate the total price based on the remaining rows
-    totalPrice = 0.0;
-    for (int i = 0; i < model.getRowCount(); i++) {
-        String priceStr = model.getValueAt(i, 2).toString().replace("RM", "").trim();
-        double price = Double.parseDouble(priceStr);
-        totalPrice += price;
-    }
-
-    // Update the total amount in jTextArea_totalamount
-    jTextArea_totalamount.setText("Total Price: RM" + totalPrice + "\n");
-}
 
     /**
      * @param args the command line arguments

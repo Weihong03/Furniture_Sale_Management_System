@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package furniture_sale_ordering_management_system;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import javax.swing.table.TableRowSorter;
  * @author yuw18
  */
 public class List_Approval extends javax.swing.JFrame {
+
     public static String userID;
     public static String salesPersonData;
     // constructor and other methods
@@ -24,32 +26,29 @@ public class List_Approval extends javax.swing.JFrame {
     /**
      * Creates new form List_Approval
      */
-    
     public void setInitialValues(String userID) {
-    jTextField_userid.setText(userID);
+        jTextField_userid.setText(userID);
     }
-    
+
     public List_Approval(String userID) {
-            this.userID = userID;
-    initComponents();
-    loadSalesPersonData();
-    displaySalesOrdersForSalesperson(salesPersonData);
-
-    
+        this.userID = userID;
+        initComponents();
+        loadSalesPersonData();
+        displaySalesOrdersForSalesperson(salesPersonData);
 
     }
-    
-     private void loadSalesPersonData() {
-    salesPersonData = getUsername(userID);
-    if (salesPersonData != null) {
-        jTextField_salesperson.setText(salesPersonData);
- 
-    } else {
-        JOptionPane.showMessageDialog(this, "Failed to retrieve Sales Person data.", "Error", JOptionPane.ERROR_MESSAGE);
+
+    private void loadSalesPersonData() {
+        salesPersonData = getUsername(userID);
+        if (salesPersonData != null) {
+            jTextField_salesperson.setText(salesPersonData);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to retrieve Sales Person data.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
-}
-    
-      public static String getUsername(String userID) {
+
+    public static String getUsername(String userID) {
         String filePath = "Data/Officer_Salesperson.txt";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -94,76 +93,75 @@ public class List_Approval extends javax.swing.JFrame {
         // Return null if the username is not found
         return null;
     }
-      
-      private void displaySalesOrdersForSalesperson(String salesPersonName) {
-    DefaultTableModel model = (DefaultTableModel) jTable_listApproval.getModel();
-    model.setRowCount(0); // Clear existing rows in the table
 
-    String filePath = "Data/Sales_Quotation.txt";
-    String salesOrderData;
+    private void displaySalesOrdersForSalesperson(String salesPersonName) {
+        DefaultTableModel model = (DefaultTableModel) jTable_listApproval.getModel();
+        model.setRowCount(0); // Clear existing rows in the table
 
-    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-        StringBuilder content = new StringBuilder();
-        String line;
+        String filePath = "Data/Sales_Quotation.txt";
+        String salesOrderData;
 
-        while ((line = reader.readLine()) != null) {
-            content.append(line).append("\n");
-        }
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder content = new StringBuilder();
+            String line;
 
-        // Split the content into individual sales orders based on empty lines
-        String[] salesOrders = content.toString().split("\\n\\n");
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
+            }
 
-        // Iterate through each sales order
-        for (String orderData : salesOrders) {
-            // Check if the salesperson's name is present in the sales order data
-            if (orderData.contains("Salesperson: " + salesPersonName)) {
-                // Split the sales order data into lines
-                String[] lines = orderData.split("\n");
+            // Split the content into individual sales orders based on empty lines
+            String[] salesOrders = content.toString().split("\\n\\n");
 
-                // Extract relevant information and add it to the table
-                Object[] rowData = new Object[7];
-                for (String lineData : lines) {
-                    String[] parts = lineData.split(": ");
-                    if (parts.length == 2) {
-                        String key = parts[0].trim();
-                        String value = parts[1].trim();
+            // Iterate through each sales order
+            for (String orderData : salesOrders) {
+                // Check if the salesperson's name is present in the sales order data
+                if (orderData.contains("Salesperson: " + salesPersonName)) {
+                    // Split the sales order data into lines
+                    String[] lines = orderData.split("\n");
 
-                        switch (key) {
-                            case "ID":
-                                rowData[0] = value;
-                                break;
-                            case "Amount":
-                                rowData[1] = value;
-                                break;
-                            case "Date":
-                                rowData[2] = value;
-                                break;
-                            case "Product":
-                                rowData[3] = value;
-                                break;
-                            case "Item ID":
-                                rowData[4] = value;
-                                break;
-                            case "Price":
-                                rowData[5] = value;
-                                break;
-                            case "Confirmation":
-                                rowData[6] = value;
-                                break;
-                            // Add more cases if needed for other fields
+                    // Extract relevant information and add it to the table
+                    Object[] rowData = new Object[7];
+                    for (String lineData : lines) {
+                        String[] parts = lineData.split(": ");
+                        if (parts.length == 2) {
+                            String key = parts[0].trim();
+                            String value = parts[1].trim();
+
+                            switch (key) {
+                                case "ID":
+                                    rowData[0] = value;
+                                    break;
+                                case "Amount":
+                                    rowData[1] = value;
+                                    break;
+                                case "Date":
+                                    rowData[2] = value;
+                                    break;
+                                case "Product":
+                                    rowData[3] = value;
+                                    break;
+                                case "Item ID":
+                                    rowData[4] = value;
+                                    break;
+                                case "Price":
+                                    rowData[5] = value;
+                                    break;
+                                case "Confirmation":
+                                    rowData[6] = value;
+                                    break;
+                                // Add more cases if needed for other fields
+                            }
                         }
                     }
+                    model.addRow(rowData); // Add the row to the table
                 }
-                model.addRow(rowData); // Add the row to the table
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception as needed (e.g., logging, showing an error message)
         }
-    } catch (IOException e) {
-        e.printStackTrace();
-        // Handle the exception as needed (e.g., logging, showing an error message)
     }
-}
 
- 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -280,6 +278,7 @@ public class List_Approval extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField_useridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_useridActionPerformed
@@ -288,13 +287,13 @@ public class List_Approval extends javax.swing.JFrame {
 
     private void jTextField_filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_filterActionPerformed
         String searchText = jTextField_filter.getText();
-       searchSales(searchText);
+        searchSales(searchText);
     }//GEN-LAST:event_jTextField_filterActionPerformed
 
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
- Sales_Home salesPersonHome = new Sales_Home(userID);
-                    salesPersonHome.setVisible(true);
-                    this.setVisible(false);
+        Sales_Home salesPersonHome = new Sales_Home(userID);
+        salesPersonHome.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton_backActionPerformed
     public void searchSales(String searchText) {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(jTable_listApproval.getModel());
@@ -303,6 +302,7 @@ public class List_Approval extends javax.swing.JFrame {
         RowFilter<TableModel, Object> rowFilter = RowFilter.regexFilter("(?i)" + searchText); // Case-insensitive search
         rowSorter.setRowFilter(rowFilter);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -333,8 +333,8 @@ public class List_Approval extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                    List_Approval listApproval = new List_Approval(userID);
-                    listApproval.setVisible(true);
+                List_Approval listApproval = new List_Approval(userID);
+                listApproval.setVisible(true);
             }
         });
     }

@@ -6,8 +6,6 @@ package furniture_sale_ordering_management_system;
 
 import furniture_sale_ordering_management_system.progressindicator.ProductStatusUpdater;
 import furniture_sale_ordering_management_system.Shared_item.glasspanepopup.GlassPanePopup;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -33,16 +31,6 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         
         // Set the title of the window
         setTitle("Check Sale Product Status");
-
-        // Get the dimension of the screen
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        // Calculate the center coordinates
-        int centerX = (screenSize.width - getWidth()) / 2;
-        int centerY = (screenSize.height - getHeight()) / 2;
-
-        // Set the location of the window
-        setLocation(centerX, centerY);
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,6 +1,5 @@
 package furniture_sale_ordering_management_system;
 
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -16,12 +15,12 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Acer
  */
 public class Admin_Profile extends javax.swing.JFrame {
+
     public String userID;
     public String Username;
     public String Password;
@@ -31,88 +30,89 @@ public class Admin_Profile extends javax.swing.JFrame {
     public String PhoneNumber;
     public String Role;
     public static String userData;
-    
-     public void setInitialValues(String userID) {
-    jTextField_ID.setText(userID);
+
+    public void setInitialValues(String userID) {
+        jTextField_ID.setText(userID);
     }
 
     public void setInitialValuesFromUserID(String userID) {
-    // Read the existing content from the text file
-    String filePath = "Data/Admin.txt";
-    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-        StringBuilder content = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            content.append(line).append("\n");
-        }
-
-        // Find the starting index of the user's information
-        int startIndex = content.indexOf("ID: " + userID);
-
-        // If the user with the specified ID is found
-        if (startIndex != -1) {
-            // Find the ending index of the user's information
-            int endIndex = content.indexOf("ID:", startIndex + 1);
-            if (endIndex == -1) {
-                endIndex = content.length();
+        // Read the existing content from the text file
+        String filePath = "Data/Admin.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
             }
 
-            // Extract the user's information
-           userData = content.substring(startIndex, endIndex);
+            // Find the starting index of the user's information
+            int startIndex = content.indexOf("ID: " + userID);
 
-            // Split the user's information into lines
-            String[] lines = userData.split("\n");
+            // If the user with the specified ID is found
+            if (startIndex != -1) {
+                // Find the ending index of the user's information
+                int endIndex = content.indexOf("ID:", startIndex + 1);
+                if (endIndex == -1) {
+                    endIndex = content.length();
+                }
 
-            // Extract and set the values
-            for (String lineData : lines) {
-                String[] parts = lineData.split(": ");
-                if (parts.length == 2) {
-                    String key = parts[0].trim();
-                    String value = parts[1].trim();
+                // Extract the user's information
+                userData = content.substring(startIndex, endIndex);
 
-                    switch (key) {
-                        case "Username":
-                            jTextField_Username.setText(value);
-                            break;
-                        case "Password":
-                            jTextField_Password.setText(value);
-                            break;
-                        case "Name":
-                            jTextField_FullName.setText(value);
-                            break;
-                         case "Age":
-                            // Check and clean up the age value
-                            value = value.replaceAll(",", "");
-                            try {
-                                int age = Integer.parseInt(value);
-                                jComboBox_Age.setSelectedItem(String.valueOf(age));
-                            } catch (NumberFormatException e) {
-                                // Handle the exception or log an error message
-                                e.printStackTrace();
-                            }
-                            break;
-                        case "Email":
-                            jTextField_Email.setText(value);
-                            break;
-                        case "Phone Number":
-                            jTextField_PhoneNumber.setText(value);
-                            break;
-                        case "Role":  
-                        // Assuming age values are stored as strings in the combo box; modify the following line if needed
-                            jTextField_role.setText(value);
-                            break;
+                // Split the user's information into lines
+                String[] lines = userData.split("\n");
+
+                // Extract and set the values
+                for (String lineData : lines) {
+                    String[] parts = lineData.split(": ");
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim();
+
+                        switch (key) {
+                            case "Username":
+                                jTextField_Username.setText(value);
+                                break;
+                            case "Password":
+                                jTextField_Password.setText(value);
+                                break;
+                            case "Name":
+                                jTextField_FullName.setText(value);
+                                break;
+                            case "Age":
+                                // Check and clean up the age value
+                                value = value.replaceAll(",", "");
+                                try {
+                                    int age = Integer.parseInt(value);
+                                    jComboBox_Age.setSelectedItem(String.valueOf(age));
+                                } catch (NumberFormatException e) {
+                                    // Handle the exception or log an error message
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case "Email":
+                                jTextField_Email.setText(value);
+                                break;
+                            case "Phone Number":
+                                jTextField_PhoneNumber.setText(value);
+                                break;
+                            case "Role":
+                                // Assuming age values are stored as strings in the combo box; modify the following line if needed
+                                jTextField_role.setText(value);
+                                break;
+                        }
                     }
                 }
+            } else {
+                // User not found
+                JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
             }
-        } else {
-            // User not found
-            JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception according to your application's requirements
         }
-    } catch (IOException e) {
-        e.printStackTrace(); // Handle the exception according to your application's requirements
     }
-}
-       private String[] generateAgeOptions() {
+
+    private String[] generateAgeOptions() {
         int startAge = 18;
         int endAge = 60;
         int numberOfOptions = endAge - startAge + 1;
@@ -127,28 +127,19 @@ public class Admin_Profile extends javax.swing.JFrame {
 
     /**
      * Creates new form Administrator
+     *
      * @param userID
      */
     public Admin_Profile(String userID) {
         this.userID = userID;
         initComponents();
-        
-         jComboBox_Age.setModel(new DefaultComboBoxModel<>(generateAgeOptions()));
+
+        jComboBox_Age.setModel(new DefaultComboBoxModel<>(generateAgeOptions()));
         // For Role JComboBox
         jTextField_role.setEditable(false);
         jTextField_ID.setEditable(false);
         // Set the title of the window
-        setTitle("Manage Worker Profile");
-
-        // Get the dimension of the screen
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        // Calculate the center coordinates
-        int centerX = (screenSize.width - getWidth()) / 2;
-        int centerY = (screenSize.height - getHeight()) / 2;
-
-        // Set the location of the window
-        setLocation(centerX, centerY);
+        setTitle("Manage Personal Profile");
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -323,88 +314,89 @@ public class Admin_Profile extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_updateActionPerformed
-   String id = jTextField_ID.getText();
-    String username = jTextField_Username.getText();
-    String password = jTextField_Password.getText();
-    String fullName = jTextField_FullName.getText();
-    String ageString = jComboBox_Age.getSelectedItem().toString();
-    String email = jTextField_Email.getText();
-    String phoneNumber = jTextField_PhoneNumber.getText();
-    String role = jTextField_role.getText();
-    StringBuilder eventBuilder = new StringBuilder("Update Profile");
+        String id = jTextField_ID.getText();
+        String username = jTextField_Username.getText();
+        String password = jTextField_Password.getText();
+        String fullName = jTextField_FullName.getText();
+        String ageString = jComboBox_Age.getSelectedItem().toString();
+        String email = jTextField_Email.getText();
+        String phoneNumber = jTextField_PhoneNumber.getText();
+        String role = jTextField_role.getText();
+        StringBuilder eventBuilder = new StringBuilder("Update Profile");
 
-    // Read the existing content from the text file
-    String filePath = "Data/Admin.txt";
+        // Read the existing content from the text file
+        String filePath = "Data/Admin.txt";
 
-    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-        StringBuilder content = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            content.append(line).append("\n");
-        }
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
+            }
 
-        // Print the content before modifications
-        JOptionPane.showMessageDialog(null, "Before Modification:\n" + content.toString());
+            // Print the content before modifications
+            JOptionPane.showMessageDialog(null, "Before Modification:\n" + content.toString());
 
-        // Update the information in the content and modify the event accordingly
-        if (updateContent(content, "ID: ", id, eventBuilder)) {
-            eventBuilder.append(", Update ID");
-        }
-        if (updateContent(content, "Username: ", username, eventBuilder)) {
-            eventBuilder.append(", Update Username");
-        }
-        if (updateContent(content, "Password: ", password, eventBuilder)) {
-            eventBuilder.append(", Update Password");
-        }
-        if (updateContent(content, "Name: ", fullName, eventBuilder)) {
-            eventBuilder.append(", Update Name");
-        }
-        if (updateContent(content, "Age: ", String.valueOf(ageString), eventBuilder)) {
-            eventBuilder.append(", Update Age");
-        }
-        if (updateContent(content, "Email: ", email, eventBuilder)) {
-            eventBuilder.append(", Update Email");
-        }
-        if (updateContent(content, "Phone Number: ", phoneNumber, eventBuilder)) {
-            eventBuilder.append(", Update Phone Number");
-        }
-        if (updateContent(content, "Role: ", role, eventBuilder)) {
-            eventBuilder.append(", Update Role");
-        }
+            // Update the information in the content and modify the event accordingly
+            if (updateContent(content, "ID: ", id, eventBuilder)) {
+                eventBuilder.append(", Update ID");
+            }
+            if (updateContent(content, "Username: ", username, eventBuilder)) {
+                eventBuilder.append(", Update Username");
+            }
+            if (updateContent(content, "Password: ", password, eventBuilder)) {
+                eventBuilder.append(", Update Password");
+            }
+            if (updateContent(content, "Name: ", fullName, eventBuilder)) {
+                eventBuilder.append(", Update Name");
+            }
+            if (updateContent(content, "Age: ", String.valueOf(ageString), eventBuilder)) {
+                eventBuilder.append(", Update Age");
+            }
+            if (updateContent(content, "Email: ", email, eventBuilder)) {
+                eventBuilder.append(", Update Email");
+            }
+            if (updateContent(content, "Phone Number: ", phoneNumber, eventBuilder)) {
+                eventBuilder.append(", Update Phone Number");
+            }
+            if (updateContent(content, "Role: ", role, eventBuilder)) {
+                eventBuilder.append(", Update Role");
+            }
 
-        // Print the content after modifications
-        JOptionPane.showMessageDialog(null, "After Modification:\n" + content.toString());
+            // Print the content after modifications
+            JOptionPane.showMessageDialog(null, "After Modification:\n" + content.toString());
 
-        // Write the updated content back to the text file
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            writer.write(content.toString());
+            // Write the updated content back to the text file
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+                writer.write(content.toString());
+            }
+
+            // Add the log entry with the specific event
+            Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+            adminLogbook.addLogEntry(userID, eventBuilder.toString());
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception according to your application's requirements
         }
-
-        // Add the log entry with the specific event
-        Admin_Logbook adminLogbook = new Admin_Logbook(userID);
-        adminLogbook.addLogEntry(userID, eventBuilder.toString());
-    } catch (IOException e) {
-        e.printStackTrace(); // Handle the exception according to your application's requirements
     }
-}
 
-private boolean updateContent(StringBuilder content, String label, String value, StringBuilder eventBuilder) {
-    int startIndex = content.indexOf(label);
-    if (startIndex != -1) {
-        int endIndex = content.indexOf(label) + label.length();
-        String oldValue = content.substring(endIndex, content.indexOf("\n", endIndex)).trim();
-        if (!oldValue.equals(value)) {
-            content.replace(endIndex, content.indexOf("\n", endIndex), value);
-            eventBuilder.append(", ").append(label.trim()).append(" from '").append(oldValue).append("' to '").append(value).append("'");
-            return true; // Return true if the update was successful
+    private boolean updateContent(StringBuilder content, String label, String value, StringBuilder eventBuilder) {
+        int startIndex = content.indexOf(label);
+        if (startIndex != -1) {
+            int endIndex = content.indexOf(label) + label.length();
+            String oldValue = content.substring(endIndex, content.indexOf("\n", endIndex)).trim();
+            if (!oldValue.equals(value)) {
+                content.replace(endIndex, content.indexOf("\n", endIndex), value);
+                eventBuilder.append(", ").append(label.trim()).append(" from '").append(oldValue).append("' to '").append(value).append("'");
+                return true; // Return true if the update was successful
+            }
+        } else {
+            System.out.println("Label not found: " + label);
         }
-    } else {
-        System.out.println("Label not found: " + label);
-    }
-    return false; // Return false if the label was not found or value unchanged
+        return false; // Return false if the label was not found or value unchanged
     }//GEN-LAST:event_jButton_updateActionPerformed
 
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
@@ -414,7 +406,7 @@ private boolean updateContent(StringBuilder content, String label, String value,
     }//GEN-LAST:event_jButton_backActionPerformed
 
     private void jComboBox_AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_AgeActionPerformed
-    
+
     }//GEN-LAST:event_jComboBox_AgeActionPerformed
 
     private void jComboBox_AgeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_AgeItemStateChanged

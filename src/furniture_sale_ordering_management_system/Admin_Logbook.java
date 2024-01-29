@@ -20,9 +20,11 @@ import javax.swing.table.TableColumnModel;
  * @author yuw18
  */
 public class Admin_Logbook extends javax.swing.JFrame {
+
     private DefaultTableModel logbookTableModel;
     public static String event;
     public static String userID;
+
     /**
      * Creates new form Admin_Logbook
      */
@@ -31,7 +33,7 @@ public class Admin_Logbook extends javax.swing.JFrame {
         initComponents();
         initLogbookTable();
     }
-    
+
     private void initLogbookTable() {
         // Initialize the table model
         logbookTableModel = new DefaultTableModel();
@@ -45,73 +47,74 @@ public class Admin_Logbook extends javax.swing.JFrame {
         columnModel.getColumn(1).setPreferredWidth(70); // Adjust the value as needed
         columnModel.getColumn(2).setPreferredWidth(400); // Adjust the value as needed
 
-    loadLogEntriesFromFile();
+        loadLogEntriesFromFile();
     }
 
     // Function to add log entries to the admin logbook
-       // Function to add log entries to the admin logbook
+    // Function to add log entries to the admin logbook
     public void addLogEntry(String userID, String event) {
         // Get the current timestamp
-         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
         // Write log entry to file
         writeLogEntryToFile(userID, timestamp, event);
     }
 
     public void loadLogEntriesFromFile() {
-    DefaultTableModel model = (DefaultTableModel) jTable_logbook.getModel();
-    model.setRowCount(0); // Clear existing data
+        DefaultTableModel model = (DefaultTableModel) jTable_logbook.getModel();
+        model.setRowCount(0); // Clear existing data
 
-    try (BufferedReader br = new BufferedReader(new FileReader("Data/logbook.txt"))) {
-        String line;
-        while ((line = br.readLine()) != null) {
-            if (line.startsWith("User ID: ")) {
-                String[] rowData = new String[3];
-                rowData[0] = line.substring(9); // Extract username value
-
-                line = br.readLine();
-                if (line != null && line.startsWith("Timestamp: ")) {
-                    String[] timestampParts = line.split(": ", 2);
-                    if (timestampParts.length == 2) {
-                        rowData[1] = timestampParts[1].trim();
-                    } else {
-                        // Handle unexpected timestamp line format
-                        rowData[1] = " ";
-                    }
+        try (BufferedReader br = new BufferedReader(new FileReader("Data/logbook.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.startsWith("User ID: ")) {
+                    String[] rowData = new String[3];
+                    rowData[0] = line.substring(9); // Extract username value
 
                     line = br.readLine();
-                    if (line != null && line.startsWith("Event: ")) {
-                        String[] eventParts = line.split(": ", 2);
-                        if (eventParts.length == 2) {
-                            rowData[2] = eventParts[1].trim();
+                    if (line != null && line.startsWith("Timestamp: ")) {
+                        String[] timestampParts = line.split(": ", 2);
+                        if (timestampParts.length == 2) {
+                            rowData[1] = timestampParts[1].trim();
                         } else {
-                            // Handle unexpected event line format
-                            rowData[2] = " ";
+                            // Handle unexpected timestamp line format
+                            rowData[1] = " ";
                         }
 
-                        model.addRow(rowData);
+                        line = br.readLine();
+                        if (line != null && line.startsWith("Event: ")) {
+                            String[] eventParts = line.split(": ", 2);
+                            if (eventParts.length == 2) {
+                                rowData[2] = eventParts[1].trim();
+                            } else {
+                                // Handle unexpected event line format
+                                rowData[2] = " ";
+                            }
+
+                            model.addRow(rowData);
+                        }
                     }
                 }
             }
-        }
-    } catch (IOException e) {
-        e.printStackTrace(); // Print the stack trace to identify the issue
-        JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
-    }
-}
-    
-    private void writeLogEntryToFile(String userID, String timestamp, String event) {
-    if (userID != null && event != null) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/logbook.txt", true))) {
-            // Append the log entry to the file in the specified format
-            writer.write("User ID: " + userID + ";\n");
-            writer.write("Timestamp: " + timestamp + ";\n");
-            writer.write("Event: " + event + ";\n\n"); // Add extra line for separation between entries
         } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); // Print the stack trace to identify the issue
+            JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
         }
     }
-}
+
+    private void writeLogEntryToFile(String userID, String timestamp, String event) {
+        if (userID != null && event != null) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/logbook.txt", true))) {
+                // Append the log entry to the file in the specified format
+                writer.write("User ID: " + userID + ";\n");
+                writer.write("Timestamp: " + timestamp + ";\n");
+                writer.write("Event: " + event + ";\n\n"); // Add extra line for separation between entries
+            } catch (IOException e) {
+                e.printStackTrace(); // Handle the exception appropriately
+            }
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -166,12 +169,13 @@ public class Admin_Logbook extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-                   Admin_Home adminHome = new Admin_Home(userID);
-                    adminHome.setVisible(true);
-                    this.setVisible(false);
+        Admin_Home adminHome = new Admin_Home(userID);
+        adminHome.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton_backActionPerformed
 
     /**
@@ -204,9 +208,9 @@ public class Admin_Logbook extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              Admin_Logbook adminLogbook = new Admin_Logbook(userID);
-              adminLogbook.addLogEntry(userID, event);
-              adminLogbook.setVisible(true);
+                Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+                adminLogbook.addLogEntry(userID, event);
+                adminLogbook.setVisible(true);
             }
         });
     }
