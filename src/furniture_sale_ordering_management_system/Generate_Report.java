@@ -25,8 +25,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class Generate_Report extends javax.swing.JFrame {
 
-     private static String userID;
-     
+    private static String userID;
+
     /**
      * Creates new form Generate_Report
      */
@@ -114,15 +114,14 @@ public class Generate_Report extends javax.swing.JFrame {
                 .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton_Back)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jLabel5)
                             .addGap(18, 18, 18)
                             .addComponent(jComboBox_ReportType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(83, 83, 83)
                             .addComponent(jButton_Generate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
@@ -151,129 +150,135 @@ public class Generate_Report extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_GenerateActionPerformed
 
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-        
+        if (userID.startsWith("O")) {
+            Officer_Home officerHome = new Officer_Home(userID);
+            officerHome.setVisible(true);
+            dispose();
+        } else if (userID.startsWith("A")) {
+            Admin_Home adminHome = new Admin_Home(userID);
+            adminHome.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jButton_BackActionPerformed
 
-private void generateAndDisplayChart(String reportType) {
-    DefaultCategoryDataset barChartDataset = createDataset(reportType);
-    DefaultCategoryDataset lineChartDataset = createLineChartDataset(reportType);
+    private void generateAndDisplayChart(String reportType) {
+        DefaultCategoryDataset barChartDataset = createDataset(reportType);
+        DefaultCategoryDataset lineChartDataset = createLineChartDataset(reportType);
 
-    JFreeChart barChart = createChart(barChartDataset, reportType);
-    JFreeChart lineChart = createLineChart(lineChartDataset, reportType);
+        JFreeChart barChart = createChart(barChartDataset, reportType);
+        JFreeChart lineChart = createLineChart(lineChartDataset, reportType);
 
-    // Create separate panels for bar chart and line chart
-    ChartPanel barChartPanel = new ChartPanel(barChart);
-    ChartPanel lineChartPanel = new ChartPanel(lineChart);
+        // Create separate panels for bar chart and line chart
+        ChartPanel barChartPanel = new ChartPanel(barChart);
+        ChartPanel lineChartPanel = new ChartPanel(lineChart);
 
-    // Create a new JFrame to display the charts
-    JFrame chartFrame = new JFrame(reportType + " Report");
-    chartFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // Create a new JFrame to display the charts
+        JFrame chartFrame = new JFrame(reportType + " Report");
+        chartFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-    // Set layout manager to BorderLayout
-    chartFrame.setLayout(new BorderLayout());
+        // Set layout manager to BorderLayout
+        chartFrame.setLayout(new BorderLayout());
 
-    // Add the chart panels to the JPanel
-    chartFrame.add(barChartPanel, BorderLayout.WEST);
-    chartFrame.add(lineChartPanel, BorderLayout.EAST);
+        // Add the chart panels to the JPanel
+        chartFrame.add(barChartPanel, BorderLayout.WEST);
+        chartFrame.add(lineChartPanel, BorderLayout.EAST);
 
-    // Pack and center the frame on the screen
-    chartFrame.pack();
-    chartFrame.setLocationRelativeTo(null);
-    chartFrame.setVisible(true);
-}
-
-   
-private DefaultCategoryDataset createDataset(String reportType) {
-    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-    int rowCount = jTable_Sales.getRowCount();
-    for (int i = 0; i < rowCount; i++) {
-        String confirmation = jTable_Sales.getValueAt(i, 8).toString(); // Confirmation column index is 8
-        String status = jTable_Sales.getValueAt(i, 11).toString(); // Status column index is 11
-
-        if ("Work Done".equals(reportType) && "Approved".equals(confirmation) && "Closed Sale".equals(status)) {
-            // For work done report, add data where confirmation is approved and status is closed sale
-            String product = jTable_Sales.getValueAt(i, 3).toString(); // Product column index is 3
-            double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
-            dataset.addValue(amount, "Amount", product);
-        } else if ("Approved".equals(reportType) && "Approved".equals(confirmation) && "In Progress".equals(status)) {
-            // For approved report, add data where confirmation is approved and status is in progress
-            String product = jTable_Sales.getValueAt(i, 3).toString(); // Product column index is 3
-            double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
-            dataset.addValue(amount, "Amount", product);
-        } else if ("Closed Sale".equals(reportType) && "Rejected".equals(confirmation) && "Closed Sale".equals(status)) {
-            // For closed sale report, add data where confirmation is rejected and status is closed sale
-            String product = jTable_Sales.getValueAt(i, 3).toString(); // Product column index is 3
-            double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
-            dataset.addValue(amount, "Amount", product);
-        }
+        // Pack and center the frame on the screen
+        chartFrame.pack();
+        chartFrame.setLocationRelativeTo(null);
+        chartFrame.setVisible(true);
     }
 
-    return dataset;
-}
+    private DefaultCategoryDataset createDataset(String reportType) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-private DefaultCategoryDataset createLineChartDataset(String reportType) {
-    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        int rowCount = jTable_Sales.getRowCount();
+        for (int i = 0; i < rowCount; i++) {
+            String confirmation = jTable_Sales.getValueAt(i, 8).toString(); // Confirmation column index is 8
+            String status = jTable_Sales.getValueAt(i, 11).toString(); // Status column index is 11
 
-    int rowCount = jTable_Sales.getRowCount();
-    for (int i = 0; i < rowCount; i++) {
-        String confirmation = jTable_Sales.getValueAt(i, 8).toString(); // Confirmation column index is 8
-        String status = jTable_Sales.getValueAt(i, 11).toString(); // Status column index is 11
-
-        if ("Work Done".equals(reportType) && "Approved".equals(confirmation) && "Closed Sale".equals(status)) {
-            // For work done report, add data where confirmation is approved and status is closed sale
-            String date = jTable_Sales.getValueAt(i, 2).toString(); // Date column index is 2
-            double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
-            dataset.addValue(amount, "Amount", date);
-        } else if ("Approved".equals(reportType) && "Approved".equals(confirmation) && "In Progress".equals(status)) {
-            // For approved report, add data where confirmation is approved and status is in progress
-            String date = jTable_Sales.getValueAt(i, 2).toString(); // Date column index is 2
-            double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
-            dataset.addValue(amount, "Amount", date);
-        } else if ("Closed Sale".equals(reportType) && "Rejected".equals(confirmation) && "Closed Sale".equals(status)) {
-            // For closed sale report, add data where confirmation is rejected and status is closed sale
-            String date = jTable_Sales.getValueAt(i, 2).toString(); // Date column index is 2
-            double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
-            dataset.addValue(amount, "Amount", date);
+            if ("Work Done".equals(reportType) && "Approved".equals(confirmation) && "Closed Sale".equals(status)) {
+                // For work done report, add data where confirmation is approved and status is closed sale
+                String product = jTable_Sales.getValueAt(i, 3).toString(); // Product column index is 3
+                double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
+                dataset.addValue(amount, "Amount", product);
+            } else if ("Approved".equals(reportType) && "Approved".equals(confirmation) && "In Progress".equals(status)) {
+                // For approved report, add data where confirmation is approved and status is in progress
+                String product = jTable_Sales.getValueAt(i, 3).toString(); // Product column index is 3
+                double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
+                dataset.addValue(amount, "Amount", product);
+            } else if ("Closed Sale".equals(reportType) && "Rejected".equals(confirmation) && "Closed Sale".equals(status)) {
+                // For closed sale report, add data where confirmation is rejected and status is closed sale
+                String product = jTable_Sales.getValueAt(i, 3).toString(); // Product column index is 3
+                double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
+                dataset.addValue(amount, "Amount", product);
+            }
         }
+
+        return dataset;
     }
 
-    return dataset;
-}
+    private DefaultCategoryDataset createLineChartDataset(String reportType) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-private double parseAmount(String amountString) {
-    // Remove "RM" prefix and parse the amount
-    return Double.parseDouble(amountString.replace("RM", "").trim());
-}
+        int rowCount = jTable_Sales.getRowCount();
+        for (int i = 0; i < rowCount; i++) {
+            String confirmation = jTable_Sales.getValueAt(i, 8).toString(); // Confirmation column index is 8
+            String status = jTable_Sales.getValueAt(i, 11).toString(); // Status column index is 11
 
-    
-private JFreeChart createChart(DefaultCategoryDataset dataset, String reportType) {
-    // Create Bar Chart for all report types
-    JFreeChart chart = ChartFactory.createBarChart(
-        reportType + " Bar Chart",
-        "Product",
-        "Amount Sold",
-        dataset,
-        PlotOrientation.VERTICAL,
-        true,
-        true,
-        false
-    );
+            if ("Work Done".equals(reportType) && "Approved".equals(confirmation) && "Closed Sale".equals(status)) {
+                // For work done report, add data where confirmation is approved and status is closed sale
+                String date = jTable_Sales.getValueAt(i, 2).toString(); // Date column index is 2
+                double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
+                dataset.addValue(amount, "Amount", date);
+            } else if ("Approved".equals(reportType) && "Approved".equals(confirmation) && "In Progress".equals(status)) {
+                // For approved report, add data where confirmation is approved and status is in progress
+                String date = jTable_Sales.getValueAt(i, 2).toString(); // Date column index is 2
+                double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
+                dataset.addValue(amount, "Amount", date);
+            } else if ("Closed Sale".equals(reportType) && "Rejected".equals(confirmation) && "Closed Sale".equals(status)) {
+                // For closed sale report, add data where confirmation is rejected and status is closed sale
+                String date = jTable_Sales.getValueAt(i, 2).toString(); // Date column index is 2
+                double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
+                dataset.addValue(amount, "Amount", date);
+            }
+        }
 
-    return chart;
-}
+        return dataset;
+    }
+
+    private double parseAmount(String amountString) {
+        // Remove "RM" prefix and parse the amount
+        return Double.parseDouble(amountString.replace("RM", "").trim());
+    }
+
+    private JFreeChart createChart(DefaultCategoryDataset dataset, String reportType) {
+        // Create Bar Chart for all report types
+        JFreeChart chart = ChartFactory.createBarChart(
+                reportType + " Bar Chart",
+                "Product",
+                "Amount Sold",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+        );
+
+        return chart;
+    }
 
     private JFreeChart createLineChart(DefaultCategoryDataset dataset, String reportType) {
         // Create Line Chart for all report types
         JFreeChart chart = ChartFactory.createLineChart(
-            reportType + " Line Chart",
-            "Date",
-            "Sales Amount",
-            dataset,
-            PlotOrientation.VERTICAL,
-            true,
-            true,
-            false
+                reportType + " Line Chart",
+                "Date",
+                "Sales Amount",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
         );
 
         return chart;
