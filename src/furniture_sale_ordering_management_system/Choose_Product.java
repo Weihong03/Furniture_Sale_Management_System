@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -235,23 +236,29 @@ public class Choose_Product extends javax.swing.JFrame {
     }
 }
     private void jButton_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addActionPerformed
-         String selectedProduct = (String) jComboBox_product.getSelectedItem();
+          String selectedProduct = (String) jComboBox_product.getSelectedItem();
 
     // Read additional data (item ID, category, and price) based on the selected product
     String csvFile = "Data/Yoyo-Furniture.csv";
     try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
         String line;
         while ((line = br.readLine()) != null) {
-            String[] data = line.split(",");
-            if (data.length > 0 && data[0].trim().equals(selectedProduct)) {
+            StringTokenizer tokenizer = new StringTokenizer(line, ",");
+            List<String> dataList = new ArrayList<>();
+
+            while (tokenizer.hasMoreTokens()) {
+                dataList.add(tokenizer.nextToken());
+            }
+
+            if (!dataList.isEmpty() && dataList.get(0).trim().equals(selectedProduct)) {
                 // Assuming item ID is in the second column, category in the third, and price in the fourth
-                String itemID = data[1].trim();
-                String priceStr = data[2].trim();
-                String category = data[3].trim();
-                String shortDescription = data[4].trim();
-                String designer = data[5].trim();
-                String height = data[6].trim();
-                String width = data[7].trim();
+                String itemID = getSafeValue(dataList, 1);
+                String priceStr = getSafeValue(dataList, 2);
+                String category = getSafeValue(dataList, 3);
+                String shortDescription = getSafeValue(dataList, 4);
+                String designer = getSafeValue(dataList, 5);
+                String height = getSafeValue(dataList, 6);
+                String width = getSafeValue(dataList, 7);
 
                 // Convert price to double and add it to the total
                 double price = Double.parseDouble(priceStr);
@@ -275,7 +282,9 @@ public class Choose_Product extends javax.swing.JFrame {
     // Optionally, you can clear the selection in the jComboBox_product
     jComboBox_product.setSelectedIndex(-1);
     }//GEN-LAST:event_jButton_addActionPerformed
-
+    private String getSafeValue(List<String> dataList, int index) {
+    return (index >= 0 && index < dataList.size()) ? dataList.get(index).trim() : "";
+}
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
  Sales_Home salesPersonHome = new Sales_Home(userID);
                     salesPersonHome.setVisible(true);
