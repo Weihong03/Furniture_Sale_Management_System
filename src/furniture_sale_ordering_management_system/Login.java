@@ -41,8 +41,22 @@ public class Login extends javax.swing.JFrame {
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Start the image slideshow
-        startSlideshow();
+        // Load the first image without waiting for the timer
+    loadNextImage();
+    setImageToPanelWithOpacity();
+
+    // Start the image slideshow after a short delay
+    Timer initialDelayTimer = new Timer(500, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // Start the image slideshow
+            startSlideshow();
+        }
+    });
+
+    // Start the initial delay timer
+    initialDelayTimer.setRepeats(false); // Execute only once
+    initialDelayTimer.start();
     }
 
     private void startSlideshow() {
