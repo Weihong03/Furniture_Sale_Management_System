@@ -245,8 +245,8 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         }
 
 // Calculate the line indices of the selected row's data
-        int startIndex = selectedRow * 9; // Each row has 9 lines of data
-        int endIndex = startIndex + 8;
+        int startIndex = selectedRow * 10; // Each row has 9 lines of data
+        int endIndex = startIndex + 9;
 
 // Check if the calculated indices are within the bounds of the list
         if (startIndex >= 0 && endIndex < lines.size()) {
