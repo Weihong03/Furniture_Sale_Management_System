@@ -65,7 +65,6 @@ public class Sale_Approval extends javax.swing.JFrame {
         jButton_reject = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1200, 750));
         setSize(new java.awt.Dimension(1200, 750));
 
         jPanel1.setBackground(new java.awt.Color(224, 224, 255));

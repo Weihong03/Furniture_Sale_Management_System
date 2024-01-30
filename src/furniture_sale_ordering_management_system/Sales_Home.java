@@ -4,7 +4,10 @@
  */
 package furniture_sale_ordering_management_system;
 
+import static furniture_sale_ordering_management_system.Officer_Home.userID;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,7 +44,6 @@ public class Sales_Home extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -55,9 +57,9 @@ public class Sales_Home extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1200, 750));
         setSize(new java.awt.Dimension(1200, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -116,21 +118,6 @@ public class Sales_Home extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 73));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1050, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 1050, 680));
 
         jPanel2.setBackground(new java.awt.Color(58, 107, 53));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -328,6 +315,21 @@ public class Sales_Home extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 680));
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 680, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 1050, 680));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -344,41 +346,220 @@ public class Sales_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-        // TODO add your handling code here:
+        // Set opaque to true for jPanel6
+        jPanel6.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel4.setOpaque(false);
+        jPanel5.setOpaque(false);
+        jPanel7.setOpaque(false);
+        jPanel8.setOpaque(false);
+        jPanel9.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
+        jPanel9.repaint();
+
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+        // Set opaque to true for jPanel6
+        jPanel7.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel4.setOpaque(false);
+        jPanel5.setOpaque(false);
+        jPanel6.setOpaque(false);
+        jPanel8.setOpaque(false);
+        jPanel9.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
+        jPanel9.repaint();
+
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
+
         Choose_Product chooseproduct = new Choose_Product(userID);
-        chooseproduct.setVisible(true);
-        this.dispose();
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(chooseproduct.getContentPane());
+        internalFrame.setSize(1050, 680);
+        internalFrame.setResizable(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
+
+        // Add the new internalFrame to jPanel3
+        jPanel3.add(internalFrame);
+        internalFrame.setVisible(true);
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+        // Set opaque to true for jPanel6
+        jPanel4.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel6.setOpaque(false);
+        jPanel5.setOpaque(false);
+        jPanel7.setOpaque(false);
+        jPanel8.setOpaque(false);
+        jPanel9.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
+        jPanel9.repaint();
+
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
+
         Manage_Sales_Order_Quotation manage_sales_order_quotation = new Manage_Sales_Order_Quotation(userID);
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(manage_sales_order_quotation.getContentPane());
+        internalFrame.setSize(1050, 680);
+        internalFrame.setResizable(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
+
+        // Add the new internalFrame to jPanel3
+        jPanel3.add(internalFrame);
+        internalFrame.setVisible(true);
         manage_sales_order_quotation.displaySales();
-        manage_sales_order_quotation.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        ViewProduct viewproduct = new ViewProduct();
-        viewproduct.setVisible(true);
-        this.dispose();
+        // Set opaque to true for jPanel6
+        jPanel5.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel4.setOpaque(false);
+        jPanel6.setOpaque(false);
+        jPanel7.setOpaque(false);
+        jPanel8.setOpaque(false);
+        jPanel9.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
+        jPanel9.repaint();
+
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
+
+        ViewProduct viewproduct = new ViewProduct(userID);
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(viewproduct.getContentPane());
+        internalFrame.setSize(1050, 680);
+        internalFrame.setResizable(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
+
+        // Add the new internalFrame to jPanel3
+        jPanel3.add(internalFrame);
+        internalFrame.setVisible(true);
+        viewproduct.displaySales();
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
+        // Set opaque to true for jPanel6
+        jPanel8.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel4.setOpaque(false);
+        jPanel5.setOpaque(false);
+        jPanel6.setOpaque(false);
+        jPanel7.setOpaque(false);
+        jPanel9.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
+        jPanel9.repaint();
+
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
+
         List_Approval listApproval = new List_Approval(userID);
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(listApproval.getContentPane());
+        internalFrame.setSize(1050, 680);
+        internalFrame.setResizable(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
+
+        // Add the new internalFrame to jPanel3
+        jPanel3.add(internalFrame);
+        internalFrame.setVisible(true);
         listApproval.setInitialValues(userID);
-        listApproval.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jPanel8MouseClicked
 
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
+        // Set opaque to true for jPanel6
+        jPanel9.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel4.setOpaque(false);
+        jPanel5.setOpaque(false);
+        jPanel6.setOpaque(false);
+        jPanel7.setOpaque(false);
+        jPanel8.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
+        jPanel9.repaint();
+
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
+
         Sales_Officer_Profile sales_officer_Profile = new Sales_Officer_Profile(userID);
+
+
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(sales_officer_Profile.getContentPane());
+        internalFrame.setSize(1050, 680);
+        internalFrame.setResizable(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
+
+        // Add the new internalFrame to jPanel3
+        jPanel3.add(internalFrame);
+        internalFrame.setVisible(true);
         sales_officer_Profile.setInitialValues(userID);
         sales_officer_Profile.setInitialValuesFromUserID(userID);
-        sales_officer_Profile.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jPanel9MouseClicked
 
     /**
@@ -406,10 +587,6 @@ public class Sales_Home extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Sales_Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

@@ -18,9 +18,10 @@ public class ViewProduct extends javax.swing.JFrame {
     /**
      * Creates new form ViewProduct
      */
-    public ViewProduct() {
+    public ViewProduct(String userID) {
+        this.userID = userID;
         initComponents();
-        displayBookings();
+        displaySales();
     }
 
     /**
@@ -85,7 +86,7 @@ public class ViewProduct extends javax.swing.JFrame {
         sales_home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_backActionPerformed
-     public void displayBookings() {
+     public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_productListing.getModel();
         model.setRowCount(0); // Clear existing data
 
@@ -136,7 +137,9 @@ public class ViewProduct extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewProduct().setVisible(true);
+                ViewProduct viewproduct = new ViewProduct(userID);
+                viewproduct.setVisible(true);
+                viewproduct.displaySales();
             }
         });
     }
