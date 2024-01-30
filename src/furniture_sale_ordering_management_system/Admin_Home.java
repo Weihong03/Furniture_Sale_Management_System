@@ -4,6 +4,7 @@
  */
 package furniture_sale_ordering_management_system;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -57,7 +58,6 @@ public class Admin_Home extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1200, 750));
         setSize(new java.awt.Dimension(1200, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -154,7 +154,7 @@ public class Admin_Home extends javax.swing.JFrame {
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBackground(new java.awt.Color(203, 209, 143));
         jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel7.setOpaque(false);
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,7 +187,7 @@ public class Admin_Home extends javax.swing.JFrame {
 
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, 100));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(203, 209, 143));
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel4.setOpaque(false);
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -220,7 +220,7 @@ public class Admin_Home extends javax.swing.JFrame {
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 100));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBackground(new java.awt.Color(203, 209, 143));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel5.setOpaque(false);
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -253,7 +253,7 @@ public class Admin_Home extends javax.swing.JFrame {
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 100));
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setBackground(new java.awt.Color(203, 209, 143));
         jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel8.setOpaque(false);
         jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -311,53 +311,170 @@ public class Admin_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-        // TODO add your handling code here:
+        // Set opaque to true for jPanel6
+        jPanel6.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel4.setOpaque(false);
+        jPanel5.setOpaque(false);
+        jPanel7.setOpaque(false);
+        jPanel8.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+        // Set opaque to true for jPanel6
+        jPanel7.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel4.setOpaque(false);
+        jPanel5.setOpaque(false);
+        jPanel6.setOpaque(false);
+        jPanel8.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
+
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
+
+        // Create and set up the new Generate_Report internalFrame
         Admin_Profile administratorprofile = new Admin_Profile(userID);
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(administratorprofile.getContentPane());
+        internalFrame.setSize(1050, 680);
+        internalFrame.setResizable(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
+
+        // Add the new internalFrame to jPanel3
+        jPanel3.add(internalFrame);
+        internalFrame.setVisible(true);
         administratorprofile.setInitialValues(userID);
         administratorprofile.setInitialValuesFromUserID(userID);
-        administratorprofile.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+        // Set opaque to true for jPanel6
+        jPanel4.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel5.setOpaque(false);
+        jPanel6.setOpaque(false);
+        jPanel7.setOpaque(false);
+        jPanel8.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
+
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
+
+        // Create and set up the new Generate_Report internalFrame
         ManageWorkerProfile manageworkerprofile = new ManageWorkerProfile(userID);
-        manageworkerprofile.setVisible(true);
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(manageworkerprofile.getContentPane());
+        internalFrame.setSize(1050, 680);
+        internalFrame.setResizable(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
+
+        // Add the new internalFrame to jPanel3
+        jPanel3.add(internalFrame);
+        internalFrame.setVisible(true);
         manageworkerprofile.displayBookings();
-        this.dispose();
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // Set opaque to true for jPanel6
+        jPanel5.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel4.setOpaque(false);
+        jPanel6.setOpaque(false);
+        jPanel7.setOpaque(false);
+        jPanel8.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
+
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
+
+        // Create and set up the new Generate_Report internalFrame
         Generate_Report generate = new Generate_Report(userID);
-
-        // Assuming jPanel3 is the container for JInternalFrame
         JInternalFrame internalFrame = new JInternalFrame();
-
-        // Set the content pane of the internal frame
         internalFrame.setContentPane(generate.getContentPane());
-
-        // Set the size of the internal frame
         internalFrame.setSize(1050, 680);
-
-        // Prevent resizing
         internalFrame.setResizable(false);
-
-        // Remove the internal frame border
         ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
 
+        // Add the new internalFrame to jPanel3
         jPanel3.add(internalFrame);
-
         internalFrame.setVisible(true);
         generate.displaySales();
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
+        // Set opaque to true for jPanel6
+        jPanel8.setOpaque(true);
+
+        // Set opaque to false for other JPanels
+        jPanel4.setOpaque(false);
+        jPanel5.setOpaque(false);
+        jPanel6.setOpaque(false);
+        jPanel7.setOpaque(false);
+
+        // Repaint the JPanels to reflect the changes
+        jPanel6.repaint();
+        jPanel4.repaint();
+        jPanel5.repaint();
+        jPanel7.repaint();
+        jPanel8.repaint();
+
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
+
+        // Create and set up the new Generate_Report internalFrame
         Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(adminLogbook.getContentPane());
+        internalFrame.setSize(1050, 680);
+        internalFrame.setResizable(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
+
+        // Add the new internalFrame to jPanel3
+        jPanel3.add(internalFrame);
         adminLogbook.loadLogEntriesFromFile();
-        adminLogbook.setVisible(true);
-        this.dispose();
+        internalFrame.setVisible(true);
     }//GEN-LAST:event_jPanel8MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
