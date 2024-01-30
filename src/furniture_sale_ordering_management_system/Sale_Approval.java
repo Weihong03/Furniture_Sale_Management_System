@@ -88,7 +88,7 @@ public class Sale_Approval extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton_back.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -242,12 +242,6 @@ public class Sale_Approval extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-        Officer_Home home = new Officer_Home(userID);
-        home.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton_backActionPerformed
-
     private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
         int selectedRowIndex = jTable_Salestable.getSelectedRow();
         if (selectedRowIndex >= 0) {
@@ -346,6 +340,12 @@ public class Sale_Approval extends javax.swing.JFrame {
             refreshTable();
         }
     }//GEN-LAST:event_jButton_rejectActionPerformed
+
+    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
+        Officer_Home home = new Officer_Home(userID);
+        home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton_backActionPerformed
 
     private String getUsernameFromID(String userID) {
         try {
