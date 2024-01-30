@@ -301,3 +301,11 @@ User ID: A001;
 Timestamp: 2024-01-30 14:45:57;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-01-30 14:52:29;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-30 14:52:36;
+Event: Logout;
+
