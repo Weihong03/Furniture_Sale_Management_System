@@ -469,3 +469,7 @@ User ID: A001;
 Timestamp: 2024-01-30 19:38:40;
 Event: Delete Profile, Deleted row for UserID: ss,;
 
+User ID: A001;
+Timestamp: 2024-01-30 19:40:31;
+Event: Logout;
+
