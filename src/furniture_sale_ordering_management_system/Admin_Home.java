@@ -5,6 +5,7 @@
 package furniture_sale_ordering_management_system;
 
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -330,9 +331,21 @@ public class Admin_Home extends javax.swing.JFrame {
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         Generate_Report generate = new Generate_Report(userID);
-        generate.setVisible(true);
+
+        // Assuming jPanel3 is the container for JInternalFrame
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(generate.getContentPane());
+
+        internalFrame.setSize(1050, 680);
+        internalFrame.setLocation(200, 70);
+
+        // Prevent resizing
+        internalFrame.setResizable(false);
+
+        jPanel3.add(internalFrame);
+
+        internalFrame.setVisible(true);
         generate.displaySales();
-        this.dispose();
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
