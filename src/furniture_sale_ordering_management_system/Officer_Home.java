@@ -421,6 +421,8 @@ public class Officer_Home extends javax.swing.JFrame {
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
+        jPanel3.add(button_notification);
+        button_notification.setVisible(true);
         jPanel3.repaint();
         jPanel3.revalidate();
     }//GEN-LAST:event_jPanel_dashboardMouseClicked
