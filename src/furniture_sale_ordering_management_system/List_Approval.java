@@ -104,7 +104,7 @@ public class List_Approval extends javax.swing.JFrame {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             StringBuilder content = new StringBuilder();
             String line;
-
+            
             while ((line = reader.readLine()) != null) {
                 content.append(line).append("\n");
             }
@@ -129,24 +129,31 @@ public class List_Approval extends javax.swing.JFrame {
 
                             switch (key) {
                                 case "ID":
+                                    value = value.replaceAll(",", "");
                                     rowData[0] = value;
                                     break;
                                 case "Amount":
+                                    value = value.replaceAll(",", "");
                                     rowData[1] = value;
                                     break;
                                 case "Date":
+                                    value = value.replaceAll(",", "");
                                     rowData[2] = value;
                                     break;
                                 case "Product":
+                                    value = value.replaceAll(",", "");
                                     rowData[3] = value;
                                     break;
                                 case "Item ID":
+                                    value = value.replaceAll(",", "");
                                     rowData[4] = value;
                                     break;
                                 case "Price":
+                                    value = value.replaceAll(",", "");
                                     rowData[5] = value;
                                     break;
                                 case "Confirmation":
+                                    value = value.replaceAll(",", "");
                                     rowData[6] = value;
                                     break;
                                 // Add more cases if needed for other fields

@@ -67,11 +67,13 @@ public class Admin_Logbook extends javax.swing.JFrame {
         try (BufferedReader br = new BufferedReader(new FileReader("Data/logbook.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
+                line = line.replace(";", " ");
                 if (line.startsWith("User ID: ")) {
                     String[] rowData = new String[3];
                     rowData[0] = line.substring(9); // Extract username value
 
                     line = br.readLine();
+                    line = line.replace(";", " ");                    
                     if (line != null && line.startsWith("Timestamp: ")) {
                         String[] timestampParts = line.split(": ", 2);
                         if (timestampParts.length == 2) {
@@ -82,6 +84,7 @@ public class Admin_Logbook extends javax.swing.JFrame {
                         }
 
                         line = br.readLine();
+                        line = line.replace(";", " "); 
                         if (line != null && line.startsWith("Event: ")) {
                             String[] eventParts = line.split(": ", 2);
                             if (eventParts.length == 2) {

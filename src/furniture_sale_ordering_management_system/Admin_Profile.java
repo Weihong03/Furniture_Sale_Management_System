@@ -71,12 +71,15 @@ public class Admin_Profile extends javax.swing.JFrame {
 
                         switch (key) {
                             case "Username":
+                                value = value.replaceAll(",", "");
                                 jTextField_Username.setText(value);
                                 break;
                             case "Password":
+                                value = value.replaceAll(",", "");
                                 jTextField_Password.setText(value);
                                 break;
                             case "Name":
+                                value = value.replaceAll(",", "");
                                 jTextField_FullName.setText(value);
                                 break;
                             case "Age":
@@ -91,12 +94,15 @@ public class Admin_Profile extends javax.swing.JFrame {
                                 }
                                 break;
                             case "Email":
+                                value = value.replaceAll(",", "");
                                 jTextField_Email.setText(value);
                                 break;
                             case "Phone Number":
+                                value = value.replaceAll(",", "");
                                 jTextField_PhoneNumber.setText(value);
                                 break;
                             case "Role":
+                                value = value.replaceAll(",", "");
                                 jTextField_role.setText(value);
                                 break;
                         }
