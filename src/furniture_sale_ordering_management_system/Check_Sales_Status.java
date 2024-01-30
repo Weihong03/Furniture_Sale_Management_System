@@ -69,6 +69,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
                 "ID", "Date", "Amount", "Product", "Item ID", "Price", "Customer", "Salesperson", "Confirmation", "Officer", "Invoice", "Status"
             }
         ));
+        jTable_SalesProduct.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTable_SalesProduct);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
