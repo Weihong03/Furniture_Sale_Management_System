@@ -329,7 +329,6 @@ public class Officer_Home extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(1050, 650));
 
         button_notification.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/icon.png"))); // NOI18N
-        button_notification.setOpaque(true);
         button_notification.setPreferredSize(new java.awt.Dimension(35, 35));
         button_notification.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
