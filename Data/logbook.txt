@@ -421,3 +421,51 @@ User ID: A001;
 Timestamp: 2024-01-30 19:26:01;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-01-30 19:29:18;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:29:27;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:31:23;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:31:58;
+Event: Delete Profile, Deleted row for UserID: ooi,;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:36:13;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:36:57;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:36:59;
+Event: Delete Profile, Deleted row for UserID: ss,;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:37:14;
+Event: Delete Profile, Deleted row for UserID: ooi,;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:37:20;
+Event: Delete Profile, Deleted row for UserID: Fengkanglim,;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:37:31;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:38:35;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-30 19:38:40;
+Event: Delete Profile, Deleted row for UserID: ss,;
+
