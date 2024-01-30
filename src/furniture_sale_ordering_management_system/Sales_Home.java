@@ -45,17 +45,17 @@ public class Sales_Home extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        jPanel_dashboard = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        jPanel_managePersonalProfile = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        jPanel_createSalesQuotation = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanel_manageSalesQuotation = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        jLabel_viewProductListing = new javax.swing.JLabel();
+        jPanel_viewListApproval = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -122,11 +122,11 @@ public class Sales_Home extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(58, 107, 53));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(203, 209, 143));
-        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_dashboard.setBackground(new java.awt.Color(203, 209, 143));
+        jPanel_dashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel6MouseClicked(evt);
+                jPanel_dashboardMouseClicked(evt);
             }
         });
 
@@ -134,31 +134,31 @@ public class Sales_Home extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Dashboard");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_dashboardLayout = new javax.swing.GroupLayout(jPanel_dashboard);
+        jPanel_dashboard.setLayout(jPanel_dashboardLayout);
+        jPanel_dashboardLayout.setHorizontalGroup(
+            jPanel_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_dashboardLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel3)
                 .addContainerGap(107, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        jPanel_dashboardLayout.setVerticalGroup(
+            jPanel_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_dashboardLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel3)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
+        jPanel2.add(jPanel_dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel9.setOpaque(false);
-        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_managePersonalProfile.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_managePersonalProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_managePersonalProfile.setOpaque(false);
+        jPanel_managePersonalProfile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel9MouseClicked(evt);
+                jPanel_managePersonalProfileMouseClicked(evt);
             }
         });
 
@@ -166,31 +166,31 @@ public class Sales_Home extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Manage Personal Profile");
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_managePersonalProfileLayout = new javax.swing.GroupLayout(jPanel_managePersonalProfile);
+        jPanel_managePersonalProfile.setLayout(jPanel_managePersonalProfileLayout);
+        jPanel_managePersonalProfileLayout.setHorizontalGroup(
+            jPanel_managePersonalProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_managePersonalProfileLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel10)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        jPanel_managePersonalProfileLayout.setVerticalGroup(
+            jPanel_managePersonalProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_managePersonalProfileLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel10)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, 100));
+        jPanel2.add(jPanel_managePersonalProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, 100));
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel7.setOpaque(false);
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_createSalesQuotation.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_createSalesQuotation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_createSalesQuotation.setOpaque(false);
+        jPanel_createSalesQuotation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel7MouseClicked(evt);
+                jPanel_createSalesQuotationMouseClicked(evt);
             }
         });
 
@@ -198,31 +198,31 @@ public class Sales_Home extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Create Sales Quotation");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_createSalesQuotationLayout = new javax.swing.GroupLayout(jPanel_createSalesQuotation);
+        jPanel_createSalesQuotation.setLayout(jPanel_createSalesQuotationLayout);
+        jPanel_createSalesQuotationLayout.setHorizontalGroup(
+            jPanel_createSalesQuotationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_createSalesQuotationLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        jPanel_createSalesQuotationLayout.setVerticalGroup(
+            jPanel_createSalesQuotationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_createSalesQuotationLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel4)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 100));
+        jPanel2.add(jPanel_createSalesQuotation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 100));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.setOpaque(false);
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_manageSalesQuotation.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_manageSalesQuotation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_manageSalesQuotation.setOpaque(false);
+        jPanel_manageSalesQuotation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
+                jPanel_manageSalesQuotationMouseClicked(evt);
             }
         });
 
@@ -230,24 +230,24 @@ public class Sales_Home extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Manage Sales Quotation");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_manageSalesQuotationLayout = new javax.swing.GroupLayout(jPanel_manageSalesQuotation);
+        jPanel_manageSalesQuotation.setLayout(jPanel_manageSalesQuotationLayout);
+        jPanel_manageSalesQuotationLayout.setHorizontalGroup(
+            jPanel_manageSalesQuotationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_manageSalesQuotationLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        jPanel_manageSalesQuotationLayout.setVerticalGroup(
+            jPanel_manageSalesQuotationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_manageSalesQuotationLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel5)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 100));
+        jPanel2.add(jPanel_manageSalesQuotation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 100));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -258,9 +258,9 @@ public class Sales_Home extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("View Product Listing");
+        jLabel_viewProductListing.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel_viewProductListing.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_viewProductListing.setText("View Product Listing");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -268,25 +268,25 @@ public class Sales_Home extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel6)
+                .addComponent(jLabel_viewProductListing)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jLabel6)
+                .addComponent(jLabel_viewProductListing)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 200, 100));
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel8.setOpaque(false);
-        jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_viewListApproval.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_viewListApproval.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_viewListApproval.setOpaque(false);
+        jPanel_viewListApproval.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel8MouseClicked(evt);
+                jPanel_viewListApprovalMouseClicked(evt);
             }
         });
 
@@ -294,24 +294,24 @@ public class Sales_Home extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("View List Approval");
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_viewListApprovalLayout = new javax.swing.GroupLayout(jPanel_viewListApproval);
+        jPanel_viewListApproval.setLayout(jPanel_viewListApprovalLayout);
+        jPanel_viewListApprovalLayout.setHorizontalGroup(
+            jPanel_viewListApprovalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_viewListApprovalLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel7)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        jPanel_viewListApprovalLayout.setVerticalGroup(
+            jPanel_viewListApprovalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_viewListApprovalLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel7)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 200, 100));
+        jPanel2.add(jPanel_viewListApproval, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 200, 100));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 680));
 
@@ -345,49 +345,49 @@ public class Sales_Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel9MouseClicked
 
-    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+    private void jPanel_dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_dashboardMouseClicked
         // Set opaque to true for jPanel6
-        jPanel6.setOpaque(true);
+        jPanel_dashboard.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel4.setOpaque(false);
+        jPanel_manageSalesQuotation.setOpaque(false);
         jPanel5.setOpaque(false);
-        jPanel7.setOpaque(false);
-        jPanel8.setOpaque(false);
-        jPanel9.setOpaque(false);
+        jPanel_createSalesQuotation.setOpaque(false);
+        jPanel_viewListApproval.setOpaque(false);
+        jPanel_managePersonalProfile.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_manageSalesQuotation.repaint();
         jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_createSalesQuotation.repaint();
+        jPanel_viewListApproval.repaint();
+        jPanel_managePersonalProfile.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
         jPanel3.repaint();
         jPanel3.revalidate();
-    }//GEN-LAST:event_jPanel6MouseClicked
+    }//GEN-LAST:event_jPanel_dashboardMouseClicked
 
-    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+    private void jPanel_createSalesQuotationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_createSalesQuotationMouseClicked
         // Set opaque to true for jPanel6
-        jPanel7.setOpaque(true);
+        jPanel_createSalesQuotation.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel4.setOpaque(false);
+        jPanel_manageSalesQuotation.setOpaque(false);
         jPanel5.setOpaque(false);
-        jPanel6.setOpaque(false);
-        jPanel8.setOpaque(false);
-        jPanel9.setOpaque(false);
+        jPanel_dashboard.setOpaque(false);
+        jPanel_viewListApproval.setOpaque(false);
+        jPanel_managePersonalProfile.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_manageSalesQuotation.repaint();
         jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_createSalesQuotation.repaint();
+        jPanel_viewListApproval.repaint();
+        jPanel_managePersonalProfile.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
@@ -405,26 +405,26 @@ public class Sales_Home extends javax.swing.JFrame {
         // Add the new internalFrame to jPanel3
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
-    }//GEN-LAST:event_jPanel7MouseClicked
+    }//GEN-LAST:event_jPanel_createSalesQuotationMouseClicked
 
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+    private void jPanel_manageSalesQuotationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_manageSalesQuotationMouseClicked
         // Set opaque to true for jPanel6
-        jPanel4.setOpaque(true);
+        jPanel_manageSalesQuotation.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel6.setOpaque(false);
+        jPanel_dashboard.setOpaque(false);
         jPanel5.setOpaque(false);
-        jPanel7.setOpaque(false);
-        jPanel8.setOpaque(false);
-        jPanel9.setOpaque(false);
+        jPanel_createSalesQuotation.setOpaque(false);
+        jPanel_viewListApproval.setOpaque(false);
+        jPanel_managePersonalProfile.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_manageSalesQuotation.repaint();
         jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_createSalesQuotation.repaint();
+        jPanel_viewListApproval.repaint();
+        jPanel_managePersonalProfile.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
@@ -443,26 +443,26 @@ public class Sales_Home extends javax.swing.JFrame {
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
         manage_sales_order_quotation.displaySales();
-    }//GEN-LAST:event_jPanel4MouseClicked
+    }//GEN-LAST:event_jPanel_manageSalesQuotationMouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // Set opaque to true for jPanel6
         jPanel5.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel4.setOpaque(false);
-        jPanel6.setOpaque(false);
-        jPanel7.setOpaque(false);
-        jPanel8.setOpaque(false);
-        jPanel9.setOpaque(false);
+        jPanel_manageSalesQuotation.setOpaque(false);
+        jPanel_dashboard.setOpaque(false);
+        jPanel_createSalesQuotation.setOpaque(false);
+        jPanel_viewListApproval.setOpaque(false);
+        jPanel_managePersonalProfile.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_manageSalesQuotation.repaint();
         jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_createSalesQuotation.repaint();
+        jPanel_viewListApproval.repaint();
+        jPanel_managePersonalProfile.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
@@ -483,24 +483,24 @@ public class Sales_Home extends javax.swing.JFrame {
         viewproduct.displaySales();
     }//GEN-LAST:event_jPanel5MouseClicked
 
-    private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
+    private void jPanel_viewListApprovalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_viewListApprovalMouseClicked
         // Set opaque to true for jPanel6
-        jPanel8.setOpaque(true);
+        jPanel_viewListApproval.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel4.setOpaque(false);
+        jPanel_manageSalesQuotation.setOpaque(false);
         jPanel5.setOpaque(false);
-        jPanel6.setOpaque(false);
-        jPanel7.setOpaque(false);
-        jPanel9.setOpaque(false);
+        jPanel_dashboard.setOpaque(false);
+        jPanel_createSalesQuotation.setOpaque(false);
+        jPanel_managePersonalProfile.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_manageSalesQuotation.repaint();
         jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_createSalesQuotation.repaint();
+        jPanel_viewListApproval.repaint();
+        jPanel_managePersonalProfile.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
@@ -519,26 +519,26 @@ public class Sales_Home extends javax.swing.JFrame {
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
         listApproval.setInitialValues(userID);
-    }//GEN-LAST:event_jPanel8MouseClicked
+    }//GEN-LAST:event_jPanel_viewListApprovalMouseClicked
 
-    private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
+    private void jPanel_managePersonalProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_managePersonalProfileMouseClicked
         // Set opaque to true for jPanel6
-        jPanel9.setOpaque(true);
+        jPanel_managePersonalProfile.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel4.setOpaque(false);
+        jPanel_manageSalesQuotation.setOpaque(false);
         jPanel5.setOpaque(false);
-        jPanel6.setOpaque(false);
-        jPanel7.setOpaque(false);
-        jPanel8.setOpaque(false);
+        jPanel_dashboard.setOpaque(false);
+        jPanel_createSalesQuotation.setOpaque(false);
+        jPanel_viewListApproval.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_manageSalesQuotation.repaint();
         jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_createSalesQuotation.repaint();
+        jPanel_viewListApproval.repaint();
+        jPanel_managePersonalProfile.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
@@ -560,7 +560,7 @@ public class Sales_Home extends javax.swing.JFrame {
         internalFrame.setVisible(true);
         sales_officer_Profile.setInitialValues(userID);
         sales_officer_Profile.setInitialValuesFromUserID(userID);
-    }//GEN-LAST:event_jPanel9MouseClicked
+    }//GEN-LAST:event_jPanel_managePersonalProfileMouseClicked
 
     /**
      * @param args the command line arguments
@@ -608,18 +608,18 @@ public class Sales_Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_viewProductListing;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanel_createSalesQuotation;
+    private javax.swing.JPanel jPanel_dashboard;
+    private javax.swing.JPanel jPanel_managePersonalProfile;
+    private javax.swing.JPanel jPanel_manageSalesQuotation;
+    private javax.swing.JPanel jPanel_viewListApproval;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,17 +52,17 @@ public class Officer_Home extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        jPanel_dashboard = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        jPanel_managePersonalProfile = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanel_salesApproval = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        jPanel_checkSaleStatus = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        jPanel_generateInvoice = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        jPanel_generateReport = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         button_notification = new furniture_sale_ordering_management_system.Shared_item.Button();
@@ -132,11 +132,11 @@ public class Officer_Home extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(58, 107, 53));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(203, 209, 143));
-        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_dashboard.setBackground(new java.awt.Color(203, 209, 143));
+        jPanel_dashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel6MouseClicked(evt);
+                jPanel_dashboardMouseClicked(evt);
             }
         });
 
@@ -144,31 +144,31 @@ public class Officer_Home extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Dashboard");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_dashboardLayout = new javax.swing.GroupLayout(jPanel_dashboard);
+        jPanel_dashboard.setLayout(jPanel_dashboardLayout);
+        jPanel_dashboardLayout.setHorizontalGroup(
+            jPanel_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_dashboardLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel3)
                 .addContainerGap(112, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        jPanel_dashboardLayout.setVerticalGroup(
+            jPanel_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_dashboardLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel3)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
+        jPanel2.add(jPanel_dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
 
-        jPanel7.setBackground(new java.awt.Color(203, 209, 143));
-        jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel7.setOpaque(false);
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_managePersonalProfile.setBackground(new java.awt.Color(203, 209, 143));
+        jPanel_managePersonalProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_managePersonalProfile.setOpaque(false);
+        jPanel_managePersonalProfile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel7MouseClicked(evt);
+                jPanel_managePersonalProfileMouseClicked(evt);
             }
         });
 
@@ -176,31 +176,31 @@ public class Officer_Home extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Manage Personal Profile");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_managePersonalProfileLayout = new javax.swing.GroupLayout(jPanel_managePersonalProfile);
+        jPanel_managePersonalProfile.setLayout(jPanel_managePersonalProfileLayout);
+        jPanel_managePersonalProfileLayout.setHorizontalGroup(
+            jPanel_managePersonalProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_managePersonalProfileLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        jPanel_managePersonalProfileLayout.setVerticalGroup(
+            jPanel_managePersonalProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_managePersonalProfileLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel4)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, 100));
+        jPanel2.add(jPanel_managePersonalProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, 100));
 
-        jPanel4.setBackground(new java.awt.Color(203, 209, 143));
-        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.setOpaque(false);
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_salesApproval.setBackground(new java.awt.Color(203, 209, 143));
+        jPanel_salesApproval.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_salesApproval.setOpaque(false);
+        jPanel_salesApproval.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
+                jPanel_salesApprovalMouseClicked(evt);
             }
         });
 
@@ -208,31 +208,31 @@ public class Officer_Home extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Sales Approval");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_salesApprovalLayout = new javax.swing.GroupLayout(jPanel_salesApproval);
+        jPanel_salesApproval.setLayout(jPanel_salesApprovalLayout);
+        jPanel_salesApprovalLayout.setHorizontalGroup(
+            jPanel_salesApprovalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_salesApprovalLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel5)
                 .addContainerGap(84, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        jPanel_salesApprovalLayout.setVerticalGroup(
+            jPanel_salesApprovalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_salesApprovalLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel5)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 100));
+        jPanel2.add(jPanel_salesApproval, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 100));
 
-        jPanel5.setBackground(new java.awt.Color(203, 209, 143));
-        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel5.setOpaque(false);
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_checkSaleStatus.setBackground(new java.awt.Color(203, 209, 143));
+        jPanel_checkSaleStatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_checkSaleStatus.setOpaque(false);
+        jPanel_checkSaleStatus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel5MouseClicked(evt);
+                jPanel_checkSaleStatusMouseClicked(evt);
             }
         });
 
@@ -240,31 +240,31 @@ public class Officer_Home extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Check Sale Status");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_checkSaleStatusLayout = new javax.swing.GroupLayout(jPanel_checkSaleStatus);
+        jPanel_checkSaleStatus.setLayout(jPanel_checkSaleStatusLayout);
+        jPanel_checkSaleStatusLayout.setHorizontalGroup(
+            jPanel_checkSaleStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_checkSaleStatusLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel6)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        jPanel_checkSaleStatusLayout.setVerticalGroup(
+            jPanel_checkSaleStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_checkSaleStatusLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel6)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 100));
+        jPanel2.add(jPanel_checkSaleStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 100));
 
-        jPanel8.setBackground(new java.awt.Color(203, 209, 143));
-        jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel8.setOpaque(false);
-        jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_generateInvoice.setBackground(new java.awt.Color(203, 209, 143));
+        jPanel_generateInvoice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_generateInvoice.setOpaque(false);
+        jPanel_generateInvoice.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel8MouseClicked(evt);
+                jPanel_generateInvoiceMouseClicked(evt);
             }
         });
 
@@ -272,31 +272,31 @@ public class Officer_Home extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Generate Invoice");
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_generateInvoiceLayout = new javax.swing.GroupLayout(jPanel_generateInvoice);
+        jPanel_generateInvoice.setLayout(jPanel_generateInvoiceLayout);
+        jPanel_generateInvoiceLayout.setHorizontalGroup(
+            jPanel_generateInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_generateInvoiceLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel7)
                 .addContainerGap(72, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        jPanel_generateInvoiceLayout.setVerticalGroup(
+            jPanel_generateInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_generateInvoiceLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel7)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 200, 100));
+        jPanel2.add(jPanel_generateInvoice, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 200, 100));
 
-        jPanel9.setBackground(new java.awt.Color(203, 209, 143));
-        jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel9.setOpaque(false);
-        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_generateReport.setBackground(new java.awt.Color(203, 209, 143));
+        jPanel_generateReport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_generateReport.setOpaque(false);
+        jPanel_generateReport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel9MouseClicked(evt);
+                jPanel_generateReportMouseClicked(evt);
             }
         });
 
@@ -304,24 +304,24 @@ public class Officer_Home extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Generate Report");
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_generateReportLayout = new javax.swing.GroupLayout(jPanel_generateReport);
+        jPanel_generateReport.setLayout(jPanel_generateReportLayout);
+        jPanel_generateReportLayout.setHorizontalGroup(
+            jPanel_generateReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_generateReportLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        jPanel_generateReportLayout.setVerticalGroup(
+            jPanel_generateReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_generateReportLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel9)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 200, 100));
+        jPanel2.add(jPanel_generateReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 200, 100));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 680));
 
@@ -402,47 +402,47 @@ public class Officer_Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel8MouseClicked
 
-    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-        jPanel6.setOpaque(true);
+    private void jPanel_dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_dashboardMouseClicked
+        jPanel_dashboard.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel4.setOpaque(false);
-        jPanel5.setOpaque(false);
-        jPanel7.setOpaque(false);
-        jPanel8.setOpaque(false);
-        jPanel9.setOpaque(false);
+        jPanel_salesApproval.setOpaque(false);
+        jPanel_checkSaleStatus.setOpaque(false);
+        jPanel_managePersonalProfile.setOpaque(false);
+        jPanel_generateInvoice.setOpaque(false);
+        jPanel_generateReport.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
-        jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_salesApproval.repaint();
+        jPanel_checkSaleStatus.repaint();
+        jPanel_managePersonalProfile.repaint();
+        jPanel_generateInvoice.repaint();
+        jPanel_generateReport.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
         jPanel3.repaint();
         jPanel3.revalidate();
-    }//GEN-LAST:event_jPanel6MouseClicked
+    }//GEN-LAST:event_jPanel_dashboardMouseClicked
 
-    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-        jPanel7.setOpaque(true);
+    private void jPanel_managePersonalProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_managePersonalProfileMouseClicked
+        jPanel_managePersonalProfile.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel4.setOpaque(false);
-        jPanel5.setOpaque(false);
-        jPanel6.setOpaque(false);
-        jPanel8.setOpaque(false);
-        jPanel9.setOpaque(false);
+        jPanel_salesApproval.setOpaque(false);
+        jPanel_checkSaleStatus.setOpaque(false);
+        jPanel_dashboard.setOpaque(false);
+        jPanel_generateInvoice.setOpaque(false);
+        jPanel_generateReport.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
-        jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_salesApproval.repaint();
+        jPanel_checkSaleStatus.repaint();
+        jPanel_managePersonalProfile.repaint();
+        jPanel_generateInvoice.repaint();
+        jPanel_generateReport.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
@@ -462,25 +462,25 @@ public class Officer_Home extends javax.swing.JFrame {
         internalFrame.setVisible(true);
         salesPerson.setInitialValues(userID);
         salesPerson.setInitialValuesFromUserID(userID);
-    }//GEN-LAST:event_jPanel7MouseClicked
+    }//GEN-LAST:event_jPanel_managePersonalProfileMouseClicked
 
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-        jPanel4.setOpaque(true);
+    private void jPanel_salesApprovalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_salesApprovalMouseClicked
+        jPanel_salesApproval.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel6.setOpaque(false);
-        jPanel5.setOpaque(false);
-        jPanel7.setOpaque(false);
-        jPanel8.setOpaque(false);
-        jPanel9.setOpaque(false);
+        jPanel_dashboard.setOpaque(false);
+        jPanel_checkSaleStatus.setOpaque(false);
+        jPanel_managePersonalProfile.setOpaque(false);
+        jPanel_generateInvoice.setOpaque(false);
+        jPanel_generateReport.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
-        jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_salesApproval.repaint();
+        jPanel_checkSaleStatus.repaint();
+        jPanel_managePersonalProfile.repaint();
+        jPanel_generateInvoice.repaint();
+        jPanel_generateReport.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
@@ -499,25 +499,25 @@ public class Officer_Home extends javax.swing.JFrame {
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
         approval.displaySales();
-    }//GEN-LAST:event_jPanel4MouseClicked
+    }//GEN-LAST:event_jPanel_salesApprovalMouseClicked
 
-    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        jPanel5.setOpaque(true);
+    private void jPanel_checkSaleStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_checkSaleStatusMouseClicked
+        jPanel_checkSaleStatus.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel4.setOpaque(false);
-        jPanel6.setOpaque(false);
-        jPanel7.setOpaque(false);
-        jPanel8.setOpaque(false);
-        jPanel9.setOpaque(false);
+        jPanel_salesApproval.setOpaque(false);
+        jPanel_dashboard.setOpaque(false);
+        jPanel_managePersonalProfile.setOpaque(false);
+        jPanel_generateInvoice.setOpaque(false);
+        jPanel_generateReport.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
-        jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_salesApproval.repaint();
+        jPanel_checkSaleStatus.repaint();
+        jPanel_managePersonalProfile.repaint();
+        jPanel_generateInvoice.repaint();
+        jPanel_generateReport.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
@@ -536,25 +536,25 @@ public class Officer_Home extends javax.swing.JFrame {
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
         check.displaySales();
-    }//GEN-LAST:event_jPanel5MouseClicked
+    }//GEN-LAST:event_jPanel_checkSaleStatusMouseClicked
 
-    private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
-        jPanel8.setOpaque(true);
+    private void jPanel_generateInvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_generateInvoiceMouseClicked
+        jPanel_generateInvoice.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel4.setOpaque(false);
-        jPanel5.setOpaque(false);
-        jPanel7.setOpaque(false);
-        jPanel6.setOpaque(false);
-        jPanel9.setOpaque(false);
+        jPanel_salesApproval.setOpaque(false);
+        jPanel_checkSaleStatus.setOpaque(false);
+        jPanel_managePersonalProfile.setOpaque(false);
+        jPanel_dashboard.setOpaque(false);
+        jPanel_generateReport.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
-        jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_salesApproval.repaint();
+        jPanel_checkSaleStatus.repaint();
+        jPanel_managePersonalProfile.repaint();
+        jPanel_generateInvoice.repaint();
+        jPanel_generateReport.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
@@ -573,25 +573,25 @@ public class Officer_Home extends javax.swing.JFrame {
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
         invoice.displaySales();
-    }//GEN-LAST:event_jPanel8MouseClicked
+    }//GEN-LAST:event_jPanel_generateInvoiceMouseClicked
 
-    private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
-        jPanel9.setOpaque(true);
+    private void jPanel_generateReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_generateReportMouseClicked
+        jPanel_generateReport.setOpaque(true);
 
         // Set opaque to false for other JPanels
-        jPanel4.setOpaque(false);
-        jPanel5.setOpaque(false);
-        jPanel7.setOpaque(false);
-        jPanel8.setOpaque(false);
-        jPanel6.setOpaque(false);
+        jPanel_salesApproval.setOpaque(false);
+        jPanel_checkSaleStatus.setOpaque(false);
+        jPanel_managePersonalProfile.setOpaque(false);
+        jPanel_generateInvoice.setOpaque(false);
+        jPanel_dashboard.setOpaque(false);
 
         // Repaint the JPanels to reflect the changes
-        jPanel6.repaint();
-        jPanel4.repaint();
-        jPanel5.repaint();
-        jPanel7.repaint();
-        jPanel8.repaint();
-        jPanel9.repaint();
+        jPanel_dashboard.repaint();
+        jPanel_salesApproval.repaint();
+        jPanel_checkSaleStatus.repaint();
+        jPanel_managePersonalProfile.repaint();
+        jPanel_generateInvoice.repaint();
+        jPanel_generateReport.repaint();
 
         // Clear existing components from jPanel3
         jPanel3.removeAll();
@@ -610,7 +610,7 @@ public class Officer_Home extends javax.swing.JFrame {
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
         generate.displaySales();
-    }//GEN-LAST:event_jPanel9MouseClicked
+    }//GEN-LAST:event_jPanel_generateReportMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -660,11 +660,11 @@ public class Officer_Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanel_checkSaleStatus;
+    private javax.swing.JPanel jPanel_dashboard;
+    private javax.swing.JPanel jPanel_generateInvoice;
+    private javax.swing.JPanel jPanel_generateReport;
+    private javax.swing.JPanel jPanel_managePersonalProfile;
+    private javax.swing.JPanel jPanel_salesApproval;
     // End of variables declaration//GEN-END:variables
 }
