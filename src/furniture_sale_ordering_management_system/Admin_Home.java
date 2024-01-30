@@ -330,22 +330,27 @@ public class Admin_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        Generate_Report generate = new Generate_Report(userID);
+         Generate_Report generate = new Generate_Report(userID);
 
-        // Assuming jPanel3 is the container for JInternalFrame
-        JInternalFrame internalFrame = new JInternalFrame();
-        internalFrame.setContentPane(generate.getContentPane());
+    // Assuming jPanel3 is the container for JInternalFrame
+    JInternalFrame internalFrame = new JInternalFrame();
 
-        internalFrame.setSize(1050, 680);
-        internalFrame.setLocation(200, 70);
+    // Set the content pane of the internal frame
+    internalFrame.setContentPane(generate.getContentPane());
 
-        // Prevent resizing
-        internalFrame.setResizable(false);
+    // Set the size of the internal frame
+    internalFrame.setSize(1050, 680);
 
-        jPanel3.add(internalFrame);
+    // Prevent resizing
+    internalFrame.setResizable(false);
 
-        internalFrame.setVisible(true);
-        generate.displaySales();
+    // Remove the internal frame border
+    ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+
+    jPanel3.add(internalFrame);
+
+    internalFrame.setVisible(true);
+    generate.displaySales();
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
