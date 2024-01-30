@@ -66,7 +66,6 @@ public class Officer_Home extends javax.swing.JFrame {
         button_notification = new furniture_sale_ordering_management_system.Shared_item.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1200, 750));
         setSize(new java.awt.Dimension(1200, 750));
 
         jPanel1.setBackground(new java.awt.Color(227, 180, 72));
