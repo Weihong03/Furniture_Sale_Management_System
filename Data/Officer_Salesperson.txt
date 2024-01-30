@@ -61,9 +61,9 @@ Filepath: src\furniture_sale_ordering_management_system\Images\profile picture6.
 ID: O006,
 Username: ooi,
 Password: pop,
-Name: 332,
+Name: ss,
 Age: 22,
-Email: 223,
-Phone Number: 223,
+Email: weihong123gmail.com,
+Phone Number: 01292832,
 Role: Officer,
 Filepath: src/furniture_sale_ordering_management_system/Images/O006_profile_image.png
