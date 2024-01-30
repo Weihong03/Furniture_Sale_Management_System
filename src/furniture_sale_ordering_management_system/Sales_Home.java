@@ -154,7 +154,7 @@ public class Sales_Home extends javax.swing.JFrame {
 
         jPanel2.add(jPanel_dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
 
-        jPanel_managePersonalProfile.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_managePersonalProfile.setBackground(new java.awt.Color(203, 209, 143));
         jPanel_managePersonalProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_managePersonalProfile.setOpaque(false);
         jPanel_managePersonalProfile.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,7 +186,7 @@ public class Sales_Home extends javax.swing.JFrame {
 
         jPanel2.add(jPanel_managePersonalProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, 100));
 
-        jPanel_createSalesQuotation.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_createSalesQuotation.setBackground(new java.awt.Color(203, 209, 143));
         jPanel_createSalesQuotation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_createSalesQuotation.setOpaque(false);
         jPanel_createSalesQuotation.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -218,7 +218,7 @@ public class Sales_Home extends javax.swing.JFrame {
 
         jPanel2.add(jPanel_createSalesQuotation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 100));
 
-        jPanel_manageSalesQuotation.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_manageSalesQuotation.setBackground(new java.awt.Color(203, 209, 143));
         jPanel_manageSalesQuotation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_manageSalesQuotation.setOpaque(false);
         jPanel_manageSalesQuotation.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -250,7 +250,7 @@ public class Sales_Home extends javax.swing.JFrame {
 
         jPanel2.add(jPanel_manageSalesQuotation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 100));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBackground(new java.awt.Color(203, 209, 143));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel5.setOpaque(false);
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -282,7 +282,7 @@ public class Sales_Home extends javax.swing.JFrame {
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 200, 100));
 
-        jPanel_viewListApproval.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_viewListApproval.setBackground(new java.awt.Color(203, 209, 143));
         jPanel_viewListApproval.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_viewListApproval.setOpaque(false);
         jPanel_viewListApproval.addMouseListener(new java.awt.event.MouseAdapter() {
