@@ -140,7 +140,6 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField_username = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton_login = new javax.swing.JButton();
         jPasswordField_password = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -152,6 +151,7 @@ public class Login extends javax.swing.JFrame {
         show = new javax.swing.JLabel();
         disable = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        button_login = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(806, 500));
@@ -191,16 +191,6 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Password :");
-
-        jButton_login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton_login.setText("LOGIN");
-        jButton_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton_login.setPreferredSize(new java.awt.Dimension(84, 27));
-        jButton_login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_loginActionPerformed(evt);
-            }
-        });
 
         jPasswordField_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,6 +265,14 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        button_login.setText("LOGIN");
+        button_login.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        button_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_loginActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -282,35 +280,37 @@ public class Login extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton_login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField_password, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                            .addComponent(jTextField_username)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(disable)
-                    .addComponent(show)
-                    .addComponent(jLabel7))
-                .addContainerGap(48, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jCheckBox1)
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPasswordField_password, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                                    .addComponent(jTextField_username)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13))
+                            .addComponent(button_login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(disable)
+                            .addComponent(show)
+                            .addComponent(jLabel7))
+                        .addGap(0, 36, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -341,12 +341,12 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jCheckBox1)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addComponent(button_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jLabel13))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -371,49 +371,6 @@ public class Login extends javax.swing.JFrame {
     private void jTextField_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_usernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_usernameActionPerformed
-
-    private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
-        String username = jTextField_username.getText();
-        String password = new String(jPasswordField_password.getPassword());
-        String event = "Login";
-
-        String userID = validateCredentials(username, password);
-
-        if (userID != null) {
-            // Determine the role based on the userID prefix
-
-            char rolePrefix = userID.charAt(0);
-
-            // Redirect to the corresponding home page
-            switch (rolePrefix) {
-                case 'A' -> {
-                    // Admin Home
-                    Admin_Home adminHome = new Admin_Home(userID);
-                    adminHome.setVisible(true);
-                    this.setVisible(false);
-
-                    Admin_Logbook adminLogbook = new Admin_Logbook(userID);
-                    adminLogbook.addLogEntry(userID, event);
-                }
-                case 'S' -> {
-                    // SalesPerson Home
-                    Sales_Home salesPersonHome = new Sales_Home(userID);
-                    salesPersonHome.setVisible(true);
-                    this.setVisible(false);
-                }
-                case 'O' -> {
-                    // Officer Home
-                    Officer_Home officerHome = new Officer_Home(userID);
-                    officerHome.setVisible(true);
-                    this.setVisible(false);
-                }
-                default -> {
-                }
-            }
-        } else {
-            showMessageDialog(this, "Invalid credentials. Please try again.");
-        }
-    }//GEN-LAST:event_jButton_loginActionPerformed
 
     private void jPasswordField_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField_passwordActionPerformed
         // TODO add your handling code here:
@@ -461,6 +418,49 @@ public class Login extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
+        String username = jTextField_username.getText();
+        String password = new String(jPasswordField_password.getPassword());
+        String event = "Login";
+
+        String userID = validateCredentials(username, password);
+
+        if (userID != null) {
+            // Determine the role based on the userID prefix
+
+            char rolePrefix = userID.charAt(0);
+
+            // Redirect to the corresponding home page
+            switch (rolePrefix) {
+                case 'A' -> {
+                    // Admin Home
+                    Admin_Home adminHome = new Admin_Home(userID);
+                    adminHome.setVisible(true);
+                    this.setVisible(false);
+
+                    Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+                    adminLogbook.addLogEntry(userID, event);
+                }
+                case 'S' -> {
+                    // SalesPerson Home
+                    Sales_Home salesPersonHome = new Sales_Home(userID);
+                    salesPersonHome.setVisible(true);
+                    this.setVisible(false);
+                }
+                case 'O' -> {
+                    // Officer Home
+                    Officer_Home officerHome = new Officer_Home(userID);
+                    officerHome.setVisible(true);
+                    this.setVisible(false);
+                }
+                default -> {
+                }
+            }
+        } else {
+            showMessageDialog(this, "Invalid credentials. Please try again.");
+        }
+    }//GEN-LAST:event_button_loginActionPerformed
 
     private String validateCredentials(String username, String password) {
         try (BufferedReader adminReader = new BufferedReader(new FileReader("Data/Admin.txt")); BufferedReader SalesOfficerReader = new BufferedReader(new FileReader("Data/Officer_Salesperson.txt"))) {
@@ -543,8 +543,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private furniture_sale_ordering_management_system.progressindicator.Button button_login;
     private javax.swing.JLabel disable;
-    private javax.swing.JButton jButton_login;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
