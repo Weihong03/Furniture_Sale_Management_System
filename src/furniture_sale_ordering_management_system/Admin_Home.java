@@ -58,6 +58,8 @@ public class Admin_Home extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1200, 750));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(1200, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -326,6 +328,11 @@ public class Admin_Home extends javax.swing.JFrame {
         jPanel5.repaint();
         jPanel7.repaint();
         jPanel8.repaint();
+        
+        // Clear existing components from jPanel3
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
