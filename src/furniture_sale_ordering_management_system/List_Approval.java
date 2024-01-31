@@ -193,7 +193,7 @@ public class List_Approval extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1050, 680));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(238, 240, 218));
         jPanel1.setMaximumSize(new java.awt.Dimension(1050, 680));
         jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

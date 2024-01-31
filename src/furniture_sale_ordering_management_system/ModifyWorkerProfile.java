@@ -126,7 +126,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(224, 224, 255));
+        jPanel1.setBackground(new java.awt.Color(238, 240, 218));
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 255));
         jPanel2.setForeground(new java.awt.Color(0, 204, 255));

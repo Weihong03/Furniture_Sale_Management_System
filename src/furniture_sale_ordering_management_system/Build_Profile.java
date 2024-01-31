@@ -102,7 +102,7 @@ public class Build_Profile extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(238, 240, 218));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
 
         jLabel_name.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

@@ -57,7 +57,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(238, 240, 218));
 
         jTable_SalesProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

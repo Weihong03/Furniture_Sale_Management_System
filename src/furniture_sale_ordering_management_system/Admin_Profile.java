@@ -189,7 +189,7 @@ public class Admin_Profile extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1050, 680));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(238, 240, 218));
         jPanel2.setMaximumSize(new java.awt.Dimension(1050, 680));
         jPanel2.setPreferredSize(new java.awt.Dimension(1050, 680));
 

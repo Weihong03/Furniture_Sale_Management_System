@@ -55,6 +55,7 @@ public class Status extends javax.swing.JPanel {
         button_Done = new furniture_sale_ordering_management_system.progressindicator.Button();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(238, 240, 218));
         setPreferredSize(new java.awt.Dimension(800, 260));
 
         progressIndicator.setModel(new javax.swing.AbstractListModel() {
