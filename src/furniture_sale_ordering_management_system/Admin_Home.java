@@ -58,7 +58,6 @@ public class Admin_Home extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1250, 750));
         setMinimumSize(new java.awt.Dimension(1200, 750));
         setUndecorated(true);
         setSize(new java.awt.Dimension(1250, 750));
