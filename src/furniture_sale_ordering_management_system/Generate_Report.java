@@ -5,8 +5,6 @@
 package furniture_sale_ordering_management_system;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
