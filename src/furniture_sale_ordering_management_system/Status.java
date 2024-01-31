@@ -58,6 +58,7 @@ public class Status extends javax.swing.JPanel {
         setBackground(new java.awt.Color(238, 240, 218));
         setPreferredSize(new java.awt.Dimension(800, 260));
 
+        progressIndicator.setBackground(new java.awt.Color(238, 240, 218));
         progressIndicator.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Assembly", "Testing", "Quality Check", "Closed Sale" };
             public int getSize() { return strings.length; }
@@ -75,6 +76,7 @@ public class Status extends javax.swing.JPanel {
             }
         });
 
+        panelSlider.setBackground(new java.awt.Color(238, 240, 218));
         panelSlider.setOpaque(false);
 
         javax.swing.GroupLayout panelSliderLayout = new javax.swing.GroupLayout(panelSlider);

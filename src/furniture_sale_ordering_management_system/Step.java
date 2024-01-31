@@ -29,6 +29,8 @@ public class Step extends javax.swing.JPanel {
 
         jLabel_Step = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(238, 240, 218));
+
         jLabel_Step.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel_Step.setForeground(new java.awt.Color(165, 165, 165));
         jLabel_Step.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
