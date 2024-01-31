@@ -187,10 +187,10 @@ public class Admin_Profile extends javax.swing.JFrame {
         jLabel4.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1050, 680));
         setSize(new java.awt.Dimension(1050, 680));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setMaximumSize(new java.awt.Dimension(1050, 680));
         jPanel2.setPreferredSize(new java.awt.Dimension(1050, 680));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N

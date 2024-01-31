@@ -481,3 +481,35 @@ User ID: A001;
 Timestamp: 2024-01-30 20:38:25;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-01-31 13:35:33;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-31 13:35:56;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-01-31 13:37:17;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-31 13:38:21;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-01-31 13:38:28;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-31 13:39:20;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-01-31 13:40:18;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-31 13:40:54;
+Event: Logout;
+

@@ -133,10 +133,13 @@ public class Admin_Logbook extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
+        setMaximumSize(new java.awt.Dimension(1050, 680));
         setPreferredSize(new java.awt.Dimension(1050, 680));
+        setResizable(false);
         setSize(new java.awt.Dimension(1050, 680));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1050, 680));
         jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
 
         jTable_logbook.setModel(new javax.swing.table.DefaultTableModel(
