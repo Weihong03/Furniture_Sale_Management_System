@@ -481,8 +481,8 @@ public class Admin_Home extends javax.swing.JFrame {
 
         // Add the new internalFrame to jPanel3
         jPanel3.add(internalFrame);
-        adminLogbook.loadLogEntriesFromFile();
         internalFrame.setVisible(true);
+        adminLogbook.loadLogEntriesFromFile();
     }//GEN-LAST:event_jPanel_logbookMouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked

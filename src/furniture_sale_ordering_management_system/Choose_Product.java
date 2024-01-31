@@ -74,6 +74,7 @@ public class Choose_Product extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jComboBox_product = new javax.swing.JComboBox<>();
         jButton_add = new javax.swing.JButton();
@@ -86,10 +87,19 @@ public class Choose_Product extends javax.swing.JFrame {
         jButton_delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1000, 650));
+        setSize(new java.awt.Dimension(1050, 680));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Product :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 112, -1, -1));
 
         jComboBox_product.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox_product, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 109, -1, -1));
 
         jButton_add.setText("Add");
         jButton_add.addActionListener(new java.awt.event.ActionListener() {
@@ -97,10 +107,13 @@ public class Choose_Product extends javax.swing.JFrame {
                 jButton_addActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 161, -1, -1));
 
         jTextArea_totalamount.setColumns(20);
         jTextArea_totalamount.setRows(5);
         jScrollPane2.setViewportView(jTextArea_totalamount);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 255, -1, 275));
 
         jButton_proceed.setText("Proceed");
         jButton_proceed.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +121,7 @@ public class Choose_Product extends javax.swing.JFrame {
                 jButton_proceedActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton_proceed, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 548, -1, -1));
 
         jTable_product.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,12 +133,15 @@ public class Choose_Product extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable_product);
 
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 255, -1, 275));
+
         jButton_back.setText("Back");
         jButton_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_backActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 548, -1, -1));
 
         jButton_delete.setText("Delete");
         jButton_delete.addActionListener(new java.awt.event.ActionListener() {
@@ -132,54 +149,9 @@ public class Choose_Product extends javax.swing.JFrame {
                 jButton_deleteActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(553, 548, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton_back)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton_delete)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_proceed)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jLabel1)
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_add))))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(30, 30, 30)
-                .addComponent(jButton_add)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_proceed)
-                    .addComponent(jButton_back)
-                    .addComponent(jButton_delete))
-                .addGap(26, 26, 26))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -361,6 +333,7 @@ public class Choose_Product extends javax.swing.JFrame {
     private javax.swing.JButton jButton_proceed;
     private javax.swing.JComboBox<String> jComboBox_product;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable_product;

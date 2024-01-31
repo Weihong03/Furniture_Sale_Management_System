@@ -45,6 +45,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField_search = new javax.swing.JTextField();
@@ -57,17 +58,27 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(1050, 680));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1050, 680));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("MANAGE SALES ORDER QUOTATION");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 112, -1, -1));
 
         jLabel2.setText("Search :");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 175, -1, -1));
 
         jTextField_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_searchActionPerformed(evt);
             }
         });
+        jPanel1.add(jTextField_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 172, 71, -1));
 
         jTable_manageQuotation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,12 +101,15 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable_manageQuotation);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 212, 757, 275));
+
         jButton_modify.setText("Modify");
         jButton_modify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_modifyActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton_modify, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 505, -1, -1));
 
         jButton_delete.setText("Delete");
         jButton_delete.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +117,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
                 jButton_deleteActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 505, -1, -1));
 
         jButton_back.setText("Back");
         jButton_back.addActionListener(new java.awt.event.ActionListener() {
@@ -110,49 +125,9 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
                 jButton_backActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 544, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(280, 280, 280)
-                        .addComponent(jButton_modify)
-                        .addGap(83, 83, 83)
-                        .addComponent(jButton_delete))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_back)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_modify)
-                    .addComponent(jButton_delete))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(jButton_back)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -357,6 +332,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     private javax.swing.JButton jButton_modify;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_manageQuotation;
     private javax.swing.JTextField jTextField_search;
