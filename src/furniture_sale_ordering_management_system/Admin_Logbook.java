@@ -124,7 +124,7 @@ public class Admin_Logbook extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_logbook = new javax.swing.JTable();
 
@@ -135,11 +135,10 @@ public class Admin_Logbook extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1050, 680));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMaximumSize(new java.awt.Dimension(1050, 680));
-        jPanel1.setMinimumSize(new java.awt.Dimension(1050, 680));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setMaximumSize(new java.awt.Dimension(1050, 680));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1050, 680));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable_logbook.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,14 +150,13 @@ public class Admin_Logbook extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable_logbook);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 980, -1));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 980, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 680));
 
         getAccessibleContext().setAccessibleDescription("");
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -199,7 +197,7 @@ public class Admin_Logbook extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_logbook;
     // End of variables declaration//GEN-END:variables

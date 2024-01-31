@@ -613,3 +613,31 @@ User ID: A001;
 Timestamp: 2024-01-31 14:28:16;
 Event: Login;
 
+User ID: A001;
+Timestamp: 2024-01-31 14:30:01;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-01-31 14:48:14;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-31 14:48:23;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-01-31 14:49:28;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-31 14:49:49;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-01-31 14:50:29;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-01-31 14:50:37;
+Event: Logout;
+
