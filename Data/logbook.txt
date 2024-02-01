@@ -709,3 +709,11 @@ User ID: A001;
 Timestamp: 2024-01-31 17:15:57;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-02-01 14:00:01;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-01 14:00:13;
+Event: Logout;
+
