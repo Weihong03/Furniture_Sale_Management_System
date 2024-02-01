@@ -354,10 +354,6 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Sales Order Quotation created successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-        // Close the current frame or perform any navigation as needed
-        // For example:
-        Sales_Home sales_home = new Sales_Home(userID);
-        sales_home.setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_jButton_createActionPerformed
