@@ -432,9 +432,6 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
 
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
         dispose();
-        ManageWorkerProfile manageBooking = new ManageWorkerProfile(userID);
-        manageBooking.setVisible(true);
-        manageBooking.displayBookings(); // Call the method to display the bookings
     }//GEN-LAST:event_jButton_backActionPerformed
 
     private void jTextField_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IDActionPerformed

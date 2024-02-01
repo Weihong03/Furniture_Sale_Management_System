@@ -54,7 +54,6 @@ public class Sale_Approval extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton_back = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Salestable = new javax.swing.JTable();
         jButton_modify = new javax.swing.JButton();
@@ -92,15 +91,6 @@ public class Sale_Approval extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
-
-        jButton_back.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/back.png"))); // NOI18N
-        jButton_back.setText("Back");
-        jButton_back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_backActionPerformed(evt);
-            }
-        });
 
         jTable_Salestable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable_Salestable.setModel(new javax.swing.table.DefaultTableModel(
@@ -184,8 +174,7 @@ public class Sale_Approval extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton_back)
-                        .addGap(247, 247, 247)
+                        .addGap(356, 356, 356)
                         .addComponent(jButton_modify)
                         .addGap(50, 50, 50)
                         .addComponent(jButton_delete)
@@ -217,8 +206,7 @@ public class Sale_Approval extends javax.swing.JFrame {
                     .addComponent(jButton_delete)
                     .addComponent(jButton_modify)
                     .addComponent(jButton_approve, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_reject, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_back))
+                    .addComponent(jButton_reject, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
 
@@ -335,12 +323,6 @@ public class Sale_Approval extends javax.swing.JFrame {
             refreshTable();
         }
     }//GEN-LAST:event_jButton_rejectActionPerformed
-
-    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-        Officer_Home home = new Officer_Home(userID);
-        home.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton_backActionPerformed
 
     private String getUsernameFromID(String userID) {
         try {
@@ -505,7 +487,6 @@ public class Sale_Approval extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_approve;
-    private javax.swing.JButton jButton_back;
     private javax.swing.JButton jButton_delete;
     private javax.swing.JButton jButton_modify;
     private javax.swing.JButton jButton_reject;

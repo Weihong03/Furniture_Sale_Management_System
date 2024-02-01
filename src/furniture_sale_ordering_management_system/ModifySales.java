@@ -358,9 +358,6 @@ public class ModifySales extends javax.swing.JFrame {
 
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
         dispose();
-        Sale_Approval salesApproval = new Sale_Approval(userID);
-        salesApproval.setVisible(true);
-        salesApproval.displaySales(); // Call the method to display the bookings
     }//GEN-LAST:event_jButton_backActionPerformed
 
     private void jTextField_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IDActionPerformed

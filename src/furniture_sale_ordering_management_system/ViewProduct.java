@@ -36,7 +36,6 @@ public class ViewProduct extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_productListing = new javax.swing.JTable();
-        jButton_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1050, 680));
@@ -57,25 +56,11 @@ public class ViewProduct extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 14, 983, 622));
 
-        jButton_back.setText("Back");
-        jButton_back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_backActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 642, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 680));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-        Sales_Home sales_home = new Sales_Home(userID);
-        sales_home.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton_backActionPerformed
      public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_productListing.getModel();
         model.setRowCount(0); // Clear existing data
@@ -135,7 +120,6 @@ public class ViewProduct extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_back;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_productListing;

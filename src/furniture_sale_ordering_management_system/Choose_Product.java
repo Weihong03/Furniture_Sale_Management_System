@@ -83,7 +83,6 @@ public class Choose_Product extends javax.swing.JFrame {
         jButton_proceed = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_product = new javax.swing.JTable();
-        jButton_back = new javax.swing.JButton();
         jButton_delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,14 +133,6 @@ public class Choose_Product extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTable_product);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 255, -1, 275));
-
-        jButton_back.setText("Back");
-        jButton_back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_backActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 548, -1, -1));
 
         jButton_delete.setText("Delete");
         jButton_delete.addActionListener(new java.awt.event.ActionListener() {
@@ -260,11 +251,6 @@ public class Choose_Product extends javax.swing.JFrame {
     private String getSafeValue(List<String> dataList, int index) {
         return (index >= 0 && index < dataList.size()) ? dataList.get(index).trim() : "";
     }
-    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-        Sales_Home salesPersonHome = new Sales_Home(userID);
-        salesPersonHome.setVisible(true);
-                    this.setVisible(false);    }//GEN-LAST:event_jButton_backActionPerformed
-
     private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
         deleteSelectedRows();
     }//GEN-LAST:event_jButton_deleteActionPerformed
@@ -328,7 +314,6 @@ public class Choose_Product extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_add;
-    private javax.swing.JButton jButton_back;
     private javax.swing.JButton jButton_delete;
     private javax.swing.JButton jButton_proceed;
     private javax.swing.JComboBox<String> jComboBox_product;

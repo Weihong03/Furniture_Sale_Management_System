@@ -134,8 +134,6 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-        Sales_Home sales_home = new Sales_Home(userID);
-        sales_home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_backActionPerformed
 

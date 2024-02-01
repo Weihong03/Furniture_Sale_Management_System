@@ -187,7 +187,6 @@ public class List_Approval extends javax.swing.JFrame {
         jTextField_salesperson = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField_filter = new javax.swing.JTextField();
-        jButton_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1050, 680));
@@ -245,14 +244,6 @@ public class List_Approval extends javax.swing.JFrame {
         });
         jPanel1.add(jTextField_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 171, 120, -1));
 
-        jButton_back.setText("Back");
-        jButton_back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_backActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 486, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -267,12 +258,6 @@ public class List_Approval extends javax.swing.JFrame {
         String searchText = jTextField_filter.getText();
         searchSales(searchText);
     }//GEN-LAST:event_jTextField_filterActionPerformed
-
-    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-        Sales_Home salesPersonHome = new Sales_Home(userID);
-        salesPersonHome.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton_backActionPerformed
     public void searchSales(String searchText) {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(jTable_listApproval.getModel());
         jTable_listApproval.setRowSorter(rowSorter);
@@ -318,7 +303,6 @@ public class List_Approval extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

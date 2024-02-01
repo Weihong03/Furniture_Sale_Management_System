@@ -79,7 +79,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton_back = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Salestable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -115,15 +114,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
-
-        jButton_back.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/back.png"))); // NOI18N
-        jButton_back.setText("Back");
-        jButton_back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_backActionPerformed(evt);
-            }
-        });
 
         jTable_Salestable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable_Salestable.setModel(new javax.swing.table.DefaultTableModel(
@@ -188,9 +178,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jButton_back)
-                .addGap(205, 205, 205)
+                .addGap(338, 338, 338)
                 .addComponent(jButton_generate)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -205,10 +193,8 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_generate)
-                    .addComponent(jButton_back))
-                .addGap(227, 227, 227))
+                .addComponent(jButton_generate)
+                .addGap(240, 240, 240))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,12 +213,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-        Officer_Home home = new Officer_Home(userID);
-        home.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton_backActionPerformed
 
     private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
         String searchText = jTextField_search.getText();
@@ -705,7 +685,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_back;
     private javax.swing.JButton jButton_generate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
