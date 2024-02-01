@@ -71,7 +71,15 @@ public class Generate_Report extends javax.swing.JFrame {
             new String [] {
                 "ID", "Amount", "Date", "Product", "Item ID", "Price", "Customer", "Salesperson", "Confirmation", "Officer", "Invoice", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable_Sales);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
