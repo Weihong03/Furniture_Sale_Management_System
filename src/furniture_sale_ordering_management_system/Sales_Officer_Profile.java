@@ -350,13 +350,13 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(322, 322, 322)
                         .addComponent(jLabel8)
-                        .addGap(81, 81, 81)
-                        .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(383, 383, 383)
                         .addComponent(jLabel5)
-                        .addGap(80, 80, 80)
-                        .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(388, 388, 388)
                         .addComponent(jLabel9)
@@ -375,7 +375,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addGap(50, 50, 50)))))
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(52, 52, 52))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,11 +417,9 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                                 .addComponent(jLabel7))
                             .addComponent(jComboBox_Age, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jLabel8))
-                            .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -429,11 +427,9 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton_change)))
                 .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel5))
-                    .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -485,7 +481,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                     String key = parts[0].trim();
                     String value = parts[1].trim();
                     switch (key) {
-                            case "Username":
+                        case "Username":
                         lines[1] = "Username: " + jTextField_Username.getText().trim()+ ",";
                         break;
                     case "Password":
@@ -505,10 +501,16 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                         break;
                     case "Role":
                         lines[7] = "Role: " + jTextField_Role.getText().trim()+ ",";
+                        break;
                     case "Filepath":
-                              String relativePath = selectedFilePath.replaceFirst(".*?src", "src").replace("\\", "/");
-                    lines[8] = "Filepath: " + relativePath.trim();
-                            break;
+                        if (selectedFilePath != null) {
+                        String relativePath = selectedFilePath.replaceFirst(".*?src", "src").replace("\\", "/");
+                        lines[8] = "Filepath: " + relativePath.trim();
+                    } else {
+                        // Handle the case where selectedFilePath is null
+                        lines[8] = "Filepath: "  + value; // or provide a default value
+                    }
+                    break;
                     }
                 }
             }

@@ -385,8 +385,6 @@ public class Admin_Profile extends javax.swing.JFrame {
                 content.append(line).append("\n");
             }
 
-            // Print the content before modifications
-            JOptionPane.showMessageDialog(null, "Before Modification:\n" + content.toString());
 
             // Update the information in the content and modify the event accordingly
             if (updateContent(content, "ID: ", id, eventBuilder)) {
@@ -414,12 +412,11 @@ public class Admin_Profile extends javax.swing.JFrame {
                 eventBuilder.append(", Update Role");
             }
 
-            // Print the content after modifications
-            JOptionPane.showMessageDialog(null, "After Modification:\n" + content.toString());
 
             // Write the updated content back to the text file
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
                 writer.write(content.toString());
+                JOptionPane.showMessageDialog(null, "Content successfully updated!");
             }
 
             // Add the log entry with the specific event
@@ -436,7 +433,7 @@ public class Admin_Profile extends javax.swing.JFrame {
             int endIndex = content.indexOf(label) + label.length();
             String oldValue = content.substring(endIndex, content.indexOf("\n", endIndex)).trim();
             if (!oldValue.equals(value)) {
-                content.replace(endIndex, content.indexOf("\n", endIndex), value);
+                content.replace(endIndex, content.indexOf("\n", endIndex), value + ",");
                 eventBuilder.append(", ").append(label.trim()).append(" from '").append(oldValue).append("' to '").append(value).append("'");
                 return true; // Return true if the update was successful
             }

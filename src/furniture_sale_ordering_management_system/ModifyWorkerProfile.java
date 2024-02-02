@@ -414,11 +414,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         return;
     }
 
-    // Check if a file path is selected
-    if (selectedFilePath == null) {
-        JOptionPane.showMessageDialog(this, "Please select an image file.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+
 
     // Perform the booking
     boolean isModified = modifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, selectedFilePath);
@@ -526,24 +522,17 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
      * @param args the command line arguments
      */
  
- private boolean modifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String selectedFilePath) {
+private boolean modifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String selectedFilePath) {
     StringBuilder eventBuilder = new StringBuilder("Update Profile");
     try {
-        // Find the position of "src" in the selected file path
-        int srcIndex = selectedFilePath.indexOf("src");
-
-        // If "src" is found, extract the substring starting from "src"
-        String relativePath = (srcIndex != -1) ? selectedFilePath.substring(srcIndex) : selectedFilePath;
-
         Path inputFile = Path.of(BOOKING_FILE_PATH);
-
         List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
 
         boolean found = false;
-        for (int i = 0; i < lines.size() - 9; i += 9) {
+        for (int i = 0; i < lines.size() - 10; i += 10) {
             String line = lines.get(i);
-            if (line.equals("ID: " + ID)) {
-                // Log the changes
+            
+            if (line.equals("ID: " + ID + ",")) {
                 eventBuilder.append(",Changes made to profile with ID ").append(ID).append(":");
                 logChange(eventBuilder, "Username", lines.get(i + 1), "Username: " + Username);
                 logChange(eventBuilder, "Password", lines.get(i + 2), "Password: " + Password);
@@ -553,16 +542,26 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
                 logChange(eventBuilder, "Phone Number", lines.get(i + 6), "Phone Number: " + PhoneNumber);
                 logChange(eventBuilder, "Role", lines.get(i + 7), "Role: " + Role);
 
-                // Modify the existing booking
-                lines.set(i, "ID: " + ID);
-                lines.set(i + 1, "Username: " + Username);
-                lines.set(i + 2, "Password: " + Password);
-                lines.set(i + 3, "Name: " + Name);
-                lines.set(i + 4, "Age: " + Age);
-                lines.set(i + 5, "Email: " + Email);
-                lines.set(i + 6, "Phone Number: " + PhoneNumber);
-                lines.set(i + 7, "Role: " + Role);
-                lines.set(i + 8, "Filepath: " + relativePath);
+                // Check if a new profile picture was selected
+                if (selectedFilePath != null) {
+                    int srcIndex = selectedFilePath.indexOf("src");
+                    String relativePath = (srcIndex != -1) ? selectedFilePath.substring(srcIndex) : selectedFilePath;
+                    logChange(eventBuilder, "Filepath", lines.get(i + 8), "Filepath: " + relativePath);
+                    lines.set(i + 8, "Filepath: " + relativePath);
+                } else {
+                    // Keep the original file path
+                    logChange(eventBuilder, "Filepath", lines.get(i + 8), "Filepath: " + lines.get(i + 8).substring("Filepath: ".length()).trim());
+                }
+
+                // Update other fields
+                lines.set(i, "ID: " + ID + ",");
+                lines.set(i + 1, "Username: " + Username + ",");
+                lines.set(i + 2, "Password: " + Password + ",");
+                lines.set(i + 3, "Name: " + Name + ",");
+                lines.set(i + 4, "Age: " + Age + ",");
+                lines.set(i + 5, "Email: " + Email + ",");
+                lines.set(i + 6, "Phone Number: " + PhoneNumber + ",");
+                lines.set(i + 7, "Role: " + Role + ",");
 
                 found = true;
                 break;
@@ -570,13 +569,11 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         }
 
         if (!found) {
-            System.out.println("Profile not found.");
+            System.out.println("Profile not found for ID: " + ID);
             return false;
         }
 
         Files.write(inputFile, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
-
-        // Add code here to write eventBuilder to the logbook
         Admin_Logbook adminLogbook = new Admin_Logbook(userID);
         adminLogbook.addLogEntry(userID, eventBuilder.toString());
 
@@ -586,6 +583,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         return false;
     }
 }
+
 
 private void logChange(StringBuilder eventBuilder, String fieldName, String oldValue, String newValue) {
     if (!oldValue.equals(newValue)) {
