@@ -789,3 +789,11 @@ User ID: A001;
 Timestamp: 2024-02-02 18:23:05;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-02-02 20:10:49;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-02 20:12:30;
+Event: Logout;
+
