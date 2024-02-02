@@ -22,10 +22,11 @@ import net.miginfocom.layout.LayoutCallback;
 public class Officer_Home extends javax.swing.JFrame {
 
     public static String userID;
+    
 
     public Officer_Home(String userID) {
         this.userID = userID;
-
+        
         initComponents();
         GlassPanePopup.install(this);
 
@@ -457,11 +458,13 @@ public class Officer_Home extends javax.swing.JFrame {
         internalFrame.setResizable(false);
         ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
         internalFrame.setBorder(BorderFactory.createEmptyBorder());
-
+        
+        String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
         // Add the new internalFrame to jPanel3
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
         salesPerson.setInitialValues(userID);
+        salesPerson.setIconFromFile(BOOKING_FILE_PATH);
         salesPerson.setInitialValuesFromUserID(userID);
     }//GEN-LAST:event_jPanel_managePersonalProfileMouseClicked
 

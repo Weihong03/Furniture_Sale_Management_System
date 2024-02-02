@@ -421,7 +421,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     }
 
     // Perform the booking
-    boolean isModified = modifyBooking(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, selectedFilePath);
+    boolean isModified = modifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, selectedFilePath);
 
     if (isModified) {
         JOptionPane.showMessageDialog(this, "Profile modified successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -533,7 +533,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
      * @param args the command line arguments
      */
  
- private boolean modifyBooking(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String selectedFilePath) {
+ private boolean modifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String selectedFilePath) {
     StringBuilder eventBuilder = new StringBuilder("Update Profile");
     try {
         // Find the position of "src" in the selected file path
@@ -641,7 +641,6 @@ private void logChange(StringBuilder eventBuilder, String fieldName, String oldV
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
         ModifyWorkerProfile modifyProfile = new ModifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role,userID);
-        modifyProfile.setIconFromFile(BOOKING_FILE_PATH);
         modifyProfile.setVisible(true);
  
         

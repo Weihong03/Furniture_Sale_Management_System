@@ -2,11 +2,11 @@ ID: S001,
 Username: Weihongooi,
 Password: Weihong123,
 Name: Ooi Wei Hong,
-Age: 35
+Age: 35,
 Email: Weihong03@gmail.com,
 Phone Number: 0303003,
 Role: Salesperson,
-Filepath: src\furniture_sale_ordering_management_system\Images\profile picture1.jpg
+Filepath: src/furniture_sale_ordering_management_system/Images/O006_profile_image.png
 
 ID: O003,
 Username: Atticus,

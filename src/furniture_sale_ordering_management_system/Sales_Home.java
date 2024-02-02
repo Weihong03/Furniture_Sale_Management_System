@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 public class Sales_Home extends javax.swing.JFrame {
 
     public static String userID;
+    private static final String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
 
     public Sales_Home(String userID) {
         this.userID = userID;
@@ -560,6 +561,7 @@ public class Sales_Home extends javax.swing.JFrame {
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
         sales_officer_Profile.setInitialValues(userID);
+        sales_officer_Profile.setIconFromFile(BOOKING_FILE_PATH);
         sales_officer_Profile.setInitialValuesFromUserID(userID);
     }//GEN-LAST:event_jPanel_managePersonalProfileMouseClicked
 

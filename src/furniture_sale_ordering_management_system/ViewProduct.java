@@ -49,11 +49,11 @@ public class ViewProduct extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Furniture_name", "Item_id", "Price", "Short Description", "Designer", "Height", "Width"
+                "Furniture_name", "Item_id", "Price", "Category", "Short Description", "Designer", "Height", "Width"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

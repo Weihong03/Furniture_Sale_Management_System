@@ -1,7 +1,7 @@
 package furniture_sale_ordering_management_system;
 
 
-import static furniture_sale_ordering_management_system.ModifyWorkerProfile.ID;
+
 import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -31,7 +31,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
     
     public static String userID;
     public static String userData;
-    private String selectedFilePath;
+    private String selectedFilePath;    
     
     private static final String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
   
@@ -119,6 +119,51 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
     } catch (IOException e) {
         e.printStackTrace(); // Handle the exception according to your application's requirements
     }
+}
+    
+  public void setIconFromFile(String BOOKING_FILE_PATH) {
+    String imagePath = readFilePathFromFile(BOOKING_FILE_PATH, userID);
+
+    // Set the icon for jLabel1
+    if (!imagePath.isEmpty()) {
+        try {
+            URL imageUrl = new File(imagePath).toURI().toURL();
+            ImageIcon icon = new ImageIcon(imageUrl);
+            Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
+            ImageIcon scaledIcon = new ImageIcon(image);
+            jLabel_icon.setIcon(scaledIcon);
+            System.out.println("Setting icon for jLabel1 with filepath: " + imagePath); // Debug statement
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    } else {
+        System.out.println("No icon set for jLabel1. Filepath is empty."); // Debug statement
+    }
+}
+
+    private String readFilePathFromFile(String BOOKING_FILE_PATH, String userID) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(BOOKING_FILE_PATH))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            // Check if the line starts with the expected field
+            if (line.startsWith("ID: " + userID)) {
+                // Extract filepath information
+                while ((line = reader.readLine()) != null) {
+                    if (line.startsWith("Filepath: ")) {
+                        String imagePath = line.substring("Filepath: ".length()).trim();
+                        System.out.println("Read filepath from file: " + imagePath); // Debug statement
+                        return imagePath;
+                    }
+                }
+            } else {
+                System.out.println("Unexpected line format. Line: " + line); // Debug statement
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    System.out.println("No filepath found in the file."); // Debug statement
+    return "";
 }
 
 
@@ -330,12 +375,11 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                     .addComponent(jLabel_icon)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jButton_change))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11)
-                        .addGap(50, 50, 50)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_change)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(50, 50, 50)))))
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -423,79 +467,76 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
     }
 
     String filePath = "Data/Officer_Salesperson.txt";
-try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-    StringBuilder content = new StringBuilder();
-    String line;
-    while ((line = reader.readLine()) != null) {
-        content.append(line).append("\n");
-    }
 
-    int startIndex = content.indexOf("ID: " + userID);
-
-    if (startIndex != -1) {
-        int endIndex = content.indexOf("ID:", startIndex + 1);
-        if (endIndex == -1) {
-            endIndex = content.length();
+    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            content.append(line).append("\n");
         }
 
-        String[] lines = userData.split("\n");
+        int startIndex = content.indexOf("ID: " + userID);
 
-        for (String lineData : lines) {
-            String[] parts = lineData.split(": ");
-            if (parts.length == 2) {
-                String key = parts[0].trim();
-                String value = parts[1].trim();
-                switch (key) {
-                    case "Username":
-                        lines[1] = "Username: " + jTextField_Username.getText().trim();
+        if (startIndex != -1) {
+            int endIndex = content.indexOf("ID:", startIndex + 1);
+            if (endIndex == -1) {
+                endIndex = content.length();
+            }
+
+            String[] lines = userData.split("\n");
+
+            for (String lineData : lines) {
+                String[] parts = lineData.split(": ");
+                if (parts.length == 2) {
+                    String key = parts[0].trim();
+                    String value = parts[1].trim();
+                    switch (key) {
+                            case "Username":
+                        lines[1] = "Username: " + jTextField_Username.getText().trim()+ ",";
                         break;
                     case "Password":
-                        lines[2] = "Password: " + jTextField_Password.getText().trim();
+                        lines[2] = "Password: " + jTextField_Password.getText().trim()+ ",";
                         break;
                     case "Name":
-                        lines[3] = "Name: " + jTextField_FullName.getText().trim();
+                        lines[3] = "Name: " + jTextField_FullName.getText().trim()+ ",";
                         break;
                     case "Age":
                         lines[4] = "Age: " + jComboBox_Age.getSelectedItem().toString().trim()+ ",";
                         break;
                     case "Email":
-                        lines[5] = "Email: " + jTextField_Email.getText().trim();
+                        lines[5] = "Email: " + jTextField_Email.getText().trim()+ ",";
                         break;
                     case "Phone Number":
-                        lines[6] = "Phone Number: " + jTextField_PhoneNumber.getText().trim();
+                        lines[6] = "Phone Number: " + jTextField_PhoneNumber.getText().trim()+ ",";
                         break;
                     case "Role":
-                        lines[7] = "Role: " + jTextField_Role.getText().trim();
-                        
-                        // Add a new blank line after the "Role" line
-                        content.append("\n");
-                        
-                        break;
+                        lines[7] = "Role: " + jTextField_Role.getText().trim()+ ",";
+                    case "Filepath":
+                              String relativePath = selectedFilePath.replaceFirst(".*?src", "src").replace("\\", "/");
+                    lines[8] = "Filepath: " + relativePath.trim();
+                            break;
+                    }
                 }
             }
-        }
 
-        // Update the content with modified user data
-        // Add a new blank line before the updated content
-    content.insert(startIndex, "\n");
-    content.insert(endIndex, "\n");
+            // Update the content with modified user data
+            content.insert(startIndex, "\n");
+            content.insert(endIndex, "\n");
+            content.replace(startIndex, endIndex, String.join("\n", lines));
 
-// Update the content with modified user data
-    content.replace(startIndex, endIndex, String.join("\n", lines));
-        // Save the updated content to the file
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            writer.write(content.toString());
-            JOptionPane.showMessageDialog(null, "Content successfully updated!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            // Save the updated content to the file
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+                writer.write(content.toString());
+                JOptionPane.showMessageDialog(null, "Content successfully updated!");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
         }
     } catch (IOException e) {
-        e.printStackTrace(); // Handle the exception according to your application's requirements
+        e.printStackTrace();
     }
-
     }//GEN-LAST:event_jButton_UpdateActionPerformed
 
     private void jComboBox_AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_AgeActionPerformed
@@ -505,50 +546,7 @@ try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
     private void jLabel_iconAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel_iconAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel_iconAncestorAdded
-     public void setIconFromFile(String BOOKING_FILE_PATH) {
-    String imagePath = readFilePathFromFile(BOOKING_FILE_PATH, ID);
-
-    // Set the icon for jLabel1
-    if (!imagePath.isEmpty()) {
-        try {
-            URL imageUrl = new File(imagePath).toURI().toURL();
-            ImageIcon icon = new ImageIcon(imageUrl);
-            Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
-            ImageIcon scaledIcon = new ImageIcon(image);
-            jLabel_icon.setIcon(scaledIcon);
-            System.out.println("Setting icon for jLabel1 with filepath: " + imagePath); // Debug statement
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    } else {
-        System.out.println("No icon set for jLabel1. Filepath is empty."); // Debug statement
-    }
-}
-
-    private String readFilePathFromFile(String BOOKING_FILE_PATH, String ID) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BOOKING_FILE_PATH))) {
-        String line;
-        while ((line = reader.readLine()) != null) {
-            // Check if the line starts with the expected field
-            if (line.startsWith("ID: " + ID)) {
-                // Extract filepath information
-                while ((line = reader.readLine()) != null) {
-                    if (line.startsWith("Filepath: ")) {
-                        String imagePath = line.substring("Filepath: ".length()).trim();
-                        System.out.println("Read filepath from file: " + imagePath); // Debug statement
-                        return imagePath;
-                    }
-                }
-            } else {
-                System.out.println("Unexpected line format. Line: " + line); // Debug statement
-            }
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-    System.out.println("No filepath found in the file."); // Debug statement
-    return "";
-}
+   
     private void jButton_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_changeActionPerformed
         JFileChooser fileChooser = new JFileChooser("src/furniture_sale_ordering_management_system/Images");
 
@@ -672,9 +670,6 @@ try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 
 
 
-    private void setInitialValues(String value, String value0, String value1, String value2, int parseAge, String value3, String value4, String value5) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
 
 

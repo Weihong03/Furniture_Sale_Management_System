@@ -230,46 +230,55 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-      private boolean modifySalesQuotation(String orderID, String Amount, String Product, String ItemID, String Price, String Customer, String Salesperson, Date date) {
-        try {
-            Path inputFile = Path.of("Data/Sales_Quotation.txt");
+private boolean modifySalesQuotation(String orderID, String Amount, String Product, String ItemID, String Price, String Customer, String Salesperson, Date date) {
+    try {
+        Path inputFile = Path.of("Data/Sales_Quotation.txt");
 
-            List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
+        List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
 
-            boolean found = false;
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
-            String formattedDate = dateFormat.format(date); // Format the date
+        boolean found = false;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+        String formattedDate = dateFormat.format(date); // Format the date
 
-            for (int i = 0; i < lines.size(); i++) {
-                String line = lines.get(i);
-                if (line.equals("ID: " + orderID)) {
-                    // Modify the existing booking
-                    lines.set(i, "ID: " + orderID);
-                    lines.set(i + 1, "Amount: " + Amount);
-                    lines.set(i + 2, "Date: " + formattedDate + ",");
-                    lines.set(i + 3, "Product: " + Product);
-                    lines.set(i + 4, "Item ID: " + ItemID);
-                    lines.set(i + 5, "Price: " + Price);
-                    lines.set(i + 6, "Customer: " + Customer);
-                    lines.set(i + 7, "Salesperson: " + Salesperson);
-                    found = true;
-                    break;
-                }
+        for (int i = 0; i < lines.size(); i++) {
+            String line = lines.get(i);
+
+            // Split the line by commas
+            String[] parts = line.split(", ");
+
+            // Check if the first part equals the orderID
+            if (parts.length > 0 && parts[0].equals("ID: " + orderID + ",")) {
+                // Modify the existing booking
+                lines.set(i, "ID: " + orderID + ",");
+                lines.set(i + 1, "Amount: " + Amount + ",");
+                lines.set(i + 2, "Date: " + formattedDate + ",");
+                lines.set(i + 3, "Product: " + Product + ",");
+                lines.set(i + 4, "Item ID: " + ItemID + ",");
+                lines.set(i + 5, "Price: " + Price + ",");
+                lines.set(i + 6, "Customer: " + Customer + ",");
+                lines.set(i + 7, "Salesperson: " + Salesperson + ",");
+                found = true;
+                break;
             }
+        }
 
-            if (!found) {
-                System.out.println("Profile not found.");
-                return false;
-            }
-
-            Files.write(inputFile, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
-
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!found) {
+            System.out.println("Profile not found for orderID: " + orderID);
             return false;
         }
+
+
+        Files.write(inputFile, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+
+        return true;
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false;
     }
+}
+
+
+
     private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
         String orderID = jTextField_id.getText();
         String Amount = jTextField_amount.getText();
