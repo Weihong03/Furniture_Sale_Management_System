@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import net.miginfocom.layout.ComponentWrapper;
 import net.miginfocom.layout.LayoutCallback;
 
@@ -613,6 +614,10 @@ public class Officer_Home extends javax.swing.JFrame {
         generate.displaySales();
     }//GEN-LAST:event_jPanel_generateReportMouseClicked
 
+    public JPanel getJPanel3() {
+        return jPanel3;
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -660,7 +665,7 @@ public class Officer_Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    public javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel_checkSaleStatus;
     private javax.swing.JPanel jPanel_dashboard;
     private javax.swing.JPanel jPanel_generateInvoice;
