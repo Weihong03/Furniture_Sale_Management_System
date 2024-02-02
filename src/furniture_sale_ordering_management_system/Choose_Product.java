@@ -108,6 +108,7 @@ public class Choose_Product extends javax.swing.JFrame {
         });
         jPanel1.add(jButton_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 161, -1, -1));
 
+        jTextArea_totalamount.setEditable(false);
         jTextArea_totalamount.setColumns(20);
         jTextArea_totalamount.setRows(5);
         jScrollPane2.setViewportView(jTextArea_totalamount);
@@ -129,7 +130,15 @@ public class Choose_Product extends javax.swing.JFrame {
             new String [] {
                 "Item ID", "Name", "Price", "Category", "Short Description", "Designer", "Height", "Width"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(jTable_product);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 255, -1, 275));

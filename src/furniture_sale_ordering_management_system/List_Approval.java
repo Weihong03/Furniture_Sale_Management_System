@@ -214,7 +214,15 @@ public class List_Approval extends javax.swing.JFrame {
             new String [] {
                 "Order ID", "Total Amount", "Date", "Product", "Item ID", "Price", "Confirmation"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable_listApproval);
         if (jTable_listApproval.getColumnModel().getColumnCount() > 0) {
             jTable_listApproval.getColumnModel().getColumn(0).setResizable(false);

@@ -113,6 +113,8 @@ public class Modify_Sales_Order_Quotation extends javax.swing.JFrame {
 
         jLabel5.setText("Sales Person :");
 
+        jTextField_id.setEditable(false);
+
         jButton_modify.setText("Modify");
         jButton_modify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

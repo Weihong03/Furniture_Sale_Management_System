@@ -197,6 +197,7 @@ public class Admin_Profile extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("ID :");
 
+        jTextField_ID.setEditable(false);
         jTextField_ID.setPreferredSize(new java.awt.Dimension(80, 25));
         jTextField_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,6 +251,7 @@ public class Admin_Profile extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setText("Phone Number :");
 
+        jTextField_role.setEditable(false);
         jTextField_role.setPreferredSize(new java.awt.Dimension(80, 25));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N

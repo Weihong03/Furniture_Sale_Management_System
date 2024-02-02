@@ -165,12 +165,14 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
 
         jLabel4.setText("Sales Person :");
 
+        jTextField_amount.setEditable(false);
         jTextField_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_amountActionPerformed(evt);
             }
         });
 
+        jTextField_salesPerson.setEditable(false);
         jTextField_salesPerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_salesPersonActionPerformed(evt);
@@ -201,16 +203,19 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
 
         jLabel9.setText("Item ID:");
 
+        jTextArea_itemid.setEditable(false);
         jTextArea_itemid.setColumns(20);
         jTextArea_itemid.setRows(5);
         jScrollPane2.setViewportView(jTextArea_itemid);
 
+        jTextArea_product.setEditable(false);
         jTextArea_product.setColumns(20);
         jTextArea_product.setRows(5);
         jScrollPane3.setViewportView(jTextArea_product);
 
         jLabel5.setText("Price :");
 
+        jTextArea_price.setEditable(false);
         jTextArea_price.setColumns(20);
         jTextArea_price.setRows(5);
         jScrollPane1.setViewportView(jTextArea_price);

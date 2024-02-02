@@ -51,7 +51,15 @@ public class ViewProduct extends javax.swing.JFrame {
             new String [] {
                 "Furniture_name", "Item_id", "Price", "Short Description", "Designer", "Height", "Width"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable_productListing);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 14, 983, 622));
