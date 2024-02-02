@@ -56,7 +56,6 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         jTable_manageQuotation = new javax.swing.JTable();
         jButton_modify = new javax.swing.JButton();
         jButton_delete = new javax.swing.JButton();
-        jButton_back = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -122,23 +121,11 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         });
         jPanel1.add(jButton_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 505, -1, -1));
 
-        jButton_back.setText("Back");
-        jButton_back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_backActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 544, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton_backActionPerformed
 
     private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
         String searchText = jTextField_search.getText();
@@ -319,7 +306,6 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton_back;
     private javax.swing.JButton jButton_delete;
     private javax.swing.JButton jButton_modify;
     private javax.swing.JLabel jLabel1;

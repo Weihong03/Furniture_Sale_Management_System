@@ -132,12 +132,10 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
             Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
             ImageIcon scaledIcon = new ImageIcon(image);
             jLabel_icon.setIcon(scaledIcon);
-            System.out.println("Setting icon for jLabel1 with filepath: " + imagePath); // Debug statement
+          
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-    } else {
-        System.out.println("No icon set for jLabel1. Filepath is empty."); // Debug statement
     }
 }
 
@@ -151,18 +149,14 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                 while ((line = reader.readLine()) != null) {
                     if (line.startsWith("Filepath: ")) {
                         String imagePath = line.substring("Filepath: ".length()).trim();
-                        System.out.println("Read filepath from file: " + imagePath); // Debug statement
                         return imagePath;
                     }
                 }
-            } else {
-                System.out.println("Unexpected line format. Line: " + line); // Debug statement
-            }
+            } 
         }
     } catch (IOException e) {
         e.printStackTrace();
     }
-    System.out.println("No filepath found in the file."); // Debug statement
     return "";
 }
 
