@@ -348,9 +348,7 @@ public class ModifySales extends javax.swing.JFrame {
         if (isModified) {
             JOptionPane.showMessageDialog(this, "Quotation modified successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             dispose();
-            Sale_Approval salesApproval = new Sale_Approval(userID);
-            salesApproval.setVisible(true);
-            salesApproval.displaySales();
+
         } else {
             JOptionPane.showMessageDialog(this, "Failed to modify the quotation. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         }

@@ -134,7 +134,7 @@ public class Sale_Approval extends javax.swing.JFrame {
         button_modify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/modify.png"))); // NOI18N
         button_modify.setText("Modify");
         button_modify.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        button_modify.setPreferredSize(new java.awt.Dimension(122, 42));
+        button_modify.setPreferredSize(new java.awt.Dimension(122, 49));
         button_modify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_modifyActionPerformed(evt);
@@ -253,11 +253,11 @@ public class Sale_Approval extends javax.swing.JFrame {
             // Create an instance of ModifyBooking and pass the selected data
             ModifySales modifySales = new ModifySales(ID, Amount, Date, Product, ItemID, Price, Customer, Salesperson, userID);
             modifySales.setVisible(true);
-            this.dispose();
         } else {
             // No row selected, display an error message or perform appropriate handling
             JOptionPane.showMessageDialog(this, "Please select a Sales to modify.");
         }
+        displaySales();
     }//GEN-LAST:event_button_modifyActionPerformed
 
     private void button_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_deleteActionPerformed
