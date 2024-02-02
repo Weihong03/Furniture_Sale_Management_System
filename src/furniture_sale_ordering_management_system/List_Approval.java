@@ -104,7 +104,7 @@ public class List_Approval extends javax.swing.JFrame {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             StringBuilder content = new StringBuilder();
             String line;
-            
+
             while ((line = reader.readLine()) != null) {
                 content.append(line).append("\n");
             }
