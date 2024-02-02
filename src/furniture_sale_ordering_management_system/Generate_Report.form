@@ -57,7 +57,7 @@
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jComboBox_ReportType" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="button_generate" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -75,13 +75,13 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="105" max="32767" attributes="0"/>
+                  <EmptySpace pref="103" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboBox_ReportType" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="button_generate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox_ReportType" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="350" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
               </Group>
@@ -198,7 +198,15 @@
             <Property name="text" type="java.lang.String" value="Report Type:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox_ReportType">
+        <Component class="furniture_sale_ordering_management_system.progressindicator.Button" name="button_generate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Generate"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_generateActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="furniture_sale_ordering_management_system.progressindicator.ComboBox" name="jComboBox_ReportType">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
@@ -208,17 +216,6 @@
               </StringArray>
             </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="furniture_sale_ordering_management_system.progressindicator.Button" name="button_generate">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Generate"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_generateActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
