@@ -829,3 +829,11 @@ User ID: A001;
 Timestamp: 2024-02-02 21:39:22;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-02-02 22:02:19;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-02 22:02:37;
+Event: Logout;
+

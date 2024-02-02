@@ -180,15 +180,15 @@ public class Sale_Approval extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(371, 371, 371)
+                        .addGap(314, 314, 314)
                         .addComponent(button_modify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addGap(65, 65, 65)
                         .addComponent(button_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
+                        .addGap(79, 79, 79)
                         .addComponent(button_approve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(button_reject, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(149, Short.MAX_VALUE))))
+                        .addContainerGap(204, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel2)
@@ -259,7 +259,6 @@ public class Sale_Approval extends javax.swing.JFrame {
             // No row selected, display an error message or perform appropriate handling
             JOptionPane.showMessageDialog(this, "Please select a Sales to modify.");
         }
-        
     }//GEN-LAST:event_button_modifyActionPerformed
 
     private void button_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_deleteActionPerformed
