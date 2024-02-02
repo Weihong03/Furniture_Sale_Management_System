@@ -56,12 +56,12 @@ public class Sale_Approval extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Salestable = new javax.swing.JTable();
-        jButton_modify = new javax.swing.JButton();
-        jButton_delete = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextField_search = new javax.swing.JTextField();
-        jButton_approve = new javax.swing.JButton();
-        jButton_reject = new javax.swing.JButton();
+        button_modify = new furniture_sale_ordering_management_system.progressindicator.Button();
+        button_delete = new furniture_sale_ordering_management_system.progressindicator.Button();
+        button_approve = new furniture_sale_ordering_management_system.progressindicator.Button();
+        button_reject = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1050, 680));
@@ -121,24 +121,6 @@ public class Sale_Approval extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable_Salestable);
 
-        jButton_modify.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton_modify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/modify.png"))); // NOI18N
-        jButton_modify.setText("Modify");
-        jButton_modify.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_modifyActionPerformed(evt);
-            }
-        });
-
-        jButton_delete.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/delete.png"))); // NOI18N
-        jButton_delete.setText("Delete");
-        jButton_delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_deleteActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Search :");
 
@@ -149,17 +131,40 @@ public class Sale_Approval extends javax.swing.JFrame {
             }
         });
 
-        jButton_approve.setText("Approve");
-        jButton_approve.addActionListener(new java.awt.event.ActionListener() {
+        button_modify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/modify.png"))); // NOI18N
+        button_modify.setText("Modify");
+        button_modify.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button_modify.setPreferredSize(new java.awt.Dimension(122, 42));
+        button_modify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_approveActionPerformed(evt);
+                button_modifyActionPerformed(evt);
             }
         });
 
-        jButton_reject.setText("Reject");
-        jButton_reject.addActionListener(new java.awt.event.ActionListener() {
+        button_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/delete.png"))); // NOI18N
+        button_delete.setText("Delete");
+        button_delete.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_rejectActionPerformed(evt);
+                button_deleteActionPerformed(evt);
+            }
+        });
+
+        button_approve.setText("Approve");
+        button_approve.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        button_approve.setPreferredSize(new java.awt.Dimension(70, 31));
+        button_approve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_approveActionPerformed(evt);
+            }
+        });
+
+        button_reject.setText("Reject");
+        button_reject.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        button_reject.setPreferredSize(new java.awt.Dimension(70, 31));
+        button_reject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_rejectActionPerformed(evt);
             }
         });
 
@@ -174,15 +179,15 @@ public class Sale_Approval extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(356, 356, 356)
-                        .addComponent(jButton_modify)
-                        .addGap(50, 50, 50)
-                        .addComponent(jButton_delete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
-                        .addComponent(jButton_approve)
+                        .addGap(371, 371, 371)
+                        .addComponent(button_modify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(button_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132)
+                        .addComponent(button_approve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton_reject, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))))
+                        .addComponent(button_reject, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(87, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel2)
@@ -199,14 +204,14 @@ public class Sale_Approval extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_delete)
-                    .addComponent(jButton_modify)
-                    .addComponent(jButton_approve, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_reject, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(button_modify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_approve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_reject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
 
@@ -225,7 +230,13 @@ public class Sale_Approval extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
+
+    private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
+        String searchText = jTextField_search.getText();
+        searchSales(searchText);
+    }//GEN-LAST:event_jTextField_searchActionPerformed
+
+    private void button_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_modifyActionPerformed
         int selectedRowIndex = jTable_Salestable.getSelectedRow();
         if (selectedRowIndex >= 0) {
             // Get the values from the selected row
@@ -247,10 +258,9 @@ public class Sale_Approval extends javax.swing.JFrame {
             // No row selected, display an error message or perform appropriate handling
             JOptionPane.showMessageDialog(this, "Please select a Sales to modify.");
         }
-    }//GEN-LAST:event_jButton_modifyActionPerformed
+    }//GEN-LAST:event_button_modifyActionPerformed
 
-
-    private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
+    private void button_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_deleteActionPerformed
         // Get the selected row from your table or list
         int selectedRow = jTable_Salestable.getSelectedRow();
 
@@ -293,14 +303,9 @@ public class Sale_Approval extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Selected row deleted successfully.");
         // Refresh the UI
         displaySales();
-    }//GEN-LAST:event_jButton_deleteActionPerformed
+    }//GEN-LAST:event_button_deleteActionPerformed
 
-    private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
-        String searchText = jTextField_search.getText();
-        searchSales(searchText);
-    }//GEN-LAST:event_jTextField_searchActionPerformed
-
-    private void jButton_approveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_approveActionPerformed
+    private void button_approveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_approveActionPerformed
         int selectedRow = jTable_Salestable.getSelectedRow();
 
         if (selectedRow != -1) {
@@ -310,10 +315,10 @@ public class Sale_Approval extends javax.swing.JFrame {
             // Refresh the UI
             displaySales();
         }
-    }//GEN-LAST:event_jButton_approveActionPerformed
+    }//GEN-LAST:event_button_approveActionPerformed
 
-    private void jButton_rejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_rejectActionPerformed
-        int selectedRow = jTable_Salestable.getSelectedRow();
+    private void button_rejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_rejectActionPerformed
+                int selectedRow = jTable_Salestable.getSelectedRow();
 
         if (selectedRow != -1) {
             String ID = jTable_Salestable.getValueAt(selectedRow, 0).toString();
@@ -322,7 +327,7 @@ public class Sale_Approval extends javax.swing.JFrame {
             // Refresh the UI
             displaySales();
         }
-    }//GEN-LAST:event_jButton_rejectActionPerformed
+    }//GEN-LAST:event_button_rejectActionPerformed
 
     private String getUsernameFromID(String userID) {
         try {
@@ -472,10 +477,10 @@ public class Sale_Approval extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_approve;
-    private javax.swing.JButton jButton_delete;
-    private javax.swing.JButton jButton_modify;
-    private javax.swing.JButton jButton_reject;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_approve;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_delete;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_modify;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_reject;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
