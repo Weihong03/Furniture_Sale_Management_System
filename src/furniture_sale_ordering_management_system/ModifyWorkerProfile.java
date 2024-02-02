@@ -530,7 +530,7 @@ private boolean modifyWorkerProfile(String ID, String Username, String Password,
         List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
 
         boolean found = false;
-        for (int i = 0; i < lines.size() - 10; i += 10) {
+        for (int i = 0; i < lines.size(); i += 10) {
             String line = lines.get(i);
             
             if (line.equals("ID: " + ID + ",")) {
