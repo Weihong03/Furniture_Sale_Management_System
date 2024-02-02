@@ -41,6 +41,7 @@ public class List_Approval extends javax.swing.JFrame {
     private void loadSalesPersonData() {
         salesPersonData = getUsername(userID);
         if (salesPersonData != null) {
+            salesPersonData = salesPersonData.replace(",", "");
             jTextField_salesperson.setText(salesPersonData);
 
         } else {
@@ -200,6 +201,7 @@ public class List_Approval extends javax.swing.JFrame {
         jLabel1.setText("User ID :");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 174, -1, -1));
 
+        jTextField_userid.setEditable(false);
         jTextField_userid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_useridActionPerformed(evt);
@@ -240,6 +242,8 @@ public class List_Approval extends javax.swing.JFrame {
 
         jLabel2.setText("Sales Person :");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 174, -1, -1));
+
+        jTextField_salesperson.setEditable(false);
         jPanel1.add(jTextField_salesperson, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 171, 120, -1));
 
         jLabel3.setText("Filter :");

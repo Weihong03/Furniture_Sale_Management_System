@@ -481,7 +481,7 @@ public class Sales_Home extends javax.swing.JFrame {
         // Add the new internalFrame to jPanel3
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
-        viewproduct.displaySales();
+        viewproduct.displayProduct();
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel_viewListApprovalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_viewListApprovalMouseClicked

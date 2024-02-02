@@ -21,7 +21,7 @@ public class ViewProduct extends javax.swing.JFrame {
     public ViewProduct(String userID) {
         this.userID = userID;
         initComponents();
-        displaySales();
+        displayProduct();
     }
 
     /**
@@ -69,7 +69,7 @@ public class ViewProduct extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-     public void displaySales() {
+     public void displayProduct() {
         DefaultTableModel model = (DefaultTableModel) jTable_productListing.getModel();
         model.setRowCount(0); // Clear existing data
 
@@ -122,7 +122,7 @@ public class ViewProduct extends javax.swing.JFrame {
             public void run() {
                 ViewProduct viewproduct = new ViewProduct(userID);
                 viewproduct.setVisible(true);
-                viewproduct.displaySales();
+                viewproduct.displayProduct();
             }
         });
     }
