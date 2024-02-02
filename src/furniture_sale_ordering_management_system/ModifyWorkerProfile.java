@@ -421,6 +421,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
 
     if (isModified) {
         JOptionPane.showMessageDialog(this, "Profile modified successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
     } else {
         JOptionPane.showMessageDialog(this, "Failed to modify the profile. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
     }

@@ -805,3 +805,23 @@ User ID: A001;
 Timestamp: 2024-02-02 20:44:00;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-02-02 21:35:20;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-02 21:35:30;
+Event: Update Profile, ID: from 'A001,' to 'A001', Update ID, Username: from 'Leeqiwen,' to 'Leeqiwen', Update Username, Password: from 'Qiwen123,' to 'Qiwen123', Update Password, Name: from 'Lee Qi Wen,' to 'Lee Qi Wen', Update Name, Age: from '22,' to '22', Update Age, Email: from 'TP065827@mail.apu.edu.my,' to 'TP065827@mail.apu.edu.my', Update Email, Phone Number: from '0128881234,' to '01288812344', Update Phone Number, Role: from 'Admin,' to 'Admin', Update Role;
+
+User ID: A001;
+Timestamp: 2024-02-02 21:35:34;
+Event: Update Profile, ID: from 'A001,' to 'A001', Update ID, Username: from 'Leeqiwen,' to 'Leeqiwen', Update Username, Password: from 'Qiwen123,' to 'Qiwen123', Update Password, Name: from 'Lee Qi Wen,' to 'Lee Qi Wen', Update Name, Age: from '22,' to '22', Update Age, Email: from 'TP065827@mail.apu.edu.my,' to 'TP065827@mail.apu.edu.my', Update Email, Phone Number: from '01288812344,' to '0128881234', Update Phone Number, Role: from 'Admin,' to 'Admin', Update Role;
+
+User ID: A001;
+Timestamp: 2024-02-02 21:37:29;
+Event: Update Profile,Changes made to profile with ID O005:Username: : Fengkanglim, -> : FengkanglimPassword: : Fengkang123, -> : Fengkang1234Name: : Lim Feng Kang, -> : Lim Feng KangAge: : 59, -> : 59Email: : fengkang123@gmail.com, -> : fengkang123@gmail.comPhone Number: : 0198754498, -> : 0198754498Role: : Officer, -> : Officer;
+
+User ID: A001;
+Timestamp: 2024-02-02 21:37:34;
+Event: Update Profile,Changes made to profile with ID O005:Username: : Fengkanglim, -> : FengkanglimPassword: : Fengkang1234, -> : Fengkang123Name: : Lim Feng Kang, -> : Lim Feng KangAge: : 59, -> : 59Email: : fengkang123@gmail.com, -> : fengkang123@gmail.comPhone Number: : 0198754498, -> : 0198754498Role: : Officer, -> : Officer;
+
