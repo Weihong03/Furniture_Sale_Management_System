@@ -51,7 +51,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_SalesProduct = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton_CheckStatus = new javax.swing.JButton();
+        button_checkstatus = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -83,10 +83,11 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Check Sales Product Status");
 
-        jButton_CheckStatus.setText("Check Status");
-        jButton_CheckStatus.addActionListener(new java.awt.event.ActionListener() {
+        button_checkstatus.setText("Check Status");
+        button_checkstatus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        button_checkstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_CheckStatusActionPerformed(evt);
+                button_checkstatusActionPerformed(evt);
             }
         });
 
@@ -100,20 +101,20 @@ public class Check_Sales_Status extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton_CheckStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(button_checkstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(jButton_CheckStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(button_checkstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
@@ -125,7 +126,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_CheckStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CheckStatusActionPerformed
+    private void button_checkstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_checkstatusActionPerformed
         // Get the selected row index
         int selectedRowIndex = jTable_SalesProduct.getSelectedRow();
         // Check if a row is selected
@@ -153,7 +154,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Please select a sale to check status.");
         }
-    }//GEN-LAST:event_jButton_CheckStatusActionPerformed
+    }//GEN-LAST:event_button_checkstatusActionPerformed
 
     public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_SalesProduct.getModel();
@@ -231,7 +232,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_CheckStatus;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_checkstatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
