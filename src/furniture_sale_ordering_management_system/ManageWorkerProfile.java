@@ -62,12 +62,14 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_profiletable = new javax.swing.JTable();
-        jButton_modify = new javax.swing.JButton();
-        jButton_delete = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextField_search = new javax.swing.JTextField();
+        button1 = new furniture_sale_ordering_management_system.progressindicator.Button();
+        button2 = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1050, 680));
+        setSize(new java.awt.Dimension(1050, 680));
 
         jPanel1.setBackground(new java.awt.Color(238, 240, 218));
         jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
@@ -124,24 +126,6 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         jTable_profiletable.setSelectionBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTable_profiletable);
 
-        jButton_modify.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton_modify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/modify.png"))); // NOI18N
-        jButton_modify.setText("Modify");
-        jButton_modify.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_modifyActionPerformed(evt);
-            }
-        });
-
-        jButton_delete.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/delete.png"))); // NOI18N
-        jButton_delete.setText("Delete");
-        jButton_delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_deleteActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Search :");
 
@@ -149,6 +133,25 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         jTextField_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_searchActionPerformed(evt);
+            }
+        });
+
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/modify.png"))); // NOI18N
+        button1.setText("Modify");
+        button1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button1.setPreferredSize(new java.awt.Dimension(122, 42));
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+
+        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/delete.png"))); // NOI18N
+        button2.setText("Delete");
+        button2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button2ActionPerformed(evt);
             }
         });
 
@@ -162,18 +165,17 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
                 .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(345, 345, 345)
-                        .addComponent(jButton_modify)
-                        .addGap(136, 136, 136)
-                        .addComponent(jButton_delete))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 324, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 788, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(350, 350, 350)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,11 +187,11 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
                     .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_delete)
-                    .addComponent(jButton_modify))
-                .addGap(66, 66, 66))
+                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,15 +202,20 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
 
+    private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
+        String searchText = jTextField_search.getText();
+        searchBookings(searchText);
+    }//GEN-LAST:event_jTextField_searchActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         int selectedRowIndex = jTable_profiletable.getSelectedRow();
         if (selectedRowIndex >= 0) {
             // Get the values from the selected row
@@ -237,11 +244,9 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         }
 
         dispose();
-    }//GEN-LAST:event_jButton_modifyActionPerformed
+    }//GEN-LAST:event_button1ActionPerformed
 
-
-    private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
-
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         int selectedRow = jTable_profiletable.getSelectedRow();
 
         if (selectedRow == -1) {
@@ -300,12 +305,7 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
             // Refresh the UI
             displayProfile();
         }
-    }//GEN-LAST:event_jButton_deleteActionPerformed
-
-    private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
-        String searchText = jTextField_search.getText();
-        searchBookings(searchText);
-    }//GEN-LAST:event_jTextField_searchActionPerformed
+    }//GEN-LAST:event_button2ActionPerformed
 
     public void displayProfile() {
         DefaultTableModel model = (DefaultTableModel) jTable_profiletable.getModel();
@@ -399,8 +399,8 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_delete;
-    private javax.swing.JButton jButton_modify;
+    private furniture_sale_ordering_management_system.progressindicator.Button button1;
+    private furniture_sale_ordering_management_system.progressindicator.Button button2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

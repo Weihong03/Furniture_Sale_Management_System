@@ -83,7 +83,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
         jTable_Salestable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jTextField_search = new javax.swing.JTextField();
-        jButton_generate = new javax.swing.JButton();
+        button1 = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -154,11 +154,12 @@ public class Generate_Invoice extends javax.swing.JFrame {
             }
         });
 
-        jButton_generate.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton_generate.setText("Generate");
-        jButton_generate.addActionListener(new java.awt.event.ActionListener() {
+        button1.setText("Generate");
+        button1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button1.setPreferredSize(new java.awt.Dimension(105, 36));
+        button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_generateActionPerformed(evt);
+                button1ActionPerformed(evt);
             }
         });
 
@@ -178,8 +179,8 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 .addComponent(jTextField_search, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(338, 338, 338)
-                .addComponent(jButton_generate)
+                .addGap(463, 463, 463)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -193,8 +194,8 @@ public class Generate_Invoice extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton_generate)
-                .addGap(240, 240, 240))
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(239, 239, 239))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -219,7 +220,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
         searchSales(searchText);
     }//GEN-LAST:event_jTextField_searchActionPerformed
 
-    private void jButton_generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_generateActionPerformed
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         int selectedRowIndex = jTable_Salestable.getSelectedRow();
         if (selectedRowIndex >= 0) {
             // Get the values from the selected row
@@ -239,7 +240,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
             // No row selected, display an error message or perform appropriate handling
             JOptionPane.showMessageDialog(this, "Please select a Sales to modify.");
         }
-    }//GEN-LAST:event_jButton_generateActionPerformed
+    }//GEN-LAST:event_button1ActionPerformed
 
     private void generatePDFInvoice(String ID, String Amount, String Date, String Product,
             String ItemID, String Price, String Customer, String Salesperson, String Officer) {
@@ -671,7 +672,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_generate;
+    private furniture_sale_ordering_management_system.progressindicator.Button button1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

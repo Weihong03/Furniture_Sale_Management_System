@@ -825,3 +825,7 @@ User ID: A001;
 Timestamp: 2024-02-02 21:37:34;
 Event: Update Profile,Changes made to profile with ID O005:Username: : Fengkanglim, -> : FengkanglimPassword: : Fengkang1234, -> : Fengkang123Name: : Lim Feng Kang, -> : Lim Feng KangAge: : 59, -> : 59Email: : fengkang123@gmail.com, -> : fengkang123@gmail.comPhone Number: : 0198754498, -> : 0198754498Role: : Officer, -> : Officer;
 
+User ID: A001;
+Timestamp: 2024-02-02 21:39:22;
+Event: Logout;
+

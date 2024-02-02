@@ -1,7 +1,5 @@
 package furniture_sale_ordering_management_system;
 
-
-
 import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,166 +20,160 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Acer
  */
 public class Sales_Officer_Profile extends javax.swing.JFrame {
-    
+
     public static String userID;
     public static String userData;
-    private String selectedFilePath;    
-    
+    private String selectedFilePath;
+
     private static final String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
-  
+
     public void setInitialValues(String userID) {
-    jTextField_ID.setText(userID);
+        jTextField_ID.setText(userID);
     }
-    
+
     public void setInitialValuesFromUserID(String userID) {
-    // Read the existing content from the text file
-    String filePath = "Data/Officer_Salesperson.txt";
-    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-        StringBuilder content = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            content.append(line).append("\n");
-        }
-
-        // Find the starting index of the user's information
-        int startIndex = content.indexOf("ID: " + userID);
-
-        // If the user with the specified ID is found
-        if (startIndex != -1) {
-            // Find the ending index of the user's information
-            int endIndex = content.indexOf("ID:", startIndex + 1);
-            if (endIndex == -1) {
-                endIndex = content.length();
+        // Read the existing content from the text file
+        String filePath = "Data/Officer_Salesperson.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
             }
 
-            // Extract the user's information
-           userData = content.substring(startIndex, endIndex);
+            // Find the starting index of the user's information
+            int startIndex = content.indexOf("ID: " + userID);
 
-            // Split the user's information into lines
-            String[] lines = userData.split("\n");
+            // If the user with the specified ID is found
+            if (startIndex != -1) {
+                // Find the ending index of the user's information
+                int endIndex = content.indexOf("ID:", startIndex + 1);
+                if (endIndex == -1) {
+                    endIndex = content.length();
+                }
 
-            // Extract and set the values
-            for (String lineData : lines) {
-                String[] parts = lineData.split(": ");
-                if (parts.length == 2) {
-                    String key = parts[0].trim();
-                    String value = parts[1].trim();
+                // Extract the user's information
+                userData = content.substring(startIndex, endIndex);
 
-                    switch (key) {
-                        case "Username":
-                            value = value.replaceAll(",", "");
-                            jTextField_Username.setText(value);
-                            break;
-                        case "Password":
-                            value = value.replaceAll(",", "");
-                            jTextField_Password.setText(value);
-                            break;
-                        case "Name":
-                            value = value.replaceAll(",", "");
-                            jTextField_FullName.setText(value);
-                            break;
-                        case "Age":                         
-                             // Check and clean up the age value
-                            value = value.replaceAll(",", "");
-                            try {
-                                int age = Integer.parseInt(value);
-                                jComboBox_Age.setSelectedItem(String.valueOf(age));
-                            } catch (NumberFormatException e) {
-                                // Handle the exception or log an error message
-                                e.printStackTrace();
-                            }
-                            break;
-                        case "Email":
-                            value = value.replaceAll(",", "");
-                            jTextField_Email.setText(value);
-                            break;
-                        case "Phone Number":
-                            value = value.replaceAll(",", "");
-                            jTextField_PhoneNumber.setText(value);
-                            break;
-                        case "Role":
-                            value = value.replaceAll(",", "");
-                            jTextField_Role.setText(value);
-                            break;
+                // Split the user's information into lines
+                String[] lines = userData.split("\n");
+
+                // Extract and set the values
+                for (String lineData : lines) {
+                    String[] parts = lineData.split(": ");
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim();
+
+                        switch (key) {
+                            case "Username":
+                                value = value.replaceAll(",", "");
+                                jTextField_Username.setText(value);
+                                break;
+                            case "Password":
+                                value = value.replaceAll(",", "");
+                                jTextField_Password.setText(value);
+                                break;
+                            case "Name":
+                                value = value.replaceAll(",", "");
+                                jTextField_FullName.setText(value);
+                                break;
+                            case "Age":
+                                // Check and clean up the age value
+                                value = value.replaceAll(",", "");
+                                try {
+                                    int age = Integer.parseInt(value);
+                                    jComboBox_Age.setSelectedItem(String.valueOf(age));
+                                } catch (NumberFormatException e) {
+                                    // Handle the exception or log an error message
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case "Email":
+                                value = value.replaceAll(",", "");
+                                jTextField_Email.setText(value);
+                                break;
+                            case "Phone Number":
+                                value = value.replaceAll(",", "");
+                                jTextField_PhoneNumber.setText(value);
+                                break;
+                            case "Role":
+                                value = value.replaceAll(",", "");
+                                jTextField_Role.setText(value);
+                                break;
+                        }
                     }
                 }
+            } else {
+                // User not found
+                JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
             }
-        } else {
-            // User not found
-            JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception according to your application's requirements
         }
-    } catch (IOException e) {
-        e.printStackTrace(); // Handle the exception according to your application's requirements
     }
-}
-    
-  public void setIconFromFile(String BOOKING_FILE_PATH) {
-    String imagePath = readFilePathFromFile(BOOKING_FILE_PATH, userID);
 
-    // Set the icon for jLabel1
-    if (!imagePath.isEmpty()) {
-        try {
-            URL imageUrl = new File(imagePath).toURI().toURL();
-            ImageIcon icon = new ImageIcon(imageUrl);
-            Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
-            ImageIcon scaledIcon = new ImageIcon(image);
-            jLabel_icon.setIcon(scaledIcon);
-          
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+    public void setIconFromFile(String BOOKING_FILE_PATH) {
+        String imagePath = readFilePathFromFile(BOOKING_FILE_PATH, userID);
+
+        // Set the icon for jLabel1
+        if (!imagePath.isEmpty()) {
+            try {
+                URL imageUrl = new File(imagePath).toURI().toURL();
+                ImageIcon icon = new ImageIcon(imageUrl);
+                Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
+                ImageIcon scaledIcon = new ImageIcon(image);
+                jLabel_icon.setIcon(scaledIcon);
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
     }
-}
 
     private String readFilePathFromFile(String BOOKING_FILE_PATH, String userID) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BOOKING_FILE_PATH))) {
-        String line;
-        while ((line = reader.readLine()) != null) {
-            // Check if the line starts with the expected field
-            if (line.startsWith("ID: " + userID)) {
-                // Extract filepath information
-                while ((line = reader.readLine()) != null) {
-                    if (line.startsWith("Filepath: ")) {
-                        String imagePath = line.substring("Filepath: ".length()).trim();
-                        return imagePath;
+        try (BufferedReader reader = new BufferedReader(new FileReader(BOOKING_FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Check if the line starts with the expected field
+                if (line.startsWith("ID: " + userID)) {
+                    // Extract filepath information
+                    while ((line = reader.readLine()) != null) {
+                        if (line.startsWith("Filepath: ")) {
+                            String imagePath = line.substring("Filepath: ".length()).trim();
+                            return imagePath;
+                        }
                     }
                 }
-            } 
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
+        return "";
     }
-    return "";
-}
 
-
-
-
-    
-    
     public Sales_Officer_Profile(String userID) {
         this.userID = userID;
         initComponents();
-        
+
         jComboBox_Age.setModel(new DefaultComboBoxModel<>(generateAgeOptions()));
         // For Role JComboBox
-        
+
         // Set the title of the window
         setTitle("Sales_Officer_Profile");
-        
+
         jTextField_ID.setEditable(false);
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
     }
-    
+
     private String[] generateAgeOptions() {
         int startAge = 18;
         int endAge = 60;
@@ -205,7 +197,6 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton_Update = new javax.swing.JButton();
         jTextField_ID = new javax.swing.JTextField();
         jTextField_Username = new javax.swing.JTextField();
         jTextField_Password = new javax.swing.JTextField();
@@ -227,6 +218,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         jLabel_icon = new javax.swing.JLabel();
         jButton_change = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        button1 = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1050, 680));
@@ -234,13 +226,6 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(238, 240, 218));
         jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
-
-        jButton_Update.setText("Update");
-        jButton_Update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_UpdateActionPerformed(evt);
-            }
-        });
 
         jTextField_ID.setEditable(false);
 
@@ -313,15 +298,20 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel11.setText("Profile Picture");
 
+        button1.setText("Update");
+        button1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(322, 322, 322)
-                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(404, 404, 404)
                         .addComponent(jLabel6)
@@ -358,12 +348,17 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(322, 322, 322)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(388, 388, 388)
                         .addComponent(jLabel9)
                         .addGap(80, 80, 80)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_Update)
-                            .addComponent(jTextField_Role))))
+                            .addComponent(jTextField_Role)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel_icon)
@@ -434,8 +429,9 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addComponent(jButton_Update))
+                .addGap(26, 26, 26)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jComboBox_Age.getAccessibleContext().setAccessibleDescription("");
@@ -449,91 +445,6 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
     private void jTextField_FullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_FullNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_FullNameActionPerformed
-   
-    private void jButton_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UpdateActionPerformed
-      if (userData == null) {
-        JOptionPane.showMessageDialog(null, "User data not loaded. Call setInitialValuesFromUserID first.");
-        return;
-    }
-
-    String filePath = "Data/Officer_Salesperson.txt";
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-        StringBuilder content = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            content.append(line).append("\n");
-        }
-
-        int startIndex = content.indexOf("ID: " + userID);
-
-        if (startIndex != -1) {
-            int endIndex = content.indexOf("ID:", startIndex + 1);
-            if (endIndex == -1) {
-                endIndex = content.length();
-            }
-
-            String[] lines = userData.split("\n");
-
-            for (String lineData : lines) {
-                String[] parts = lineData.split(": ");
-                if (parts.length == 2) {
-                    String key = parts[0].trim();
-                    String value = parts[1].trim();
-                    switch (key) {
-                        case "Username":
-                        lines[1] = "Username: " + jTextField_Username.getText().trim()+ ",";
-                        break;
-                    case "Password":
-                        lines[2] = "Password: " + jTextField_Password.getText().trim()+ ",";
-                        break;
-                    case "Name":
-                        lines[3] = "Name: " + jTextField_FullName.getText().trim()+ ",";
-                        break;
-                    case "Age":
-                        lines[4] = "Age: " + jComboBox_Age.getSelectedItem().toString().trim()+ ",";
-                        break;
-                    case "Email":
-                        lines[5] = "Email: " + jTextField_Email.getText().trim()+ ",";
-                        break;
-                    case "Phone Number":
-                        lines[6] = "Phone Number: " + jTextField_PhoneNumber.getText().trim()+ ",";
-                        break;
-                    case "Role":
-                        lines[7] = "Role: " + jTextField_Role.getText().trim()+ ",";
-                        break;
-                    case "Filepath":
-                        if (selectedFilePath != null) {
-                        String relativePath = selectedFilePath.replaceFirst(".*?src", "src").replace("\\", "/");
-                        lines[8] = "Filepath: " + relativePath.trim();
-                    } else {
-                        // Handle the case where selectedFilePath is null
-                        lines[8] = "Filepath: "  + value; // or provide a default value
-                    }
-                    break;
-                    }
-                }
-            }
-
-            // Update the content with modified user data
-            content.insert(startIndex, "\n");
-            content.insert(endIndex, "\n");
-            content.replace(startIndex, endIndex, String.join("\n", lines));
-
-            // Save the updated content to the file
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-                writer.write(content.toString());
-                JOptionPane.showMessageDialog(null, "Content successfully updated!");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-    }//GEN-LAST:event_jButton_UpdateActionPerformed
 
     private void jComboBox_AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_AgeActionPerformed
         // TODO add your handling code here:
@@ -542,7 +453,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
     private void jLabel_iconAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel_iconAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel_iconAncestorAdded
-   
+
     private void jButton_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_changeActionPerformed
         JFileChooser fileChooser = new JFileChooser("src/furniture_sale_ordering_management_system/Images");
 
@@ -584,6 +495,91 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton_changeActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        if (userData == null) {
+            JOptionPane.showMessageDialog(null, "User data not loaded. Call setInitialValuesFromUserID first.");
+            return;
+        }
+
+        String filePath = "Data/Officer_Salesperson.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
+            }
+
+            int startIndex = content.indexOf("ID: " + userID);
+
+            if (startIndex != -1) {
+                int endIndex = content.indexOf("ID:", startIndex + 1);
+                if (endIndex == -1) {
+                    endIndex = content.length();
+                }
+
+                String[] lines = userData.split("\n");
+
+                for (String lineData : lines) {
+                    String[] parts = lineData.split(": ");
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim();
+                        switch (key) {
+                            case "Username":
+                                lines[1] = "Username: " + jTextField_Username.getText().trim() + ",";
+                                break;
+                            case "Password":
+                                lines[2] = "Password: " + jTextField_Password.getText().trim() + ",";
+                                break;
+                            case "Name":
+                                lines[3] = "Name: " + jTextField_FullName.getText().trim() + ",";
+                                break;
+                            case "Age":
+                                lines[4] = "Age: " + jComboBox_Age.getSelectedItem().toString().trim() + ",";
+                                break;
+                            case "Email":
+                                lines[5] = "Email: " + jTextField_Email.getText().trim() + ",";
+                                break;
+                            case "Phone Number":
+                                lines[6] = "Phone Number: " + jTextField_PhoneNumber.getText().trim() + ",";
+                                break;
+                            case "Role":
+                                lines[7] = "Role: " + jTextField_Role.getText().trim() + ",";
+                                break;
+                            case "Filepath":
+                                if (selectedFilePath != null) {
+                                    String relativePath = selectedFilePath.replaceFirst(".*?src", "src").replace("\\", "/");
+                                    lines[8] = "Filepath: " + relativePath.trim();
+                                } else {
+                                    // Handle the case where selectedFilePath is null
+                                    lines[8] = "Filepath: " + value; // or provide a default value
+                                }
+                                break;
+                        }
+                    }
+                }
+
+                // Update the content with modified user data
+                content.insert(startIndex, "\n");
+                content.insert(endIndex, "\n");
+                content.replace(startIndex, endIndex, String.join("\n", lines));
+
+                // Save the updated content to the file
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+                    writer.write(content.toString());
+                    JOptionPane.showMessageDialog(null, "Content successfully updated!");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_button1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -639,7 +635,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_Update;
+    private furniture_sale_ordering_management_system.progressindicator.Button button1;
     private javax.swing.JButton jButton_change;
     private javax.swing.JComboBox<String> jComboBox_Age;
     private javax.swing.JLabel jLabel1;
@@ -663,10 +659,5 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_Role;
     private javax.swing.JTextField jTextField_Username;
     // End of variables declaration//GEN-END:variables
-
-
-
-
-
 
 }

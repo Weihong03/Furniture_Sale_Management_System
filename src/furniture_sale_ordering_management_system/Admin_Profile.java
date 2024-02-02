@@ -180,7 +180,7 @@ public class Admin_Profile extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextField_role = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton_update = new javax.swing.JButton();
+        button1 = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         jLabel4.setText("jLabel4");
 
@@ -257,11 +257,11 @@ public class Admin_Profile extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setText("Role :");
 
-        jButton_update.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton_update.setText("Update");
-        jButton_update.addActionListener(new java.awt.event.ActionListener() {
+        button1.setText("Update");
+        button1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_updateActionPerformed(evt);
+                button1ActionPerformed(evt);
             }
         });
 
@@ -270,7 +270,7 @@ public class Admin_Profile extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 316, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -298,9 +298,12 @@ public class Admin_Profile extends javax.swing.JFrame {
                                 .addComponent(jComboBox_Age, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField_role, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton_update))
+                                .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(360, 360, 360))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(472, 472, 472))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,9 +345,9 @@ public class Admin_Profile extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField_role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(39, 39, 39)
-                .addComponent(jButton_update)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -364,8 +367,24 @@ public class Admin_Profile extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_updateActionPerformed
-        String id = jTextField_ID.getText();
+    private void jComboBox_AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_AgeActionPerformed
+
+    }//GEN-LAST:event_jComboBox_AgeActionPerformed
+
+    private void jComboBox_AgeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_AgeItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_AgeItemStateChanged
+
+    private void jTextField_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_IDActionPerformed
+
+    private void jTextField_UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_UsernameActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+         String id = jTextField_ID.getText();
         String username = jTextField_Username.getText();
         String password = jTextField_Password.getText();
         String fullName = jTextField_FullName.getText();
@@ -441,23 +460,7 @@ public class Admin_Profile extends javax.swing.JFrame {
             System.out.println("Label not found: " + label);
         }
         return false; // Return false if the label was not found or value unchanged
-    }//GEN-LAST:event_jButton_updateActionPerformed
-
-    private void jComboBox_AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_AgeActionPerformed
-
-    }//GEN-LAST:event_jComboBox_AgeActionPerformed
-
-    private void jComboBox_AgeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_AgeItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox_AgeItemStateChanged
-
-    private void jTextField_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_IDActionPerformed
-
-    private void jTextField_UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_UsernameActionPerformed
+    }//GEN-LAST:event_button1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -502,7 +505,7 @@ public class Admin_Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_update;
+    private furniture_sale_ordering_management_system.progressindicator.Button button1;
     private javax.swing.JComboBox<String> jComboBox_Age;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
