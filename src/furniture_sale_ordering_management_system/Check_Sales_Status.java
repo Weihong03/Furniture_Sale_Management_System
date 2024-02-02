@@ -11,8 +11,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -188,6 +190,15 @@ public class Check_Sales_Status extends javax.swing.JFrame {
                     model.addRow(rowData);
                 }
             }
+            // Set cell alignment to center
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+            for (int i = 0; i < jTable_SalesProduct.getColumnCount(); i++) {
+                jTable_SalesProduct.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
+            // Set header alignment to center
+            ((DefaultTableCellRenderer) jTable_SalesProduct.getTableHeader().getDefaultRenderer())
+                    .setHorizontalAlignment(JLabel.CENTER);
         } catch (IOException e) {
             e.printStackTrace(); // Print the stack trace to identify the issue
             JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
