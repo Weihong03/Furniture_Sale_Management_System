@@ -37,17 +37,17 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         JTableHeader tableHeader = jTable_profiletable.getTableHeader();
         tableHeader.setBackground(Color.GRAY);
         tableHeader.setForeground(Color.BLUE);
-           
+
         // Create a table model
         jTable_profiletable.setBackground(Color.red);
         jTable_profiletable.setGridColor(Color.red);
 
- 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -218,7 +218,7 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
             String PhoneNumber = jTable_profiletable.getValueAt(selectedRowIndex, 6).toString();
             String Role = jTable_profiletable.getValueAt(selectedRowIndex, 7).toString();
             String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
-            
+
             // Create an instance of ModifyWorkerProfile and pass the selected data
             ModifyWorkerProfile modifyProfile = new ModifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, userID);
             modifyProfile.setInitialValues(ID, Username, Password, Name, Age, Email, PhoneNumber, Role);
@@ -242,7 +242,7 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
             return;
         }
 
-// Read the contents of the file into memory
+        // Read the contents of the file into memory
         List<String> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("Data/Officer_Salesperson.txt"))) {
             String line;
@@ -254,65 +254,53 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
             return; // Exit the method if an error occurs while reading the file
         }
 
-// Calculate the line indices of the selected row's data
+        // Calculate the line indices of the selected row's data
         int startIndex = selectedRow * 10; // Each row has 9 lines of data
         int endIndex = Math.min(startIndex + 9, lines.size() - 1);
 
-// Check if the calculated indices are within the bounds of the list
+        // Check if the calculated indices are within the bounds of the list
         if (startIndex >= 0 && endIndex < lines.size()) {
             // Identify the user associated with the deleted row
-        String secondLine = lines.get(startIndex + 1);
-        String[] parts = secondLine.split(": ");
-        if (parts.length == 2) {
-            String deletedUserID = parts[1].trim();
+            String secondLine = lines.get(startIndex + 1);
+            String[] parts = secondLine.split(": ");
+            if (parts.length == 2) {
+                String deletedUserID = parts[1].trim();
 
-            // Log the deletion event
-            String event = "Delete Profile, Deleted row for UserID: " + deletedUserID;
-            Admin_Logbook adminLogbook = new Admin_Logbook(userID);
-            adminLogbook.addLogEntry(userID, event);
+                // Log the deletion event
+                String event = "Delete Profile, Deleted row for UserID: " + deletedUserID;
+                Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+                adminLogbook.addLogEntry(userID, event);
 
-            // Remove the selected row's data from the in-memory list
-            lines.subList(startIndex, endIndex + 1).clear();
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid row to delete.");
-            return;
-        }
-
-// Write the updated data back to the file
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/Officer_Salesperson.txt"))) {
-            for (String line : lines) {
-                writer.write(line);
-                writer.newLine();
+                // Remove the selected row's data from the in-memory list
+                lines.subList(startIndex, endIndex + 1).clear();
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select a valid row to delete.");
+                return;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return; // Exit the method if an error occurs while writing to the file
-        }
 
-        JOptionPane.showMessageDialog(this, "Selected row deleted successfully.");
-// Refresh the UI
-        refreshTable();
+            // Write the updated data back to the file
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/Officer_Salesperson.txt"))) {
+                for (String line : lines) {
+                    writer.write(line);
+                    writer.newLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return; // Exit the method if an error occurs while writing to the file
+            }
+
+            JOptionPane.showMessageDialog(this, "Selected row deleted successfully.");
+            // Refresh the UI
+            displayProfile();
         }
     }//GEN-LAST:event_jButton_deleteActionPerformed
-
-    private void refreshTable() {
-        // Clear the existing data from the table
-        DefaultTableModel model = (DefaultTableModel) jTable_profiletable.getModel();
-        model.setRowCount(0);
-
-        displayBookings(); // Call the method to display the bookings
-
-        jTable_profiletable.revalidate();
-        jTable_profiletable.repaint();
-    }
-
 
     private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
         String searchText = jTextField_search.getText();
         searchBookings(searchText);
     }//GEN-LAST:event_jTextField_searchActionPerformed
 
-    public void displayBookings() {
+    public void displayProfile() {
         DefaultTableModel model = (DefaultTableModel) jTable_profiletable.getModel();
         model.setRowCount(0); // Clear existing data
 
@@ -399,7 +387,7 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
             public void run() {
                 ManageWorkerProfile manageProfile = new ManageWorkerProfile(userID);
                 manageProfile.setVisible(true);
-                manageProfile.displayBookings(); // Call the method to display the bookings on startup
+                manageProfile.displayProfile(); // Call the method to display the bookings on startup
             }
         });
     }

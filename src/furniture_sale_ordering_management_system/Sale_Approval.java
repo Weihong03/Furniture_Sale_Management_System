@@ -19,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -293,7 +292,7 @@ public class Sale_Approval extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Selected row deleted successfully.");
         // Refresh the UI
-        refreshTable();
+        displaySales();
     }//GEN-LAST:event_jButton_deleteActionPerformed
 
     private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
@@ -309,7 +308,7 @@ public class Sale_Approval extends javax.swing.JFrame {
             modifyConfirmation(ID, "Approved");
             JOptionPane.showMessageDialog(this, "Confirmation Status updated successfully.");
             // Refresh the UI
-            refreshTable();
+            displaySales();
         }
     }//GEN-LAST:event_jButton_approveActionPerformed
 
@@ -321,7 +320,7 @@ public class Sale_Approval extends javax.swing.JFrame {
             modifyConfirmation(ID, "Rejected");
             JOptionPane.showMessageDialog(this, "Confirmation Status updated successfully.");
             // Refresh the UI
-            refreshTable();
+            displaySales();
         }
     }//GEN-LAST:event_jButton_rejectActionPerformed
 
@@ -370,20 +369,6 @@ public class Sale_Approval extends javax.swing.JFrame {
         }
 
         return false;
-    }
-
-    private void refreshTable() {
-        // Clear the existing data from the table
-        DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
-        model.setRowCount(0);
-
-        dispose();
-        Sale_Approval saleApproval = new Sale_Approval(userID);
-        saleApproval.setVisible(true);
-        saleApproval.displaySales(); // Call the method to display the Sales
-
-        jTable_Salestable.revalidate();
-        jTable_Salestable.repaint();
     }
 
     public void displaySales() {

@@ -25,9 +25,12 @@ import javax.swing.table.TableRowSorter;
  * @author yuw18
  */
 public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
+
     public static String userID;
+
     /**
      * Creates new form Manage_Sales_Order_Quotation
+     *
      * @param userID
      */
     public Manage_Sales_Order_Quotation(String userID) {
@@ -138,60 +141,60 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_backActionPerformed
 
     private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
-       String searchText = jTextField_search.getText();
-       searchSales(searchText);
+        String searchText = jTextField_search.getText();
+        searchSales(searchText);
     }//GEN-LAST:event_jTextField_searchActionPerformed
 
     private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
-    int selectedRowIndex = jTable_manageQuotation.getSelectedRow();
-    if (selectedRowIndex >= 0) {
-    // Get the values from the selected row
-    String orderID = jTable_manageQuotation.getValueAt(selectedRowIndex, 0).toString();
-    String Amount = jTable_manageQuotation.getValueAt(selectedRowIndex, 1).toString();
+        int selectedRowIndex = jTable_manageQuotation.getSelectedRow();
+        if (selectedRowIndex >= 0) {
+            // Get the values from the selected row
+            String orderID = jTable_manageQuotation.getValueAt(selectedRowIndex, 0).toString();
+            String Amount = jTable_manageQuotation.getValueAt(selectedRowIndex, 1).toString();
 
-   String dateAsString = jTable_manageQuotation.getValueAt(selectedRowIndex, 2).toString();
+            String dateAsString = jTable_manageQuotation.getValueAt(selectedRowIndex, 2).toString();
 
 // Parse the date with the correct format
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
-        dateAsString = dateAsString.replace(",", ""); // Remove the comma
-        Date date = null;  // Initialize the date to null
-        try {
-            date = dateFormat.parse(dateAsString);
-        } catch (ParseException e) {
-            e.printStackTrace(); // Handle the exception as needed
-        }
-        
-    String Product = jTable_manageQuotation.getValueAt(selectedRowIndex, 3).toString();
-    String ItemID = jTable_manageQuotation.getValueAt(selectedRowIndex, 4).toString();
-    String Price = jTable_manageQuotation.getValueAt(selectedRowIndex, 5).toString();
-    String Customer = jTable_manageQuotation.getValueAt(selectedRowIndex, 6).toString();
-    String Salesperson = jTable_manageQuotation.getValueAt(selectedRowIndex, 7).toString();
-    String Confirmation = jTable_manageQuotation.getValueAt(selectedRowIndex, 8).toString();
-    String Officer = jTable_manageQuotation.getValueAt(selectedRowIndex, 9).toString();
-    String Invoice = jTable_manageQuotation.getValueAt(selectedRowIndex, 10).toString();
-    String Status = jTable_manageQuotation.getValueAt(selectedRowIndex, 11).toString();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+            dateAsString = dateAsString.replace(",", ""); // Remove the comma
+            Date date = null;  // Initialize the date to null
+            try {
+                date = dateFormat.parse(dateAsString);
+            } catch (ParseException e) {
+                e.printStackTrace(); // Handle the exception as needed
+            }
 
-    // Create an instance of ModifyWorkerProfile and pass the selected data
-     Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(userID, orderID, Product,Amount,ItemID, Price, Customer,Salesperson, date);
-     modifySalesOrderQuotation.setInitialValues(orderID, Amount,Product,ItemID, Price,Customer,Salesperson, date);
-     modifySalesOrderQuotation.setVisible(true);
-     dispose();
- } else {
-     // No row selected, display an error message or perform appropriate handling
-     JOptionPane.showMessageDialog(this, "Please select a row to modify.");
- }
- dispose();
+            String Product = jTable_manageQuotation.getValueAt(selectedRowIndex, 3).toString();
+            String ItemID = jTable_manageQuotation.getValueAt(selectedRowIndex, 4).toString();
+            String Price = jTable_manageQuotation.getValueAt(selectedRowIndex, 5).toString();
+            String Customer = jTable_manageQuotation.getValueAt(selectedRowIndex, 6).toString();
+            String Salesperson = jTable_manageQuotation.getValueAt(selectedRowIndex, 7).toString();
+            String Confirmation = jTable_manageQuotation.getValueAt(selectedRowIndex, 8).toString();
+            String Officer = jTable_manageQuotation.getValueAt(selectedRowIndex, 9).toString();
+            String Invoice = jTable_manageQuotation.getValueAt(selectedRowIndex, 10).toString();
+            String Status = jTable_manageQuotation.getValueAt(selectedRowIndex, 11).toString();
+
+            // Create an instance of ModifyWorkerProfile and pass the selected data
+            Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(userID, orderID, Product, Amount, ItemID, Price, Customer, Salesperson, date);
+            modifySalesOrderQuotation.setInitialValues(orderID, Amount, Product, ItemID, Price, Customer, Salesperson, date);
+            modifySalesOrderQuotation.setVisible(true);
+            dispose();
+        } else {
+            // No row selected, display an error message or perform appropriate handling
+            JOptionPane.showMessageDialog(this, "Please select a row to modify.");
+        }
+        dispose();
     }//GEN-LAST:event_jButton_modifyActionPerformed
 
     private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
-          int selectedRow = jTable_manageQuotation.getSelectedRow();
+        int selectedRow = jTable_manageQuotation.getSelectedRow();
 
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(this, "Please select a row to delete.");
             return;
         }
 
-// Read the contents of the file into memory
+        // Read the contents of the file into memory
         List<String> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
             String line;
@@ -203,11 +206,11 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
             return; // Exit the method if an error occurs while reading the file
         }
 
-// Calculate the line indices of the selected row's data
+        // Calculate the line indices of the selected row's data
         int startIndex = selectedRow * 13; // Each row has 9 lines of data
         int endIndex = startIndex + 12;
 
-// Check if the calculated indices are within the bounds of the list
+        // Check if the calculated indices are within the bounds of the list
         if (startIndex >= 0 && endIndex < lines.size()) {
             // Remove the selected row's data from the in-memory list
             lines.subList(startIndex, endIndex + 1).clear();
@@ -216,7 +219,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
             return;
         }
 
-// Write the updated data back to the file
+        // Write the updated data back to the file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/Sales_Quotation.txt"))) {
             for (String line : lines) {
                 writer.write(line);
@@ -228,53 +231,43 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         }
 
         JOptionPane.showMessageDialog(this, "Selected row deleted successfully.");
-// Refresh the UI
-        refreshTable();
+        // Refresh the UI
+        displaySales();
     }//GEN-LAST:event_jButton_deleteActionPerformed
-    private void refreshTable() {
-        // Clear the existing data from the table
+
+    public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_manageQuotation.getModel();
-        model.setRowCount(0);
+        model.setRowCount(0); // Clear existing data
 
-        displaySales(); // Call the method to display the bookings
-
-        jTable_manageQuotation.revalidate();
-        jTable_manageQuotation.repaint();
-    }
-    
-  public void displaySales() {
-    DefaultTableModel model = (DefaultTableModel) jTable_manageQuotation.getModel();
-    model.setRowCount(0); // Clear existing data
-
-    try (BufferedReader br = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
-        String line;
-        while ((line = br.readLine()) != null) {
-            if (line.startsWith("ID:")) {
-                String[] rowData = new String[12];
-                rowData[0] = line.substring(4); // Extract ID value
-                rowData[0] = line.split(": ")[1].replaceAll(",\\s*$", "").trim();
-                for (int i = 1; i < 12; i++) {
-                    line = br.readLine();
-                    if (line != null && line.contains(": ")) {
-                        String[] parts = line.split(": ", 2);
-                        if (parts.length == 2) {
-                            // Clean up values by removing commas
-                            String cleanedValue = parts[1].replaceAll(",", "");
-                            rowData[i] = cleanedValue;
-                        } else {
-                            // Handle unexpected line format
-                            rowData[i] = " ";
+        try (BufferedReader br = new BufferedReader(new FileReader("Data/Sales_Quotation.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.startsWith("ID:")) {
+                    String[] rowData = new String[12];
+                    rowData[0] = line.substring(4); // Extract ID value
+                    rowData[0] = line.split(": ")[1].replaceAll(",\\s*$", "").trim();
+                    for (int i = 1; i < 12; i++) {
+                        line = br.readLine();
+                        if (line != null && line.contains(": ")) {
+                            String[] parts = line.split(": ", 2);
+                            if (parts.length == 2) {
+                                // Clean up values by removing commas
+                                String cleanedValue = parts[1].replaceAll(",", "");
+                                rowData[i] = cleanedValue;
+                            } else {
+                                // Handle unexpected line format
+                                rowData[i] = " ";
+                            }
                         }
-                    } 
+                    }
+                    model.addRow(rowData);
                 }
-                model.addRow(rowData);
             }
+        } catch (IOException e) {
+            e.printStackTrace(); // Print the stack trace to identify the issue
+            JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
         }
-    } catch (IOException e) {
-        e.printStackTrace(); // Print the stack trace to identify the issue
-        JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
     }
-}
 
     public void searchSales(String searchText) {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(jTable_manageQuotation.getModel());
@@ -283,6 +276,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         RowFilter<TableModel, Object> rowFilter = RowFilter.regexFilter("(?i)" + searchText); // Case-insensitive search
         rowSorter.setRowFilter(rowFilter);
     }
+
     /**
      * @param args the command line arguments
      */

@@ -528,7 +528,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
 
             // Update the invoice status to "Yes" in the text file
             updateInvoiceStatus(ID);
-            refreshTable();
+            displaySales();
 
             JOptionPane.showMessageDialog(this, "Invoice generated successfully.");
             // Open the generated PDF
@@ -574,20 +574,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
 
         RowFilter<TableModel, Object> rowFilter = RowFilter.regexFilter("(?i)" + searchText); // Case-insensitive search
         rowSorter.setRowFilter(rowFilter);
-    }
-
-    private void refreshTable() {
-        // Clear the existing data from the table
-        DefaultTableModel model = (DefaultTableModel) jTable_Salestable.getModel();
-        model.setRowCount(0);
-
-        dispose();
-        Sale_Approval saleApproval = new Sale_Approval(userID);
-        saleApproval.setVisible(true);
-        saleApproval.displaySales(); // Call the method to display the Sales
-
-        jTable_Salestable.revalidate();
-        jTable_Salestable.repaint();
     }
 
     public void displaySales() {

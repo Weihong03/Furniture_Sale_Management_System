@@ -6,11 +6,13 @@ package furniture_sale_ordering_management_system;
 
 import furniture_sale_ordering_management_system.progressindicator.ProductStatusUpdater;
 import furniture_sale_ordering_management_system.Shared_item.glasspanepopup.GlassPanePopup;
+import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,22 +22,21 @@ import javax.swing.table.DefaultTableModel;
 public class Check_Sales_Status extends javax.swing.JFrame {
 
     private static String userID;
+
     /**
      * Creates new form Check_Sales_Status
      */
     public Check_Sales_Status(String userID) {
         this.userID = userID;
-        
+
         initComponents();
 
-        
         // Set the title of the window
         setTitle("Check Sale Product Status");
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,7 +51,6 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_SalesProduct = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton_Refresh = new javax.swing.JButton();
         jButton_CheckStatus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,13 +75,6 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Check Sales Product Status");
 
-        jButton_Refresh.setText("Refresh");
-        jButton_Refresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_RefreshActionPerformed(evt);
-            }
-        });
-
         jButton_CheckStatus.setText("Check Status");
         jButton_CheckStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,8 +96,6 @@ public class Check_Sales_Status extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton_Refresh)
-                        .addGap(55, 55, 55)
                         .addComponent(jButton_CheckStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -114,9 +105,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_CheckStatus)
-                    .addComponent(jButton_Refresh))
+                .addComponent(jButton_CheckStatus)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
@@ -129,34 +118,34 @@ public class Check_Sales_Status extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_CheckStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CheckStatusActionPerformed
-    // Get the selected row index
-    int selectedRowIndex = jTable_SalesProduct.getSelectedRow();
-    // Check if a row is selected
-    if (selectedRowIndex != -1) {
-       // Get the confirmation status from the selected row (assuming it's in the 9th column)
-       String confirmationStatus = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 8);
-       // Check if the confirmation is approved
-       if ("Approved".equalsIgnoreCase(confirmationStatus)) {
-           // Show the GlassPanePopup only when the conditions are met
-           GlassPanePopup.showPopup(new Status());
-           // Get the sale ID from the selected row (assuming it's in the first column)
-           String saleID = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 0);
-           // Create a new ProductStatusUpdater and start it in a new thread
-           ProductStatusUpdater statusUpdater = new ProductStatusUpdater(saleID);
-           new Thread(statusUpdater).start();
-       } else {
-           JOptionPane.showMessageDialog(this, "Cannot check status. Sale confirmation is not approved.");
-       }
-    } else {
-       JOptionPane.showMessageDialog(this, "Please select a sale to check status.");
-    }
+        // Get the selected row index
+        int selectedRowIndex = jTable_SalesProduct.getSelectedRow();
+        // Check if a row is selected
+        if (selectedRowIndex != -1) {
+            // Get the confirmation status from the selected row (assuming it's in the 9th column)
+            String confirmationStatus = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 8);
+            // Check if the confirmation is approved
+            if ("Approved".equalsIgnoreCase(confirmationStatus)) {
+                // Show the GlassPanePopup only when the conditions are met
+                GlassPanePopup.showPopup(new Status());
+                // Get the sale ID from the selected row (assuming it's in the first column)
+                String saleID = (String) jTable_SalesProduct.getValueAt(selectedRowIndex, 0);
+                // Create a new ProductStatusUpdater and start it in a new thread
+                ProductStatusUpdater statusUpdater = new ProductStatusUpdater(saleID);
+                new Thread(statusUpdater).start();
+                // Use a Swing Timer to wait for 6 seconds and then call displaySales
+                Timer timer = new Timer(7000, (ActionEvent e) -> {
+                    displaySales();
+                });
+                timer.setRepeats(false); // Set to false for a one-time execution
+                timer.start();
+            } else {
+                JOptionPane.showMessageDialog(this, "Cannot check status. Sale confirmation is not approved.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a sale to check status.");
+        }
     }//GEN-LAST:event_jButton_CheckStatusActionPerformed
-
-    private void jButton_RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RefreshActionPerformed
-        DefaultTableModel model = (DefaultTableModel) jTable_SalesProduct.getModel();
-        model.setRowCount(0); // Clear existing data
-        displaySales(); // Reload data into the table
-    }//GEN-LAST:event_jButton_RefreshActionPerformed
 
     public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_SalesProduct.getModel();
@@ -194,13 +183,6 @@ public class Check_Sales_Status extends javax.swing.JFrame {
             e.printStackTrace(); // Print the stack trace to identify the issue
             JOptionPane.showMessageDialog(this, "Error reading the file: " + e.getMessage());
         }
-    }
-
-    // Add this method to refresh the table
-    public void refreshTable() {
-        DefaultTableModel model = (DefaultTableModel) jTable_SalesProduct.getModel();
-        model.setRowCount(0); // Clear existing data
-        displaySales(); // Reload data into the table
     }
 
     /**
@@ -242,7 +224,6 @@ public class Check_Sales_Status extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_CheckStatus;
-    private javax.swing.JButton jButton_Refresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

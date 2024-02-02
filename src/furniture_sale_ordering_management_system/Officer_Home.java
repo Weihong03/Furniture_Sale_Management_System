@@ -12,7 +12,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import net.miginfocom.layout.ComponentWrapper;
 import net.miginfocom.layout.LayoutCallback;
 
@@ -613,10 +612,6 @@ public class Officer_Home extends javax.swing.JFrame {
         internalFrame.setVisible(true);
         generate.displaySales();
     }//GEN-LAST:event_jPanel_generateReportMouseClicked
-
-    public JPanel getJPanel3() {
-        return jPanel3;
-    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

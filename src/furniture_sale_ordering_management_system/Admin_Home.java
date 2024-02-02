@@ -407,7 +407,7 @@ public class Admin_Home extends javax.swing.JFrame {
         // Add the new internalFrame to jPanel3
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
-        manageworkerprofile.displayBookings();
+        manageworkerprofile.displayProfile();
     }//GEN-LAST:event_jPanel_manageWorkerProfileMouseClicked
 
     private void jPanel_generateReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_generateReportMouseClicked
