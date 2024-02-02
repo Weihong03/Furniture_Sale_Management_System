@@ -93,6 +93,7 @@ public class Signup extends javax.swing.JFrame {
         );
 
         button_back.setText("Back");
+        button_back.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         button_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_backActionPerformed(evt);
@@ -100,6 +101,7 @@ public class Signup extends javax.swing.JFrame {
         });
 
         button_create.setText("Create");
+        button_create.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         button_create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_createActionPerformed(evt);
@@ -144,7 +146,7 @@ public class Signup extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(button_back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button_create, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

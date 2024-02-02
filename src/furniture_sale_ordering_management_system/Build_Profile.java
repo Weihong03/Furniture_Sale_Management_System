@@ -416,6 +416,18 @@ public class Build_Profile extends javax.swing.JFrame {
         String phoneNumber = jTextField_phonenumber.getText();
         String role = jComboBox_role.getSelectedItem().toString();
 
+        // Validate Email
+        if (!isValidEmail(email)) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validate Phone Number
+        if (!isValidPhoneNumber(phoneNumber)) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid phone number.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         // Validate and save to file
         if (validateInputs(name, email, phoneNumber)) {
             // Validate and save image to file
@@ -464,6 +476,19 @@ public class Build_Profile extends javax.swing.JFrame {
             e.printStackTrace();
         }
         return latestID;
+    }
+
+    private boolean isValidEmail(String email) {
+        // Email validation using a basic regular expression
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(emailRegex);
+    }
+
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        // Phone number validation using a basic regular expression
+        // This example allows digits, spaces, parentheses, and hyphens
+        String phoneRegex = "^[0-9\\s()-]+$";
+        return phoneNumber.matches(phoneRegex);
     }
 
     // Validate user inputs

@@ -89,7 +89,7 @@
                       <Component id="button_back" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="button_create" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="113" max="32767" attributes="0"/>
+                  <EmptySpace pref="107" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -168,6 +168,9 @@
         <Component class="furniture_sale_ordering_management_system.progressindicator.Button" name="button_back">
           <Properties>
             <Property name="text" type="java.lang.String" value="Back"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="1"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_backActionPerformed"/>
@@ -176,6 +179,9 @@
         <Component class="furniture_sale_ordering_management_system.progressindicator.Button" name="button_create">
           <Properties>
             <Property name="text" type="java.lang.String" value="Create"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="1"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_createActionPerformed"/>
