@@ -101,7 +101,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jTextField_Role" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="button1" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="button_Update" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -201,7 +201,7 @@
                       <Component id="jTextField_Role" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="button1" min="-2" max="-2" attributes="0"/>
+                  <Component id="button_Update" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -368,7 +368,7 @@
             <Property name="text" type="java.lang.String" value="Profile Picture"/>
           </Properties>
         </Component>
-        <Component class="furniture_sale_ordering_management_system.progressindicator.Button" name="button1">
+        <Component class="furniture_sale_ordering_management_system.progressindicator.Button" name="button_Update">
           <Properties>
             <Property name="text" type="java.lang.String" value="Update"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -376,7 +376,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_UpdateActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

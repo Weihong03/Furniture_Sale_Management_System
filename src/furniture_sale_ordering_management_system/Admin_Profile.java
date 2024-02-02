@@ -1,13 +1,20 @@
 package furniture_sale_ordering_management_system;
 
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -28,7 +35,49 @@ public class Admin_Profile extends javax.swing.JFrame {
     public String PhoneNumber;
     public String Role;
     public static String userData;
+    private String selectedFilePath;
 
+    private static final String BOOKING_FILE_PATH = "Data/Admin.txt";
+
+     public void setIconFromFile(String BOOKING_FILE_PATH) {
+        String imagePath = readFilePathFromFile(BOOKING_FILE_PATH, userID);
+
+        // Set the icon for jLabel1
+        if (!imagePath.isEmpty()) {
+            try {
+                URL imageUrl = new File(imagePath).toURI().toURL();
+                ImageIcon icon = new ImageIcon(imageUrl);
+                Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
+                ImageIcon scaledIcon = new ImageIcon(image);
+                jLabel_icon.setIcon(scaledIcon);
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private String readFilePathFromFile(String BOOKING_FILE_PATH, String userID) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(BOOKING_FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Check if the line starts with the expected field
+                if (line.startsWith("ID: " + userID)) {
+                    // Extract filepath information
+                    while ((line = reader.readLine()) != null) {
+                        if (line.startsWith("Filepath: ")) {
+                            String imagePath = line.substring("Filepath: ".length()).trim();
+                            return imagePath;
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+    
     public void setInitialValues(String userID) {
         jTextField_ID.setText(userID);
     }
@@ -181,6 +230,9 @@ public class Admin_Profile extends javax.swing.JFrame {
         jTextField_role = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         button1 = new furniture_sale_ordering_management_system.progressindicator.Button();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel_icon = new javax.swing.JLabel();
+        jButton_change = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
 
@@ -265,21 +317,47 @@ public class Admin_Profile extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel11.setText("Profile Picture");
+
+        jLabel_icon.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/profile picture1.jpg"))); // NOI18N
+        jLabel_icon.setToolTipText("");
+        jLabel_icon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel_icon.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jLabel_iconAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        jButton_change.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton_change.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/change profile.png"))); // NOI18N
+        jButton_change.setText("Change");
+        jButton_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_changeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 316, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 314, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(272, 272, 272))
                             .addComponent(jLabel1))
-                        .addGap(389, 389, 389))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(83, 83, 83))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel5)
@@ -299,7 +377,17 @@ public class Admin_Profile extends javax.swing.JFrame {
                                 .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField_role, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(360, 360, 360))))
+                        .addGap(54, 54, 54)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_icon)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_change)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(50, 50, 50)))))
+                .addGap(80, 80, 80))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -311,32 +399,40 @@ public class Admin_Profile extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jComboBox_Age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField_FullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jComboBox_Age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField_FullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_icon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_change)))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -384,67 +480,71 @@ public class Admin_Profile extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_UsernameActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-         String id = jTextField_ID.getText();
-        String username = jTextField_Username.getText();
-        String password = jTextField_Password.getText();
-        String fullName = jTextField_FullName.getText();
-        String ageString = jComboBox_Age.getSelectedItem().toString();
-        String email = jTextField_Email.getText();
-        String phoneNumber = jTextField_PhoneNumber.getText();
-        String role = jTextField_role.getText();
-        StringBuilder eventBuilder = new StringBuilder("Update Profile");
+    String id = jTextField_ID.getText();
+    String username = jTextField_Username.getText();
+    String password = jTextField_Password.getText();
+    String fullName = jTextField_FullName.getText();
+    String ageString = jComboBox_Age.getSelectedItem().toString();
+    String email = jTextField_Email.getText();
+    String phoneNumber = jTextField_PhoneNumber.getText();
+    String role = jTextField_role.getText();
+    StringBuilder eventBuilder = new StringBuilder("Update Profile");
 
-        // Read the existing content from the text file
-        String filePath = "Data/Admin.txt";
+    // Read the existing content from the text file
+    String filePath = "Data/Admin.txt";
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            StringBuilder content = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                content.append(line).append("\n");
-            }
-
-
-            // Update the information in the content and modify the event accordingly
-            if (updateContent(content, "ID: ", id, eventBuilder)) {
-                eventBuilder.append(", Update ID");
-            }
-            if (updateContent(content, "Username: ", username, eventBuilder)) {
-                eventBuilder.append(", Update Username");
-            }
-            if (updateContent(content, "Password: ", password, eventBuilder)) {
-                eventBuilder.append(", Update Password");
-            }
-            if (updateContent(content, "Name: ", fullName, eventBuilder)) {
-                eventBuilder.append(", Update Name");
-            }
-            if (updateContent(content, "Age: ", String.valueOf(ageString), eventBuilder)) {
-                eventBuilder.append(", Update Age");
-            }
-            if (updateContent(content, "Email: ", email, eventBuilder)) {
-                eventBuilder.append(", Update Email");
-            }
-            if (updateContent(content, "Phone Number: ", phoneNumber, eventBuilder)) {
-                eventBuilder.append(", Update Phone Number");
-            }
-            if (updateContent(content, "Role: ", role, eventBuilder)) {
-                eventBuilder.append(", Update Role");
-            }
-
-
-            // Write the updated content back to the text file
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-                writer.write(content.toString());
-                JOptionPane.showMessageDialog(null, "Content successfully updated!");
-            }
-
-            // Add the log entry with the specific event
-            Admin_Logbook adminLogbook = new Admin_Logbook(userID);
-            adminLogbook.addLogEntry(userID, eventBuilder.toString());
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception according to your application's requirements
+    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            content.append(line).append("\n");
         }
+        
+        updateFilePath(content, "Filepath: ", selectedFilePath);
+
+        // Update the information in the content and modify the event accordingly
+        if (updateContent(content, "ID: ", id, eventBuilder)) {
+            eventBuilder.append(", Update ID");
+        }
+        if (updateContent(content, "Username: ", username, eventBuilder)) {
+            eventBuilder.append(", Update Username");
+        }
+        if (updateContent(content, "Password: ", password, eventBuilder)) {
+            eventBuilder.append(", Update Password");
+        }
+        if (updateContent(content, "Name: ", fullName, eventBuilder)) {
+            eventBuilder.append(", Update Name");
+        }
+        if (updateContent(content, "Age: ", String.valueOf(ageString), eventBuilder)) {
+            eventBuilder.append(", Update Age");
+        }
+        if (updateContent(content, "Email: ", email, eventBuilder)) {
+            eventBuilder.append(", Update Email");
+        }
+        if (updateContent(content, "Phone Number: ", phoneNumber, eventBuilder)) {
+            eventBuilder.append(", Update Phone Number");
+        }
+        if (updateContent(content, "Role: ", role, eventBuilder)) {
+            eventBuilder.append(", Update Role");
+        }
+
+        // Write the updated content back to the text file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write(content.toString());
+            JOptionPane.showMessageDialog(null, "Content successfully updated!");
+        }
+        
+
+        // Add the log entry with the specific event
+        Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+        adminLogbook.addLogEntry(userID, eventBuilder.toString());
+        
+    } catch (IOException e) {
+        e.printStackTrace(); // Handle the exception according to your application's requirements
     }
+    }
+    // Additional code for updating filepath
+   
 
     private boolean updateContent(StringBuilder content, String label, String value, StringBuilder eventBuilder) {
         int startIndex = content.indexOf(label);
@@ -459,9 +559,84 @@ public class Admin_Profile extends javax.swing.JFrame {
         } else {
             System.out.println("Label not found: " + label);
         }
-        return false; // Return false if the label was not found or value unchanged
-    }//GEN-LAST:event_button1ActionPerformed
+        return false;}
+    
+    private void updateFilePath(StringBuilder content, String label, String selectedFilePath) {
+    int startIndex = content.indexOf(label);
+    if (startIndex != -1) {
+        int endIndex = content.indexOf("\n", startIndex);
+        String oldFilePath = content.substring(startIndex + label.length(), endIndex).trim();
+        String newFilePath;
 
+        if (selectedFilePath != null) {
+            newFilePath = selectedFilePath;
+        } else {
+            // If selectedFilePath is null, keep the original filepath
+            newFilePath = oldFilePath;
+        }
+
+        // Find the index of "src" in the filepath
+        int srcIndex = newFilePath.indexOf("src");
+        
+        if (srcIndex != -1) {
+            // Remove the part before "src"
+            newFilePath = newFilePath.substring(srcIndex);
+        }
+
+        content.replace(startIndex + label.length(), endIndex, newFilePath);
+    } else {
+        System.out.println("Label not found: " + label);
+    }
+
+    }//GEN-LAST:event_button1ActionPerformed
+    
+    private void jLabel_iconAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel_iconAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel_iconAncestorAdded
+
+    private void jButton_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_changeActionPerformed
+        JFileChooser fileChooser = new JFileChooser("src/furniture_sale_ordering_management_system/Images");
+
+        // Set the file filter to only allow image files
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png", "gif");
+        fileChooser.setFileFilter(filter);
+
+        // Show the file chooser dialog
+        int result = fileChooser.showOpenDialog(this);
+
+        // Check if the user selected a file
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // Get the selected file
+            File selectedFile = fileChooser.getSelectedFile();
+
+            // Display the selected file path
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+
+            // Save the selected file path
+            selectedFilePath = selectedFile.getAbsolutePath();
+
+            try {
+                // Convert the File to URL
+                URL imageUrl = selectedFile.toURI().toURL();
+
+                // Create ImageIcon from URL
+                ImageIcon icon = new ImageIcon(imageUrl);
+
+                // Scale the image
+                Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
+                ImageIcon scaledIcon = new ImageIcon(image);
+
+                // Set the JLabel icon using the scaled ImageIcon
+                jLabel_icon.setIcon(scaledIcon);
+
+
+            } catch (MalformedURLException ex) {
+                // Handle exception (e.g., print error message or show a dialog)
+                ex.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jButton_changeActionPerformed
+  
     /**
      * @param args the command line arguments
      */
@@ -499,16 +674,20 @@ public class Admin_Profile extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Admin_Profile().setVisible(true);
+                Admin_Profile AdminProfile = new Admin_Profile();
+                AdminProfile.setIconFromFile(BOOKING_FILE_PATH);
+                AdminProfile.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private furniture_sale_ordering_management_system.progressindicator.Button button1;
+    private javax.swing.JButton jButton_change;
     private javax.swing.JComboBox<String> jComboBox_Age;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -517,6 +696,7 @@ public class Admin_Profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_icon;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField_Email;
     private javax.swing.JTextField jTextField_FullName;

@@ -218,7 +218,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         jLabel_icon = new javax.swing.JLabel();
         jButton_change = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        button1 = new furniture_sale_ordering_management_system.progressindicator.Button();
+        button_Update = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1050, 680));
@@ -298,11 +298,11 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel11.setText("Profile Picture");
 
-        button1.setText("Update");
-        button1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        button_Update.setText("Update");
+        button_Update.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button_Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                button_UpdateActionPerformed(evt);
             }
         });
 
@@ -357,7 +357,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField_Role)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(button_Update, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,7 +430,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jTextField_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_Update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -496,7 +496,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_changeActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void button_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_UpdateActionPerformed
         if (userData == null) {
             JOptionPane.showMessageDialog(null, "User data not loaded. Call setInitialValuesFromUserID first.");
             return;
@@ -579,7 +579,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_button_UpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -635,7 +635,7 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private furniture_sale_ordering_management_system.progressindicator.Button button1;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_Update;
     private javax.swing.JButton jButton_change;
     private javax.swing.JComboBox<String> jComboBox_Age;
     private javax.swing.JLabel jLabel1;
