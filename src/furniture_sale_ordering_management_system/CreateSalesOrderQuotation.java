@@ -65,13 +65,16 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
     }
 
     private void loadSalesPersonData() {
-        String salesPersonData = getUsername(userID);
+         String salesPersonData = getUsername(userID);
 
-        if (salesPersonData != null) {
-            jTextField_salesPerson.setText(salesPersonData);
-        } else {
-            JOptionPane.showMessageDialog(this, "Failed to retrieve Sales Person data.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+    if (salesPersonData != null) {
+        // Remove commas from salesPersonData
+        salesPersonData = salesPersonData.replace(",", "");
+
+        jTextField_salesPerson.setText(salesPersonData);
+    } else {
+        JOptionPane.showMessageDialog(this, "Failed to retrieve Sales Person data.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }
 
     public static String getUsername(String userID) {

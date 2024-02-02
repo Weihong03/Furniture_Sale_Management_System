@@ -4,8 +4,7 @@ package furniture_sale_ordering_management_system;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.Color;
 import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -19,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -37,8 +37,17 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+        
+        JTableHeader tableHeader = jTable_profiletable.getTableHeader();
+        tableHeader.setBackground(Color.GRAY);
+        tableHeader.setForeground(Color.BLUE);
+           
+        // Create a table model
+        jTable_profiletable.setBackground(Color.red);
+        jTable_profiletable.setGridColor(Color.red);
 
+ 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,26 +94,27 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        jTable_profiletable.setAutoCreateRowSorter(true);
         jTable_profiletable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable_profiletable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Username", "Password", "Name", "Age", "Email", "Phone number", "Role"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
+        jTable_profiletable.setGridColor(new java.awt.Color(58, 107, 53));
+        jTable_profiletable.setOpaque(false);
+        jTable_profiletable.setSelectionBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTable_profiletable);
 
         jButton_modify.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
