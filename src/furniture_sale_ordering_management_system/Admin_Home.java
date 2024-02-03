@@ -520,7 +520,6 @@ public class Admin_Home extends javax.swing.JFrame {
         jPanel3.removeAll();
         jPanel3.repaint();
         jPanel3.revalidate();
-        init();
     }//GEN-LAST:event_jPanel_dashboardMouseClicked
 
     private void jPanel_managePersonalProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_managePersonalProfileMouseClicked
