@@ -6,7 +6,7 @@ Age: 52,
 Email: TP065421@mail.apu.edu.my,
 Phone Number: 0128881234,
 Role: Admin,
-Filepath: src\furniture_sale_ordering_management_system\Images\profile picture5.jpg
+Filepath: src\furniture_sale_ordering_management_system\Images\Companylogo_1.png
 
 ID: A002,
 Username: Alisontang,

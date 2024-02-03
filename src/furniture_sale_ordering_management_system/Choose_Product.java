@@ -77,13 +77,13 @@ public class Choose_Product extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jComboBox_product = new javax.swing.JComboBox<>();
-        jButton_add = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea_totalamount = new javax.swing.JTextArea();
-        jButton_proceed = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_product = new javax.swing.JTable();
-        jButton_delete = new javax.swing.JButton();
+        button_delete = new furniture_sale_ordering_management_system.progressindicator.Button();
+        button_Proceed = new furniture_sale_ordering_management_system.progressindicator.Button();
+        button_add = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 650));
@@ -94,19 +94,12 @@ public class Choose_Product extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Product :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 112, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
 
         jComboBox_product.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox_product, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 109, -1, -1));
-
-        jButton_add.setText("Add");
-        jButton_add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_addActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 161, -1, -1));
+        jPanel1.add(jComboBox_product, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 210, 30));
 
         jTextArea_totalamount.setEditable(false);
         jTextArea_totalamount.setColumns(20);
@@ -114,14 +107,6 @@ public class Choose_Product extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea_totalamount);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 255, -1, 275));
-
-        jButton_proceed.setText("Proceed");
-        jButton_proceed.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_proceedActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_proceed, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 548, -1, -1));
 
         jTable_product.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,21 +128,64 @@ public class Choose_Product extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 255, -1, 275));
 
-        jButton_delete.setText("Delete");
-        jButton_delete.addActionListener(new java.awt.event.ActionListener() {
+        button_delete.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        button_delete.setText("Delete");
+        button_delete.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_deleteActionPerformed(evt);
+                button_deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(553, 548, -1, -1));
+        jPanel1.add(button_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, 80, 30));
+
+        button_Proceed.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        button_Proceed.setText("Proceed");
+        button_Proceed.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button_Proceed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_ProceedActionPerformed(evt);
+            }
+        });
+        jPanel1.add(button_Proceed, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 550, 80, 30));
+
+        button_add.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        button_add.setText("Add");
+        button_add.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_addActionPerformed(evt);
+            }
+        });
+        jPanel1.add(button_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 80, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    private String extractAmount(String input) {
+        // Assuming the amount is always after "RM" in the text
+        String rmPrefix = "RM";
+        int rmIndex = input.indexOf(rmPrefix);
+        if (rmIndex != -1) {
+            // Find the next occurrence of "\n" or use the length of the string
+            int endIndex = input.indexOf("\n", rmIndex);
+            if (endIndex == -1) {
+                endIndex = input.length();
+            }
+            return input.substring(rmIndex, endIndex).trim();
+        } else {
+            // If "RM" is not found, you may need additional logic based on your actual data format
+            return input.trim();
+        }
+    }    private String getSafeValue(List<String> dataList, int index) {
+        return (index >= 0 && index < dataList.size()) ? dataList.get(index).trim() : "";
+    }
+    private void button_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_deleteActionPerformed
+       deleteSelectedRows();
+    }//GEN-LAST:event_button_deleteActionPerformed
 
-    private void jButton_proceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_proceedActionPerformed
+    private void button_ProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ProceedActionPerformed
         int[] selectedRows = jTable_product.getSelectedRows();
 
         if (selectedRows.length > 0) {
@@ -193,25 +221,10 @@ public class Choose_Product extends javax.swing.JFrame {
             // No row selected, display an error message or perform appropriate handling
             JOptionPane.showMessageDialog(this, "Please add a product before proceeding.");
         }
-        }//GEN-LAST:event_jButton_proceedActionPerformed
-    private String extractAmount(String input) {
-        // Assuming the amount is always after "RM" in the text
-        String rmPrefix = "RM";
-        int rmIndex = input.indexOf(rmPrefix);
-        if (rmIndex != -1) {
-            // Find the next occurrence of "\n" or use the length of the string
-            int endIndex = input.indexOf("\n", rmIndex);
-            if (endIndex == -1) {
-                endIndex = input.length();
-            }
-            return input.substring(rmIndex, endIndex).trim();
-        } else {
-            // If "RM" is not found, you may need additional logic based on your actual data format
-            return input.trim();
-        }
-    }
-    private void jButton_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addActionPerformed
-        String selectedProduct = (String) jComboBox_product.getSelectedItem();
+    }//GEN-LAST:event_button_ProceedActionPerformed
+
+    private void button_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_addActionPerformed
+   String selectedProduct = (String) jComboBox_product.getSelectedItem();
 
         // Read additional data (item ID, category, and price) based on the selected product
         String csvFile = "Data/Yoyo-Furniture.csv";
@@ -256,13 +269,7 @@ public class Choose_Product extends javax.swing.JFrame {
 
         // Optionally, you can clear the selection in the jComboBox_product
         jComboBox_product.setSelectedIndex(-1);
-    }//GEN-LAST:event_jButton_addActionPerformed
-    private String getSafeValue(List<String> dataList, int index) {
-        return (index >= 0 && index < dataList.size()) ? dataList.get(index).trim() : "";
-    }
-    private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
-        deleteSelectedRows();
-    }//GEN-LAST:event_jButton_deleteActionPerformed
+    }//GEN-LAST:event_button_addActionPerformed
     private void deleteSelectedRows() {
         DefaultTableModel model = (DefaultTableModel) jTable_product.getModel();
         int[] selectedRows = jTable_product.getSelectedRows();
@@ -322,9 +329,9 @@ public class Choose_Product extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_add;
-    private javax.swing.JButton jButton_delete;
-    private javax.swing.JButton jButton_proceed;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_Proceed;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_add;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_delete;
     private javax.swing.JComboBox<String> jComboBox_product;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

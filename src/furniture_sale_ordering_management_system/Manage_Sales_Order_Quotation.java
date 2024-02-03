@@ -54,8 +54,8 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         jTextField_search = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_manageQuotation = new javax.swing.JTable();
-        jButton_modify = new javax.swing.JButton();
-        jButton_delete = new javax.swing.JButton();
+        button_Delete = new furniture_sale_ordering_management_system.progressindicator.Button();
+        button_Modify = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         jButton1.setText("jButton1");
 
@@ -72,15 +72,16 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         jLabel1.setText("MANAGE SALES ORDER QUOTATION");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 112, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setText("Search :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 175, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
 
         jTextField_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_searchActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 172, 71, -1));
+        jPanel1.add(jTextField_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 190, -1));
 
         jTable_manageQuotation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,21 +106,25 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 212, 757, 275));
 
-        jButton_modify.setText("Modify");
-        jButton_modify.addActionListener(new java.awt.event.ActionListener() {
+        button_Delete.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        button_Delete.setText("Delete");
+        button_Delete.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_modifyActionPerformed(evt);
+                button_DeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton_modify, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 505, -1, -1));
+        jPanel1.add(button_Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, 100, 30));
 
-        jButton_delete.setText("Delete");
-        jButton_delete.addActionListener(new java.awt.event.ActionListener() {
+        button_Modify.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        button_Modify.setText("Modify");
+        button_Modify.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button_Modify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_deleteActionPerformed(evt);
+                button_ModifyActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 505, -1, -1));
+        jPanel1.add(button_Modify, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 100, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -132,49 +137,8 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         searchSales(searchText);
     }//GEN-LAST:event_jTextField_searchActionPerformed
 
-    private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
-        int selectedRowIndex = jTable_manageQuotation.getSelectedRow();
-        if (selectedRowIndex >= 0) {
-            // Get the values from the selected row
-            String orderID = jTable_manageQuotation.getValueAt(selectedRowIndex, 0).toString();
-            String Amount = jTable_manageQuotation.getValueAt(selectedRowIndex, 1).toString();
-
-            String dateAsString = jTable_manageQuotation.getValueAt(selectedRowIndex, 2).toString();
-
-// Parse the date with the correct format
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
-            dateAsString = dateAsString.replace(",", ""); // Remove the comma
-            Date date = null;  // Initialize the date to null
-            try {
-                date = dateFormat.parse(dateAsString);
-            } catch (ParseException e) {
-                e.printStackTrace(); // Handle the exception as needed
-            }
-
-            String Product = jTable_manageQuotation.getValueAt(selectedRowIndex, 3).toString();
-            String ItemID = jTable_manageQuotation.getValueAt(selectedRowIndex, 4).toString();
-            String Price = jTable_manageQuotation.getValueAt(selectedRowIndex, 5).toString();
-            String Customer = jTable_manageQuotation.getValueAt(selectedRowIndex, 6).toString();
-            String Salesperson = jTable_manageQuotation.getValueAt(selectedRowIndex, 7).toString();
-            String Confirmation = jTable_manageQuotation.getValueAt(selectedRowIndex, 8).toString();
-            String Officer = jTable_manageQuotation.getValueAt(selectedRowIndex, 9).toString();
-            String Invoice = jTable_manageQuotation.getValueAt(selectedRowIndex, 10).toString();
-            String Status = jTable_manageQuotation.getValueAt(selectedRowIndex, 11).toString();
-
-            // Create an instance of ModifyWorkerProfile and pass the selected data
-            Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(userID, orderID, Product, Amount, ItemID, Price, Customer, Salesperson, date);
-            modifySalesOrderQuotation.setInitialValues(orderID, Amount, Product, ItemID, Price, Customer, Salesperson, date);
-            modifySalesOrderQuotation.setVisible(true);
-            dispose();
-        } else {
-            // No row selected, display an error message or perform appropriate handling
-            JOptionPane.showMessageDialog(this, "Please select a row to modify.");
-        }
-        dispose();
-    }//GEN-LAST:event_jButton_modifyActionPerformed
-
-    private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
-        int selectedRow = jTable_manageQuotation.getSelectedRow();
+    private void button_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_DeleteActionPerformed
+          int selectedRow = jTable_manageQuotation.getSelectedRow();
 
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(this, "Please select a row to delete.");
@@ -220,7 +184,48 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Selected row deleted successfully.");
         // Refresh the UI
         displaySales();
-    }//GEN-LAST:event_jButton_deleteActionPerformed
+    }//GEN-LAST:event_button_DeleteActionPerformed
+
+    private void button_ModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ModifyActionPerformed
+  int selectedRowIndex = jTable_manageQuotation.getSelectedRow();
+        if (selectedRowIndex >= 0) {
+            // Get the values from the selected row
+            String orderID = jTable_manageQuotation.getValueAt(selectedRowIndex, 0).toString();
+            String Amount = jTable_manageQuotation.getValueAt(selectedRowIndex, 1).toString();
+
+            String dateAsString = jTable_manageQuotation.getValueAt(selectedRowIndex, 2).toString();
+
+// Parse the date with the correct format
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+            dateAsString = dateAsString.replace(",", ""); // Remove the comma
+            Date date = null;  // Initialize the date to null
+            try {
+                date = dateFormat.parse(dateAsString);
+            } catch (ParseException e) {
+                e.printStackTrace(); // Handle the exception as needed
+            }
+
+            String Product = jTable_manageQuotation.getValueAt(selectedRowIndex, 3).toString();
+            String ItemID = jTable_manageQuotation.getValueAt(selectedRowIndex, 4).toString();
+            String Price = jTable_manageQuotation.getValueAt(selectedRowIndex, 5).toString();
+            String Customer = jTable_manageQuotation.getValueAt(selectedRowIndex, 6).toString();
+            String Salesperson = jTable_manageQuotation.getValueAt(selectedRowIndex, 7).toString();
+            String Confirmation = jTable_manageQuotation.getValueAt(selectedRowIndex, 8).toString();
+            String Officer = jTable_manageQuotation.getValueAt(selectedRowIndex, 9).toString();
+            String Invoice = jTable_manageQuotation.getValueAt(selectedRowIndex, 10).toString();
+            String Status = jTable_manageQuotation.getValueAt(selectedRowIndex, 11).toString();
+
+            // Create an instance of ModifyWorkerProfile and pass the selected data
+            Modify_Sales_Order_Quotation modifySalesOrderQuotation = new Modify_Sales_Order_Quotation(userID, orderID, Product, Amount, ItemID, Price, Customer, Salesperson, date);
+            modifySalesOrderQuotation.setInitialValues(orderID, Amount, Product, ItemID, Price, Customer, Salesperson, date);
+            modifySalesOrderQuotation.setVisible(true);
+            dispose();
+        } else {
+            // No row selected, display an error message or perform appropriate handling
+            JOptionPane.showMessageDialog(this, "Please select a row to modify.");
+        }
+        dispose();
+    }//GEN-LAST:event_button_ModifyActionPerformed
 
     public void displaySales() {
         DefaultTableModel model = (DefaultTableModel) jTable_manageQuotation.getModel();
@@ -305,9 +310,9 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private furniture_sale_ordering_management_system.progressindicator.Button button_Delete;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_Modify;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton_delete;
-    private javax.swing.JButton jButton_modify;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

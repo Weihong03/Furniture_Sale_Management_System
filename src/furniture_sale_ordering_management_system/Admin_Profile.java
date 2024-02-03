@@ -229,7 +229,7 @@ public class Admin_Profile extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextField_role = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        button1 = new furniture_sale_ordering_management_system.progressindicator.Button();
+        button_update = new furniture_sale_ordering_management_system.progressindicator.Button();
         jLabel11 = new javax.swing.JLabel();
         jLabel_icon = new javax.swing.JLabel();
         jButton_change = new javax.swing.JButton();
@@ -309,11 +309,12 @@ public class Admin_Profile extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setText("Role :");
 
-        button1.setText("Update");
-        button1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        button_update.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        button_update.setText("Update");
+        button_update.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        button_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                button_updateActionPerformed(evt);
             }
         });
 
@@ -337,6 +338,11 @@ public class Admin_Profile extends javax.swing.JFrame {
         jButton_change.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton_change.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/change profile.png"))); // NOI18N
         jButton_change.setText("Change");
+        jButton_change.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton_change.setBorderPainted(false);
+        jButton_change.setDisabledIcon(null);
+        jButton_change.setDisabledSelectedIcon(null);
+        jButton_change.setOpaque(false);
         jButton_change.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_changeActionPerformed(evt);
@@ -379,18 +385,17 @@ public class Admin_Profile extends javax.swing.JFrame {
                                 .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(54, 54, 54)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_icon)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_change)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(50, 50, 50)))))
+                        .addComponent(jLabel11))
+                    .addComponent(jLabel_icon)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jButton_change)))
                 .addGap(80, 80, 80))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_update, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(472, 472, 472))
         );
         jPanel2Layout.setVerticalGroup(
@@ -423,17 +428,17 @@ public class Admin_Profile extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jTextField_FullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))))
-                        .addGap(35, 35, 35)
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton_change))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_icon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_change)))
-                .addGap(35, 35, 35)
+                        .addComponent(jLabel_icon)))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
@@ -442,8 +447,8 @@ public class Admin_Profile extends javax.swing.JFrame {
                     .addComponent(jTextField_role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addComponent(button_update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -479,7 +484,7 @@ public class Admin_Profile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_UsernameActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void button_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_updateActionPerformed
     String id = jTextField_ID.getText();
     String username = jTextField_Username.getText();
     String password = jTextField_Password.getText();
@@ -588,7 +593,7 @@ public class Admin_Profile extends javax.swing.JFrame {
         System.out.println("Label not found: " + label);
     }
 
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_button_updateActionPerformed
     
     private void jLabel_iconAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel_iconAncestorAdded
         // TODO add your handling code here:
@@ -628,7 +633,6 @@ public class Admin_Profile extends javax.swing.JFrame {
 
                 // Set the JLabel icon using the scaled ImageIcon
                 jLabel_icon.setIcon(scaledIcon);
-
 
             } catch (MalformedURLException ex) {
                 // Handle exception (e.g., print error message or show a dialog)
@@ -682,7 +686,7 @@ public class Admin_Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private furniture_sale_ordering_management_system.progressindicator.Button button1;
+    private furniture_sale_ordering_management_system.progressindicator.Button button_update;
     private javax.swing.JButton jButton_change;
     private javax.swing.JComboBox<String> jComboBox_Age;
     private javax.swing.JLabel jLabel1;
