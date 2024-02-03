@@ -480,10 +480,9 @@ public class Admin_Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void init() {
-        lineChart.addLegend("Income", new Color(12, 84, 175), new Color(0, 108, 247));
-        lineChart.addLegend("Expense", new Color(54, 4, 143), new Color(104, 49, 200));
-        lineChart.addLegend("Profit", new Color(5, 125, 0), new Color(95, 209, 69));
-        lineChart.addLegend("Cost", new Color(186, 37, 37), new Color(241, 100, 120));
+        lineChart.addLegend("Income", new Color(51, 51, 255), new Color(153, 153, 155));
+        lineChart.addLegend("Product Sold", new Color(255, 51, 51), new Color(255, 153, 153));
+        lineChart.addLegend("Profit", new Color(51, 255, 51), new Color(153, 255, 153));
         lineChart.addData(new ModelChart("January", new double[]{500, 200, 80, 89}));
         lineChart.addData(new ModelChart("February", new double[]{600, 750, 90, 150}));
         lineChart.addData(new ModelChart("March", new double[]{200, 350, 460, 900}));
