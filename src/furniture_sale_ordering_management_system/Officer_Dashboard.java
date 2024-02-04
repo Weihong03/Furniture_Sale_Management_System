@@ -127,7 +127,7 @@ public class Officer_Dashboard extends javax.swing.JFrame {
 
         progress2.setBackground(new java.awt.Color(255, 51, 51));
         progress2.setForeground(new java.awt.Color(255, 153, 153));
-        progress2.setValue(70);
+        progress2.setValue(65);
 
         jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,13 +228,12 @@ public class Officer_Dashboard extends javax.swing.JFrame {
         lineChart.addLegend("Approved", new Color(51, 51, 255), new Color(153, 153, 155));
         lineChart.addLegend("In Progress", new Color(255, 51, 51), new Color(255, 153, 153));
         lineChart.addLegend("Closed Sale", new Color(51, 255, 51), new Color(153, 255, 153));
-        lineChart.addData(new ModelChart("January", new double[]{500, 200, 80, 89}));
-        lineChart.addData(new ModelChart("January", new double[]{500, 200, 80, 89}));
-        lineChart.addData(new ModelChart("February", new double[]{600, 750, 90, 150}));
-        lineChart.addData(new ModelChart("March", new double[]{200, 350, 460, 900}));
-        lineChart.addData(new ModelChart("April", new double[]{480, 150, 750, 700}));
-        lineChart.addData(new ModelChart("May", new double[]{350, 540, 300, 150}));
-        lineChart.addData(new ModelChart("June", new double[]{190, 280, 81, 200}));
+        lineChart.addData(new ModelChart("January", new double[]{500, 200, 80}));
+        lineChart.addData(new ModelChart("February", new double[]{190, 280, 81}));
+        lineChart.addData(new ModelChart("March", new double[]{480, 150, 750}));
+        lineChart.addData(new ModelChart("April", new double[]{350, 540, 300}));
+        lineChart.addData(new ModelChart("May", new double[]{200, 350, 460}));
+        lineChart.addData(new ModelChart("June", new double[]{600, 750, 90}));
         lineChart.start();
         progress1.start();
         progress2.start();

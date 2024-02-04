@@ -1329,3 +1329,27 @@ User ID: A001;
 Timestamp: 2024-02-04 03:46:39;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-02-04 11:27:09;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-04 11:27:51;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-02-04 11:28:23;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-04 11:28:59;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-02-04 11:29:26;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-04 11:29:45;
+Event: Logout;
+

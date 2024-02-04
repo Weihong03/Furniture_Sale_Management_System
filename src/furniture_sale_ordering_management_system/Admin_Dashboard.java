@@ -13,10 +13,13 @@ import java.awt.Color;
  */
 public class Admin_Dashboard extends javax.swing.JFrame {
 
+    private static String userID;
     /**
      * Creates new form Admin_Dashboard
      */
-    public Admin_Dashboard() {
+    public Admin_Dashboard(String userID) {
+        this.userID = userID;
+        
         initComponents();
         init();
     }
@@ -220,16 +223,16 @@ public class Admin_Dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void init() {
+    void init() {
         lineChart.addLegend("Income", new Color(51, 51, 255), new Color(153, 153, 155));
         lineChart.addLegend("Product Sold", new Color(255, 51, 51), new Color(255, 153, 153));
         lineChart.addLegend("Profit", new Color(51, 255, 51), new Color(153, 255, 153));
-        lineChart.addData(new ModelChart("January", new double[]{500, 200, 80, 89}));
-        lineChart.addData(new ModelChart("February", new double[]{600, 750, 90, 150}));
-        lineChart.addData(new ModelChart("March", new double[]{200, 350, 460, 900}));
-        lineChart.addData(new ModelChart("April", new double[]{480, 150, 750, 700}));
-        lineChart.addData(new ModelChart("May", new double[]{350, 540, 300, 150}));
-        lineChart.addData(new ModelChart("June", new double[]{190, 280, 81, 200}));
+        lineChart.addData(new ModelChart("January", new double[]{500, 200, 80}));
+        lineChart.addData(new ModelChart("February", new double[]{600, 750, 90}));
+        lineChart.addData(new ModelChart("March", new double[]{200, 350, 460}));
+        lineChart.addData(new ModelChart("April", new double[]{480, 150, 750}));
+        lineChart.addData(new ModelChart("May", new double[]{350, 540, 300}));
+        lineChart.addData(new ModelChart("June", new double[]{190, 280, 81}));
         lineChart.start();
         progress1.start();
         progress2.start();
@@ -266,7 +269,9 @@ public class Admin_Dashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Admin_Dashboard().setVisible(true);
+                Admin_Dashboard admindashboard = new Admin_Dashboard(userID);
+                admindashboard.setVisible(true);
+                admindashboard.init();
             }
         });
     }
