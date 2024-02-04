@@ -30,7 +30,6 @@ public class Officer_Home extends javax.swing.JFrame {
 
         initComponents();
         GlassPanePopup.install(this);
-        init();
 
         jLabel11.setText(userID);
 
@@ -531,23 +530,6 @@ public class Officer_Home extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void init() {
-        lineChart.addLegend("Approved", new Color(51, 51, 255), new Color(153, 153, 155));
-        lineChart.addLegend("In Progress", new Color(255, 51, 51), new Color(255, 153, 153));
-        lineChart.addLegend("Closed Sale", new Color(51, 255, 51), new Color(153, 255, 153));
-        lineChart.addData(new ModelChart("January", new double[]{500, 200, 80, 89}));
-        lineChart.addData(new ModelChart("January", new double[]{500, 200, 80, 89}));
-        lineChart.addData(new ModelChart("February", new double[]{600, 750, 90, 150}));
-        lineChart.addData(new ModelChart("March", new double[]{200, 350, 460, 900}));
-        lineChart.addData(new ModelChart("April", new double[]{480, 150, 750, 700}));
-        lineChart.addData(new ModelChart("May", new double[]{350, 540, 300, 150}));
-        lineChart.addData(new ModelChart("June", new double[]{190, 280, 81, 200}));
-        lineChart.start();
-        progress1.start();
-        progress2.start();
-        progress3.start();
-    }
 
     private void button_notificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_notificationActionPerformed
         GlassPanePopup.showPopup(new Notification() {
