@@ -6,6 +6,8 @@ package furniture_sale_ordering_management_system;
 
 import furniture_sale_ordering_management_system.progressindicator.ProductStatusUpdater;
 import furniture_sale_ordering_management_system.Shared_item.glasspanepopup.GlassPanePopup;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import table.TableCustom;
 
 /**
  *
@@ -38,6 +41,12 @@ public class Check_Sales_Status extends javax.swing.JFrame {
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getContentPane().setBackground(Color.WHITE);
+        TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
+
+
+        jTable_SalesProduct.getTableHeader().setFont(new Font("", Font.BOLD, 15));
+        jTable_SalesProduct.setFont(new Font("", Font.BOLD, 10));
     }
 
     /**

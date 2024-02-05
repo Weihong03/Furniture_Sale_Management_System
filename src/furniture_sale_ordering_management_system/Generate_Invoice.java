@@ -19,6 +19,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 import com.itextpdf.text.pdf.draw.LineSeparator;
+import java.awt.Color;
 import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
@@ -40,6 +41,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import table.TableCustom;
 
 /**
  *
@@ -61,6 +63,14 @@ public class Generate_Invoice extends javax.swing.JFrame {
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        getContentPane().setBackground(Color.WHITE);
+        TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
+
+
+        jTable_Salestable.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
+        jTable_Salestable.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
+
     }
 
     private Generate_Invoice() {

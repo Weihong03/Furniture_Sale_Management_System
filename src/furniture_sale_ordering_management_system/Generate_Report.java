@@ -5,6 +5,7 @@
 package furniture_sale_ordering_management_system;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import table.TableCustom;
 
 /**
  *
@@ -38,6 +40,13 @@ public class Generate_Report extends javax.swing.JFrame {
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        getContentPane().setBackground(Color.WHITE);
+        TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
+
+
+        jTable_Sales.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
+        jTable_Sales.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
     }
 
     /**

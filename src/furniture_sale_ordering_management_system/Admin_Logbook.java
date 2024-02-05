@@ -4,6 +4,8 @@
  */
 package furniture_sale_ordering_management_system;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -14,6 +16,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import table.TableCustom;
 
 /**
  *
@@ -29,6 +32,12 @@ public class Admin_Logbook extends javax.swing.JFrame {
         this.userID = userID;
         initComponents();
         initLogbookTable();
+                getContentPane().setBackground(Color.WHITE);
+        TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
+
+
+        jTable_logbook.getTableHeader().setFont(new Font("", Font.BOLD, 15));
+        jTable_logbook.setFont(new Font("", Font.BOLD, 10));
     }
 
     private void initLogbookTable() {

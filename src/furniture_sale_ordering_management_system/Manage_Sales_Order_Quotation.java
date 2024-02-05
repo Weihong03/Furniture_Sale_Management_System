@@ -4,6 +4,7 @@
  */
 package furniture_sale_ordering_management_system;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -19,6 +20,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import table.TableCustom;
 
 /**
  *
@@ -36,6 +38,14 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     public Manage_Sales_Order_Quotation(String userID) {
         initComponents();
         this.userID = userID;
+        
+        getContentPane().setBackground(Color.WHITE);
+        TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
+
+
+        jTable_manageQuotation.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
+        jTable_manageQuotation.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
+
     }
 
     /**

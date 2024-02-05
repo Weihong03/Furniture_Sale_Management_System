@@ -4,6 +4,7 @@
  */
 package furniture_sale_ordering_management_system;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import table.TableCustom;
 
 /**
  *
@@ -35,6 +37,13 @@ public class List_Approval extends javax.swing.JFrame {
         initComponents();
         loadSalesPersonData();
         displaySalesOrdersForSalesperson(salesPersonData);
+        
+        getContentPane().setBackground(Color.WHITE);
+        TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
+
+
+        jTable_listApproval.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
+        jTable_listApproval.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
 
     }
 

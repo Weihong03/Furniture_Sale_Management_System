@@ -4,6 +4,7 @@ package furniture_sale_ordering_management_system;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -22,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import table.TableCustom;
 
 /**
  *
@@ -41,6 +43,13 @@ public class Sale_Approval extends javax.swing.JFrame {
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        getContentPane().setBackground(Color.WHITE);
+        TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
+
+
+        jTable_Salestable.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
+        jTable_Salestable.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
     }
 
     private Sale_Approval() {

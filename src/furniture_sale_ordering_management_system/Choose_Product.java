@@ -1,6 +1,8 @@
 package furniture_sale_ordering_management_system;
 
 import static furniture_sale_ordering_management_system.Choose_Product.userID;
+import java.awt.Color;
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.util.StringTokenizer;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import table.TableCustom;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -41,6 +44,13 @@ public class Choose_Product extends javax.swing.JFrame {
         initComponents();
         List<String> furnitureNames = readFurnitureNamesFromCSV();
         jComboBox_product.setModel(new DefaultComboBoxModel<>(furnitureNames.toArray(new String[0])));
+        
+        getContentPane().setBackground(Color.WHITE);
+        TableCustom.apply(jScrollPane3, TableCustom.TableType.MULTI_LINE);
+
+
+        jTable_product.getTableHeader().setFont(new Font("", Font.BOLD, 15));
+        jTable_product.setFont(new Font("", Font.BOLD, 10));
     }
 
     private List<String> readFurnitureNamesFromCSV() {

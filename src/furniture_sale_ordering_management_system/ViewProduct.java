@@ -5,9 +5,11 @@
 package furniture_sale_ordering_management_system;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import java.awt.Color;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.table.DefaultTableModel;
+import table.TableCustom;
 
 /**
  *
@@ -22,6 +24,13 @@ public class ViewProduct extends javax.swing.JFrame {
         this.userID = userID;
         initComponents();
         displayProduct();
+        
+        getContentPane().setBackground(Color.WHITE);
+        TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
+
+
+        jTable_productListing.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
+        jTable_productListing.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
     }
 
     /**

@@ -1353,3 +1353,11 @@ User ID: A001;
 Timestamp: 2024-02-04 11:29:45;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-02-05 13:04:38;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-05 13:04:53;
+Event: Logout;
+
