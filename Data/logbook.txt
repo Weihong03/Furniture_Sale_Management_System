@@ -1361,3 +1361,39 @@ User ID: A001;
 Timestamp: 2024-02-05 13:04:53;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-02-06 16:51:32;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-06 17:18:44;
+Event: Delete Profile, Deleted row for UserID: Chan,;
+
+User ID: A001;
+Timestamp: 2024-02-06 17:18:55;
+Event: Logout;
+
+User ID: A001;
+Timestamp: 2024-02-06 18:19:36;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-06 18:20:14;
+Event: Update Profile, ID: from 'A001,' to 'A001', Update ID, Username: from 'Leeqiwen,' to 'Leeqiwen', Update Username, Password: from 'Qiwen1234,' to 'Qiwen123', Update Password, Name: from 'Lee Qi Wen,' to 'Lee Qi Wen', Update Name, Age: from '52,' to '52', Update Age, Email: from 'TP065421@mail.apu.edu.my,' to 'TP065421@mail.apu.edu.my', Update Email, Phone Number: from '0128881234,' to '0128881234', Update Phone Number, Role: from 'Admin,' to 'Admin', Update Role;
+
+User ID: A001;
+Timestamp: 2024-02-06 18:20:16;
+Event: Logout;
+
+User ID: A002;
+Timestamp: 2024-02-06 18:20:54;
+Event: Login;
+
+User ID: A002;
+Timestamp: 2024-02-06 18:21:10;
+Event: Update Profile, ID: from 'A001,' to 'A002', Update ID, Username: from 'Leeqiwen,' to 'Alisontang', Update Username, Password: from 'Qiwen123,' to 'Alison123', Update Password, Name: from 'Lee Qi Wen,' to 'Alison Tang Bee Hoon', Update Name, Age: from '52,' to '24', Update Age, Email: from 'TP065421@mail.apu.edu.my,' to 'TP065999@mail.apu.edu.my', Update Email, Phone Number: from '0128881234,' to '0129994321', Update Phone Number, Role: from 'Admin,' to 'Admin', Update Role;
+
+User ID: A002;
+Timestamp: 2024-02-06 18:21:35;
+Event: Update Profile, ID: from 'A002,' to 'A002', Update ID, Username: from 'Alisontang,' to 'Alisontang', Update Username, Password: from 'Alison123,' to 'Alison123', Update Password, Name: from 'Alison Tang Bee Hoon,' to 'Alison Tang Bee Hoon', Update Name, Age: from '24,' to '24', Update Age, Email: from 'TP065999@mail.apu.edu.my,' to 'TP065999@mail.apu.edu.my', Update Email, Phone Number: from '0129994321,' to '0129994321', Update Phone Number, Role: from 'Admin,' to 'Admin', Update Role;
+

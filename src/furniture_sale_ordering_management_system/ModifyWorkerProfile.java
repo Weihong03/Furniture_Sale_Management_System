@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -62,7 +63,7 @@ public class ModifyWorkerProfile extends javax.swing.JFrame {
     jTextField_Username.setText(Username);
     jTextField_Password.setText(Password);
     jTextField_Name.setText(Name);
-    jTextField_Age.setText(Integer.toString(Age));
+    jComboBox_age.setSelectedItem(String.valueOf(Age));
     jTextField_Email.setText(Email);
     jTextField_PhoneNumber.setText(PhoneNumber);
     jTextField_Role.setText(Role);
@@ -86,10 +87,22 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
+       jComboBox_age.setModel(new DefaultComboBoxModel<>(generateAgeOptions()));
         // Set the values in the appropriate fields
     }
 
+    private String[] generateAgeOptions() {
+        int startAge = 18;
+        int endAge = 60;
+        int numberOfOptions = endAge - startAge + 1;
+
+        String[] ageOptions = new String[numberOfOptions];
+
+        for (int i = 0; i < numberOfOptions; i++) {
+            ageOptions[i] = String.valueOf(startAge + i);
+        }
+        return ageOptions;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -107,7 +120,6 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextField_Username = new javax.swing.JTextField();
-        jTextField_Age = new javax.swing.JTextField();
         jTextField_Password = new javax.swing.JTextField();
         jTextField_Name = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -123,6 +135,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         jButton_change = new javax.swing.JButton();
         button_Edit = new furniture_sale_ordering_management_system.progressindicator.Button();
         button_Back = new furniture_sale_ordering_management_system.progressindicator.Button();
+        jComboBox_age = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -163,17 +176,11 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel7.setText("Name :");
 
+        jTextField_Username.setEditable(false);
         jTextField_Username.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextField_Username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_UsernameActionPerformed(evt);
-            }
-        });
-
-        jTextField_Age.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField_Age.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_AgeActionPerformed(evt);
             }
         });
 
@@ -264,6 +271,11 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
             }
         });
 
+        jComboBox_age.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jComboBox_age.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_age.setPreferredSize(new java.awt.Dimension(64, 28));
+        jComboBox_age.setRequestFocusEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -297,9 +309,9 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
                                 .addComponent(jTextField_ID)
                                 .addComponent(jTextField_Password)
                                 .addComponent(jTextField_Name)
-                                .addComponent(jTextField_Age)
                                 .addComponent(jTextField_Email)
-                                .addComponent(jTextField_Role)))
+                                .addComponent(jTextField_Role)
+                                .addComponent(jComboBox_age, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel9)
                             .addGap(18, 18, 18)
@@ -339,10 +351,13 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jTextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField_Age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel6))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox_age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel_icon))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,10 +409,6 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     private void jTextField_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_NameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_NameActionPerformed
-
-    private void jTextField_AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_AgeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_AgeActionPerformed
 
     private void jTextField_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IDActionPerformed
         // TODO add your handling code here:
@@ -488,24 +499,40 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     }//GEN-LAST:event_jLabel_iconAncestorAdded
 
     private void button_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditActionPerformed
-         String ID = jTextField_ID.getText();
+    String ID = jTextField_ID.getText();
     String Username = jTextField_Username.getText();
     String Password = jTextField_Password.getText();
     String Name = jTextField_Name.getText();
-    int Age = Integer.parseInt(jTextField_Age.getText());
+    String ageText = jComboBox_age.getSelectedItem().toString().trim();
     String Email = jTextField_Email.getText();
     String PhoneNumber = jTextField_PhoneNumber.getText();
     String Role = jTextField_Role.getText();
 
     // Validate input fields
-    if (ID.isEmpty() || Username.isEmpty() || Password.isEmpty() || Name.isEmpty() || Email.isEmpty() || PhoneNumber.isEmpty() || Role.isEmpty()) {
+    if (ID.isEmpty() || Username.isEmpty() || Password.isEmpty() || Name.isEmpty() || ageText.isEmpty() || Email.isEmpty() || PhoneNumber.isEmpty() || Role.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Please fill in all the required fields.", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
+    // Validate Name field
+    if (!isValidName(Name)) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid name.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
+    // Validate Email field
+    if (!isValidEmail(Email)) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-    // Perform the booking
+    // Validate Phone Number field
+    if (!isValidPhoneNumber(PhoneNumber)) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid phone number.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Perform the editing
     boolean isModified = modifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, selectedFilePath);
 
     if (isModified) {
@@ -514,6 +541,20 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     } else {
         JOptionPane.showMessageDialog(this, "Failed to modify the profile. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
+
+// Method to validate email address
+private boolean isValidEmail(String email) {
+    return !email.isEmpty() && email.contains("@");
+}
+
+// Method to validate phone number
+private boolean isValidPhoneNumber(String phoneNumber) {
+    return !phoneNumber.isEmpty() && phoneNumber.matches("\\d+");
+}
+    
+private boolean isValidName(String name) {
+    return !name.isEmpty() && name.length() >= 2 &&  name.matches("[a-zA-Z ]+");
     }//GEN-LAST:event_button_EditActionPerformed
 
     private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
@@ -644,6 +685,7 @@ private void logChange(StringBuilder eventBuilder, String fieldName, String oldV
     private furniture_sale_ordering_management_system.progressindicator.Button button_Back;
     private furniture_sale_ordering_management_system.progressindicator.Button button_Edit;
     private javax.swing.JButton jButton_change;
+    private javax.swing.JComboBox<String> jComboBox_age;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -657,7 +699,6 @@ private void logChange(StringBuilder eventBuilder, String fieldName, String oldV
     private javax.swing.JLabel jLabel_icon;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField_Age;
     private javax.swing.JTextField jTextField_Email;
     private javax.swing.JTextField jTextField_ID;
     private javax.swing.JTextField jTextField_Name;

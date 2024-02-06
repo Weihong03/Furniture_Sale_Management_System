@@ -1,12 +1,12 @@
-ID: A001,
-Username: Leeqiwen,
-Password: Qiwen1234,
-Name: Lee Qi Wen,
-Age: 52,
-Email: TP065421@mail.apu.edu.my,
-Phone Number: 0128881234,
+ID: A002,
+Username: Alisontang,
+Password: Alison123,
+Name: Alison Tang Bee Hoon,
+Age: 24,
+Email: TP065999@mail.apu.edu.my,
+Phone Number: 0129994321,
 Role: Admin,
-Filepath: src\furniture_sale_ordering_management_system\Images\Companylogo_1.png
+Filepath: src\furniture_sale_ordering_management_system\Images\Companylogo.jpg
 
 ID: A002,
 Username: Alisontang,

@@ -257,6 +257,7 @@ public class Admin_Profile extends javax.swing.JFrame {
             }
         });
 
+        jTextField_Username.setEditable(false);
         jTextField_Username.setPreferredSize(new java.awt.Dimension(80, 25));
         jTextField_Username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,7 +343,6 @@ public class Admin_Profile extends javax.swing.JFrame {
         jButton_change.setBorderPainted(false);
         jButton_change.setDisabledIcon(null);
         jButton_change.setDisabledSelectedIcon(null);
-        jButton_change.setOpaque(false);
         jButton_change.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_changeActionPerformed(evt);
@@ -483,6 +483,24 @@ public class Admin_Profile extends javax.swing.JFrame {
     private void jTextField_UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_UsernameActionPerformed
+    private boolean isValidName(String name) {
+    // Use regular expression to check if the name contains only alphabetic characters
+    return !name.isEmpty() && name.matches("[a-zA-Z ]+") && name.length() >= 2;
+}
+
+// Method to validate email address
+private boolean isValidEmail(String email) {
+    // You can implement your email validation logic here
+    // For simplicity, let's assume any non-empty string with '@' is valid
+    return !email.isEmpty() && email.contains("@");
+}
+
+// Method to validate phone number
+private boolean isValidPhoneNumber(String phoneNumber) {
+    // You can implement your phone number validation logic here
+    // For simplicity, let's assume any non-empty string with digits is valid
+    return !phoneNumber.isEmpty() && phoneNumber.matches("\\d+");
+}
 
     private void button_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_updateActionPerformed
     String id = jTextField_ID.getText();
@@ -495,6 +513,21 @@ public class Admin_Profile extends javax.swing.JFrame {
     String role = jTextField_role.getText();
     StringBuilder eventBuilder = new StringBuilder("Update Profile");
 
+        // Validate input fields
+    if (!isValidName(fullName)) {
+        JOptionPane.showMessageDialog(null, "Please enter a valid name.", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Exit method if name is invalid
+    }
+
+    if (!isValidEmail(email)) {
+        JOptionPane.showMessageDialog(null, "Please enter a valid email address.", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Exit method if email is invalid
+    }
+
+    if (!isValidPhoneNumber(phoneNumber)) {
+        JOptionPane.showMessageDialog(null, "Please enter a valid phone number.", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Exit method if phone number is invalid
+    }
     // Read the existing content from the text file
     String filePath = "Data/Admin.txt";
 

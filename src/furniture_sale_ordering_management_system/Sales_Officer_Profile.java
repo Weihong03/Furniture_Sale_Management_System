@@ -167,8 +167,6 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         // Set the title of the window
         setTitle("Sales_Officer_Profile");
 
-        jTextField_ID.setEditable(false);
-
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -228,6 +226,8 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
 
         jTextField_ID.setEditable(false);
+
+        jTextField_Username.setEditable(false);
 
         jTextField_FullName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -534,15 +534,30 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                                 lines[2] = "Password: " + jTextField_Password.getText().trim() + ",";
                                 break;
                             case "Name":
+                                String newName = jTextField_FullName.getText().trim();
+                                if (!isValidName(newName)) {
+                                JOptionPane.showMessageDialog(null, "Please enter a valid name.");
+                                return;
+                            }
                                 lines[3] = "Name: " + jTextField_FullName.getText().trim() + ",";
                                 break;
                             case "Age":
                                 lines[4] = "Age: " + jComboBox_Age.getSelectedItem().toString().trim() + ",";
                                 break;
                             case "Email":
+                                  String newEmail = jTextField_Email.getText().trim();
+                            if (!isValidEmail(newEmail)) {
+                                JOptionPane.showMessageDialog(null, "Please enter a valid email address.");
+                                return;
+                            }
                                 lines[5] = "Email: " + jTextField_Email.getText().trim() + ",";
                                 break;
                             case "Phone Number":
+                                  String newPhoneNumber = jTextField_PhoneNumber.getText().trim();
+                            if (!isValidPhoneNumber(newPhoneNumber)) {
+                                JOptionPane.showMessageDialog(null, "Please enter a valid phone number.");
+                                return;
+                            }
                                 lines[6] = "Phone Number: " + jTextField_PhoneNumber.getText().trim() + ",";
                                 break;
                             case "Role":
@@ -579,6 +594,25 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+        
+private boolean isValidName(String name) {
+    // Use regular expression to check if the name contains only alphabetic characters
+    return !name.isEmpty() && name.matches("[a-zA-Z ]+") && name.length() >= 2;
+}
+
+// Method to validate email address
+private boolean isValidEmail(String email) {
+    // You can implement your email validation logic here
+    // For simplicity, let's assume any non-empty string with '@' is valid
+    return !email.isEmpty() && email.contains("@");
+}
+
+// Method to validate phone number
+private boolean isValidPhoneNumber(String phoneNumber) {
+    // You can implement your phone number validation logic here
+    // For simplicity, let's assume any non-empty string with digits is valid
+    return !phoneNumber.isEmpty() && phoneNumber.matches("\\d+");
     }//GEN-LAST:event_button_UpdateActionPerformed
 
     /**
