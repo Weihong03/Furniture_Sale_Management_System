@@ -54,7 +54,6 @@ public class Admin_Logbook extends javax.swing.JFrame {
     }
 
     // Function to add log entries to the admin logbook
-    // Function to add log entries to the admin logbook
     public void addLogEntry(String userID, String event) {
         // Get the current timestamp
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());

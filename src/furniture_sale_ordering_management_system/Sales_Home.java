@@ -24,6 +24,7 @@ public class Sales_Home extends javax.swing.JFrame {
     public Sales_Home(String userID) {
         this.userID = userID;
         initComponents();
+        init();
 
         jLabel11.setText(userID);
 
@@ -508,7 +509,21 @@ public class Sales_Home extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
+     private void init() {
+        lineChart.addLegend("Income", new Color(51, 51, 255), new Color(153, 153, 155));
+        lineChart.addLegend("Product Sold", new Color(255, 51, 51), new Color(255, 153, 153));
+        lineChart.addLegend("Profit", new Color(51, 255, 51), new Color(153, 255, 153));
+        lineChart.addData(new ModelChart("January", new double[]{500, 200, 80}));
+        lineChart.addData(new ModelChart("February", new double[]{600, 750, 90}));
+        lineChart.addData(new ModelChart("March", new double[]{200, 350, 460}));
+        lineChart.addData(new ModelChart("April", new double[]{480, 150, 750}));
+        lineChart.addData(new ModelChart("May", new double[]{350, 540, 300}));
+        lineChart.addData(new ModelChart("June", new double[]{190, 280, 81}));
+        lineChart.start();
+        progress1.start();
+        progress2.start();
+        progress3.start();
+    }
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         int choice = JOptionPane.showConfirmDialog(this, "Do you want to exit?", "Confirm Logout", JOptionPane.YES_NO_OPTION);
 
@@ -543,6 +558,19 @@ public class Sales_Home extends javax.swing.JFrame {
         jPanel3.removeAll();
         jPanel3.repaint();
         jPanel3.revalidate();
+
+        // Create and set up the new Generate_Report internalFrame
+        Admin_Dashboard admindashboard = new Admin_Dashboard(userID);
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(admindashboard.getContentPane());
+        internalFrame.setSize(1050, 680);
+        internalFrame.setResizable(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
+
+        // Add the new internalFrame to jPanel3
+        jPanel3.add(internalFrame);
+        internalFrame.setVisible(true);
     }//GEN-LAST:event_jPanel_dashboardMouseClicked
 
     private void jPanel_createSalesQuotationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_createSalesQuotationMouseClicked
@@ -721,7 +749,6 @@ public class Sales_Home extends javax.swing.JFrame {
         jPanel3.revalidate();
 
         Sales_Officer_Profile sales_officer_Profile = new Sales_Officer_Profile(userID);
-
 
         JInternalFrame internalFrame = new JInternalFrame();
         internalFrame.setContentPane(sales_officer_Profile.getContentPane());

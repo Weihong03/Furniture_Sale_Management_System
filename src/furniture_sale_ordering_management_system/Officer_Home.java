@@ -29,6 +29,7 @@ public class Officer_Home extends javax.swing.JFrame {
         this.userID = userID;
 
         initComponents();
+        init();
         GlassPanePopup.install(this);
 
         jLabel11.setText(userID);
@@ -530,7 +531,21 @@ public class Officer_Home extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+        private void init() {
+        lineChart.addLegend("Income", new Color(51, 51, 255), new Color(153, 153, 155));
+        lineChart.addLegend("Product Sold", new Color(255, 51, 51), new Color(255, 153, 153));
+        lineChart.addLegend("Profit", new Color(51, 255, 51), new Color(153, 255, 153));
+        lineChart.addData(new ModelChart("January", new double[]{500, 200, 80}));
+        lineChart.addData(new ModelChart("February", new double[]{600, 750, 90}));
+        lineChart.addData(new ModelChart("March", new double[]{200, 350, 460}));
+        lineChart.addData(new ModelChart("April", new double[]{480, 150, 750}));
+        lineChart.addData(new ModelChart("May", new double[]{350, 540, 300}));
+        lineChart.addData(new ModelChart("June", new double[]{190, 280, 81}));
+        lineChart.start();
+        progress1.start();
+        progress2.start();
+        progress3.start();
+    }
     private void button_notificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_notificationActionPerformed
         GlassPanePopup.showPopup(new Notification() {
 
@@ -595,6 +610,19 @@ public class Officer_Home extends javax.swing.JFrame {
         jPanel3.removeAll();
         jPanel3.repaint();
         jPanel3.revalidate();
+
+        // Create and set up the new Generate_Report internalFrame
+        Officer_Dashboard officerdashboard = new Officer_Dashboard(userID);
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setContentPane(officerdashboard.getContentPane());
+        internalFrame.setSize(1050, 680);
+        internalFrame.setResizable(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
+        internalFrame.setBorder(BorderFactory.createEmptyBorder());
+
+        // Add the new internalFrame to jPanel3
+        jPanel3.add(internalFrame);
+        internalFrame.setVisible(true);
     }//GEN-LAST:event_jPanel_dashboardMouseClicked
 
     private void jPanel_managePersonalProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_managePersonalProfileMouseClicked

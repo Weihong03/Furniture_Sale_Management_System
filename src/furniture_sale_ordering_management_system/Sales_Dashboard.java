@@ -13,10 +13,13 @@ import java.awt.Color;
  */
 public class Sales_Dashboard extends javax.swing.JFrame {
 
+    private static String userID;
+
     /**
      * Creates new form Sales_Dashboard
      */
-    public Sales_Dashboard() {
+    public Sales_Dashboard(String userID) {
+        this.userID = userID;
         initComponents();
         init();
     }
@@ -45,6 +48,7 @@ public class Sales_Dashboard extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(1050, 680));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(238, 240, 218));
@@ -222,6 +226,7 @@ public class Sales_Dashboard extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 680));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void init() {
@@ -239,7 +244,7 @@ public class Sales_Dashboard extends javax.swing.JFrame {
         progress2.start();
         progress3.start();
     }
-            
+
     /**
      * @param args the command line arguments
      */
@@ -270,7 +275,9 @@ public class Sales_Dashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Sales_Dashboard().setVisible(true);
+                Sales_Dashboard salesdashboard = new Sales_Dashboard(userID);
+                salesdashboard.setVisible(true);
+                salesdashboard.init();
             }
         });
     }
