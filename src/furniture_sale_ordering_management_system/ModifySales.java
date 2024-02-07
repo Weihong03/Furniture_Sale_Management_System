@@ -52,9 +52,6 @@ public class ModifySales extends javax.swing.JFrame {
         // Set the title of the window
         setTitle("Modify Sales Quotation");
 
-        // Set the default close operation
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         // Set the values in the appropriate fields
         jTextField_ID.setText(ID);
         jTextField_Amount.setText(Amount);
@@ -100,6 +97,7 @@ public class ModifySales extends javax.swing.JFrame {
         button_Back = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(238, 240, 218));
 
@@ -232,23 +230,21 @@ public class ModifySales extends javax.swing.JFrame {
                         .addComponent(button_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addComponent(button_Modify, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField_Amount, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                        .addComponent(jTextField_ID)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField_Salesperson)
-                        .addComponent(jTextField_product)
-                        .addComponent(jTextField_itemid)
-                        .addComponent(jTextField_price)
-                        .addComponent(jTextField_customer)))
+                    .addComponent(jTextField_Amount, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(jTextField_ID)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField_Salesperson)
+                    .addComponent(jTextField_product)
+                    .addComponent(jTextField_itemid)
+                    .addComponent(jTextField_price)
+                    .addComponent(jTextField_customer))
                 .addContainerGap(324, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))

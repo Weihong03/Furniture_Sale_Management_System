@@ -60,8 +60,6 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
 
         setTitle("Create Sales Order Quotation");
 
-        // Set the default close operation
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void loadSalesPersonData() {
@@ -159,7 +157,6 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
         jLabel10.setText("Category:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(238, 240, 218));
