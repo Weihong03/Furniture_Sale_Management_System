@@ -97,7 +97,6 @@ public class ModifySales extends javax.swing.JFrame {
         button_Back = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(238, 240, 218));
 
