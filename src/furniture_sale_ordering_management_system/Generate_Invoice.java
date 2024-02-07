@@ -104,6 +104,7 @@ public class Generate_Invoice extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setText("GENERATE INVOICE");

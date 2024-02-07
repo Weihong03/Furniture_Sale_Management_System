@@ -105,6 +105,7 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         jPanel1.add(button_checkstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(905, 91, 110, -1));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -171,6 +171,7 @@ public class Choose_Product extends javax.swing.JFrame {
         jPanel1.add(button_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 80, 30));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
