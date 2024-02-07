@@ -418,15 +418,7 @@ public class Sale_Approval extends javax.swing.JFrame {
                     model.addRow(rowData);
                 }
             }
-            // Set cell alignment to center
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-            for (int i = 0; i < jTable_Salestable.getColumnCount(); i++) {
-                jTable_Salestable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-            }
-            // Set header alignment to center
-            ((DefaultTableCellRenderer) jTable_Salestable.getTableHeader().getDefaultRenderer())
-                    .setHorizontalAlignment(JLabel.CENTER);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
