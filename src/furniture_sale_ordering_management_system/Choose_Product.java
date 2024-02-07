@@ -116,7 +116,7 @@ public class Choose_Product extends javax.swing.JFrame {
         jTextArea_totalamount.setRows(5);
         jScrollPane2.setViewportView(jTextArea_totalamount);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, -1, 275));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, -1, 260));
 
         jTable_product.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
