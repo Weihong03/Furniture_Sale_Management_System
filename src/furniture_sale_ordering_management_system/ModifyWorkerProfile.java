@@ -138,6 +138,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         jComboBox_age = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(238, 240, 218));
 
