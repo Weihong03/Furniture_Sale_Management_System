@@ -10,9 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -160,6 +158,11 @@ public class Generate_Report extends javax.swing.JFrame {
         JFreeChart barChart = createChart(barChartDataset, reportType);
         JFreeChart lineChart = createLineChart(lineChartDataset, reportType);
 
+        // Set background color for the charts
+        Color chartBackgroundColor = new Color(238,240,218);
+        barChart.setBackgroundPaint(chartBackgroundColor);
+        lineChart.setBackgroundPaint(chartBackgroundColor);
+
         // Create separate panels for bar chart and line chart
         ChartPanel barChartPanel = new ChartPanel(barChart);
         ChartPanel lineChartPanel = new ChartPanel(lineChart);
@@ -170,6 +173,9 @@ public class Generate_Report extends javax.swing.JFrame {
 
         // Set layout manager to BorderLayout
         chartFrame.setLayout(new BorderLayout());
+
+        // Set frame to undecorated
+        chartFrame.setUndecorated(true);
 
         // Add the chart panels to the JPanel
         chartFrame.add(barChartPanel, BorderLayout.WEST);

@@ -30,11 +30,11 @@ Filepath: src\furniture_sale_ordering_management_system\Images\profile picture4.
 
 ID: S003,
 Username: Aryssa,
-Password: aryssa123,
-Name: Iloverongwei,
+Password: Aryssa123,
+Name: Aryssa,
 Age: 60,
-Email: iloverongwei@gmail.com,
-Phone Number: 999,
+Email: aryssa@gmail.com,
+Phone Number: 999999999,
 Role: Salesperson,
 Filepath: src\furniture_sale_ordering_management_system\Images\profile picture3.jpg
 
