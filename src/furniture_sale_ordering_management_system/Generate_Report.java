@@ -40,10 +40,9 @@ public class Generate_Report extends javax.swing.JFrame {
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         getContentPane().setBackground(Color.WHITE);
         TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
-
 
         jTable_Sales.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
         jTable_Sales.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
