@@ -158,7 +158,7 @@ public class Choose_Product extends javax.swing.JFrame {
                 button_ProceedActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Proceed, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 550, 80, 30));
+        jPanel1.add(button_Proceed, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 550, 140, 30));
 
         button_add.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         button_add.setText("Add");

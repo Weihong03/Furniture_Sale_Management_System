@@ -249,7 +249,7 @@ public class List_Approval extends javax.swing.JFrame {
             jTable_listApproval.getColumnModel().getColumn(6).setPreferredWidth(30);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 205, 830, 275));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 205, 1010, 450));
 
         jLabel2.setText("Sales Person :");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 174, -1, -1));
