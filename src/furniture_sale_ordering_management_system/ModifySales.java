@@ -101,7 +101,7 @@ public class ModifySales extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(238, 240, 218));
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setForeground(new java.awt.Color(0, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
