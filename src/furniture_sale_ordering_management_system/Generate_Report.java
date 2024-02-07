@@ -174,9 +174,6 @@ public class Generate_Report extends javax.swing.JFrame {
         // Set layout manager to BorderLayout
         chartFrame.setLayout(new BorderLayout());
 
-        // Set frame to undecorated
-        chartFrame.setUndecorated(true);
-
         // Add the chart panels to the JPanel
         chartFrame.add(barChartPanel, BorderLayout.WEST);
         chartFrame.add(lineChartPanel, BorderLayout.EAST);
