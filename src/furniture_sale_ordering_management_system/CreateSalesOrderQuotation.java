@@ -214,7 +214,7 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
         jTextArea_itemid.setRows(5);
         jScrollPane2.setViewportView(jTextArea_itemid);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, -1, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, -1, -1));
 
         jTextArea_product.setEditable(false);
         jTextArea_product.setColumns(20);
@@ -232,7 +232,7 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
         jTextArea_price.setRows(5);
         jScrollPane1.setViewportView(jTextArea_price);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setText("Customer Name :");
