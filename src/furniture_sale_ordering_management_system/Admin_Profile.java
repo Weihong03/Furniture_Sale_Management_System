@@ -39,7 +39,7 @@ public class Admin_Profile extends javax.swing.JFrame {
 
     private static final String BOOKING_FILE_PATH = "Data/Admin.txt";
 
-     public void setIconFromFile(String BOOKING_FILE_PATH) {
+    public void setIconFromFile(String BOOKING_FILE_PATH) {
         String imagePath = readFilePathFromFile(BOOKING_FILE_PATH, userID);
 
         // Set the icon for jLabel1
@@ -77,7 +77,7 @@ public class Admin_Profile extends javax.swing.JFrame {
         }
         return "";
     }
-    
+
     public void setInitialValues(String userID) {
         jTextField_ID.setText(userID);
     }
@@ -484,199 +484,180 @@ public class Admin_Profile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_UsernameActionPerformed
     private boolean isValidName(String name) {
-    // Use regular expression to check if the name contains only alphabetic characters
-    return !name.isEmpty() && name.matches("[a-zA-Z ]+") && name.length() >= 2;
-}
+        // Use regular expression to check if the name contains only alphabetic characters
+        return !name.isEmpty() && name.matches("[a-zA-Z ]+") && name.length() >= 2;
+    }
 
 // Method to validate email address
-private boolean isValidEmail(String email) {
-    // You can implement your email validation logic here
-    // For simplicity, let's assume any non-empty string with '@' is valid
-    return !email.isEmpty() && email.contains("@");
-}
+    private boolean isValidEmail(String email) {
+        // You can implement your email validation logic here
+        // For simplicity, let's assume any non-empty string with '@' is valid
+        return !email.isEmpty() && email.contains("@");
+    }
 
 // Method to validate phone number
-private boolean isValidPhoneNumber(String phoneNumber) {
-    // You can implement your phone number validation logic here
-    // For simplicity, let's assume any non-empty string with digits is valid
-    return !phoneNumber.isEmpty() && phoneNumber.matches("\\d+");
-}
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        // You can implement your phone number validation logic here
+        // For simplicity, let's assume any non-empty string with digits is valid
+        return !phoneNumber.isEmpty() && phoneNumber.matches("\\d+");
+    }
     private void button_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_updateActionPerformed
-    String id = jTextField_ID.getText();
-    String username = jTextField_Username.getText();
-    String password = jTextField_Password.getText();
-    String fullName = jTextField_FullName.getText();
-    String ageString = jComboBox_Age.getSelectedItem().toString();
-    String email = jTextField_Email.getText();
-    String phoneNumber = jTextField_PhoneNumber.getText();
-    String role = jTextField_role.getText();
-    StringBuilder eventBuilder = new StringBuilder("Update Personal Profile");
+        String id = jTextField_ID.getText();
+        String username = jTextField_Username.getText();
+        String password = jTextField_Password.getText();
+        String fullName = jTextField_FullName.getText();
+        String ageString = jComboBox_Age.getSelectedItem().toString();
+        String email = jTextField_Email.getText();
+        String phoneNumber = jTextField_PhoneNumber.getText();
+        String role = jTextField_role.getText();
+        StringBuilder eventBuilder = new StringBuilder("Update Personal Profile");
 
         // Validate input fields
-    if (!isValidName(fullName)) {
-        JOptionPane.showMessageDialog(null, "Please enter a valid name.", "Error", JOptionPane.ERROR_MESSAGE);
-        return; // Exit method if name is invalid
-    }
-
-    if (!isValidEmail(email)) {
-        JOptionPane.showMessageDialog(null, "Please enter a valid email address.", "Error", JOptionPane.ERROR_MESSAGE);
-        return; // Exit method if email is invalid
-    }
-
-    if (!isValidPhoneNumber(phoneNumber)) {
-        JOptionPane.showMessageDialog(null, "Please enter a valid phone number.", "Error", JOptionPane.ERROR_MESSAGE);
-        return; // Exit method if phone number is invalid
-    }
-    // Read the existing content from the text file
-    String filePath = "Data/Admin.txt";
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-        StringBuilder content = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            content.append(line).append("\n");
-        }
-        
-        
-        
-updateFilePath(content, id, selectedFilePath, eventBuilder);
-
-        // Update the information in the content and modify the event accordingly
-       if (updateContent(content, "ID: ", id, id, eventBuilder)) {
-         eventBuilder.append(", Update ID")
-                 ;
-}   
-        if (updateContent(content, "Username: ", id, username, eventBuilder)) {
-        eventBuilder.append(", Update Username");
-        }
-        if (updateContent(content, "Password: ", id, password, eventBuilder)) {
-        eventBuilder.append(", Update Password");
-        }
-        if (updateContent(content, "Name: ", id, fullName, eventBuilder)) {
-            eventBuilder.append(", Update Name");
-        }
-        if (updateContent(content, "Age: ", id, String.valueOf(ageString), eventBuilder)) {
-            eventBuilder.append(", Update Age");
-        }
-        if (updateContent(content, "Email: ", id, email, eventBuilder)) {
-            eventBuilder.append(", Update Email");
-        }
-        if (updateContent(content, "Phone Number: ", id, phoneNumber, eventBuilder)) {
-            eventBuilder.append(", Update Phone Number");
-        }
-        if (updateContent(content, "Role: ", id,role, eventBuilder)) {
-            eventBuilder.append(", Update Role");
+        if (!isValidName(fullName)) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid name.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Exit method if name is invalid
         }
 
-
-        // Write the updated content back to the text file
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            writer.write(content.toString());
-            JOptionPane.showMessageDialog(null, "Content successfully updated!");
+        if (!isValidEmail(email)) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email address.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Exit method if email is invalid
         }
-        
 
-        // Add the log entry with the specific event
-        Admin_Logbook adminLogbook = new Admin_Logbook(userID);
-        adminLogbook.addLogEntry(userID, eventBuilder.toString());
-        
-    } catch (IOException e) {
-        e.printStackTrace(); // Handle the exception according to your application's requirements
-    }
+        if (!isValidPhoneNumber(phoneNumber)) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid phone number.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Exit method if phone number is invalid
+        }
+        // Read the existing content from the text file
+        String filePath = "Data/Admin.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
+            }
+
+            updateFilePath(content, id, selectedFilePath, eventBuilder);
+
+            // Update the information in the content and modify the event accordingly
+            if (updateContent(content, "ID: ", id, id, eventBuilder)) {
+                eventBuilder.append(", Update ID");
+            }
+            if (updateContent(content, "Username: ", id, username, eventBuilder)) {
+                eventBuilder.append(", Update Username");
+            }
+            if (updateContent(content, "Password: ", id, password, eventBuilder)) {
+                eventBuilder.append(", Update Password");
+            }
+            if (updateContent(content, "Name: ", id, fullName, eventBuilder)) {
+                eventBuilder.append(", Update Name");
+            }
+            if (updateContent(content, "Age: ", id, String.valueOf(ageString), eventBuilder)) {
+                eventBuilder.append(", Update Age");
+            }
+            if (updateContent(content, "Email: ", id, email, eventBuilder)) {
+                eventBuilder.append(", Update Email");
+            }
+            if (updateContent(content, "Phone Number: ", id, phoneNumber, eventBuilder)) {
+                eventBuilder.append(", Update Phone Number");
+            }
+            if (updateContent(content, "Role: ", id, role, eventBuilder)) {
+                eventBuilder.append(", Update Role");
+            }
+
+            // Write the updated content back to the text file
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+                writer.write(content.toString());
+                JOptionPane.showMessageDialog(null, "Content successfully updated!");
+            }
+
+            // Add the log entry with the specific event
+            Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+            adminLogbook.addLogEntry(userID, eventBuilder.toString());
+
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception according to your application's requirements
+        }
     }
     // Additional code for updating filepath
-   
 
- private boolean updateContent(StringBuilder content, String label, String id, String newValue, StringBuilder eventBuilder) {
-    int startIndex = content.indexOf("ID: " + id);
-    if (startIndex != -1) {
-        // Find the end index of the current entry (marked by an empty line)
-        int endIndex = content.indexOf("\n\n", startIndex);
-        if (endIndex == -1) {
-            // If the last entry, endIndex is the end of content
-            endIndex = content.length();
-        }
-        // Search for the label within the range of the current entry
-        int labelIndex = content.indexOf(label, startIndex);
-        if (labelIndex != -1 && labelIndex < endIndex) {
-            int valueIndex = labelIndex + label.length();
-            // Find the end of the current line to extract the old value
-            int lineEndIndex = content.indexOf("\n", valueIndex);
-            String oldValue = content.substring(valueIndex, lineEndIndex).trim();
-            if (!oldValue.equals(newValue)) {
-                // Update the content and modify the event
-                content.replace(valueIndex, lineEndIndex, newValue);
-                eventBuilder.append(", ").append(label.trim()).append(" from '").append(oldValue).append("' to '").append(newValue).append("'");
-                return true; // Return true if the update was successful
+    private boolean updateContent(StringBuilder content, String label, String id, String newValue, StringBuilder eventBuilder) {
+        int startIndex = content.indexOf("ID: " + id);
+        if (startIndex != -1) {
+            // Find the end index of the current entry (marked by an empty line)
+            int endIndex = content.indexOf("\n\n", startIndex);
+            if (endIndex == -1) {
+                // If the last entry, endIndex is the end of content
+                endIndex = content.length();
             }
-        } else {
-            System.out.println("Label not found: " + label);
-        }
-    } else {
-        System.out.println("ID not found: " + id);
-    }
-    return false;
-}
-
-
-
-
-    
-private boolean updateFilePath(StringBuilder content, String userID, String selectedFilePath, StringBuilder eventBuilder) {
-    int startIndex = content.indexOf("ID: " + userID);
-    if (startIndex != -1) {
-        // Find the end index of the user's entry (marked by an empty line)
-        int endIndex = content.indexOf("\n\n", startIndex);
-        if (endIndex == -1) {
-            // If the last entry, endIndex is the end of content
-            endIndex = content.length();
-        }
-        // Find the index of "Filepath: " within the range of the user's entry
-        int filepathIndex = content.indexOf("Filepath: ", startIndex);
-        if (filepathIndex != -1 && filepathIndex < endIndex) {
-            int filepathEndIndex = content.indexOf("\n", filepathIndex);
-            String oldFilePath = content.substring(filepathIndex + "Filepath: ".length(), filepathEndIndex).trim();
-            String newFilePath;
-
-            if (selectedFilePath != null) {
-                newFilePath = selectedFilePath;
-            } else {
-                // If selectedFilePath is null, keep the original filepath
-                newFilePath = oldFilePath;
-            }
-
-            // If filepath is actually updated, replace it in the content
-            if (!oldFilePath.equals(newFilePath)) {
-                int srcIndex = newFilePath.indexOf("src");
-                if (srcIndex != -1) {
-                    // Remove the part before "src"
-                    newFilePath = newFilePath.substring(srcIndex);
+            // Search for the label within the range of the current entry
+            int labelIndex = content.indexOf(label, startIndex);
+            if (labelIndex != -1 && labelIndex < endIndex) {
+                int valueIndex = labelIndex + label.length();
+                // Find the end of the current line to extract the old value
+                int lineEndIndex = content.indexOf("\n", valueIndex);
+                String oldValue = content.substring(valueIndex, lineEndIndex).trim();
+                if (!oldValue.equals(newValue)) {
+                    // Update the content and modify the event
+                    content.replace(valueIndex, lineEndIndex, newValue + ",");
+                    eventBuilder.append(", ").append(label.trim()).append(" from '").append(oldValue).append("' to '").append(newValue).append("'");
+                    return true; // Return true if the update was successful
                 }
-                content.replace(filepathIndex + "Filepath: ".length(), filepathEndIndex, newFilePath);
-                // Append the filepath update to the eventBuilder
-                eventBuilder.append(", Update Filepath from '").append(oldFilePath).append("' to '").append(newFilePath).append("'");
-                return true;
+            } else {
+                System.out.println("Label not found: " + label);
             }
         } else {
-            System.out.println("Filepath label not found for user with ID: " + userID);
+            System.out.println("ID not found: " + id);
         }
-    } else {
-        System.out.println("User ID not found: " + userID);
+        return false;
     }
-    return false;
 
+    private boolean updateFilePath(StringBuilder content, String userID, String selectedFilePath, StringBuilder eventBuilder) {
+        int startIndex = content.indexOf("ID: " + userID);
+        if (startIndex != -1) {
+            // Find the end index of the user's entry (marked by an empty line)
+            int endIndex = content.indexOf("\n\n", startIndex);
+            if (endIndex == -1) {
+                // If the last entry, endIndex is the end of content
+                endIndex = content.length();
+            }
+            // Find the index of "Filepath: " within the range of the user's entry
+            int filepathIndex = content.indexOf("Filepath: ", startIndex);
+            if (filepathIndex != -1 && filepathIndex < endIndex) {
+                int filepathEndIndex = content.indexOf("\n", filepathIndex);
+                String oldFilePath = content.substring(filepathIndex + "Filepath: ".length(), filepathEndIndex).trim();
+                String newFilePath;
 
+                if (selectedFilePath != null) {
+                    newFilePath = selectedFilePath;
+                } else {
+                    // If selectedFilePath is null, keep the original filepath
+                    newFilePath = oldFilePath;
+                }
 
-    
-
-
-
-
-
+                // If filepath is actually updated, replace it in the content
+                if (!oldFilePath.equals(newFilePath)) {
+                    int srcIndex = newFilePath.indexOf("src");
+                    if (srcIndex != -1) {
+                        // Remove the part before "src"
+                        newFilePath = newFilePath.substring(srcIndex);
+                    }
+                    content.replace(filepathIndex + "Filepath: ".length(), filepathEndIndex, newFilePath);
+                    // Append the filepath update to the eventBuilder
+                    eventBuilder.append(", Update Filepath from '").append(oldFilePath).append("' to '").append(newFilePath).append("'");
+                    return true;
+                }
+            } else {
+                System.out.println("Filepath label not found for user with ID: " + userID);
+            }
+        } else {
+            System.out.println("User ID not found: " + userID);
+        }
+        return false;
 
 
     }//GEN-LAST:event_button_updateActionPerformed
-    
+
     private void jLabel_iconAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel_iconAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel_iconAncestorAdded
@@ -722,7 +703,7 @@ private boolean updateFilePath(StringBuilder content, String userID, String sele
             }
         }
     }//GEN-LAST:event_jButton_changeActionPerformed
-  
+
     /**
      * @param args the command line arguments
      */
