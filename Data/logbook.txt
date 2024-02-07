@@ -2185,3 +2185,11 @@ User ID: A001;
 Timestamp: 2024-02-07 11:36:53;
 Event: Update Personal Profile, ID: from 'A001,' to 'A001', Update ID, Username: from 'Leeqiwen,' to 'Leeqiwen', Update Username, Password: from 'Qiwen123,' to 'Qiwen1233', Update Password, Name: from 'Lee Qi Wen,' to 'Lee Qi Wen', Update Name, Age: from '60,' to '60', Update Age, Email: from 'TP065421@mail.apu.edu.my,' to 'TP065421@mail.apu.edu.my', Update Email, Phone Number: from '012888123,' to '012888123', Update Phone Number, Role: from 'Admin,' to 'Admin', Update Role;
 
+User ID: A001;
+Timestamp: 2024-02-07 11:39:44;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-07 11:40:04;
+Event: Logout;
+
