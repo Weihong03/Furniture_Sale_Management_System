@@ -106,17 +106,17 @@ public class Choose_Product extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Product :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, 30));
 
         jComboBox_product.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox_product, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 210, 30));
+        jPanel1.add(jComboBox_product, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 380, 30));
 
         jTextArea_totalamount.setEditable(false);
         jTextArea_totalamount.setColumns(20);
         jTextArea_totalamount.setRows(5);
         jScrollPane2.setViewportView(jTextArea_totalamount);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 255, -1, 275));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, -1, 275));
 
         jTable_product.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,7 +136,7 @@ public class Choose_Product extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTable_product);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 255, -1, 275));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 255, 770, 275));
 
         button_delete.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         button_delete.setText("Delete");
@@ -146,7 +146,7 @@ public class Choose_Product extends javax.swing.JFrame {
                 button_deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(button_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, 80, 30));
+        jPanel1.add(button_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 80, 30));
 
         button_Proceed.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         button_Proceed.setText("Proceed");
@@ -166,7 +166,7 @@ public class Choose_Product extends javax.swing.JFrame {
                 button_addActionPerformed(evt);
             }
         });
-        jPanel1.add(button_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 80, 30));
+        jPanel1.add(button_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 80, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
