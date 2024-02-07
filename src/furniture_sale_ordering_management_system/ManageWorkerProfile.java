@@ -68,14 +68,13 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         button_delete = new furniture_sale_ordering_management_system.progressindicator.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1080, 720));
         setSize(new java.awt.Dimension(1080, 720));
 
         jPanel1.setBackground(new java.awt.Color(238, 240, 218));
         jPanel1.setMinimumSize(new java.awt.Dimension(1060, 720));
         jPanel1.setPreferredSize(new java.awt.Dimension(1060, 720));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(160, 125, 238));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setText("MANAGE WORKER PROFILE");

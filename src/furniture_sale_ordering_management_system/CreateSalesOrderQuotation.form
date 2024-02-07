@@ -335,7 +335,7 @@
                   <Font name="Segoe UI" size="48" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="MODIFY SALES QUOTATION"/>
+                <Property name="text" type="java.lang.String" value="CREATE SALES QUOTATION"/>
               </Properties>
             </Component>
           </SubComponents>
