@@ -59,13 +59,14 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField_search = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_manageQuotation = new javax.swing.JTable();
         button_Delete = new furniture_sale_ordering_management_system.progressindicator.Button();
         button_Modify = new furniture_sale_ordering_management_system.progressindicator.Button();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -78,20 +79,16 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1050, 680));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("MANAGE SALES ORDER QUOTATION");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 112, -1, -1));
-
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setText("Search :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jTextField_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_searchActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 190, -1));
+        jPanel1.add(jTextField_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 190, -1));
 
         jTable_manageQuotation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,7 +111,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable_manageQuotation);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 212, 757, 275));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 177, 1030, 430));
 
         button_Delete.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         button_Delete.setText("Delete");
@@ -124,7 +121,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
                 button_DeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, 100, 30));
+        jPanel1.add(button_Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 100, 30));
 
         button_Modify.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         button_Modify.setText("Modify");
@@ -134,7 +131,31 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
                 button_ModifyActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Modify, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 100, 30));
+        jPanel1.add(button_Modify, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 620, 100, 30));
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("MANAGE SALES QUOTATION");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -326,6 +347,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_manageQuotation;
     private javax.swing.JTextField jTextField_search;
