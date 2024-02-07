@@ -501,7 +501,6 @@ private boolean isValidPhoneNumber(String phoneNumber) {
     // For simplicity, let's assume any non-empty string with digits is valid
     return !phoneNumber.isEmpty() && phoneNumber.matches("\\d+");
 }
-
     private void button_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_updateActionPerformed
     String id = jTextField_ID.getText();
     String username = jTextField_Username.getText();
@@ -511,7 +510,7 @@ private boolean isValidPhoneNumber(String phoneNumber) {
     String email = jTextField_Email.getText();
     String phoneNumber = jTextField_PhoneNumber.getText();
     String role = jTextField_role.getText();
-    StringBuilder eventBuilder = new StringBuilder("Update Profile");
+    StringBuilder eventBuilder = new StringBuilder("Update Personal Profile");
 
         // Validate input fields
     if (!isValidName(fullName)) {
@@ -538,33 +537,37 @@ private boolean isValidPhoneNumber(String phoneNumber) {
             content.append(line).append("\n");
         }
         
-        updateFilePath(content, "Filepath: ", selectedFilePath);
+        
+        
+updateFilePath(content, id, selectedFilePath, eventBuilder);
 
         // Update the information in the content and modify the event accordingly
-        if (updateContent(content, "ID: ", id, eventBuilder)) {
-            eventBuilder.append(", Update ID");
+       if (updateContent(content, "ID: ", id, id, eventBuilder)) {
+         eventBuilder.append(", Update ID")
+                 ;
+}   
+        if (updateContent(content, "Username: ", id, username, eventBuilder)) {
+        eventBuilder.append(", Update Username");
         }
-        if (updateContent(content, "Username: ", username, eventBuilder)) {
-            eventBuilder.append(", Update Username");
+        if (updateContent(content, "Password: ", id, password, eventBuilder)) {
+        eventBuilder.append(", Update Password");
         }
-        if (updateContent(content, "Password: ", password, eventBuilder)) {
-            eventBuilder.append(", Update Password");
-        }
-        if (updateContent(content, "Name: ", fullName, eventBuilder)) {
+        if (updateContent(content, "Name: ", id, fullName, eventBuilder)) {
             eventBuilder.append(", Update Name");
         }
-        if (updateContent(content, "Age: ", String.valueOf(ageString), eventBuilder)) {
+        if (updateContent(content, "Age: ", id, String.valueOf(ageString), eventBuilder)) {
             eventBuilder.append(", Update Age");
         }
-        if (updateContent(content, "Email: ", email, eventBuilder)) {
+        if (updateContent(content, "Email: ", id, email, eventBuilder)) {
             eventBuilder.append(", Update Email");
         }
-        if (updateContent(content, "Phone Number: ", phoneNumber, eventBuilder)) {
+        if (updateContent(content, "Phone Number: ", id, phoneNumber, eventBuilder)) {
             eventBuilder.append(", Update Phone Number");
         }
-        if (updateContent(content, "Role: ", role, eventBuilder)) {
+        if (updateContent(content, "Role: ", id,role, eventBuilder)) {
             eventBuilder.append(", Update Role");
         }
+
 
         // Write the updated content back to the text file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
@@ -584,47 +587,93 @@ private boolean isValidPhoneNumber(String phoneNumber) {
     // Additional code for updating filepath
    
 
-    private boolean updateContent(StringBuilder content, String label, String value, StringBuilder eventBuilder) {
-        int startIndex = content.indexOf(label);
-        if (startIndex != -1) {
-            int endIndex = content.indexOf(label) + label.length();
-            String oldValue = content.substring(endIndex, content.indexOf("\n", endIndex)).trim();
-            if (!oldValue.equals(value)) {
-                content.replace(endIndex, content.indexOf("\n", endIndex), value + ",");
-                eventBuilder.append(", ").append(label.trim()).append(" from '").append(oldValue).append("' to '").append(value).append("'");
+ private boolean updateContent(StringBuilder content, String label, String id, String newValue, StringBuilder eventBuilder) {
+    int startIndex = content.indexOf("ID: " + id);
+    if (startIndex != -1) {
+        // Find the end index of the current entry (marked by an empty line)
+        int endIndex = content.indexOf("\n\n", startIndex);
+        if (endIndex == -1) {
+            // If the last entry, endIndex is the end of content
+            endIndex = content.length();
+        }
+        // Search for the label within the range of the current entry
+        int labelIndex = content.indexOf(label, startIndex);
+        if (labelIndex != -1 && labelIndex < endIndex) {
+            int valueIndex = labelIndex + label.length();
+            // Find the end of the current line to extract the old value
+            int lineEndIndex = content.indexOf("\n", valueIndex);
+            String oldValue = content.substring(valueIndex, lineEndIndex).trim();
+            if (!oldValue.equals(newValue)) {
+                // Update the content and modify the event
+                content.replace(valueIndex, lineEndIndex, newValue);
+                eventBuilder.append(", ").append(label.trim()).append(" from '").append(oldValue).append("' to '").append(newValue).append("'");
                 return true; // Return true if the update was successful
             }
         } else {
             System.out.println("Label not found: " + label);
         }
-        return false;}
-    
-    private void updateFilePath(StringBuilder content, String label, String selectedFilePath) {
-    int startIndex = content.indexOf(label);
-    if (startIndex != -1) {
-        int endIndex = content.indexOf("\n", startIndex);
-        String oldFilePath = content.substring(startIndex + label.length(), endIndex).trim();
-        String newFilePath;
-
-        if (selectedFilePath != null) {
-            newFilePath = selectedFilePath;
-        } else {
-            // If selectedFilePath is null, keep the original filepath
-            newFilePath = oldFilePath;
-        }
-
-        // Find the index of "src" in the filepath
-        int srcIndex = newFilePath.indexOf("src");
-        
-        if (srcIndex != -1) {
-            // Remove the part before "src"
-            newFilePath = newFilePath.substring(srcIndex);
-        }
-
-        content.replace(startIndex + label.length(), endIndex, newFilePath);
     } else {
-        System.out.println("Label not found: " + label);
+        System.out.println("ID not found: " + id);
     }
+    return false;
+}
+
+
+
+
+    
+private boolean updateFilePath(StringBuilder content, String userID, String selectedFilePath, StringBuilder eventBuilder) {
+    int startIndex = content.indexOf("ID: " + userID);
+    if (startIndex != -1) {
+        // Find the end index of the user's entry (marked by an empty line)
+        int endIndex = content.indexOf("\n\n", startIndex);
+        if (endIndex == -1) {
+            // If the last entry, endIndex is the end of content
+            endIndex = content.length();
+        }
+        // Find the index of "Filepath: " within the range of the user's entry
+        int filepathIndex = content.indexOf("Filepath: ", startIndex);
+        if (filepathIndex != -1 && filepathIndex < endIndex) {
+            int filepathEndIndex = content.indexOf("\n", filepathIndex);
+            String oldFilePath = content.substring(filepathIndex + "Filepath: ".length(), filepathEndIndex).trim();
+            String newFilePath;
+
+            if (selectedFilePath != null) {
+                newFilePath = selectedFilePath;
+            } else {
+                // If selectedFilePath is null, keep the original filepath
+                newFilePath = oldFilePath;
+            }
+
+            // If filepath is actually updated, replace it in the content
+            if (!oldFilePath.equals(newFilePath)) {
+                int srcIndex = newFilePath.indexOf("src");
+                if (srcIndex != -1) {
+                    // Remove the part before "src"
+                    newFilePath = newFilePath.substring(srcIndex);
+                }
+                content.replace(filepathIndex + "Filepath: ".length(), filepathEndIndex, newFilePath);
+                // Append the filepath update to the eventBuilder
+                eventBuilder.append(", Update Filepath from '").append(oldFilePath).append("' to '").append(newFilePath).append("'");
+                return true;
+            }
+        } else {
+            System.out.println("Filepath label not found for user with ID: " + userID);
+        }
+    } else {
+        System.out.println("User ID not found: " + userID);
+    }
+    return false;
+
+
+
+    
+
+
+
+
+
+
 
     }//GEN-LAST:event_button_updateActionPerformed
     

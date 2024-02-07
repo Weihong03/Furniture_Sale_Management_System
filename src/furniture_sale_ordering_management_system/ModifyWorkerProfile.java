@@ -565,7 +565,7 @@ dispose();    }//GEN-LAST:event_button_BackActionPerformed
      */
  
 private boolean modifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String selectedFilePath) {
-    StringBuilder eventBuilder = new StringBuilder("Update Profile");
+    StringBuilder eventBuilder = new StringBuilder("Update Worker Profile");
     try {
         Path inputFile = Path.of(BOOKING_FILE_PATH);
         List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);

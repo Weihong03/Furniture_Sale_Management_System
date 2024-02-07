@@ -1,19 +1,19 @@
-ID: A002,
-Username: Alisontang,
-Password: Alison123,
-Name: Alison Tang Bee Hoon,
-Age: 24,
-Email: TP065999@mail.apu.edu.my,
-Phone Number: 0129994321,
-Role: Admin,
-Filepath: src\furniture_sale_ordering_management_system\Images\Companylogo.jpg
+ID: A001
+Username: Leeqiwen
+Password: Qiwen123
+Name: Lee Qi Wen
+Age: 60
+Email: TP065421@mail.apu.edu.my
+Phone Number: 012888123
+Role: Admin
+Filepath: src\furniture_sale_ordering_management_system\Images\Company picture4.jpg
 
-ID: A002,
-Username: Alisontang,
-Password: Alison123,
-Name: Alison Tang Bee Hoon,
-Age: 24,
-Email: TP065999@mail.apu.edu.my,
-Phone Number: 0129994321,
-Role: Admin,
-Filepath: C:\Users\yuw18\OneDrive\Documents\NetBeansProjects\Furniture_Sale_Management_System1\src\furniture_sale_ordering_management_system\Images\image.png,
+ID: A002
+Username: Alisontang
+Password: Alison123
+Name: Tang Alison
+Age: 23
+Email: TP034051@mail.apu.edu.my
+Phone Number: 012888123
+Role: Admin
+Filepath: src\furniture_sale_ordering_management_system\Images\Company picture4.jpg

@@ -289,7 +289,7 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
                 String deletedUserID = parts[1].trim();
 
                 // Log the deletion event
-                String event = "Delete Profile, Deleted row for UserID: " + deletedUserID;
+                String event = "Delete Worker Profile, Deleted row for UserID: " + deletedUserID;
                 Admin_Logbook adminLogbook = new Admin_Logbook(userID);
                 adminLogbook.addLogEntry(userID, event);
 
