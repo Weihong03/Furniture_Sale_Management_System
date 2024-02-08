@@ -592,6 +592,8 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                     }
                 }
 
+                int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to update the content?", "Confirmation", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
                 // Update the content with modified user data
                 content.insert(startIndex, "\n");
                 content.insert(endIndex, "\n");
@@ -604,13 +606,15 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
         }
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
+       
         
 private boolean isValidName(String name) {
     // Use regular expression to check if the name contains only alphabetic characters
