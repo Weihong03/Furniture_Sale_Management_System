@@ -233,10 +233,12 @@ public class Login extends javax.swing.JFrame {
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/user_white.png"))); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(20, 22));
 
         show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/eye.png"))); // NOI18N
         show.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        show.setPreferredSize(new java.awt.Dimension(20, 22));
         show.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 showMouseClicked(evt);
@@ -246,6 +248,7 @@ public class Login extends javax.swing.JFrame {
         disable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         disable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/furniture_sale_ordering_management_system/Images/eye_hide.png"))); // NOI18N
         disable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        disable.setPreferredSize(new java.awt.Dimension(20, 22));
         disable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 disableMouseClicked(evt);
@@ -305,9 +308,9 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(button_login, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(disable)
-                            .addComponent(show)
-                            .addComponent(jLabel7))
+                            .addComponent(disable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(show, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -324,15 +327,15 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
                         .addComponent(jTextField_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(jPasswordField_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(disable)
-                        .addComponent(show)))
+                        .addComponent(disable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(show, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox1)
@@ -370,7 +373,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_usernameActionPerformed
 
     private void jPasswordField_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField_passwordActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jPasswordField_passwordActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -465,10 +468,10 @@ public class Login extends javax.swing.JFrame {
             String line;
             String previousLine = null;
             while ((line = adminReader.readLine()) != null) {
-                if (!username.isEmpty() && !password.isEmpty() && line.contains("Username: " + username)) {
+                if (!username.isEmpty() && !password.isEmpty() && line.startsWith("Username: " + username)) {
                     // Read the next line for password validation
                     String passwordLine = adminReader.readLine();
-                    if (passwordLine != null && passwordLine.contains("Password: " + password)) {
+                    if (passwordLine != null && passwordLine.equals("Password: " + password + ",")) {
                         // Return the corresponding ID
                         return previousLine.split(": ")[1].trim().replace(",", "");
                     }
@@ -477,10 +480,10 @@ public class Login extends javax.swing.JFrame {
             }
 
             while ((line = SalesOfficerReader.readLine()) != null) {
-                if (!username.isEmpty() && !password.isEmpty() && line.contains("Username: " + username)) {
+                if (!username.isEmpty() && !password.isEmpty() && line.startsWith("Username: " + username)) {
                     // Read the next line for password validation
                     String passwordLine = SalesOfficerReader.readLine();
-                    if (passwordLine != null && passwordLine.contains("Password: " + password)) {
+                    if (passwordLine != null && passwordLine.equals("Password: " + password + ",")) {
                         // Return the corresponding ID
                         return previousLine.split(": ")[1].trim().replace(",", "");
                     }
