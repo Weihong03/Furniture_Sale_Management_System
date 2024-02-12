@@ -44,7 +44,6 @@ public class Check_Sales_Status extends javax.swing.JFrame {
         getContentPane().setBackground(Color.WHITE);
         TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
 
-
         jTable_SalesProduct.getTableHeader().setFont(new Font("", Font.BOLD, 15));
         jTable_SalesProduct.setFont(new Font("", Font.BOLD, 10));
     }
