@@ -178,5 +178,5 @@ Salesperson: Horongwei,
 Confirmation: Default, 
 Officer: Default,
 Invoice: No,
-Status: Default,
+Status: In Progress,
 
