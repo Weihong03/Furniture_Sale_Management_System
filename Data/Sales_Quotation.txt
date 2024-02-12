@@ -8,7 +8,7 @@ Customer: Lee Hao,
 Salesperson: Horongwei,
 Confirmation: Approved,
 Officer: Leeboonjie,
-Invoice: No,
+Invoice: Yes,
 Status: Closed Sale,
 
 ID: Q013,

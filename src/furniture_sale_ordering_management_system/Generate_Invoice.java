@@ -63,10 +63,9 @@ public class Generate_Invoice extends javax.swing.JFrame {
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         getContentPane().setBackground(Color.WHITE);
         TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
-
 
         jTable_Salestable.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
         jTable_Salestable.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
@@ -232,24 +231,26 @@ public class Generate_Invoice extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_searchActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        int selectedRowIndex = jTable_Salestable.getSelectedRow();
-        if (selectedRowIndex >= 0) {
-            // Get the values from the selected row
-            String ID = jTable_Salestable.getValueAt(selectedRowIndex, 0).toString();
-            String Amount = jTable_Salestable.getValueAt(selectedRowIndex, 1).toString();
-            String Date = jTable_Salestable.getValueAt(selectedRowIndex, 2).toString();
-            String Product = jTable_Salestable.getValueAt(selectedRowIndex, 3).toString();
-            String ItemID = jTable_Salestable.getValueAt(selectedRowIndex, 4).toString();
-            String Price = jTable_Salestable.getValueAt(selectedRowIndex, 5).toString();
-            String Customer = jTable_Salestable.getValueAt(selectedRowIndex, 6).toString();
-            String Salesperson = jTable_Salestable.getValueAt(selectedRowIndex, 7).toString();
-            String Officer = jTable_Salestable.getValueAt(selectedRowIndex, 9).toString();
+        int[] selectedRows = jTable_Salestable.getSelectedRows();
+        if (selectedRows.length > 0) {
+            for (int selectedRowIndex : selectedRows) {
+                // Get the values from the selected row
+                String ID = jTable_Salestable.getValueAt(selectedRowIndex, 0).toString();
+                String Amount = jTable_Salestable.getValueAt(selectedRowIndex, 1).toString();
+                String Date = jTable_Salestable.getValueAt(selectedRowIndex, 2).toString();
+                String Product = jTable_Salestable.getValueAt(selectedRowIndex, 3).toString();
+                String ItemID = jTable_Salestable.getValueAt(selectedRowIndex, 4).toString();
+                String Price = jTable_Salestable.getValueAt(selectedRowIndex, 5).toString();
+                String Customer = jTable_Salestable.getValueAt(selectedRowIndex, 6).toString();
+                String Salesperson = jTable_Salestable.getValueAt(selectedRowIndex, 7).toString();
+                String Officer = jTable_Salestable.getValueAt(selectedRowIndex, 9).toString();
 
-            // Generate PDF invoice
-            generatePDFInvoice(ID, Amount, Date, Product, ItemID, Price, Customer, Salesperson, Officer);
+                // Generate PDF invoice
+                generatePDFInvoice(ID, Amount, Date, Product, ItemID, Price, Customer, Salesperson, Officer);
+            }
         } else {
             // No row selected, display an error message or perform appropriate handling
-            JOptionPane.showMessageDialog(this, "Please select a Sales to modify.");
+            JOptionPane.showMessageDialog(this, "Please select at least one Sales to generate an invoice.");
         }
     }//GEN-LAST:event_button1ActionPerformed
 
