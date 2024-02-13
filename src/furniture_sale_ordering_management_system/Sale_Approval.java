@@ -30,7 +30,7 @@ import table.TableCustom;
 public class Sale_Approval extends javax.swing.JFrame {
 
     private String userID;
-    private static final String BOOKING_FILE_PATH = "Data/Sales_Quotation.txt";
+    private static final String QUOTATION_FILE_PATH = "Data/Sales_Quotation.txt";
 
     public Sale_Approval(String userID) {
         this.userID = userID;
@@ -257,7 +257,7 @@ public class Sale_Approval extends javax.swing.JFrame {
             String Customer = jTable_Salestable.getValueAt(selectedRowIndex, 6).toString();
             String Salesperson = jTable_Salestable.getValueAt(selectedRowIndex, 7).toString();
 
-            // Create an instance of ModifyBooking and pass the selected data
+            // Create an instance of ModifyQuotation and pass the selected data
             ModifySales modifySales = new ModifySales(ID, Amount, Date, Product, ItemID, Price, Customer, Salesperson, userID);
             modifySales.setVisible(true);
             displaySales();
@@ -362,7 +362,7 @@ public class Sale_Approval extends javax.swing.JFrame {
 
     private boolean modifyConfirmation(String ID, String Confirmation) {
         try {
-            Path inputFile = Path.of(BOOKING_FILE_PATH);
+            Path inputFile = Path.of(QUOTATION_FILE_PATH);
 
             List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
 

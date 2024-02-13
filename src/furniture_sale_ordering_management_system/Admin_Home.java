@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class Admin_Home extends javax.swing.JFrame {
 
     private String userID;
-    private static final String BOOKING_FILE_PATH = "Data/Admin.txt";
+    private static final String PROFILE_FILE_PATH = "Data/Admin.txt";
 
     public Admin_Home(String userID) {
         this.userID = userID;
@@ -568,7 +568,7 @@ public class Admin_Home extends javax.swing.JFrame {
         jPanel3.add(internalFrame);
         internalFrame.setVisible(true);
         administratorprofile.setInitialValues(userID);
-        administratorprofile.setIconFromFile(BOOKING_FILE_PATH);
+        administratorprofile.setIconFromFile(PROFILE_FILE_PATH);
         administratorprofile.setInitialValuesFromUserID(userID);
     }//GEN-LAST:event_jPanel_managePersonalProfileMouseClicked
 

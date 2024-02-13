@@ -43,13 +43,13 @@ public class ModifyWorkerProfile extends javax.swing.JFrame {
     private String selectedFilePath;
     
     
-    private static final String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
+    private static final String PROFILE_FILE_PATH = "Data/Officer_Salesperson.txt";
     
 
 
 
     /**
-     * Creates new form RoomBooking
+     * Creates new form Profile
      * @param ID
      * @param Username
      * @param Password
@@ -414,8 +414,8 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jTextField_IDActionPerformed
-   public void setIconFromFile(String BOOKING_FILE_PATH) {
-    String imagePath = readFilePathFromFile(BOOKING_FILE_PATH, ID);
+   public void setIconFromFile(String PROFILE_FILE_PATH) {
+    String imagePath = readFilePathFromFile(PROFILE_FILE_PATH, ID);
 
     // Set the icon for jLabel1
     if (!imagePath.isEmpty()) {
@@ -431,8 +431,8 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     } 
 }
 
-    private String readFilePathFromFile(String BOOKING_FILE_PATH, String ID) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(BOOKING_FILE_PATH))) {
+    private String readFilePathFromFile(String PROFILE_FILE_PATH, String ID) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(PROFILE_FILE_PATH))) {
         String line;
         while ((line = reader.readLine()) != null) {
             // Check if the line starts with the expected field
@@ -567,7 +567,7 @@ dispose();    }//GEN-LAST:event_button_BackActionPerformed
 private boolean modifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String selectedFilePath) {
     StringBuilder eventBuilder = new StringBuilder("Update Worker Profile");
     try {
-        Path inputFile = Path.of(BOOKING_FILE_PATH);
+        Path inputFile = Path.of(PROFILE_FILE_PATH);
         List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
 
         boolean found = false;

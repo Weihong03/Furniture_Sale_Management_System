@@ -310,7 +310,7 @@ private boolean modifySalesQuotation(String orderID, String Amount, String Produ
 
             // Check if the first part equals the orderID
             if (parts.length > 0 && parts[0].equals("ID: " + orderID + ",")) {
-                // Modify the existing booking
+                // Modify the existing Quotation
                 lines.set(i, "ID: " + orderID + ",");
                 lines.set(i + 1, "Amount: " + Amount + ",");
                 lines.set(i + 2, "Date: " + formattedDate + ",");

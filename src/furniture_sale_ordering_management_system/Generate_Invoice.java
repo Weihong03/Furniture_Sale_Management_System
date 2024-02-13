@@ -51,9 +51,6 @@ public class Generate_Invoice extends javax.swing.JFrame {
 
     private String userID;
 
-    /**
-     * Creates new form ManageBooking
-     */
     public Generate_Invoice(String userID) {
         this.userID = userID;
 

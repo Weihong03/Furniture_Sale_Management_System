@@ -31,7 +31,7 @@ public class ModifySales extends javax.swing.JFrame {
     public static String Salesperson;
     private String userID;
 
-    private static final String BOOKING_FILE_PATH = "Data/Sales_Quotation.txt";
+    private static final String QUOTATION_FILE_PATH = "Data/Sales_Quotation.txt";
 
     private ModifySales(String ID, String Amount, String Date, String Product, String ItemID, String Price, String Customer, String Salesperson) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -362,7 +362,7 @@ dispose();
 
     private boolean modifySales(String ID, String Amount, String Date, String Product, String ItemID, String Price, String Customer, String Salesperson) {
         try {
-            Path inputFile = Path.of(BOOKING_FILE_PATH);
+            Path inputFile = Path.of(QUOTATION_FILE_PATH);
 
             List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
 

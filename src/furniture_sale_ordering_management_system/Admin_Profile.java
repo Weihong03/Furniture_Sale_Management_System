@@ -37,10 +37,10 @@ public class Admin_Profile extends javax.swing.JFrame {
     public static String userData;
     private String selectedFilePath;
 
-    private static final String BOOKING_FILE_PATH = "Data/Admin.txt";
+    private static final String PROFILE_FILE_PATH = "Data/Admin.txt";
 
-    public void setIconFromFile(String BOOKING_FILE_PATH) {
-        String imagePath = readFilePathFromFile(BOOKING_FILE_PATH, userID);
+    public void setIconFromFile(String PROFILE_FILE_PATH) {
+        String imagePath = readFilePathFromFile(PROFILE_FILE_PATH, userID);
 
         // Set the icon for jLabel1
         if (!imagePath.isEmpty()) {
@@ -57,8 +57,8 @@ public class Admin_Profile extends javax.swing.JFrame {
         }
     }
 
-    private String readFilePathFromFile(String BOOKING_FILE_PATH, String userID) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(BOOKING_FILE_PATH))) {
+    private String readFilePathFromFile(String PROFILE_FILE_PATH, String userID) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(PROFILE_FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 // Check if the line starts with the expected field
@@ -797,7 +797,7 @@ public class Admin_Profile extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Admin_Profile AdminProfile = new Admin_Profile();
-                AdminProfile.setIconFromFile(BOOKING_FILE_PATH);
+                AdminProfile.setIconFromFile(PROFILE_FILE_PATH);
                 AdminProfile.setVisible(true);
             }
         });

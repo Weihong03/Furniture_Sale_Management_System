@@ -215,7 +215,7 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
 
     private void jTextField_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_searchActionPerformed
         String searchText = jTextField_search.getText();
-        searchBookings(searchText);
+        searchProfiles(searchText);
     }//GEN-LAST:event_jTextField_searchActionPerformed
 
     private void button_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_modifyActionPerformed
@@ -234,12 +234,12 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
             String Email = jTable_profiletable.getValueAt(selectedRowIndex, 5).toString();
             String PhoneNumber = jTable_profiletable.getValueAt(selectedRowIndex, 6).toString();
             String Role = jTable_profiletable.getValueAt(selectedRowIndex, 7).toString();
-            String BOOKING_FILE_PATH = "Data/Officer_Salesperson.txt";
+            String PROFILE_FILE_PATH = "Data/Officer_Salesperson.txt";
 
             // Create an instance of ModifyWorkerProfile and pass the selected data
             ModifyWorkerProfile modifyProfile = new ModifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, userID);
             modifyProfile.setInitialValues(ID, Username, Password, Name, Age, Email, PhoneNumber, Role);
-            modifyProfile.setIconFromFile(BOOKING_FILE_PATH);
+            modifyProfile.setIconFromFile(PROFILE_FILE_PATH);
             modifyProfile.setVisible(true);
         } else {
             // No row selected, display an error message or perform appropriate handling
@@ -351,7 +351,7 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         }
     }
 
-    public void searchBookings(String searchText) {
+    public void searchProfiles(String searchText) {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(jTable_profiletable.getModel());
         jTable_profiletable.setRowSorter(rowSorter);
 
