@@ -4,7 +4,6 @@
  */
 package furniture_sale_ordering_management_system;
 
-import static furniture_sale_ordering_management_system.Officer_Home.userID;
 import furniture_sale_ordering_management_system.chart.ModelChart;
 import java.awt.Color;
 import javax.swing.BorderFactory;

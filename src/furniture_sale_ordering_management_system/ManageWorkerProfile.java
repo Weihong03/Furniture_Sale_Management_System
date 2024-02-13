@@ -74,7 +74,7 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(1060, 720));
         jPanel1.setPreferredSize(new java.awt.Dimension(1060, 720));
 
-        jPanel2.setBackground(new java.awt.Color(160, 125, 238));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setText("MANAGE WORKER PROFILE");
