@@ -27,14 +27,13 @@ public class Admin_Logbook extends javax.swing.JFrame {
     private DefaultTableModel logbookTableModel;
     public static String event;
     public static String userID;
-    
+
     public Admin_Logbook(String userID) {
         this.userID = userID;
         initComponents();
         initLogbookTable();
-                getContentPane().setBackground(Color.WHITE);
+        getContentPane().setBackground(Color.WHITE);
         TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
-
 
         jTable_logbook.getTableHeader().setFont(new Font("", Font.BOLD, 15));
         jTable_logbook.setFont(new Font("", Font.BOLD, 10));
@@ -75,7 +74,7 @@ public class Admin_Logbook extends javax.swing.JFrame {
                     rowData[0] = line.substring(9); // Extract username value
 
                     line = br.readLine();
-                    line = line.replace(";", " ");                    
+                    line = line.replace(";", " ");
                     if (line != null && line.startsWith("Timestamp: ")) {
                         String[] timestampParts = line.split(": ", 2);
                         if (timestampParts.length == 2) {
@@ -86,7 +85,7 @@ public class Admin_Logbook extends javax.swing.JFrame {
                         }
 
                         line = br.readLine();
-                        line = line.replace(";", " "); 
+                        line = line.replace(";", " ");
                         if (line != null && line.startsWith("Event: ")) {
                             String[] eventParts = line.split(": ", 2);
                             if (eventParts.length == 2) {
@@ -119,7 +118,7 @@ public class Admin_Logbook extends javax.swing.JFrame {
             }
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

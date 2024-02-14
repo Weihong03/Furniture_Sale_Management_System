@@ -4,8 +4,6 @@ package furniture_sale_ordering_management_system;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
-
 import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;
@@ -41,15 +39,12 @@ public class ModifyWorkerProfile extends javax.swing.JFrame {
     public static String Role;
     public static String userID;
     private String selectedFilePath;
-    
-    
+
     private static final String PROFILE_FILE_PATH = "Data/Officer_Salesperson.txt";
-    
-
-
 
     /**
      * Creates new form Profile
+     *
      * @param ID
      * @param Username
      * @param Password
@@ -58,18 +53,19 @@ public class ModifyWorkerProfile extends javax.swing.JFrame {
      * @param Email
      * @param PhoneNumber
      * @param Role
-     */public void setInitialValues(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role) {
-    jTextField_ID.setText(ID);
-    jTextField_Username.setText(Username);
-    jTextField_Password.setText(Password);
-    jTextField_Name.setText(Name);
-    jComboBox_age.setSelectedItem(String.valueOf(Age));
-    jTextField_Email.setText(Email);
-    jTextField_PhoneNumber.setText(PhoneNumber);
-    jTextField_Role.setText(Role);
-}
-     
-public ModifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String userID){
+     */
+    public void setInitialValues(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role) {
+        jTextField_ID.setText(ID);
+        jTextField_Username.setText(Username);
+        jTextField_Password.setText(Password);
+        jTextField_Name.setText(Name);
+        jComboBox_age.setSelectedItem(String.valueOf(Age));
+        jTextField_Email.setText(Email);
+        jTextField_PhoneNumber.setText(PhoneNumber);
+        jTextField_Role.setText(Role);
+    }
+
+    public ModifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String userID) {
         this.ID = ID;
         this.Username = Username;
         this.Password = Password;
@@ -79,15 +75,15 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         this.PhoneNumber = PhoneNumber;
         this.Role = Role;
         this.userID = userID;
-        
-    initComponents();
+
+        initComponents();
         // Set the title of the window
         setTitle("Modify Worker Profile");
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-       jComboBox_age.setModel(new DefaultComboBoxModel<>(generateAgeOptions()));
+        jComboBox_age.setModel(new DefaultComboBoxModel<>(generateAgeOptions()));
         // Set the values in the appropriate fields
     }
 
@@ -103,6 +99,7 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
         }
         return ageOptions;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -412,86 +409,86 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
 
     private void jTextField_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IDActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jTextField_IDActionPerformed
-   public void setIconFromFile(String PROFILE_FILE_PATH) {
-    String imagePath = readFilePathFromFile(PROFILE_FILE_PATH, ID);
 
-    // Set the icon for jLabel1
-    if (!imagePath.isEmpty()) {
-        try {
-            URL imageUrl = new File(imagePath).toURI().toURL();
-            ImageIcon icon = new ImageIcon(imageUrl);
-            Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
-            ImageIcon scaledIcon = new ImageIcon(image);
-            jLabel_icon.setIcon(scaledIcon);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+    }//GEN-LAST:event_jTextField_IDActionPerformed
+    public void setIconFromFile(String PROFILE_FILE_PATH) {
+        String imagePath = readFilePathFromFile(PROFILE_FILE_PATH, ID);
+
+        // Set the icon for jLabel1
+        if (!imagePath.isEmpty()) {
+            try {
+                URL imageUrl = new File(imagePath).toURI().toURL();
+                ImageIcon icon = new ImageIcon(imageUrl);
+                Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
+                ImageIcon scaledIcon = new ImageIcon(image);
+                jLabel_icon.setIcon(scaledIcon);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
-    } 
-}
+    }
 
     private String readFilePathFromFile(String PROFILE_FILE_PATH, String ID) {
-    try (BufferedReader reader = new BufferedReader(new FileReader(PROFILE_FILE_PATH))) {
-        String line;
-        while ((line = reader.readLine()) != null) {
-            // Check if the line starts with the expected field
-            if (line.startsWith("ID: " + ID)) {
-                // Extract filepath information
-                while ((line = reader.readLine()) != null) {
-                    if (line.startsWith("Filepath: ")) {
-                        String imagePath = line.substring("Filepath: ".length()).trim();
-                        return imagePath;
+        try (BufferedReader reader = new BufferedReader(new FileReader(PROFILE_FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Check if the line starts with the expected field
+                if (line.startsWith("ID: " + ID)) {
+                    // Extract filepath information
+                    while ((line = reader.readLine()) != null) {
+                        if (line.startsWith("Filepath: ")) {
+                            String imagePath = line.substring("Filepath: ".length()).trim();
+                            return imagePath;
+                        }
                     }
                 }
-            } 
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
+        return "";
     }
-    return "";
-}
 
     private void jButton_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_changeActionPerformed
-     JFileChooser fileChooser = new JFileChooser("src/furniture_sale_ordering_management_system/Images");
+        JFileChooser fileChooser = new JFileChooser("src/furniture_sale_ordering_management_system/Images");
 
-    // Set the file filter to only allow image files
-    FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png", "gif");
-    fileChooser.setFileFilter(filter);
+        // Set the file filter to only allow image files
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png", "gif");
+        fileChooser.setFileFilter(filter);
 
-    // Show the file chooser dialog
-    int result = fileChooser.showOpenDialog(this);
+        // Show the file chooser dialog
+        int result = fileChooser.showOpenDialog(this);
 
-    // Check if the user selected a file
-    if (result == JFileChooser.APPROVE_OPTION) {
-        // Get the selected file
-        File selectedFile = fileChooser.getSelectedFile();
+        // Check if the user selected a file
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // Get the selected file
+            File selectedFile = fileChooser.getSelectedFile();
 
-        // Display the selected file path
-        System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+            // Display the selected file path
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
 
-        // Save the selected file path
-        selectedFilePath = selectedFile.getAbsolutePath();
+            // Save the selected file path
+            selectedFilePath = selectedFile.getAbsolutePath();
 
-        try {
-            // Convert the File to URL
-            URL imageUrl = selectedFile.toURI().toURL();
+            try {
+                // Convert the File to URL
+                URL imageUrl = selectedFile.toURI().toURL();
 
-            // Create ImageIcon from URL
-            ImageIcon icon = new ImageIcon(imageUrl);
+                // Create ImageIcon from URL
+                ImageIcon icon = new ImageIcon(imageUrl);
 
-            // Scale the image
-            Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
-            ImageIcon scaledIcon = new ImageIcon(image);
+                // Scale the image
+                Image image = icon.getImage().getScaledInstance(226, 226, Image.SCALE_DEFAULT);
+                ImageIcon scaledIcon = new ImageIcon(image);
 
-            // Set the JLabel icon using the scaled ImageIcon
-            jLabel_icon.setIcon(scaledIcon);
+                // Set the JLabel icon using the scaled ImageIcon
+                jLabel_icon.setIcon(scaledIcon);
 
-        } catch (MalformedURLException ex) {
-            // Handle exception (e.g., print error message or show a dialog)
-            ex.printStackTrace();
+            } catch (MalformedURLException ex) {
+                // Handle exception (e.g., print error message or show a dialog)
+                ex.printStackTrace();
+            }
         }
-    }
     }//GEN-LAST:event_jButton_changeActionPerformed
 
     private void jLabel_iconAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel_iconAncestorAdded
@@ -499,62 +496,62 @@ public ModifyWorkerProfile(String ID, String Username, String Password, String N
     }//GEN-LAST:event_jLabel_iconAncestorAdded
 
     private void button_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditActionPerformed
-    String ID = jTextField_ID.getText();
-    String Username = jTextField_Username.getText();
-    String Password = jTextField_Password.getText();
-    String Name = jTextField_Name.getText();
-    String ageText = jComboBox_age.getSelectedItem().toString().trim();
-    String Email = jTextField_Email.getText();
-    String PhoneNumber = jTextField_PhoneNumber.getText();
-    String Role = jTextField_Role.getText();
+        String ID = jTextField_ID.getText();
+        String Username = jTextField_Username.getText();
+        String Password = jTextField_Password.getText();
+        String Name = jTextField_Name.getText();
+        String ageText = jComboBox_age.getSelectedItem().toString().trim();
+        String Email = jTextField_Email.getText();
+        String PhoneNumber = jTextField_PhoneNumber.getText();
+        String Role = jTextField_Role.getText();
 
-    // Validate input fields
-    if (ID.isEmpty() || Username.isEmpty() || Password.isEmpty() || Name.isEmpty() || ageText.isEmpty() || Email.isEmpty() || PhoneNumber.isEmpty() || Role.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please fill in all the required fields.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
+        // Validate input fields
+        if (ID.isEmpty() || Username.isEmpty() || Password.isEmpty() || Name.isEmpty() || ageText.isEmpty() || Email.isEmpty() || PhoneNumber.isEmpty() || Role.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all the required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validate Name field
+        if (!isValidName(Name)) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid name.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validate Email field
+        if (!isValidEmail(Email)) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validate Phone Number field
+        if (!isValidPhoneNumber(PhoneNumber)) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid phone number.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Perform the editing
+        boolean isModified = modifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, selectedFilePath);
+
+        if (isModified) {
+            JOptionPane.showMessageDialog(this, "Profile modified successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to modify the profile. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
-
-    // Validate Name field
-    if (!isValidName(Name)) {
-        JOptionPane.showMessageDialog(this, "Please enter a valid name.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    // Validate Email field
-    if (!isValidEmail(Email)) {
-        JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    // Validate Phone Number field
-    if (!isValidPhoneNumber(PhoneNumber)) {
-        JOptionPane.showMessageDialog(this, "Please enter a valid phone number.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    // Perform the editing
-    boolean isModified = modifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, selectedFilePath);
-
-    if (isModified) {
-        JOptionPane.showMessageDialog(this, "Profile modified successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        dispose();
-    } else {
-        JOptionPane.showMessageDialog(this, "Failed to modify the profile. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-}
 
 // Method to validate email address
-private boolean isValidEmail(String email) {
-    return !email.isEmpty() && email.contains("@");
-}
+    private boolean isValidEmail(String email) {
+        return !email.isEmpty() && email.contains("@");
+    }
 
 // Method to validate phone number
-private boolean isValidPhoneNumber(String phoneNumber) {
-    return !phoneNumber.isEmpty() && phoneNumber.matches("\\d+");
-}
-    
-private boolean isValidName(String name) {
-    return !name.isEmpty() && name.length() >= 2 &&  name.matches("[a-zA-Z ]+");
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        return !phoneNumber.isEmpty() && phoneNumber.matches("\\d+");
+    }
+
+    private boolean isValidName(String name) {
+        return !name.isEmpty() && name.length() >= 2 && name.matches("[a-zA-Z ]+");
     }//GEN-LAST:event_button_EditActionPerformed
 
     private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
@@ -563,76 +560,73 @@ dispose();    }//GEN-LAST:event_button_BackActionPerformed
     /**
      * @param args the command line arguments
      */
- 
-private boolean modifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String selectedFilePath) {
-    StringBuilder eventBuilder = new StringBuilder("Update Worker Profile");
-    try {
-        Path inputFile = Path.of(PROFILE_FILE_PATH);
-        List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
+    private boolean modifyWorkerProfile(String ID, String Username, String Password, String Name, int Age, String Email, String PhoneNumber, String Role, String selectedFilePath) {
+        StringBuilder eventBuilder = new StringBuilder("Update Worker Profile");
+        try {
+            Path inputFile = Path.of(PROFILE_FILE_PATH);
+            List<String> lines = Files.readAllLines(inputFile, StandardCharsets.UTF_8);
 
-        boolean found = false;
-        for (int i = 0; i < lines.size(); i += 10) {
-            String line = lines.get(i);
-            
-            if (line.equals("ID: " + ID + ",")) {
-                eventBuilder.append(",Changes made to profile with ID ").append(ID).append(":");
-                logChange(eventBuilder, "Username", lines.get(i + 1), "Username: " + Username);
-                logChange(eventBuilder, "Password", lines.get(i + 2), "Password: " + Password);
-                logChange(eventBuilder, "Name", lines.get(i + 3), "Name: " + Name);
-                logChange(eventBuilder, "Age", lines.get(i + 4), "Age: " + Age);
-                logChange(eventBuilder, "Email", lines.get(i + 5), "Email: " + Email);
-                logChange(eventBuilder, "Phone Number", lines.get(i + 6), "Phone Number: " + PhoneNumber);
-                logChange(eventBuilder, "Role", lines.get(i + 7), "Role: " + Role);
+            boolean found = false;
+            for (int i = 0; i < lines.size(); i += 10) {
+                String line = lines.get(i);
 
-                // Check if a new profile picture was selected
-                if (selectedFilePath != null) {
-                    int srcIndex = selectedFilePath.indexOf("src");
-                    String relativePath = (srcIndex != -1) ? selectedFilePath.substring(srcIndex) : selectedFilePath;
-                    logChange(eventBuilder, "Filepath", lines.get(i + 8), "Filepath: " + relativePath);
-                    lines.set(i + 8, "Filepath: " + relativePath);
-                } else {
-                    // Keep the original file path
-                    logChange(eventBuilder, "Filepath", lines.get(i + 8), "Filepath: " + lines.get(i + 8).substring("Filepath: ".length()).trim());
+                if (line.equals("ID: " + ID + ",")) {
+                    eventBuilder.append(",Changes made to profile with ID ").append(ID).append(":");
+                    logChange(eventBuilder, "Username", lines.get(i + 1), "Username: " + Username);
+                    logChange(eventBuilder, "Password", lines.get(i + 2), "Password: " + Password);
+                    logChange(eventBuilder, "Name", lines.get(i + 3), "Name: " + Name);
+                    logChange(eventBuilder, "Age", lines.get(i + 4), "Age: " + Age);
+                    logChange(eventBuilder, "Email", lines.get(i + 5), "Email: " + Email);
+                    logChange(eventBuilder, "Phone Number", lines.get(i + 6), "Phone Number: " + PhoneNumber);
+                    logChange(eventBuilder, "Role", lines.get(i + 7), "Role: " + Role);
+
+                    // Check if a new profile picture was selected
+                    if (selectedFilePath != null) {
+                        int srcIndex = selectedFilePath.indexOf("src");
+                        String relativePath = (srcIndex != -1) ? selectedFilePath.substring(srcIndex) : selectedFilePath;
+                        logChange(eventBuilder, "Filepath", lines.get(i + 8), "Filepath: " + relativePath);
+                        lines.set(i + 8, "Filepath: " + relativePath);
+                    } else {
+                        // Keep the original file path
+                        logChange(eventBuilder, "Filepath", lines.get(i + 8), "Filepath: " + lines.get(i + 8).substring("Filepath: ".length()).trim());
+                    }
+
+                    // Update other fields
+                    lines.set(i, "ID: " + ID + ",");
+                    lines.set(i + 1, "Username: " + Username + ",");
+                    lines.set(i + 2, "Password: " + Password + ",");
+                    lines.set(i + 3, "Name: " + Name + ",");
+                    lines.set(i + 4, "Age: " + Age + ",");
+                    lines.set(i + 5, "Email: " + Email + ",");
+                    lines.set(i + 6, "Phone Number: " + PhoneNumber + ",");
+                    lines.set(i + 7, "Role: " + Role + ",");
+
+                    found = true;
+                    break;
                 }
-
-                // Update other fields
-                lines.set(i, "ID: " + ID + ",");
-                lines.set(i + 1, "Username: " + Username + ",");
-                lines.set(i + 2, "Password: " + Password + ",");
-                lines.set(i + 3, "Name: " + Name + ",");
-                lines.set(i + 4, "Age: " + Age + ",");
-                lines.set(i + 5, "Email: " + Email + ",");
-                lines.set(i + 6, "Phone Number: " + PhoneNumber + ",");
-                lines.set(i + 7, "Role: " + Role + ",");
-
-                found = true;
-                break;
             }
-        }
 
-        if (!found) {
-            System.out.println("Profile not found for ID: " + ID);
+            if (!found) {
+                System.out.println("Profile not found for ID: " + ID);
+                return false;
+            }
+
+            Files.write(inputFile, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+            Admin_Logbook adminLogbook = new Admin_Logbook(userID);
+            adminLogbook.addLogEntry(userID, eventBuilder.toString());
+
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
             return false;
         }
-
-        Files.write(inputFile, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
-        Admin_Logbook adminLogbook = new Admin_Logbook(userID);
-        adminLogbook.addLogEntry(userID, eventBuilder.toString());
-
-        return true;
-    } catch (IOException e) {
-        e.printStackTrace();
-        return false;
     }
-}
 
-
-private void logChange(StringBuilder eventBuilder, String fieldName, String oldValue, String newValue) {
-    if (!oldValue.equals(newValue)) {
-        eventBuilder.append(fieldName).append(": ").append(oldValue.substring(fieldName.length())).append(" -> ").append(newValue.substring(fieldName.length()));
+    private void logChange(StringBuilder eventBuilder, String fieldName, String oldValue, String newValue) {
+        if (!oldValue.equals(newValue)) {
+            eventBuilder.append(fieldName).append(": ").append(oldValue.substring(fieldName.length())).append(" -> ").append(newValue.substring(fieldName.length()));
+        }
     }
-}
-
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -673,10 +667,9 @@ private void logChange(StringBuilder eventBuilder, String fieldName, String oldV
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-        ModifyWorkerProfile modifyProfile = new ModifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role,userID);
-        modifyProfile.setVisible(true);
- 
-        
+                ModifyWorkerProfile modifyProfile = new ModifyWorkerProfile(ID, Username, Password, Name, Age, Email, PhoneNumber, Role, userID);
+                modifyProfile.setVisible(true);
+
             }
         });
     }

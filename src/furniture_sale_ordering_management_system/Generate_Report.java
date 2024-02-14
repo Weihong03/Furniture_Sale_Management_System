@@ -159,7 +159,7 @@ public class Generate_Report extends javax.swing.JFrame {
         JFreeChart lineChart = createLineChart(lineChartDataset, reportType);
 
         // Set background color for the charts
-        Color chartBackgroundColor = new Color(238,240,218);
+        Color chartBackgroundColor = new Color(238, 240, 218);
         barChart.setBackgroundPaint(chartBackgroundColor);
         lineChart.setBackgroundPaint(chartBackgroundColor);
 

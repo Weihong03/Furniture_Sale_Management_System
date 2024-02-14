@@ -569,11 +569,11 @@ public class Admin_Profile extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please enter a valid phone number.", "Error", JOptionPane.ERROR_MESSAGE);
             return; // Exit method if phone number is invalid
         }
-        
-            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to update the profile?", "Confirmation", JOptionPane.YES_NO_OPTION);
-    if (confirm != JOptionPane.YES_OPTION) {
-        return; // Exit method if user doesn't confirm
-    }
+
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to update the profile?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) {
+            return; // Exit method if user doesn't confirm
+        }
         // Read the existing content from the text file
         String filePath = "Data/Admin.txt";
 

@@ -38,10 +38,9 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     public Manage_Sales_Order_Quotation(String userID) {
         initComponents();
         this.userID = userID;
-        
+
         getContentPane().setBackground(Color.WHITE);
         TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
-
 
         jTable_manageQuotation.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
         jTable_manageQuotation.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
@@ -170,7 +169,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_searchActionPerformed
 
     private void button_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_DeleteActionPerformed
-          int selectedRow = jTable_manageQuotation.getSelectedRow();
+        int selectedRow = jTable_manageQuotation.getSelectedRow();
 
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(this, "Please select a row to delete.");
@@ -219,7 +218,7 @@ public class Manage_Sales_Order_Quotation extends javax.swing.JFrame {
     }//GEN-LAST:event_button_DeleteActionPerformed
 
     private void button_ModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ModifyActionPerformed
-  int selectedRowIndex = jTable_manageQuotation.getSelectedRow();
+        int selectedRowIndex = jTable_manageQuotation.getSelectedRow();
         if (selectedRowIndex >= 0) {
             // Get the values from the selected row
             String orderID = jTable_manageQuotation.getValueAt(selectedRowIndex, 0).toString();

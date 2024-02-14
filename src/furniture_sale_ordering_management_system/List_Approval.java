@@ -37,10 +37,9 @@ public class List_Approval extends javax.swing.JFrame {
         initComponents();
         loadSalesPersonData();
         displaySalesOrdersForSalesperson(salesPersonData);
-        
+
         getContentPane().setBackground(Color.WHITE);
         TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
-
 
         jTable_listApproval.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
         jTable_listApproval.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));

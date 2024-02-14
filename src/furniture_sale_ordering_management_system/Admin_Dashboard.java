@@ -14,12 +14,13 @@ import java.awt.Color;
 public class Admin_Dashboard extends javax.swing.JFrame {
 
     private static String userID;
+
     /**
      * Creates new form Admin_Dashboard
      */
     public Admin_Dashboard(String userID) {
         this.userID = userID;
-        
+
         initComponents();
         init();
     }
@@ -240,7 +241,7 @@ public class Admin_Dashboard extends javax.swing.JFrame {
         progress2.start();
         progress3.start();
     }
-    
+
     /**
      * @param args the command line arguments
      */

@@ -42,7 +42,6 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
         getContentPane().setBackground(Color.WHITE);
         TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
 
-
         jTable_profiletable.getTableHeader().setFont(new Font("", Font.BOLD, 15));
         jTable_profiletable.setFont(new Font("", Font.BOLD, 10));
 
@@ -256,10 +255,10 @@ public class ManageWorkerProfile extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select a row to delete.");
             return;
         }
-        
+
         int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete the selected row?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
         if (option != JOptionPane.YES_OPTION) {
-        return; // User canceled the deletion
+            return; // User canceled the deletion
         }
 
         // Read the contents of the file into memory

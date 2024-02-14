@@ -62,16 +62,16 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
     }
 
     private void loadSalesPersonData() {
-         String salesPersonData = getUsername(userID);
+        String salesPersonData = getUsername(userID);
 
-    if (salesPersonData != null) {
-        // Remove commas from salesPersonData
-        salesPersonData = salesPersonData.replace(",", "");
+        if (salesPersonData != null) {
+            // Remove commas from salesPersonData
+            salesPersonData = salesPersonData.replace(",", "");
 
-        jTextField_salesPerson.setText(salesPersonData);
-    } else {
-        JOptionPane.showMessageDialog(this, "Failed to retrieve Sales Person data.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
+            jTextField_salesPerson.setText(salesPersonData);
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to retrieve Sales Person data.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public static String getUsername(String userID) {
@@ -309,7 +309,9 @@ public class CreateSalesOrderQuotation extends javax.swing.JFrame {
             e.printStackTrace();
         }
         return latestID;
-    }    private void saveSalesOrderQuotation(String orderID, String amount, String customer, List<String> products, List<String> itemIDs, List<String> prices, Date date, String salesPerson) {
+    }
+
+    private void saveSalesOrderQuotation(String orderID, String amount, String customer, List<String> products, List<String> itemIDs, List<String> prices, Date date, String salesPerson) {
         String filePath = "Data/Sales_Quotation.txt";
 
         // Format the date (you can customize the format)

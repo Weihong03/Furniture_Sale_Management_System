@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package furniture_sale_ordering_management_system;
+
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import java.awt.Color;
@@ -16,7 +17,9 @@ import table.TableCustom;
  * @author yuw18
  */
 public class ViewProduct extends javax.swing.JFrame {
+
     public static String userID;
+
     /**
      * Creates new form ViewProduct
      */
@@ -24,10 +27,9 @@ public class ViewProduct extends javax.swing.JFrame {
         this.userID = userID;
         initComponents();
         displayProduct();
-        
+
         getContentPane().setBackground(Color.WHITE);
         TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
-
 
         jTable_productListing.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
         jTable_productListing.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
@@ -82,23 +84,26 @@ public class ViewProduct extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable_productListing.getModel();
         model.setRowCount(0); // Clear existing data
 
-              try (CSVReader reader = new CSVReader(new FileReader("Data/Yoyo-Furniture.csv"))) {
+        try (CSVReader reader = new CSVReader(new FileReader("Data/Yoyo-Furniture.csv"))) {
             String[] nextLine;
             while (true) {
                 try {
-                    if ((nextLine = reader.readNext()) == null) break; // Exit the loop when sno more lines
+                    if ((nextLine = reader.readNext()) == null) {
+                        break; // Exit the loop when sno more lines
+                    }
                 } catch (CsvValidationException e) {
                     e.printStackTrace(); // Handle CsvValidationException
                     continue; // Continue to the next iteration of the loop
                 }
-                
+
                 // Add each line from the CSV file to the table
                 model.addRow(nextLine);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-     }
+    }
+
     /**
      * @param args the command line arguments
      */

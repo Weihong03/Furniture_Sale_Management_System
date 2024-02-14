@@ -552,28 +552,28 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                             case "Name":
                                 String newName = jTextField_FullName.getText().trim();
                                 if (!isValidName(newName)) {
-                                JOptionPane.showMessageDialog(null, "Please enter a valid name.");
-                                return;
-                            }
+                                    JOptionPane.showMessageDialog(null, "Please enter a valid name.");
+                                    return;
+                                }
                                 lines[3] = "Name: " + jTextField_FullName.getText().trim() + ",";
                                 break;
                             case "Age":
                                 lines[4] = "Age: " + jComboBox_Age.getSelectedItem().toString().trim() + ",";
                                 break;
                             case "Email":
-                                  String newEmail = jTextField_Email.getText().trim();
-                            if (!isValidEmail(newEmail)) {
-                                JOptionPane.showMessageDialog(null, "Please enter a valid email address.");
-                                return;
-                            }
+                                String newEmail = jTextField_Email.getText().trim();
+                                if (!isValidEmail(newEmail)) {
+                                    JOptionPane.showMessageDialog(null, "Please enter a valid email address.");
+                                    return;
+                                }
                                 lines[5] = "Email: " + jTextField_Email.getText().trim() + ",";
                                 break;
                             case "Phone Number":
-                                  String newPhoneNumber = jTextField_PhoneNumber.getText().trim();
-                            if (!isValidPhoneNumber(newPhoneNumber)) {
-                                JOptionPane.showMessageDialog(null, "Please enter a valid phone number.");
-                                return;
-                            }
+                                String newPhoneNumber = jTextField_PhoneNumber.getText().trim();
+                                if (!isValidPhoneNumber(newPhoneNumber)) {
+                                    JOptionPane.showMessageDialog(null, "Please enter a valid phone number.");
+                                    return;
+                                }
                                 lines[6] = "Phone Number: " + jTextField_PhoneNumber.getText().trim() + ",";
                                 break;
                             case "Role":
@@ -593,46 +593,45 @@ public class Sales_Officer_Profile extends javax.swing.JFrame {
                 }
 
                 int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to update the content?", "Confirmation", JOptionPane.YES_NO_OPTION);
-            if (confirm == JOptionPane.YES_OPTION) {
-                // Update the content with modified user data
-                content.insert(startIndex, "\n");
-                content.insert(endIndex, "\n");
-                content.replace(startIndex, endIndex, String.join("\n", lines));
+                if (confirm == JOptionPane.YES_OPTION) {
+                    // Update the content with modified user data
+                    content.insert(startIndex, "\n");
+                    content.insert(endIndex, "\n");
+                    content.replace(startIndex, endIndex, String.join("\n", lines));
 
-                // Save the updated content to the file
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-                    writer.write(content.toString());
-                    JOptionPane.showMessageDialog(null, "Content successfully updated!");
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    // Save the updated content to the file
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+                        writer.write(content.toString());
+                        JOptionPane.showMessageDialog(null, "Content successfully updated!");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "User with ID " + userID + " not found.");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
     }
-}
-       
-        
-private boolean isValidName(String name) {
-    // Use regular expression to check if the name contains only alphabetic characters
-    return !name.isEmpty() && name.matches("[a-zA-Z ]+") && name.length() >= 2;
-}
+
+    private boolean isValidName(String name) {
+        // Use regular expression to check if the name contains only alphabetic characters
+        return !name.isEmpty() && name.matches("[a-zA-Z ]+") && name.length() >= 2;
+    }
 
 // Method to validate email address
-private boolean isValidEmail(String email) {
-    // You can implement your email validation logic here
-    // For simplicity, let's assume any non-empty string with '@' is valid
-    return !email.isEmpty() && email.contains("@");
-}
+    private boolean isValidEmail(String email) {
+        // You can implement your email validation logic here
+        // For simplicity, let's assume any non-empty string with '@' is valid
+        return !email.isEmpty() && email.contains("@");
+    }
 
 // Method to validate phone number
-private boolean isValidPhoneNumber(String phoneNumber) {
-    // You can implement your phone number validation logic here
-    // For simplicity, let's assume any non-empty string with digits is valid
-    return !phoneNumber.isEmpty() && phoneNumber.matches("\\d+");
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        // You can implement your phone number validation logic here
+        // For simplicity, let's assume any non-empty string with digits is valid
+        return !phoneNumber.isEmpty() && phoneNumber.matches("\\d+");
     }//GEN-LAST:event_button_UpdateActionPerformed
 
     /**

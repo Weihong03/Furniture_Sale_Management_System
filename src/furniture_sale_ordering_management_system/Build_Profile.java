@@ -427,7 +427,7 @@ public class Build_Profile extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a valid phone number.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         // Validate and save to file
         if (validateInputs(name, email, phoneNumber)) {
             // Validate and save image to file

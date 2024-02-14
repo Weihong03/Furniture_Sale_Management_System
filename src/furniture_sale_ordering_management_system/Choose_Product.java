@@ -44,10 +44,9 @@ public class Choose_Product extends javax.swing.JFrame {
         initComponents();
         List<String> furnitureNames = readFurnitureNamesFromCSV();
         jComboBox_product.setModel(new DefaultComboBoxModel<>(furnitureNames.toArray(new String[0])));
-        
+
         getContentPane().setBackground(Color.WHITE);
         TableCustom.apply(jScrollPane3, TableCustom.TableType.MULTI_LINE);
-
 
         jTable_product.getTableHeader().setFont(new Font("", Font.BOLD, 15));
         jTable_product.setFont(new Font("", Font.BOLD, 10));
@@ -215,11 +214,13 @@ public class Choose_Product extends javax.swing.JFrame {
             // If "RM" is not found, you may need additional logic based on your actual data format
             return input.trim();
         }
-    }    private String getSafeValue(List<String> dataList, int index) {
+    }
+
+    private String getSafeValue(List<String> dataList, int index) {
         return (index >= 0 && index < dataList.size()) ? dataList.get(index).trim() : "";
     }
     private void button_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_deleteActionPerformed
-       deleteSelectedRows();
+        deleteSelectedRows();
     }//GEN-LAST:event_button_deleteActionPerformed
 
     private void button_ProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ProceedActionPerformed
@@ -261,7 +262,7 @@ public class Choose_Product extends javax.swing.JFrame {
     }//GEN-LAST:event_button_ProceedActionPerformed
 
     private void button_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_addActionPerformed
-   String selectedProduct = (String) jComboBox_product.getSelectedItem();
+        String selectedProduct = (String) jComboBox_product.getSelectedItem();
 
         // Read additional data (item ID, category, and price) based on the selected product
         String csvFile = "Data/Yoyo-Furniture.csv";

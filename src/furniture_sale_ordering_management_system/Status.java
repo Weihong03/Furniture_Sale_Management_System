@@ -25,7 +25,7 @@ public class Status extends javax.swing.JPanel {
         initComponents();
         setBackground(Color.WHITE);
         setOpaque(false);
-        
+
         Component[] components = new Component[]{new Step(1), new Step(2), new Step(3), new Step(4)};
         panelSlider.setSliderComponent(components);
         progressIndicator.initSlider(panelSlider);
@@ -40,6 +40,7 @@ public class Status extends javax.swing.JPanel {
         g2.dispose();
         super.paintComponent(grphcs);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -145,7 +146,7 @@ public class Status extends javax.swing.JPanel {
     }//GEN-LAST:event_button_NextActionPerformed
 
     private void button_DoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_DoneActionPerformed
-         GlassPanePopup.closePopupAll();
+        GlassPanePopup.closePopupAll();
     }//GEN-LAST:event_button_DoneActionPerformed
 
 

@@ -78,7 +78,7 @@ public class Notification extends javax.swing.JPanel {
             e.printStackTrace(); // Handle the exception according to your needs
         }
     }
- 
+
     @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs.create();

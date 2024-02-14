@@ -317,7 +317,7 @@ public class ModifySales extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_customerActionPerformed
 
     private void button_ModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ModifyActionPerformed
-          String ID = jTextField_ID.getText();
+        String ID = jTextField_ID.getText();
         String Amount = jTextField_Amount.getText();
         Date selectedDate = jDateChooser1.getDate();
         String Date = "";  // Declare the variable here
@@ -356,7 +356,7 @@ public class ModifySales extends javax.swing.JFrame {
     }//GEN-LAST:event_button_ModifyActionPerformed
 
     private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
-dispose();
+        dispose();
     }//GEN-LAST:event_button_BackActionPerformed
 
     private boolean modifySales(String ID, String Amount, String Date, String Product, String ItemID, String Price, String Customer, String Salesperson) {
