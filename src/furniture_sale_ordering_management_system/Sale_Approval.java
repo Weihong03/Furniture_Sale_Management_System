@@ -335,7 +335,7 @@ public class Sale_Approval extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_button_rejectActionPerformed
 
-    private String getUsernameFromID(String userID) {
+    private static String getUsernameFromID(String userID) {
         try {
             Path inputFile = Path.of("Data/Officer_Salesperson.txt");
 
