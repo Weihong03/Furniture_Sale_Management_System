@@ -41,10 +41,9 @@ public class Sale_Approval extends javax.swing.JFrame {
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         getContentPane().setBackground(Color.WHITE);
         TableCustom.apply(jScrollPane1, TableCustom.TableType.MULTI_LINE);
-
 
         jTable_Salestable.getTableHeader().setFont(new java.awt.Font("", java.awt.Font.BOLD, 15));
         jTable_Salestable.setFont(new java.awt.Font("", java.awt.Font.BOLD, 10));
@@ -325,7 +324,7 @@ public class Sale_Approval extends javax.swing.JFrame {
     }//GEN-LAST:event_button_approveActionPerformed
 
     private void button_rejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_rejectActionPerformed
-                int selectedRow = jTable_Salestable.getSelectedRow();
+        int selectedRow = jTable_Salestable.getSelectedRow();
 
         if (selectedRow != -1) {
             String ID = jTable_Salestable.getValueAt(selectedRow, 0).toString();
