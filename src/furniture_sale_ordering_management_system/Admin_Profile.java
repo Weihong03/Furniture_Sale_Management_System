@@ -701,8 +701,6 @@ public class Admin_Profile extends javax.swing.JFrame {
             System.out.println("User ID not found: " + userID);
         }
         return false;
-
-
     }//GEN-LAST:event_button_updateActionPerformed
 
     private void jLabel_iconAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel_iconAncestorAdded
