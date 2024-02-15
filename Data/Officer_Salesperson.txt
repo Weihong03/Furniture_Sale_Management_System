@@ -23,7 +23,7 @@ Username: Horongwei,
 Password: Rongwei123,
 Name: Ho Rong Wei,
 Age: 35,
-Email: rongweilovearyssa@gmail.com,
+Email: rongwei@gmail.com,
 Phone Number: 0303003,
 Role: Salesperson,
 Filepath: src\furniture_sale_ordering_management_system\Images\profile picture4.jpg
