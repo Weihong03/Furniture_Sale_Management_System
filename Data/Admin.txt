@@ -16,4 +16,4 @@ Age: 23,
 Email: TP034051@mail.apu.edu.my,
 Phone Number: 012888123,
 Role: Admin,
-Filepath: src\furniture_sale_ordering_management_system\Images\Company picture4.jpg
+Filepath: src\furniture_sale_ordering_management_system\Images\Companylogo.jpg

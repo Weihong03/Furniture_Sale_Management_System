@@ -2277,3 +2277,11 @@ User ID: A002;
 Timestamp: 2024-02-13 19:46:07;
 Event: Logout;
 
+User ID: A001;
+Timestamp: 2024-02-21 13:41:23;
+Event: Login;
+
+User ID: A001;
+Timestamp: 2024-02-21 13:41:44;
+Event: Logout;
+

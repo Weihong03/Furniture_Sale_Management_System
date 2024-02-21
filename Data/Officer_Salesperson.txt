@@ -68,3 +68,33 @@ Phone Number: 01292832,
 Role: Officer,
 Filepath: src/furniture_sale_ordering_management_system/Images/O006_profile_image.png
 
+
+ID: O007,
+Username: zuseng0912,
+Password: zuseng123,
+Name: Tan Zu Seng,
+Age: 21,
+Email: zuseng0912@gmail.com,
+Phone Number: 01241234315,
+Role: Officer,
+Filepath: src/furniture_sale_ordering_management_system/Images/O007_profile_image.png
+
+ID: S004,
+Username: jinhui,
+Password: jinhui123,
+Name: Voon Jin Hui,
+Age: 21,
+Email: jinhui0123@gmail.com,
+Phone Number: 01275837148,
+Role: Salesperson,
+Filepath: src/furniture_sale_ordering_management_system/Images/S004_profile_image.png
+
+ID: O008,
+Username: thosonliew,
+Password: thosonliew123,
+Name: Liew Jia Yi,
+Age: 22,
+Email: jiayiliew1001@gmail.com,
+Phone Number: 01235840124,
+Role: Officer,
+Filepath: src/furniture_sale_ordering_management_system/Images/O008_profile_image.png
