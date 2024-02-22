@@ -192,7 +192,7 @@ public class Generate_Report extends javax.swing.JFrame {
             String confirmation = jTable_Sales.getValueAt(i, 8).toString(); // Confirmation column index is 8
             String status = jTable_Sales.getValueAt(i, 11).toString(); // Status column index is 11
 
-            if ("Work Done".equals(reportType) && "Approved".equals(confirmation) && "Closed Sale".equals(status)) {
+            if ("Work Done".equals(reportType) && "Approved".equals(confirmation) && "Work Done".equals(status)) {
                 // For work done report, add data where confirmation is approved and status is closed sale
                 String product = jTable_Sales.getValueAt(i, 3).toString(); // Product column index is 3
                 double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1
@@ -221,7 +221,7 @@ public class Generate_Report extends javax.swing.JFrame {
             String confirmation = jTable_Sales.getValueAt(i, 8).toString(); // Confirmation column index is 8
             String status = jTable_Sales.getValueAt(i, 11).toString(); // Status column index is 11
 
-            if ("Work Done".equals(reportType) && "Approved".equals(confirmation) && "Closed Sale".equals(status)) {
+            if ("Work Done".equals(reportType) && "Approved".equals(confirmation) && "Work Done".equals(status)) {
                 // For work done report, add data where confirmation is approved and status is closed sale
                 String date = jTable_Sales.getValueAt(i, 2).toString(); // Date column index is 2
                 double amount = parseAmount(jTable_Sales.getValueAt(i, 1).toString()); // Amount column index is 1

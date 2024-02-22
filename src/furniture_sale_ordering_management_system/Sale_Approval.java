@@ -371,6 +371,12 @@ public class Sale_Approval extends javax.swing.JFrame {
                     String username = getUsernameFromID(userID);
                     lines.set(i + 8, "Confirmation: " + Confirmation + ",");
                     lines.set(i + 9, "Officer: " + username + ",");
+                    
+                    // Handle rejection scenario by updating the status to "Closed Sale"
+                    if ("Rejected".equals(Confirmation)) {
+                       lines.set(i + 11, "Status: Closed Sale,");
+                    }
+                    
                     Files.write(inputFile, lines, StandardCharsets.UTF_8);
                     return true;
                 }
