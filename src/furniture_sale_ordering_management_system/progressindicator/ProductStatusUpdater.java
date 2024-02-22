@@ -34,7 +34,7 @@ public class ProductStatusUpdater implements Runnable {
         simulateStatus(saleID, "Assembly,", 1500);
         simulateStatus(saleID, "Testing,", 1500);
         simulateStatus(saleID, "Quality Check,", 1500);
-        simulateStatus(saleID, "Closed Sale,", 1500);
+        simulateStatus(saleID, "Work Done,", 1500);
     }
 
     private void simulateStatus(String saleID, String status, int delay) {

@@ -113,7 +113,7 @@ Salesperson: Weihongooi,
 Confirmation: Approved,
 Officer: Atticus,
 Invoice: No,
-Status: In Progress,
+Status: Work Done,
 
 ID: Q023,
 Amount: RM69.0,

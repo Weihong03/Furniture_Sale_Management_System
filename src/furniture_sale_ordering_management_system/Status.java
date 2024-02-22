@@ -61,7 +61,7 @@ public class Status extends javax.swing.JPanel {
 
         progressIndicator.setBackground(new java.awt.Color(238, 240, 218));
         progressIndicator.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Assembly", "Testing", "Quality Check", "Closed Sale" };
+            String[] strings = { "Assembly", "Testing", "Quality Check", "Work Done" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });

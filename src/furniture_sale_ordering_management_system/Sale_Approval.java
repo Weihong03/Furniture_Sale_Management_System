@@ -372,7 +372,7 @@ public class Sale_Approval extends javax.swing.JFrame {
                     lines.set(i + 8, "Confirmation: " + Confirmation + ",");
                     lines.set(i + 9, "Officer: " + username + ",");
                     
-                    // Handle rejection scenario by updating the status to "Closed Sale"
+                                        // Handle rejection scenario by updating the status to "Closed Sale"
                     if ("Rejected".equals(Confirmation)) {
                        lines.set(i + 11, "Status: Closed Sale,");
                     }
