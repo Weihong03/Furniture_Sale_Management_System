@@ -99,7 +99,7 @@ Customer: Lee,
 Salesperson: Weihongooi,
 Confirmation: Approved,
 Officer: Atticus,
-Invoice: No,
+Invoice: Yes,
 Status: Work Done,
 
 ID: Q022,
